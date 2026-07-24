@@ -1,0 +1,102 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents API
+  version: ''
+tags:
+- name: Documents
+paths:
+  /api/documents/:
+    get:
+      operationId: api_documents_list
+      parameters:
+      - description: A page number within the paginated result set.
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+      - description: Number of results to return per page.
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBaseDocumentList'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Documents
+  /api/documents/{id}/:
+    delete:
+      operationId: api_documents_destroy
+      parameters:
+      - description: A unique integer value identifying this Document.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Documents
+components:
+  schemas:
+    BaseDocument:
+      properties:
+        external_id:
+          format: uuid
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        object_id:
+          format: uuid
+          readOnly: true
+          type: string
+        status:
+          type: integer
+      required:
+      - external_id
+      - id
+      - object_id
+      - status
+      type: object
+    PaginatedBaseDocumentList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          nullable: true
+          type: string
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/BaseDocument'
+          type: array
+      required:
+      - count
+      - results
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

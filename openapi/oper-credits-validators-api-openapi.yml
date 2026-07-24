@@ -1,0 +1,49 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Validators API
+  version: ''
+tags:
+- name: Validators
+paths:
+  /api/validators/belgian-national-number:
+    post:
+      operationId: api_validators_belgian_national_number_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/NationalNumber'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/NationalNumber'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/NationalNumber'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NationalNumber'
+          description: ''
+      security:
+      - jwtAuth: []
+      - {}
+      tags:
+      - Validators
+components:
+  schemas:
+    NationalNumber:
+      properties:
+        national_number:
+          description: Belgian national number to validate
+          type: string
+      required:
+      - national_number
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Metrics API
+  version: ''
+tags:
+- name: Metrics
+paths:
+  /metrics/certs-expiration:
+    get:
+      operationId: metrics_certs_expiration_retrieve
+      responses:
+        '200':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Metrics
+components:
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Model Fields API
+  version: ''
+tags:
+- name: Model Fields
+paths:
+  /api/model-fields/:
+    get:
+      operationId: api_model_fields_retrieve
+      responses:
+        '200':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Model Fields
+components:
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

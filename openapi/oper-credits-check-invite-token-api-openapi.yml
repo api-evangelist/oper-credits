@@ -1,0 +1,51 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Check Invite Token API
+  version: ''
+tags:
+- name: Check Invite Token
+paths:
+  /api/check-invite-token/:
+    post:
+      description: This check verifies whether the reset password token is valid.
+      operationId: api_check_invite_token_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckInviteToken'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CheckInviteToken'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CheckInviteToken'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckInviteToken'
+          description: ''
+      tags:
+      - Check Invite Token
+components:
+  schemas:
+    CheckInviteToken:
+      description: 'The token that is sent through invite is a different token (verify_token)
+
+        than the one used to reset the password (password_reset), the
+
+        verification will be different'
+      properties:
+        token:
+          type: string
+      required:
+      - token
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

@@ -1,0 +1,564 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Approvals API
+  version: ''
+tags:
+- name: Approvals
+paths:
+  /api/approvals/action-availability/:
+    post:
+      operationId: api_approvals_action_availability_create
+      responses:
+        '200':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Approvals
+  /api/approvals/audit/bundles/:
+    get:
+      operationId: api_approvals_audit_bundles_list
+      parameters:
+      - in: query
+        name: action_type
+        schema:
+          type: string
+      - in: query
+        name: credit_provider_id
+        schema:
+          type: integer
+      - in: query
+        name: from_date
+        schema:
+          format: date-time
+          type: string
+      - in: query
+        name: host_id
+        schema:
+          type: integer
+      - in: query
+        name: host_kind
+        schema:
+          type: string
+      - in: query
+        name: to_date
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ApprovalBundleActionAudit'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Approvals
+  /api/approvals/audit/configurations/:
+    get:
+      operationId: api_approvals_audit_configurations_list
+      parameters:
+      - in: query
+        name: credit_provider_id
+        schema:
+          type: number
+      - in: query
+        name: from_date
+        schema:
+          format: date-time
+          type: string
+      - in: query
+        name: saved_by
+        schema:
+          type: number
+      - in: query
+        name: subject_kind
+        schema:
+          type: string
+      - in: query
+        name: tenant_id
+        schema:
+          type: number
+      - in: query
+        name: to_date
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ApprovalConfigurationVersion'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Approvals
+  /api/approvals/audit/configurations/{version_id}/:
+    get:
+      operationId: api_approvals_audit_configurations_retrieve
+      parameters:
+      - in: path
+        name: version_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApprovalConfigurationVersion'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Approvals
+  /api/approvals/audit/requests/:
+    get:
+      operationId: api_approvals_audit_requests_list
+      parameters:
+      - in: query
+        name: action_type
+        schema:
+          type: string
+      - in: query
+        name: credit_provider_id
+        schema:
+          type: integer
+      - in: query
+        name: from_date
+        schema:
+          format: date-time
+          type: string
+      - in: query
+        name: host_id
+        schema:
+          type: integer
+      - in: query
+        name: host_kind
+        schema:
+          type: string
+      - in: query
+        name: performed_by
+        schema:
+          type: number
+      - in: query
+        name: subject_kind
+        schema:
+          type: string
+      - in: query
+        name: to_date
+        schema:
+          format: date-time
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ApprovalActionAudit'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Approvals
+  /api/approvals/audit/requests/{request_id}/actions/:
+    get:
+      description: '`GET /approvals/audit/requests/<request_id>/actions/` (Notion E5).
+
+
+        Compact per-request action history used by the FE''s §1.4 side-by-side
+
+        display: at the Head Decider level the FE renders both the advisor''s
+
+        original submit value AND the previous Decider''s counter (modify)
+
+        value side-by-side. Reads `results[0]` for the submit + walks the
+
+        list for the latest `modify` action.
+
+
+        Auth: standard advisor/decider permission — the FE caller is whoever
+
+        is acting on the bundle, not a compliance-team auditor, so this
+
+        endpoint deliberately does NOT use `CanReadAuditApi`. Authorisation
+
+        on the request itself (advisor sees only their own bundles, decider
+
+        sees only assigned ones) is enforced at the queryset level.'
+      operationId: api_approvals_audit_requests_actions_list
+      parameters:
+      - in: path
+        name: request_id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/RequestActionTimeline'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Approvals
+components:
+  schemas:
+    RequestActionTimeline:
+      description: 'Compact per-request action shape consumed by the FE''s §1.4
+
+        side-by-side display ("Head Decider sees advisor''s original `-50bps`
+
+        + Decider''s counter `-30bps`"). Ordered ASC by `created` so
+
+        `results[0]` is the advisor''s submit and the latest `modify` is at
+
+        the tail.'
+      properties:
+        action_type:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalRequestActionType'
+          readOnly: true
+        actor:
+          additionalProperties: {}
+          nullable: true
+          readOnly: true
+          type: object
+        after_value:
+          nullable: true
+        before_value:
+          nullable: true
+        comment:
+          type: string
+        created_at:
+          format: date-time
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        level:
+          nullable: true
+          type: integer
+      required:
+      - action_type
+      - actor
+      - created_at
+      - id
+      - level
+      type: object
+    ApprovalRequestStatus:
+      description: Can be managed at /resources/approval-request-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalHostKind:
+      description: Can be managed at /resources/approval-host-kind
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalBundleActionType:
+      description: Can be managed at /resources/approval-bundle-action-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalRequestActionType:
+      description: Can be managed at /resources/approval-request-action-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalActionAudit:
+      properties:
+        action_type:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalRequestActionType'
+          readOnly: true
+        after_value:
+          nullable: true
+          readOnly: true
+        approver_role:
+          readOnly: true
+          type: string
+        approver_user_identifier:
+          readOnly: true
+          type: string
+        before_value:
+          nullable: true
+          readOnly: true
+        bundle_id:
+          readOnly: true
+          type: integer
+        client_idempotency_key:
+          readOnly: true
+          type: string
+        comment:
+          readOnly: true
+          type: string
+        configuration_version_id:
+          readOnly: true
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        credit_provider_id:
+          readOnly: true
+          type: integer
+        host_id:
+          readOnly: true
+          type: integer
+        host_kind:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalHostKind'
+          readOnly: true
+        id:
+          readOnly: true
+          type: integer
+        performed_by_id:
+          readOnly: true
+          type: integer
+        request_current_level:
+          readOnly: true
+          type: integer
+        request_id:
+          readOnly: true
+          type: integer
+        request_status:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalRequestStatus'
+          readOnly: true
+        rule_id:
+          readOnly: true
+          type: string
+        step_index:
+          nullable: true
+          readOnly: true
+          type: integer
+        subject_kind:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalSubjectKind'
+          readOnly: true
+      required:
+      - action_type
+      - after_value
+      - approver_role
+      - approver_user_identifier
+      - before_value
+      - bundle_id
+      - client_idempotency_key
+      - comment
+      - configuration_version_id
+      - created
+      - credit_provider_id
+      - host_id
+      - host_kind
+      - id
+      - performed_by_id
+      - request_current_level
+      - request_id
+      - request_status
+      - rule_id
+      - step_index
+      - subject_kind
+      type: object
+    ApprovalConfigurationVersion:
+      properties:
+        configuration_id:
+          readOnly: true
+          type: integer
+        credit_provider_id:
+          readOnly: true
+          type: integer
+        default:
+          readOnly: true
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        json_diff:
+          readOnly: true
+        name:
+          readOnly: true
+          type: string
+        saved_at:
+          format: date-time
+          readOnly: true
+          type: string
+        saved_by_id:
+          readOnly: true
+          type: integer
+        subject_kind:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalSubjectKind'
+          readOnly: true
+        tenant_id:
+          readOnly: true
+          type: integer
+        version_id:
+          readOnly: true
+          type: string
+      required:
+      - configuration_id
+      - credit_provider_id
+      - default
+      - id
+      - json_diff
+      - name
+      - saved_at
+      - saved_by_id
+      - subject_kind
+      - tenant_id
+      - version_id
+      type: object
+    ApprovalBundleLifecycle:
+      description: Can be managed at /resources/approval-bundle-lifecycle
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalSubjectKind:
+      description: Can be managed at /resources/approval-subject-kind
+      properties:
+        definition:
+          type: string
+        host_kind:
+          nullable: true
+          type: integer
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalBundleActionAudit:
+      properties:
+        action_type:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalBundleActionType'
+          readOnly: true
+        bundle_id:
+          readOnly: true
+          type: integer
+        bundle_status:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalBundleLifecycle'
+          readOnly: true
+        client_idempotency_key:
+          readOnly: true
+          type: string
+        comment:
+          readOnly: true
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        credit_provider_id:
+          readOnly: true
+          type: integer
+        host_id:
+          readOnly: true
+          type: integer
+        host_kind:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalHostKind'
+          readOnly: true
+        id:
+          readOnly: true
+          type: integer
+        performed_by_id:
+          readOnly: true
+          type: integer
+        step_index:
+          nullable: true
+          readOnly: true
+          type: integer
+      required:
+      - action_type
+      - bundle_id
+      - bundle_status
+      - client_idempotency_key
+      - comment
+      - created
+      - credit_provider_id
+      - host_id
+      - host_kind
+      - id
+      - performed_by_id
+      - step_index
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

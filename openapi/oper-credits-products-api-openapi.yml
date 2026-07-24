@@ -1,0 +1,38 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Products API
+  version: ''
+tags:
+- name: Products
+paths:
+  /api/products/:
+    get:
+      operationId: api_products_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/StaticProduct'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Products
+components:
+  schemas:
+    StaticProduct:
+      properties:
+        products:
+          readOnly: true
+          type: string
+      required:
+      - products
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

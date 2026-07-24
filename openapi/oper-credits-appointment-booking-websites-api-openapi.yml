@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Appointment Booking Websites API
+  version: ''
+tags:
+- name: Appointment Booking Websites
+paths:
+  /api/appointment-booking-websites/:
+    get:
+      operationId: api_appointment_booking_websites_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AppointmentBookingWebsite'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Appointment Booking Websites
+  /api/appointment-booking-websites/{language__definition}/:
+    get:
+      operationId: api_appointment_booking_websites_retrieve
+      parameters:
+      - in: path
+        name: language__definition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AppointmentBookingWebsite'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Appointment Booking Websites
+components:
+  schemas:
+    AppointmentBookingWebsite:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        language:
+          $ref: '#/components/schemas/Language'
+        value:
+          format: uri
+          maxLength: 250
+          type: string
+      required:
+      - id
+      - language
+      - value
+      type: object
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

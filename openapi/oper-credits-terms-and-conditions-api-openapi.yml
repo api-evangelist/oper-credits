@@ -1,0 +1,63 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Terms And Conditions API
+  version: ''
+tags:
+- name: Terms And Conditions
+paths:
+  /api/terms-and-conditions/:
+    get:
+      operationId: api_terms_and_conditions_retrieve
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermsAndConditions'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Terms And Conditions
+components:
+  schemas:
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    TermsAndConditions:
+      properties:
+        configuration_id:
+          format: uuid
+          type: string
+        content:
+          type: string
+        language:
+          $ref: '#/components/schemas/Language'
+        tenant:
+          nullable: true
+          type: integer
+        title:
+          maxLength: 128
+          type: string
+      required:
+      - content
+      - language
+      - title
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

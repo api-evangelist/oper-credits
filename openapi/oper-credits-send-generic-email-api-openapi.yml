@@ -1,0 +1,56 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Send Generic Email API
+  version: ''
+tags:
+- name: Send Generic Email
+paths:
+  /api/send-generic-email/:
+    post:
+      operationId: api_send_generic_email_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendGenericEmail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SendGenericEmail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SendGenericEmail'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendGenericEmail'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Send Generic Email
+components:
+  schemas:
+    SendGenericEmail:
+      properties:
+        personalizations: {}
+        recipients:
+          items:
+            format: email
+            type: string
+          type: array
+        template_string:
+          maxLength: 100
+          type: string
+      required:
+      - personalizations
+      - recipients
+      - template_string
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

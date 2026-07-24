@@ -1,0 +1,608 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Commissions API
+  version: ''
+tags:
+- name: Commissions
+paths:
+  /api/commissions/documents/{year}/{month}/:
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_commissions_documents_retrieve
+      parameters:
+      - in: path
+        name: month
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: year
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommissionStatementDocument'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Commissions
+  /api/commissions/files/:
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_commissions_files_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/CommissionFile'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Commissions
+    post:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_commissions_files_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommissionFile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CommissionFile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CommissionFile'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommissionFile'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Commissions
+  /api/commissions/files/{commission_file_id}/recoveries/:
+    post:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_commissions_files_recoveries_create
+      parameters:
+      - in: path
+        name: commission_file_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Recovery'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Recovery'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Recovery'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recovery'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Commissions
+  /api/commissions/objects/{year}/{month}/:
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_commissions_objects_list
+      parameters:
+      - in: path
+        name: month
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: year
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Commission'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Commissions
+  /api/commissions/payment-files/:
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_commissions_payment_files_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PaymentFile'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Commissions
+  /api/commissions/payment-files/{id}/:
+    patch:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_commissions_payment_files_partial_update
+      parameters:
+      - description: A unique integer value identifying this Payment file.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPaymentFile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPaymentFile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPaymentFile'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentFile'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Commissions
+    put:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_commissions_payment_files_update
+      parameters:
+      - description: A unique integer value identifying this Payment file.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentFile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PaymentFile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PaymentFile'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentFile'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Commissions
+  /api/commissions/payment-files/{id}/download/:
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_commissions_payment_files_download_retrieve
+      parameters:
+      - description: A unique integer value identifying this Payment file.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentFile'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Commissions
+  /api/commissions/payment-files/{id}/regenerate/:
+    patch:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_commissions_payment_files_regenerate_partial_update
+      parameters:
+      - description: A unique integer value identifying this Payment file.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPaymentFile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPaymentFile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPaymentFile'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentFile'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Commissions
+components:
+  schemas:
+    CommissionFileStatus:
+      description: Can be managed at /resources/commission-file-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DocumentStatus:
+      description: Can be managed at /resources/document-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CommissionType:
+      description: Can be managed at /resources/commission-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CommissionStatementDocument:
+      properties:
+        configuration_id:
+          format: uuid
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        document_type:
+          allOf:
+          - $ref: '#/components/schemas/DocumentType'
+          readOnly: true
+        file_name:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        integrator_transfer_rounds:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        is_sent:
+          type: boolean
+        is_signed:
+          type: boolean
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        mime_type:
+          readOnly: true
+          type: string
+        object_file_name:
+          maxLength: 256
+          type: string
+        oper_reference:
+          format: uuid
+          type: string
+        sha256_hash:
+          maxLength: 64
+          type: string
+        signed_date:
+          format: date-time
+          nullable: true
+          type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/DocumentStatus'
+          readOnly: true
+        url:
+          readOnly: true
+          type: string
+        version:
+          readOnly: true
+          type: string
+      required:
+      - created
+      - document_type
+      - file_name
+      - id
+      - integrator_transfer_rounds
+      - last_modified
+      - mime_type
+      - status
+      - url
+      - version
+      type: object
+    RecoveryStatus:
+      description: Can be managed at /resources/recovery-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Recovery:
+      properties:
+        amount:
+          format: double
+          readOnly: true
+          type: number
+        file:
+          $ref: '#/components/schemas/ReducedCommissionFile'
+        outstanding_amount:
+          format: double
+          type: number
+        prepayment_date:
+          format: date
+          nullable: true
+          type: string
+        status:
+          $ref: '#/components/schemas/RecoveryStatus'
+      required:
+      - amount
+      - file
+      type: object
+    ReducedProductItem:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        id:
+          type: integer
+        internal_reference:
+          maxLength: 64
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+      required:
+      - id
+      - internal_reference
+      - name
+      type: object
+    ReducedCommissionFile:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        id:
+          type: integer
+      required:
+      - id
+      type: object
+    PatchedPaymentFile:
+      properties:
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        downloaded:
+          readOnly: true
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        internal_reference:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        processed:
+          type: boolean
+      type: object
+    Commission:
+      properties:
+        amount:
+          format: double
+          readOnly: true
+          type: number
+        commission_type:
+          allOf:
+          - $ref: '#/components/schemas/CommissionType'
+          readOnly: true
+        external_reference:
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        loan_request:
+          readOnly: true
+          type: string
+      required:
+      - amount
+      - commission_type
+      - external_reference
+      - id
+      - loan_request
+      type: object
+    CommissionFile:
+      properties:
+        amount:
+          exclusiveMaximum: true
+          format: double
+          maximum: 100000000000000
+          minimum: 0.01
+          type: number
+        borrower_reference:
+          readOnly: true
+          type: string
+        broker:
+          readOnly: true
+          type: string
+        credit_provider:
+          readOnly: true
+          type: string
+        external_reference:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        incoming_date:
+          format: date
+          type: string
+        outstanding_amount:
+          readOnly: true
+          type: string
+        product_item:
+          $ref: '#/components/schemas/ReducedProductItem'
+        status:
+          $ref: '#/components/schemas/CommissionFileStatus'
+      required:
+      - amount
+      - borrower_reference
+      - broker
+      - credit_provider
+      - external_reference
+      - id
+      - incoming_date
+      - outstanding_amount
+      - product_item
+      type: object
+    PaymentFile:
+      properties:
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        downloaded:
+          readOnly: true
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        internal_reference:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        processed:
+          type: boolean
+      required:
+      - created
+      - downloaded
+      - id
+      - internal_reference
+      - last_modified
+      type: object
+    DocumentType:
+      description: Can be managed at /resources/document-type
+      properties:
+        add_to_handover_letter:
+          type: boolean
+        allows_generation:
+          type: boolean
+        append_file_version:
+          type: boolean
+        can_be_added_manually_as_informative_document:
+          type: boolean
+        definition:
+          type: string
+        document_generation_configuration: {}
+        id:
+          type: integer
+        is_informative:
+          type: boolean
+        is_proof_to_sign:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

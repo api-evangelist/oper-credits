@@ -1,0 +1,24 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Health API
+  version: ''
+tags:
+- name: Health
+paths:
+  /api/health/:
+    get:
+      description: This View simply return a 200 for diagnostics purposes.
+      operationId: api_health_retrieve
+      responses:
+        '200':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Health
+components:
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

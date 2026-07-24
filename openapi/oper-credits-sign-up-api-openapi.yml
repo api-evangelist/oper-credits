@@ -1,0 +1,409 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Sign Up API
+  version: ''
+tags:
+- name: Sign Up
+paths:
+  /api/sign-up/:
+    post:
+      operationId: api_sign_up_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUp'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignUp'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignUp'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignUp'
+          description: ''
+      security:
+      - jwtAuth: []
+      - {}
+      tags:
+      - Sign Up
+  /api/sign-up/create/:
+    post:
+      operationId: api_sign_up_create_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUpCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignUpCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignUpCreate'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignUpCreate'
+          description: ''
+      security:
+      - jwtAuth: []
+      - {}
+      tags:
+      - Sign Up
+  /api/sign-up/profile/:
+    patch:
+      operationId: api_sign_up_profile_partial_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSignUpProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSignUpProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSignUpProfile'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignUpProfile'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Sign Up
+    put:
+      operationId: api_sign_up_profile_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUpProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignUpProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignUpProfile'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignUpProfile'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Sign Up
+  /api/sign-up/reset-password/:
+    post:
+      description: 'API view to actually change the password of the user.
+
+        Only post is allowed.
+
+        Security is checked by comparing the JWT secret with the current hashed password of the user.'
+      operationId: api_sign_up_reset_password_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignUpResetPassword'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignUpResetPassword'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignUpResetPassword'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignUpResetPassword'
+          description: ''
+      tags:
+      - Sign Up
+components:
+  schemas:
+    SignUpProfile:
+      properties:
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/MinimalBroker'
+          nullable: true
+          readOnly: true
+        first_name:
+          default: ''
+          type: string
+        last_name:
+          default: ''
+          type: string
+        phone_number:
+          $ref: '#/components/schemas/Profile2Phone'
+        token:
+          readOnly: true
+          type: string
+      required:
+      - broker
+      - phone_number
+      - token
+      type: object
+    ContactType:
+      description: Can be managed at /resources/contact-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    PatchedSignUpProfile:
+      properties:
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/MinimalBroker'
+          nullable: true
+          readOnly: true
+        first_name:
+          default: ''
+          type: string
+        last_name:
+          default: ''
+          type: string
+        phone_number:
+          $ref: '#/components/schemas/Profile2Phone'
+        token:
+          readOnly: true
+          type: string
+      type: object
+    SignUpResetPassword:
+      description: 'This serializer will update the password to a new password if:
+
+        * They match
+
+        * The token is verified in regards to expiration date, signing code and user id
+
+        * The password is strong enough'
+      properties:
+        bank_release_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        contact_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        gdpr_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+        privacy_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        terms_and_conditions_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - password
+      - token
+      type: object
+    CompanyType:
+      description: Can be managed at /resources/company-types
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    SignUpCreate:
+      properties:
+        bank_release_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        contact_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        email:
+          type: string
+        first_name:
+          type: string
+          writeOnly: true
+        gdpr_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        language:
+          type: string
+          writeOnly: true
+        last_name:
+          type: string
+          writeOnly: true
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+        privacy_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        terms_and_conditions_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+      required:
+      - email
+      - password
+      type: object
+    SignUp:
+      properties:
+        email:
+          type: string
+        first_name:
+          default: ''
+          type: string
+          writeOnly: true
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+          writeOnly: true
+        last_name:
+          default: ''
+          type: string
+          writeOnly: true
+        phone_number:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Phone'
+          writeOnly: true
+        token:
+          readOnly: true
+          type: string
+      required:
+      - email
+      - phone_number
+      - token
+      type: object
+    MinimalBroker:
+      description: Broker minimal representation
+      properties:
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+          readOnly: true
+        fsma_reference:
+          nullable: true
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - vat_number
+      type: object
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

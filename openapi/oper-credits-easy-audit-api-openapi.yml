@@ -1,0 +1,141 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Easy Audit API
+  version: ''
+tags:
+- name: Easy Audit
+paths:
+  /api/easy-audit/crud-events/:
+    get:
+      operationId: api_easy_audit_crud_events_list
+      parameters:
+      - description: A page number within the paginated result set.
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+      - description: Number of results to return per page.
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedEasyAuditCRUDEventList'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Easy Audit
+components:
+  schemas:
+    EasyAuditCRUDEvent:
+      properties:
+        changed_fields:
+          type: string
+        content_type:
+          type: integer
+        datetime:
+          format: date-time
+          readOnly: true
+          title: Date time
+          type: string
+        event_type:
+          allOf:
+          - $ref: '#/components/schemas/EventTypeEnum'
+          maximum: 32767
+          minimum: -32768
+        id:
+          readOnly: true
+          type: integer
+        object_id:
+          maxLength: 255
+          type: string
+        object_json_repr:
+          title: Object JSON representation
+          type: string
+        object_repr:
+          title: Object representation
+          type: string
+        user:
+          nullable: true
+          type: integer
+        user_pk_as_string:
+          description: String version of the user pk
+          maxLength: 255
+          type: string
+      required:
+      - content_type
+      - datetime
+      - event_type
+      - id
+      - object_id
+      type: object
+    PaginatedEasyAuditCRUDEventList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          nullable: true
+          type: string
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/EasyAuditCRUDEvent'
+          type: array
+      required:
+      - count
+      - results
+      type: object
+    EventTypeEnum:
+      description: '* `1` - Create
+
+        * `2` - Update
+
+        * `3` - Delete
+
+        * `4` - Many-to-Many Change
+
+        * `5` - Reverse Many-to-Many Change
+
+        * `6` - Many-to-Many Add
+
+        * `7` - Reverse Many-to-Many Add
+
+        * `8` - Many-to-Many Remove
+
+        * `9` - Reverse Many-to-Many Remove
+
+        * `10` - Many-to-Many Clear
+
+        * `11` - Reverse Many-to-Many Clear'
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      type: integer
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

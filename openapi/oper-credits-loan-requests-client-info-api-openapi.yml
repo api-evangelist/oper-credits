@@ -1,0 +1,3777 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Loan Requests Client Info API
+  version: ''
+tags:
+- name: Loan Requests Client Info
+paths:
+  /api/loan-requests-client-info/:
+    post:
+      description: 'Mixin that routes to the loan request and verifies if the requestor has access to the requested resource
+
+        To use the Role View Mixin, you must define either queryset or overwrite get_base_queryset'
+      operationId: api_loan_requests_client_info_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoanRequestClientRealty'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/LoanRequestClientRealty'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/LoanRequestClientRealty'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoanRequestClientRealty'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Loan Requests Client Info
+components:
+  schemas:
+    ParticipantAuthorization:
+      description: Can be managed at /resources/participant-authorization
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    _LoanOffer:
+      properties:
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        internal_reference:
+          maxLength: 64
+          type: string
+        is_generated_from_loan_offer_invalidation:
+          type: boolean
+        status:
+          $ref: '#/components/schemas/LoanOfferStatus'
+      required:
+      - created
+      - id
+      - internal_reference
+      - status
+      type: object
+    PersonalizedInformation:
+      description: Can be managed at /resources/personalized-information
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CustomerSegment:
+      description: Can be managed at /resources/customer-segment
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FinancialPlanLoanAmountItem:
+      properties:
+        amount:
+          format: double
+          type: number
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        financial_plan_loan_amount_field:
+          allOf:
+          - $ref: '#/components/schemas/FinancialPlanLoanAmountField'
+          readOnly: true
+        id:
+          type: integer
+        is_overridden:
+          type: boolean
+        loan_request:
+          readOnly: true
+          type: integer
+      required:
+      - created
+      - financial_plan_loan_amount_field
+      - id
+      - loan_request
+      type: object
+    StatusChangeType:
+      description: Can be managed at /resources/status-change-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PurchaseSaleType:
+      description: Can be managed at /resources/purchase-sale-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Relationship:
+      description: Can be managed at /resources/relationship
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FsmaStatus:
+      description: Can be managed at /resources/fsma-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    StatusChangeConditionEvaluation:
+      properties:
+        is_completed:
+          readOnly: true
+          type: boolean
+        status_change_condition:
+          allOf:
+          - $ref: '#/components/schemas/StatusChangeCondition'
+          nullable: true
+          readOnly: true
+      required:
+      - is_completed
+      - status_change_condition
+      type: object
+    CoLivingGroupType:
+      description: Can be managed at /resources/co-living-group-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ClientRoleType:
+      description: Can be managed at /resources/client-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CivilStatus:
+      description: Can be managed at /resources/civil-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    StreetType:
+      description: Can be managed at /resources/street-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedEstimator:
+      description: Estimator reduced representation
+      properties:
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+          readOnly: true
+        fsma_reference:
+          nullable: true
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - vat_number
+      type: object
+    AcquisitionSource:
+      description: Can be managed at /resources/acquisition-source
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        online:
+          readOnly: true
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - online
+      - order
+      type: object
+    LoanRequestPurpose:
+      description: Can be managed at /resources/loan-request-purpose
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        is_simulator_enabled:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Sector:
+      description: Can be managed at /resources/sector
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    HistoryType:
+      description: Can be managed at /resources/history-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CompanyType:
+      description: Can be managed at /resources/company-types
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    BankBranch:
+      description: Can be managed at /resources/bank-branch
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    BaseUserProfile:
+      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
+      properties:
+        birth_city:
+          maxLength: 128
+          type: string
+        birth_date:
+          format: date
+          nullable: true
+          type: string
+        first_name:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_name:
+          maxLength: 128
+          type: string
+        middle_name:
+          maxLength: 64
+          type: string
+        mother_maiden_name:
+          maxLength: 128
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        title:
+          nullable: true
+          type: integer
+        title2:
+          nullable: true
+          type: integer
+        user:
+          type: integer
+      required:
+      - id
+      - oper_reference
+      - user
+      type: object
+    EnergyRating:
+      description: Can be managed at /resources/energy-rating
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    SocialInsuranceStartDate:
+      description: Can be managed at /resources/social-insurance-start-date
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    EducationType:
+      description: Can be managed at /resources/education
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RealtyType:
+      description: Can be managed at /resources/realty-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LoanRequestSource:
+      description: Can be managed at /resources/loan-request-source
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedCreditProvider:
+      description: To be used for a short summary of the CreditProvider
+      properties:
+        active:
+          readOnly: true
+          type: boolean
+        fsma_reference:
+          maxLength: 128
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_liability_provider:
+          readOnly: true
+          type: boolean
+        loan_request_form_documents:
+          readOnly: true
+          type: string
+        logo_url:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        order:
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          readOnly: true
+          type: integer
+      required:
+      - active
+      - fsma_reference
+      - full_name
+      - id
+      - is_liability_provider
+      - loan_request_form_documents
+      - logo_url
+      - name
+      - order
+      type: object
+    RealtyAcquisitionType:
+      description: Can be managed at /resources/realty-acquisition-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LocalizedBorrowerNotification:
+      properties:
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+          readOnly: true
+        message:
+          readOnly: true
+          type: string
+        subject:
+          readOnly: true
+          type: string
+      required:
+      - created
+      - id
+      - language
+      - message
+      - subject
+      type: object
+    LoanOfferStatus:
+      description: Can be managed at /resources/loan-offer-status
+      properties:
+        color:
+          maxLength: 7
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
+      type: object
+    DetailedBroker:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        account_manager:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          nullable: true
+          readOnly: true
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          readOnly: true
+          type: array
+        ancestor_brokers:
+          items:
+            $ref: '#/components/schemas/Broker'
+          readOnly: true
+          type: array
+        bank_account:
+          readOnly: true
+          type: string
+        co_brokers:
+          items:
+            $ref: '#/components/schemas/Broker'
+          readOnly: true
+          type: array
+        commission_email:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Email'
+          readOnly: true
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+          readOnly: true
+        confiscate_commission:
+          readOnly: true
+          type: boolean
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          readOnly: true
+          type: array
+        fsma_reference:
+          nullable: true
+          readOnly: true
+          type: string
+        fsma_status:
+          allOf:
+          - $ref: '#/components/schemas/FsmaStatus'
+          nullable: true
+          readOnly: true
+        id:
+          type: integer
+        legal_address:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Address'
+          readOnly: true
+        main_contact:
+          allOf:
+          - $ref: '#/components/schemas/BaseUserProfileWithContacts'
+          readOnly: true
+        name:
+          readOnly: true
+          type: string
+        outstanding_debt:
+          format: double
+          readOnly: true
+          type: number
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          readOnly: true
+          type: array
+        sector:
+          allOf:
+          - $ref: '#/components/schemas/Sector'
+          nullable: true
+          readOnly: true
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - account_manager
+      - addresses
+      - ancestor_brokers
+      - bank_account
+      - co_brokers
+      - commission_email
+      - company_type
+      - confiscate_commission
+      - emails
+      - fsma_reference
+      - fsma_status
+      - id
+      - legal_address
+      - main_contact
+      - name
+      - outstanding_debt
+      - phone_numbers
+      - sector
+      - vat_number
+      type: object
+    Broker:
+      properties:
+        account_manager:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          nullable: true
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
+        bank_account:
+          type: string
+        commission_email:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Email'
+          readOnly: true
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+        confiscate_commission:
+          type: boolean
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
+        fsma_reference:
+          nullable: true
+          type: string
+        fsma_status:
+          allOf:
+          - $ref: '#/components/schemas/FsmaStatus'
+          nullable: true
+        id:
+          readOnly: true
+          type: integer
+        legal_address:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Address'
+          readOnly: true
+        main_contact:
+          allOf:
+          - $ref: '#/components/schemas/BaseUserProfileWithContacts'
+          readOnly: true
+        name:
+          type: string
+        outstanding_debt:
+          format: double
+          readOnly: true
+          type: number
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        sector:
+          allOf:
+          - $ref: '#/components/schemas/Sector'
+          nullable: true
+        vat_number:
+          type: string
+      required:
+      - addresses
+      - commission_email
+      - emails
+      - id
+      - legal_address
+      - main_contact
+      - name
+      - outstanding_debt
+      - phone_numbers
+      - vat_number
+      type: object
+    LoanRequestType:
+      description: Can be managed at /resources/loan-request-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ComfortType:
+      description: Can be managed at /resources/comfort-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    HistoryLogLevel:
+      description: Can be managed at /resources/history-log-level
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedLoanRequest:
+      description: Loan request reduced representation
+      properties:
+        borrower_reference:
+          readOnly: true
+          type: string
+        external_reference:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        internal_reference:
+          readOnly: true
+          type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/Status'
+          readOnly: true
+      required:
+      - borrower_reference
+      - external_reference
+      - id
+      - internal_reference
+      - status
+      type: object
+    CommunityPropertyInvolvement:
+      description: Can be managed at /resources/community-property-involvement
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ContactType:
+      description: Can be managed at /resources/contact-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    BaseUserProfileWithContacts:
+      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
+        first_name:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_name:
+          type: string
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        profile:
+          allOf:
+          - $ref: '#/components/schemas/BaseUserProfile'
+          writeOnly: true
+      required:
+      - addresses
+      - emails
+      - first_name
+      - id
+      - last_name
+      - phone_numbers
+      type: object
+    OtherCreditProviderRequest:
+      description: Other credit providers for the loan request
+      properties:
+        amount:
+          format: double
+          type: number
+        application_date:
+          format: date
+          type: string
+        credit_provider:
+          $ref: '#/components/schemas/ReducedCreditProvider'
+        id:
+          readOnly: true
+          type: integer
+        offer_received:
+          type: boolean
+      required:
+      - amount
+      - application_date
+      - credit_provider
+      - id
+      - offer_received
+      type: object
+    IncomeType:
+      description: Can be managed at /resources/income-type
+      properties:
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        form_template:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - color
+      - definition
+      - form_template
+      - id
+      - order
+      type: object
+    LivingStatus:
+      description: Can be managed at /resources/living-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RealtyUsageType:
+      description: Can be managed at /resources/realty-usage-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RedirectionPath:
+      description: Can be managed at /resources/redirection-path
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    NestedSignedDocument:
+      properties:
+        document_type:
+          allOf:
+          - $ref: '#/components/schemas/DocumentType'
+          readOnly: true
+        mime_type:
+          readOnly: true
+          type: string
+        url:
+          readOnly: true
+          type: string
+      required:
+      - document_type
+      - mime_type
+      - url
+      type: object
+    NonRequiredAddress:
+      description: 'Inheriting from base address serializer and set with a few optional
+
+        fields. Use this serializer to add any future non required fields.'
+      properties:
+        box:
+          maxLength: 64
+          type: string
+        building:
+          type: string
+        city:
+          maxLength: 64
+          type: string
+        country:
+          allOf:
+          - $ref: '#/components/schemas/Country'
+          nullable: true
+        floor:
+          maxLength: 64
+          type: string
+        heading:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        house_number:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        latitude:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        longitude:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        pitch:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        staircase:
+          type: string
+        street:
+          maxLength: 64
+          type: string
+        street_type:
+          allOf:
+          - $ref: '#/components/schemas/StreetType'
+          nullable: true
+        zip_code:
+          maxLength: 8
+          type: string
+        zoom:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+      required:
+      - city
+      - house_number
+      - id
+      - street
+      - zip_code
+      type: object
+    DocumentType:
+      description: Can be managed at /resources/document-type
+      properties:
+        add_to_handover_letter:
+          type: boolean
+        allows_generation:
+          type: boolean
+        append_file_version:
+          type: boolean
+        can_be_added_manually_as_informative_document:
+          type: boolean
+        definition:
+          type: string
+        document_generation_configuration: {}
+        id:
+          type: integer
+        is_informative:
+          type: boolean
+        is_proof_to_sign:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LegalStatusType:
+      description: Can be managed at /resources/legal-status-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedClientProfile:
+      description: Client profile reduced representation
+      properties:
+        first_name:
+          maxLength: 64
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          maxLength: 128
+          readOnly: true
+          type: string
+      required:
+      - first_name
+      - id
+      - last_name
+      type: object
+    LenderOnboardingStatus:
+      description: Can be managed at /resources/lender-onboarding-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    EmploymentType:
+      description: Can be managed at /resources/employment-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LoanRequestClientRealty:
+      properties:
+        acquisition_source:
+          allOf:
+          - $ref: '#/components/schemas/AcquisitionSource'
+          nullable: true
+        action_required:
+          type: boolean
+        analyst:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          nullable: true
+        anonymized:
+          type: boolean
+        approval_options:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        bank_branch:
+          allOf:
+          - $ref: '#/components/schemas/BankBranch'
+          nullable: true
+        borrower_notifications:
+          items:
+            $ref: '#/components/schemas/BorrowerNotification'
+          type: array
+        borrower_reference:
+          description: Borrowers first and last names
+          readOnly: true
+          type: string
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/DetailedBroker'
+          nullable: true
+        business_capital:
+          format: double
+          type: number
+        business_capital_overridden:
+          type: boolean
+        client:
+          allOf:
+          - $ref: '#/components/schemas/LoanRequestRealty2ClientProfile'
+          writeOnly: true
+        community_property_involvement:
+          allOf:
+          - $ref: '#/components/schemas/CommunityPropertyInvolvement'
+          nullable: true
+        cost_additional_financing_need:
+          format: double
+          readOnly: true
+          type: number
+        cost_administration:
+          format: double
+          type: number
+        cost_administration_overridden:
+          type: boolean
+        cost_architect_fees:
+          format: double
+          type: number
+        cost_architect_fees_overridden:
+          type: boolean
+        cost_archiving:
+          format: double
+          type: number
+        cost_archiving_overridden:
+          type: boolean
+        cost_bank_account:
+          format: double
+          type: number
+        cost_bank_account_overridden:
+          type: boolean
+        cost_bank_disbursements:
+          format: double
+          type: number
+        cost_bank_disbursements_overridden:
+          type: boolean
+        cost_building:
+          format: double
+          readOnly: true
+          type: number
+        cost_buyout:
+          format: double
+          readOnly: true
+          type: number
+        cost_closing_certificate_replacement:
+          format: double
+          type: number
+        cost_closing_certificate_replacement_overridden:
+          type: boolean
+        cost_contract_drafting_fee:
+          format: double
+          type: number
+        cost_contract_drafting_fee_overridden:
+          type: boolean
+        cost_credit_notary:
+          format: double
+          type: number
+        cost_credit_notary_act:
+          format: double
+          type: number
+        cost_credit_notary_act_overridden:
+          type: boolean
+        cost_credit_notary_administration:
+          format: double
+          type: number
+        cost_credit_notary_administration_overridden:
+          type: boolean
+        cost_credit_notary_annexes:
+          format: double
+          type: number
+        cost_credit_notary_annexes_overridden:
+          type: boolean
+        cost_credit_notary_disbursements:
+          format: double
+          type: number
+        cost_credit_notary_disbursements_overridden:
+          type: boolean
+        cost_credit_notary_fees:
+          format: double
+          type: number
+        cost_credit_notary_fees_overridden:
+          type: boolean
+        cost_credit_notary_mortgage_guarantee_fee:
+          format: double
+          type: number
+        cost_credit_notary_mortgage_guarantee_fee_overridden:
+          type: boolean
+        cost_credit_notary_mortgage_registration_fee:
+          format: double
+          type: number
+        cost_credit_notary_mortgage_registration_fee_overridden:
+          type: boolean
+        cost_credit_notary_overridden:
+          type: boolean
+        cost_credit_notary_vat:
+          format: double
+          type: number
+        cost_credit_notary_vat_overridden:
+          type: boolean
+        cost_credit_registration:
+          format: double
+          type: number
+        cost_credit_registration_overridden:
+          type: boolean
+        cost_credit_registry_check:
+          format: double
+          type: number
+        cost_credit_registry_check_overridden:
+          type: boolean
+        cost_credit_takeover:
+          format: double
+          readOnly: true
+          type: number
+        cost_distribution_notary:
+          format: double
+          type: number
+        cost_distribution_notary_overridden:
+          type: boolean
+        cost_distribution_registration:
+          format: double
+          type: number
+        cost_distribution_registration_overridden:
+          type: boolean
+        cost_estimation:
+          format: double
+          type: number
+        cost_estimation_overridden:
+          type: boolean
+        cost_file:
+          format: double
+          type: number
+        cost_file_overridden:
+          type: boolean
+        cost_framework_commission:
+          format: double
+          type: number
+        cost_framework_commission_overridden:
+          type: boolean
+        cost_insurance:
+          format: double
+          readOnly: true
+          type: number
+        cost_land_purchase:
+          format: double
+          type: number
+        cost_land_query_fees:
+          format: double
+          type: number
+        cost_land_query_fees_overridden:
+          type: boolean
+        cost_land_registry:
+          format: double
+          type: number
+        cost_land_registry_application:
+          format: double
+          type: number
+        cost_land_registry_application_overridden:
+          type: boolean
+        cost_land_registry_application_preparation:
+          format: double
+          type: number
+        cost_land_registry_application_preparation_overridden:
+          type: boolean
+        cost_land_registry_mortgage:
+          format: double
+          type: number
+        cost_land_registry_mortgage_overridden:
+          type: boolean
+        cost_land_registry_overridden:
+          type: boolean
+        cost_land_registry_verification:
+          format: double
+          type: number
+        cost_land_registry_verification_overridden:
+          type: boolean
+        cost_lead_commission:
+          format: double
+          type: number
+        cost_lead_commission_overridden:
+          type: boolean
+        cost_liquidities:
+          format: double
+          type: number
+        cost_liquidities_overridden:
+          type: boolean
+        cost_notary_fees:
+          format: double
+          type: number
+        cost_notary_fees_overridden:
+          type: boolean
+        cost_other_fee:
+          format: double
+          type: number
+        cost_purchase:
+          format: double
+          readOnly: true
+          type: number
+        cost_purchase_notary:
+          format: double
+          type: number
+        cost_purchase_notary_act:
+          format: double
+          type: number
+        cost_purchase_notary_act_overridden:
+          type: boolean
+        cost_purchase_notary_administration:
+          format: double
+          type: number
+        cost_purchase_notary_administration_overridden:
+          type: boolean
+        cost_purchase_notary_annexes:
+          format: double
+          type: number
+        cost_purchase_notary_annexes_overridden:
+          type: boolean
+        cost_purchase_notary_disbursements:
+          format: double
+          type: number
+        cost_purchase_notary_disbursements_overridden:
+          type: boolean
+        cost_purchase_notary_fees:
+          format: double
+          type: number
+        cost_purchase_notary_fees_overridden:
+          type: boolean
+        cost_purchase_notary_mortgage_transcript:
+          format: double
+          type: number
+        cost_purchase_notary_mortgage_transcript_overridden:
+          type: boolean
+        cost_purchase_notary_overridden:
+          type: boolean
+        cost_purchase_notary_vat:
+          format: double
+          type: number
+        cost_purchase_notary_vat_overridden:
+          type: boolean
+        cost_purchase_registration:
+          format: double
+          type: number
+        cost_purchase_registration_overridden:
+          type: boolean
+        cost_realtor:
+          format: double
+          type: number
+        cost_realtor_overridden:
+          type: boolean
+        cost_refinance_additional_costs:
+          format: double
+          type: number
+        cost_refinance_additional_costs_overridden:
+          type: boolean
+        cost_refinance_early_repayment_fee:
+          format: double
+          type: number
+        cost_refinance_early_repayment_fee_overridden:
+          type: boolean
+        cost_refinance_release_fee:
+          format: double
+          type: number
+        cost_refinance_release_fee_overridden:
+          type: boolean
+        cost_renovation:
+          format: double
+          readOnly: true
+          type: number
+        cost_stamp_duty_fees:
+          format: double
+          type: number
+        cost_stamp_duty_fees_overridden:
+          type: boolean
+        cost_vat:
+          format: double
+          type: number
+        cost_vat_overridden:
+          type: boolean
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          nullable: true
+        date_analysis_started:
+          format: date
+          nullable: true
+          type: string
+        date_cancellation:
+          format: date
+          nullable: true
+          type: string
+        date_completion:
+          format: date
+          nullable: true
+          type: string
+        date_contract_requested:
+          format: date
+          nullable: true
+          type: string
+        date_contract_sent:
+          format: date
+          nullable: true
+          type: string
+        date_credit_closed:
+          format: date
+          nullable: true
+          type: string
+        date_decision:
+          format: date
+          nullable: true
+          type: string
+        date_dip_accepted:
+          description: The date of acceptance of Decision in Principle
+          format: date
+          nullable: true
+          type: string
+        date_dip_rejected:
+          description: The date of rejection of Decision in Principle
+          format: date
+          nullable: true
+          type: string
+        date_draft_offer_sent:
+          description: The date when draft offer documents were shared with the client
+          format: date
+          nullable: true
+          type: string
+        date_esis_accepted:
+          format: date
+          nullable: true
+          type: string
+        date_expected_disbursement:
+          format: date
+          nullable: true
+          type: string
+        date_loan_request_form:
+          format: date
+          nullable: true
+          type: string
+        date_offer_accepted:
+          format: date
+          nullable: true
+          type: string
+        date_offer_made:
+          format: date
+          nullable: true
+          type: string
+        date_rate_lock:
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
+        date_submission:
+          format: date
+          nullable: true
+          type: string
+        deed_date:
+          format: date
+          nullable: true
+          type: string
+        disbursement_schedule:
+          allOf:
+          - $ref: '#/components/schemas/DisbursementSchedule'
+          nullable: true
+        document_management_only:
+          type: boolean
+        documents:
+          items:
+            type: integer
+          readOnly: true
+          type: array
+        drawdown:
+          format: double
+          readOnly: true
+          type: number
+        expiration_date:
+          format: date
+          nullable: true
+          type: string
+        external_metadata: {}
+        external_reference:
+          type: string
+        fiduciary:
+          allOf:
+          - $ref: '#/components/schemas/Fiduciary'
+          nullable: true
+        filed_other_provider:
+          nullable: true
+          type: boolean
+        financial_plan_loan_amount_items:
+          description: Financial plan items funded by loans
+          items:
+            $ref: '#/components/schemas/FinancialPlanLoanAmountItem'
+          type: array
+        financial_plan_own_fund_items:
+          description: Financial plan items funded by own funds
+          items:
+            $ref: '#/components/schemas/FinancialPlanOwnFundItem'
+          type: array
+        has_politically_exposed_client:
+          readOnly: true
+          type: boolean
+        has_simulations:
+          readOnly: true
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        internal_reference:
+          type: string
+        is_generating_documents:
+          readOnly: true
+          type: boolean
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        last_status_evaluations:
+          items:
+            $ref: '#/components/schemas/StatusChangeEvaluation'
+          readOnly: true
+          type: array
+        lead_generator:
+          allOf:
+          - $ref: '#/components/schemas/DetailedLeadGenerator'
+          nullable: true
+        loan_amount:
+          format: double
+          type: number
+        loan_amount_overridden:
+          type: boolean
+        loan_offers:
+          items:
+            $ref: '#/components/schemas/_LoanOffer'
+          readOnly: true
+          type: array
+        loan_repayment_account:
+          maxLength: 34
+          nullable: true
+          type: string
+        loan_request_type:
+          allOf:
+          - $ref: '#/components/schemas/LoanRequestType'
+          nullable: true
+        motivation_for_liquidites:
+          nullable: true
+          type: string
+        motivation_for_refinancing:
+          nullable: true
+          type: string
+        notary:
+          allOf:
+          - $ref: '#/components/schemas/DetailedNotary'
+          nullable: true
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        original_overridden_values:
+          readOnly: true
+        other_credit_provider_requests:
+          items:
+            $ref: '#/components/schemas/OtherCreditProviderRequest'
+          type: array
+        outside_risk_policy:
+          type: boolean
+        own_funds:
+          format: double
+          type: number
+        own_funds_overridden:
+          type: boolean
+        owner:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          nullable: true
+        participant_authorization:
+          allOf:
+          - $ref: '#/components/schemas/ParticipantAuthorization'
+          nullable: true
+        payout_at_deed:
+          format: double
+          readOnly: true
+          type: number
+        personal_mortgage_loan:
+          type: boolean
+        possible_statuses:
+          readOnly: true
+          type: string
+        prospectus:
+          allOf:
+          - $ref: '#/components/schemas/NestedSignedDocument'
+          description: Prospectus document
+          readOnly: true
+        protected:
+          readOnly: true
+          type: boolean
+        protected_reason:
+          nullable: true
+          readOnly: true
+          type: string
+        purposes:
+          items:
+            $ref: '#/components/schemas/LoanRequestObjective'
+          type: array
+        realty:
+          allOf:
+          - $ref: '#/components/schemas/LoanRequestRealty'
+          writeOnly: true
+        source:
+          allOf:
+          - $ref: '#/components/schemas/LoanRequestSource'
+          nullable: true
+        status:
+          allOf:
+          - $ref: '#/components/schemas/Status'
+          readOnly: true
+        status_updated_manually:
+          type: boolean
+        subsidy_amount:
+          format: double
+          type: number
+        subsidy_bridge_amount:
+          format: double
+          type: number
+        termination_of_marital_property_law:
+          type: boolean
+        trainee_id:
+          nullable: true
+          type: string
+      required:
+      - approval_options
+      - borrower_reference
+      - client
+      - cost_additional_financing_need
+      - cost_building
+      - cost_buyout
+      - cost_credit_takeover
+      - cost_insurance
+      - cost_purchase
+      - cost_renovation
+      - created
+      - date_rate_lock
+      - documents
+      - drawdown
+      - has_politically_exposed_client
+      - has_simulations
+      - id
+      - is_generating_documents
+      - last_modified
+      - last_status_evaluations
+      - loan_offers
+      - oper_reference
+      - original_overridden_values
+      - payout_at_deed
+      - possible_statuses
+      - prospectus
+      - protected
+      - protected_reason
+      - realty
+      - status
+      type: object
+    LoanRequestRealty:
+      properties:
+        acquisition_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyAcquisitionType'
+          nullable: true
+        address:
+          allOf:
+          - $ref: '#/components/schemas/NonRequiredAddress'
+          nullable: true
+        already_estimated:
+          type: boolean
+        architect_fees:
+          format: double
+          nullable: true
+          type: number
+        bailiff:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBailiff'
+          readOnly: true
+        balcony_area:
+          format: double
+          nullable: true
+          type: number
+        building_permit:
+          type: boolean
+        buy_out_price:
+          format: double
+          type: number
+        buyout_cohabitation:
+          nullable: true
+          type: boolean
+        cadastral_income:
+          format: double
+          nullable: true
+          type: number
+        cadastral_location:
+          maxLength: 128
+          type: string
+        cellar_area:
+          format: double
+          nullable: true
+          type: number
+        clients:
+          items:
+            $ref: '#/components/schemas/Nested2ClientProfile'
+          type: array
+        co2_emission_per_year:
+          format: double
+          type: number
+        co_living_group_type:
+          allOf:
+          - $ref: '#/components/schemas/CoLivingGroupType'
+          nullable: true
+        comfort_type:
+          allOf:
+          - $ref: '#/components/schemas/ComfortType'
+          nullable: true
+        commercial_area:
+          format: double
+          type: number
+        community_property_involvement:
+          allOf:
+          - $ref: '#/components/schemas/CommunityPropertyInvolvement'
+          nullable: true
+        completion_date:
+          format: date
+          nullable: true
+          type: string
+        condition_of_property:
+          allOf:
+          - $ref: '#/components/schemas/ConditionOfProperty'
+          nullable: true
+        construction_logbook_number:
+          maxLength: 128
+          type: string
+        construction_type:
+          allOf:
+          - $ref: '#/components/schemas/ConstructionType'
+          nullable: true
+        credit_liabilities:
+          items:
+            type: integer
+          readOnly: true
+          type: array
+        date_of_purchase:
+          format: date
+          nullable: true
+          type: string
+        date_of_sales_contract:
+          format: date
+          nullable: true
+          type: string
+        district_court:
+          maxLength: 128
+          type: string
+        e_level:
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          type: integer
+        energetic_renovations:
+          type: boolean
+        energy_demand_after_renovations:
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          type: integer
+        energy_demand_before_renovations:
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          type: integer
+        energy_rating_after_renovations:
+          allOf:
+          - $ref: '#/components/schemas/EnergyRating'
+          nullable: true
+        energy_rating_before_renovations:
+          allOf:
+          - $ref: '#/components/schemas/EnergyRating'
+          nullable: true
+        epc_after_renovations:
+          nullable: true
+          type: integer
+        epc_before_renovations:
+          nullable: true
+          type: integer
+        epc_contract_number:
+          type: string
+        epc_date:
+          format: date
+          nullable: true
+          type: string
+        epc_date_valid_until:
+          format: date
+          nullable: true
+          type: string
+        estimation_date:
+          format: date
+          nullable: true
+          type: string
+        estimation_expiration_date:
+          format: date
+          nullable: true
+          type: string
+        estimator:
+          allOf:
+          - $ref: '#/components/schemas/ReducedEstimator'
+          nullable: true
+        features:
+          items:
+            type: integer
+          type: array
+        financed_item:
+          nullable: true
+          type: integer
+        flood_risk:
+          allOf:
+          - $ref: '#/components/schemas/FloodRiskType'
+          nullable: true
+        flood_risk_details:
+          maxLength: 512
+          type: string
+        forced_value_after:
+          format: double
+          nullable: true
+          type: number
+        forced_value_after_internal:
+          format: double
+          nullable: true
+          type: number
+        forced_value_before:
+          format: double
+          nullable: true
+          type: number
+        forced_value_before_internal:
+          format: double
+          nullable: true
+          type: number
+        has_applicable_land_charges:
+          type: boolean
+        has_lift:
+          type: boolean
+        heating_type:
+          nullable: true
+          type: integer
+        history:
+          items:
+            $ref: '#/components/schemas/FieldHistory'
+          readOnly: true
+          type: array
+        housing_units:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        incomes:
+          items:
+            $ref: '#/components/schemas/RentalIncome'
+          readOnly: true
+          type: array
+        inspection_done_by:
+          nullable: true
+          type: integer
+        is_abroad:
+          readOnly: true
+          type: boolean
+        is_created_from_simulation:
+          readOnly: true
+          type: boolean
+        is_existing_object:
+          nullable: true
+          type: boolean
+        is_luxury_property:
+          type: boolean
+        is_main_for_loan_request:
+          readOnly: true
+          type: boolean
+        is_realtor_excluded:
+          type: boolean
+        is_reference_value_overridden:
+          default: false
+          type: boolean
+        is_vacation_home:
+          type: boolean
+        klein_beschrijf:
+          type: boolean
+        land_purchase_type:
+          allOf:
+          - $ref: '#/components/schemas/LandPurchaseType'
+          nullable: true
+        land_register:
+          maxLength: 128
+          type: string
+        land_registry_fee_factor_override:
+          format: double
+          nullable: true
+          type: number
+        land_value:
+          format: double
+          nullable: true
+          type: number
+        living_area:
+          format: double
+          type: number
+        living_percentage:
+          format: double
+          type: number
+        loan_purpose:
+          allOf:
+          - $ref: '#/components/schemas/LoanRequestPurpose'
+          nullable: true
+        loan_request:
+          allOf:
+          - $ref: '#/components/schemas/ReducedLoanRequest'
+          writeOnly: true
+        loggia_area:
+          format: double
+          nullable: true
+          type: number
+        main_first_residence:
+          type: boolean
+        mobi_score:
+          format: double
+          type: number
+        mortgage_ranks:
+          items:
+            $ref: '#/components/schemas/NestedMortgageRank'
+          type: array
+        mortgage_security_type:
+          nullable: true
+          type: integer
+        nearest_flood_zone:
+          format: double
+          type: number
+        new_realty:
+          nullable: true
+          type: integer
+        new_realty_option:
+          allOf:
+          - $ref: '#/components/schemas/NewRealtyOption'
+          nullable: true
+        number_of_apartments:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        number_of_bathrooms:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        number_of_separate_garages:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        number_of_underground_parking_spaces:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        other_estimator_name:
+          maxLength: 256
+          type: string
+        participant_authorization:
+          allOf:
+          - $ref: '#/components/schemas/ParticipantAuthorization'
+          nullable: true
+        picture_url:
+          format: uri
+          maxLength: 250
+          type: string
+        plot_number:
+          maxLength: 128
+          type: string
+        price:
+          format: double
+          nullable: true
+          type: number
+        price_building:
+          format: double
+          nullable: true
+          type: number
+        price_land:
+          format: double
+          nullable: true
+          type: number
+        private_garden_area:
+          format: double
+          nullable: true
+          type: number
+        pro_fisco_value:
+          format: double
+          nullable: true
+          type: number
+        property_number:
+          maxLength: 128
+          type: string
+        purchase_sale_type:
+          allOf:
+          - $ref: '#/components/schemas/PurchaseSaleType'
+          nullable: true
+        purposes:
+          items:
+            $ref: '#/components/schemas/NestedRealtyObjective'
+          type: array
+        realty_source_data:
+          nullable: true
+        realty_source_data_meta:
+          readOnly: true
+          type: string
+        realty_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyType'
+          nullable: true
+        realty_valuation_type:
+          nullable: true
+          type: integer
+        realty_valuation_type_external:
+          nullable: true
+          type: integer
+        reference_value:
+          format: double
+          nullable: true
+          type: number
+        reference_value_before:
+          format: double
+          nullable: true
+          readOnly: true
+          type: number
+        renovation_price:
+          format: double
+          readOnly: true
+          type: number
+        renovations:
+          items:
+            $ref: '#/components/schemas/NestedRenovation'
+          type: array
+        rooms:
+          format: double
+          type: number
+        surface:
+          format: double
+          type: number
+        terrace_area:
+          format: double
+          nullable: true
+          type: number
+        terrace_balcony_surface:
+          format: double
+          type: number
+        usage_types:
+          items:
+            $ref: '#/components/schemas/RealtyUsageType'
+          nullable: true
+          type: array
+        valuation_service_id:
+          maxLength: 128
+          type: string
+        venal_value_after:
+          format: double
+          nullable: true
+          type: number
+        venal_value_after_internal:
+          format: double
+          nullable: true
+          type: number
+        venal_value_before:
+          format: double
+          type: number
+        venal_value_before_internal:
+          format: double
+          nullable: true
+          type: number
+        year_of_built:
+          maximum: 9999
+          minimum: 1000
+          nullable: true
+          type: integer
+      required:
+      - bailiff
+      - credit_liabilities
+      - history
+      - id
+      - incomes
+      - is_abroad
+      - is_created_from_simulation
+      - is_main_for_loan_request
+      - oper_reference
+      - realty_source_data_meta
+      - reference_value_before
+      - renovation_price
+      type: object
+    FinancialPlanLoanAmountField:
+      properties:
+        default_duration:
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+          type: integer
+        default_rate:
+          format: double
+          nullable: true
+          type: number
+        external_calculator_type:
+          $ref: '#/components/schemas/ExternalCalculatorType'
+        id:
+          readOnly: true
+          type: integer
+        is_calculated:
+          type: boolean
+        is_default:
+          type: boolean
+        is_loan_needed:
+          type: boolean
+        is_main:
+          type: boolean
+        is_overridable:
+          type: boolean
+        is_rounding_cash_out:
+          type: boolean
+        is_visible:
+          type: boolean
+        loan_amount_type:
+          $ref: '#/components/schemas/FinancialPlanLoanAmountType'
+      required:
+      - id
+      - loan_amount_type
+      type: object
+    NestedMortgageRank:
+      properties:
+        amount:
+          format: double
+          type: number
+        credit_provider:
+          $ref: '#/components/schemas/ReducedCreditProvider'
+        id:
+          readOnly: true
+          type: integer
+        mortgage_inscription_start_date:
+          format: date
+          nullable: true
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        rank:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+      required:
+      - amount
+      - credit_provider
+      - id
+      - oper_reference
+      - rank
+      type: object
+    FinancialPlanOwnFundItem:
+      properties:
+        amount:
+          format: double
+          type: number
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        financial_plan_own_fund_field:
+          allOf:
+          - $ref: '#/components/schemas/FinancialPlanOwnFundField'
+          readOnly: true
+        id:
+          type: integer
+        is_overridden:
+          type: boolean
+        loan_request:
+          readOnly: true
+          type: integer
+      required:
+      - created
+      - financial_plan_own_fund_field
+      - id
+      - loan_request
+      type: object
+    RealtyPurpose:
+      description: Can be managed at /resources/realty-purpose
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Nested2ClientProfile:
+      properties:
+        client:
+          $ref: '#/components/schemas/ReducedClientProfile'
+        id:
+          readOnly: true
+          type: integer
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        ownership_type:
+          $ref: '#/components/schemas/OwnershipType'
+        percentage:
+          format: double
+          type: number
+      required:
+      - client
+      - id
+      - oper_reference
+      - ownership_type
+      - percentage
+      type: object
+    OwnershipType:
+      description: Can be managed at /resources/ownership-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    NestedRealtyObjective:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        purpose:
+          $ref: '#/components/schemas/RealtyPurpose'
+      required:
+      - id
+      - purpose
+      type: object
+    Sex:
+      description: Can be managed at /resources/sex
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedBailiff:
+      description: Bailiff reduced representation
+      properties:
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+          readOnly: true
+        fsma_reference:
+          nullable: true
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - vat_number
+      type: object
+    RentalIncome:
+      properties:
+        address:
+          nullable: true
+          type: integer
+        amount:
+          format: double
+          type: number
+        applies_during_retirement:
+          type: boolean
+        client:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        income_type:
+          $ref: '#/components/schemas/IncomeType'
+        monthly_amount:
+          format: double
+          readOnly: true
+          type: number
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        periodicity:
+          $ref: '#/components/schemas/Periodicity'
+        realty:
+          nullable: true
+          type: integer
+        rental_type:
+          allOf:
+          - $ref: '#/components/schemas/RentalType'
+          nullable: true
+        start_date:
+          format: date
+          nullable: true
+          type: string
+      required:
+      - amount
+      - client
+      - id
+      - income_type
+      - monthly_amount
+      - oper_reference
+      - periodicity
+      type: object
+    ConditionFunctionName:
+      description: Can be managed at /resources/condition-function-name
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LoanRequestRealty2ClientProfile:
+      properties:
+        a_card_details:
+          allOf:
+          - $ref: '#/components/schemas/ACardDetails'
+          nullable: true
+        address_card_id:
+          maxLength: 64
+          type: string
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
+        bic:
+          maxLength: 11
+          type: string
+        birth_city:
+          nullable: true
+          type: string
+        birth_country:
+          allOf:
+          - $ref: '#/components/schemas/Country'
+          nullable: true
+        birth_date:
+          format: date
+          nullable: true
+          type: string
+        birth_first_name:
+          maxLength: 64
+          type: string
+        birth_last_name:
+          maxLength: 128
+          type: string
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBroker'
+          nullable: true
+        civil_status:
+          allOf:
+          - $ref: '#/components/schemas/CivilStatus'
+          nullable: true
+        client:
+          $ref: '#/components/schemas/Client'
+        company_name:
+          maxLength: 255
+          type: string
+        company_tax_number:
+          maxLength: 32
+          type: string
+        compliance_bank:
+          nullable: true
+          type: boolean
+        compliance_fraud:
+          nullable: true
+          type: boolean
+        compliance_office_presentation:
+          default: false
+          type: boolean
+        compliance_personalized_information:
+          allOf:
+          - $ref: '#/components/schemas/PersonalizedInformation'
+          nullable: true
+        compliance_privacy_policy:
+          default: false
+          type: boolean
+        compliance_terror:
+          nullable: true
+          type: boolean
+        consent_bank_retrieve_positive_data:
+          nullable: true
+          type: string
+        consent_khr_post_contract_processing:
+          nullable: true
+          type: boolean
+        consent_other_lenders_khr_access:
+          nullable: true
+          type: boolean
+        country_arrival_date:
+          format: date
+          nullable: true
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          readOnly: true
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+          nullable: true
+        dependent_children:
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+          type: integer
+        education:
+          allOf:
+          - $ref: '#/components/schemas/EducationType'
+          nullable: true
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
+        employment_status:
+          allOf:
+          - $ref: '#/components/schemas/EmploymentType'
+          nullable: true
+        expected_fetuses_birth_date:
+          format: date
+          nullable: true
+          type: string
+        external_reference:
+          type: string
+        first_name:
+          maxLength: 64
+          type: string
+        fiscal_residence:
+          allOf:
+          - $ref: '#/components/schemas/Country'
+          nullable: true
+        future_living_status:
+          allOf:
+          - $ref: '#/components/schemas/LivingStatus'
+          nullable: true
+        has_politically_exposed_person_status:
+          default: false
+          type: boolean
+        has_vehicle:
+          type: boolean
+        health_insurance_certificate_date:
+          format: date
+          nullable: true
+          type: string
+        iban:
+          maxLength: 34
+          type: string
+        id:
+          type: integer
+        id_card_number:
+          maxLength: 32
+          type: string
+        id_document_type:
+          allOf:
+          - $ref: '#/components/schemas/IdDocumentType'
+          nullable: true
+        id_expiration_date:
+          format: date
+          nullable: true
+          type: string
+        id_issuance_date:
+          format: date
+          nullable: true
+          type: string
+        id_issuing_authority:
+          maxLength: 128
+          type: string
+        is_36_month_moratorium_on_repayments_required:
+          type: boolean
+        is_active:
+          type: boolean
+        is_bank_account_opt_in:
+          type: boolean
+        is_bank_employee:
+          type: boolean
+        is_claiming_tax_refund:
+          type: boolean
+        is_debt_collection:
+          type: boolean
+        is_essential_communications_only_receiver:
+          default: false
+          type: boolean
+        is_first_time_buyer:
+          default: false
+          type: boolean
+        is_insider:
+          nullable: true
+          type: boolean
+        is_self_employed_or_partner:
+          type: boolean
+        is_tax_residence_in_swiss:
+          type: boolean
+        is_tax_residence_in_usa:
+          type: boolean
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+          nullable: true
+        last_active:
+          format: date-time
+          readOnly: true
+          type: string
+        last_name:
+          maxLength: 128
+          type: string
+        legal_status_type:
+          allOf:
+          - $ref: '#/components/schemas/LegalStatusType'
+          nullable: true
+        legitimisation_type:
+          allOf:
+          - $ref: '#/components/schemas/LegitimisationType'
+          nullable: true
+        lender_onboarding_status:
+          allOf:
+          - $ref: '#/components/schemas/LenderOnboardingStatus'
+          nullable: true
+        living_status:
+          allOf:
+          - $ref: '#/components/schemas/LivingStatus'
+          nullable: true
+        local_bank_account:
+          maxLength: 64
+          type: string
+        maiden_name:
+          maxLength: 128
+          type: string
+        middle_name:
+          maxLength: 64
+          type: string
+        mother_maiden_name:
+          maxLength: 128
+          type: string
+        national_number:
+          maxLength: 32
+          type: string
+        nationality:
+          allOf:
+          - $ref: '#/components/schemas/Country'
+          nullable: true
+        neak_oep_certificate_date:
+          format: date
+          nullable: true
+          type: string
+        number_of_dependent_persons_with_income:
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+          type: integer
+        number_of_dependent_persons_with_no_income:
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+          type: integer
+        number_of_dependents:
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+          type: integer
+        number_of_fetuses_gte_twelve_weeks:
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+          type: integer
+        number_of_income_earners_in_the_household:
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+          type: integer
+        onboarding_redirection_url:
+          format: uri
+          maxLength: 200
+          type: string
+        people_in_household:
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+          type: integer
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        planned_children:
+          maximum: 2147483647
+          minimum: -2147483648
+          nullable: true
+          type: integer
+        politically_exposed_person_country:
+          allOf:
+          - $ref: '#/components/schemas/Country'
+          nullable: true
+        politically_exposed_person_declaration_date:
+          format: date
+          nullable: true
+          type: string
+        politically_exposed_person_type:
+          allOf:
+          - $ref: '#/components/schemas/PoliticallyExposedPersonType'
+          nullable: true
+        position:
+          type: string
+        recent_bankruptcy:
+          type: boolean
+        recent_collections:
+          type: boolean
+        reference_number:
+          readOnly: true
+          type: string
+        relationships:
+          items:
+            $ref: '#/components/schemas/Client2Client'
+          type: array
+        residence_permit:
+          allOf:
+          - $ref: '#/components/schemas/ResidencePermit'
+          nullable: true
+        residence_start_date:
+          format: date
+          nullable: true
+          type: string
+        role:
+          $ref: '#/components/schemas/ClientRoleType'
+        sector:
+          allOf:
+          - $ref: '#/components/schemas/Sector'
+          nullable: true
+        segment:
+          allOf:
+          - $ref: '#/components/schemas/CustomerSegment'
+          nullable: true
+        sex:
+          allOf:
+          - $ref: '#/components/schemas/Sex'
+          nullable: true
+        social_insurance_start_date:
+          allOf:
+          - $ref: '#/components/schemas/SocialInsuranceStartDate'
+          nullable: true
+        tax_id:
+          maxLength: 32
+          type: string
+        tax_type:
+          allOf:
+          - $ref: '#/components/schemas/TaxType'
+          nullable: true
+        title:
+          allOf:
+          - $ref: '#/components/schemas/ClientTitle'
+          nullable: true
+        title_2:
+          allOf:
+          - $ref: '#/components/schemas/ClientTitle'
+          nullable: true
+        verified:
+          readOnly: true
+          type: boolean
+        version:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
+      required:
+      - created_by
+      - emails
+      - last_active
+      - reference_number
+      - role
+      - verified
+      type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    Profile2Email:
+      properties:
+        email_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          format: email
+          type: string
+      required:
+      - value
+      type: object
+    FinancialPlanLoanAmountType:
+      description: Can be managed at /resources/financial-plan-loan-amount-type
+      properties:
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - color
+      - definition
+      - id
+      - order
+      type: object
+    Client:
+      properties:
+        email:
+          format: email
+          nullable: true
+          type: string
+        id:
+          type: integer
+        user:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          nullable: true
+      type: object
+    Client2Client:
+      properties:
+        client_from:
+          allOf:
+          - $ref: '#/components/schemas/ReducedClientProfile'
+          writeOnly: true
+        client_to:
+          $ref: '#/components/schemas/ReducedClientProfile'
+        id:
+          readOnly: true
+          type: integer
+        live_in_the_same_household:
+          nullable: true
+          type: boolean
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        relationship:
+          allOf:
+          - $ref: '#/components/schemas/Relationship'
+          nullable: true
+      required:
+      - client_from
+      - client_to
+      - id
+      - oper_reference
+      type: object
+    TaxType:
+      description: Can be managed at /resources/tax-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    StatusChangeEvaluation:
+      properties:
+        conditions:
+          items:
+            $ref: '#/components/schemas/StatusChangeConditionEvaluation'
+          readOnly: true
+          type: array
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        next_status:
+          allOf:
+          - $ref: '#/components/schemas/Status'
+          readOnly: true
+        start_status:
+          allOf:
+          - $ref: '#/components/schemas/Status'
+          readOnly: true
+      required:
+      - conditions
+      - created
+      - next_status
+      - start_status
+      type: object
+    LegitimisationType:
+      description: Can be managed at /resources/legitimisation-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    NestedRenovation:
+      properties:
+        amount_contractor:
+          format: double
+          type: number
+        amount_diy:
+          format: double
+          type: number
+        id:
+          readOnly: true
+          type: integer
+        is_amount_distribution_confirmed:
+          type: boolean
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        renovation_type:
+          $ref: '#/components/schemas/RenovationType'
+        total_amount_from_simulation:
+          format: double
+          type: number
+      required:
+      - id
+      - oper_reference
+      - renovation_type
+      type: object
+    FloodRiskType:
+      description: Can be managed at /resources/flood-risk-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PoliticallyExposedPersonType:
+      description: Can be managed at /resources/politically-exposed-person-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ClientTitle:
+      description: Can be managed at /resources/client-title
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ConstructionType:
+      description: Can be managed at /resources/construction-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ACardDetails:
+      description: Can be managed at /resources/a-card-details
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Fiduciary:
+      properties:
+        address:
+          $ref: '#/components/schemas/NonRequiredAddress'
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 256
+          type: string
+      required:
+      - address
+      - id
+      - name
+      type: object
+    Periodicity:
+      description: Can be managed at /resources/periodicity
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ResidencePermit:
+      description: Can be managed at /resources/residence-permit
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DetailedNotary:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          readOnly: true
+          type: array
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+          readOnly: true
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          readOnly: true
+          type: array
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          readOnly: true
+          type: array
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - addresses
+      - bank_account
+      - company_type
+      - emails
+      - id
+      - name
+      - phone_numbers
+      - vat_number
+      type: object
+    ExternalCalculatorType:
+      description: Can be managed at /resources/external-calculator-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    NewRealtyOption:
+      description: Can be managed at /resources/new-realty-option
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    IdDocumentType:
+      description: Can be managed at /resources/id-document-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedBroker:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        account_manager:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          nullable: true
+          readOnly: true
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+          readOnly: true
+        fsma_reference:
+          nullable: true
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        outstanding_debt:
+          format: double
+          readOnly: true
+          type: number
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - account_manager
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - outstanding_debt
+      - vat_number
+      type: object
+    DisbursementSchedule:
+      description: Can be managed at /resources/disbursement-schedule
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LandPurchaseType:
+      description: Can be managed at /resources/land-purchase-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RentalType:
+      description: Can be managed at /resources/rental-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RenovationType:
+      description: Can be managed at /resources/renovation-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FinancialPlanOwnFundType:
+      description: Can be managed at /resources/financial-plant-own-fund-type
+      properties:
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - color
+      - definition
+      - id
+      - order
+      type: object
+    Status:
+      description: Can be managed at /resources/status
+      properties:
+        borrower_facing_status:
+          readOnly: true
+          type: string
+        check_if_selected_offer_is_still_valid_when_data_is_changed:
+          type: boolean
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        icon:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_active:
+          type: boolean
+        is_terminal:
+          type: boolean
+        notify_analyst_on_draft_offer_rate_change:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+        recalculate_selected_offer_when_data_is_changed:
+          type: boolean
+      required:
+      - borrower_facing_status
+      - color
+      - definition
+      - icon
+      - id
+      - order
+      type: object
+    DetailedLeadGenerator:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          readOnly: true
+          type: array
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+          readOnly: true
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          readOnly: true
+          type: array
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          readOnly: true
+          type: array
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - addresses
+      - bank_account
+      - company_type
+      - emails
+      - id
+      - name
+      - phone_numbers
+      - vat_number
+      type: object
+    FieldHistory:
+      properties:
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        created_by:
+          $ref: '#/components/schemas/ReducedBaseUser'
+        history_type:
+          $ref: '#/components/schemas/HistoryType'
+        id:
+          readOnly: true
+          type: integer
+        log_level:
+          $ref: '#/components/schemas/HistoryLogLevel'
+        updated_fields:
+          readOnly: true
+      required:
+      - created
+      - created_by
+      - history_type
+      - id
+      - log_level
+      - updated_fields
+      type: object
+    FinancialPlanOwnFundField:
+      properties:
+        external_calculator_type:
+          $ref: '#/components/schemas/ExternalCalculatorType'
+        id:
+          readOnly: true
+          type: integer
+        is_calculated:
+          type: boolean
+        is_default:
+          type: boolean
+        is_loan_needed:
+          type: boolean
+        is_main:
+          type: boolean
+        is_overridable:
+          type: boolean
+        is_visible:
+          type: boolean
+        own_fund_type:
+          $ref: '#/components/schemas/FinancialPlanOwnFundType'
+      required:
+      - id
+      - own_fund_type
+      type: object
+    BorrowerNotification:
+      properties:
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        deadline:
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
+        has_read:
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        loan_request:
+          readOnly: true
+          type: integer
+        localized_notifications:
+          items:
+            $ref: '#/components/schemas/LocalizedBorrowerNotification'
+          readOnly: true
+          type: array
+        redirection_path:
+          nullable: true
+          readOnly: true
+          type: string
+      required:
+      - created
+      - deadline
+      - id
+      - loan_request
+      - localized_notifications
+      - redirection_path
+      type: object
+    Country:
+      description: Can be managed at /resources/country
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ConditionOfProperty:
+      description: Can be managed at /resources/condition-of-property
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Profile2Address:
+      properties:
+        address_type:
+          allOf:
+          - $ref: '#/components/schemas/ContactType'
+          nullable: true
+        box:
+          type: string
+        building:
+          type: string
+        city:
+          type: string
+        country:
+          $ref: '#/components/schemas/Country'
+        floor:
+          type: string
+        heading:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        house_number:
+          type: string
+        latitude:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        longitude:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        pitch:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        staircase:
+          type: string
+        street:
+          type: string
+        street_type:
+          allOf:
+          - $ref: '#/components/schemas/StreetType'
+          nullable: true
+        zip_code:
+          type: string
+        zoom:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+      required:
+      - city
+      - country
+      - street
+      - zip_code
+      type: object
+    StatusChangeCondition:
+      properties:
+        condition_function:
+          allOf:
+          - $ref: '#/components/schemas/ConditionFunctionName'
+          nullable: true
+          readOnly: true
+        display_to_borrower:
+          readOnly: true
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        is_manually_validated:
+          description: Indicates if this condition requires explicit user validation in the UI.
+          readOnly: true
+          type: boolean
+        name:
+          description: Display name for this condition in the UI.
+          nullable: true
+          readOnly: true
+          type: string
+        redirection_path:
+          allOf:
+          - $ref: '#/components/schemas/RedirectionPath'
+          nullable: true
+          readOnly: true
+        status_change_type:
+          allOf:
+          - $ref: '#/components/schemas/StatusChangeType'
+          nullable: true
+          readOnly: true
+      required:
+      - condition_function
+      - display_to_borrower
+      - id
+      - is_manually_validated
+      - name
+      - redirection_path
+      - status_change_type
+      type: object
+    LoanRequestObjective:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        is_main:
+          type: boolean
+        purpose:
+          $ref: '#/components/schemas/LoanRequestPurpose'
+      required:
+      - id
+      - purpose
+      type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

@@ -1,0 +1,1929 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Third Parties API
+  version: ''
+tags:
+- name: Third Parties
+paths:
+  /api/third-parties/broker-relationships/:
+    get:
+      operationId: api_third_parties_broker_relationships_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BrokerRelationshipAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    post:
+      operationId: api_third_parties_broker_relationships_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrokerRelationshipAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BrokerRelationshipAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BrokerRelationshipAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrokerRelationshipAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/broker-relationships/{id}/:
+    delete:
+      operationId: api_third_parties_broker_relationships_destroy
+      parameters:
+      - description: A unique integer value identifying this Broker Relationship.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    get:
+      operationId: api_third_parties_broker_relationships_retrieve
+      parameters:
+      - description: A unique integer value identifying this Broker Relationship.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrokerRelationshipAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    patch:
+      operationId: api_third_parties_broker_relationships_partial_update
+      parameters:
+      - description: A unique integer value identifying this Broker Relationship.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBrokerRelationshipAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBrokerRelationshipAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBrokerRelationshipAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrokerRelationshipAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    put:
+      operationId: api_third_parties_broker_relationships_update
+      parameters:
+      - description: A unique integer value identifying this Broker Relationship.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrokerRelationshipAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BrokerRelationshipAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BrokerRelationshipAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrokerRelationshipAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/broker-territories/:
+    get:
+      operationId: api_third_parties_broker_territories_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BrokerTerritoryAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    post:
+      operationId: api_third_parties_broker_territories_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrokerTerritoryAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BrokerTerritoryAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BrokerTerritoryAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrokerTerritoryAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/broker-territories/{id}/:
+    delete:
+      operationId: api_third_parties_broker_territories_destroy
+      parameters:
+      - description: A unique integer value identifying this Broker territory.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    get:
+      operationId: api_third_parties_broker_territories_retrieve
+      parameters:
+      - description: A unique integer value identifying this Broker territory.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrokerTerritoryAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    patch:
+      operationId: api_third_parties_broker_territories_partial_update
+      parameters:
+      - description: A unique integer value identifying this Broker territory.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBrokerTerritoryAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBrokerTerritoryAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBrokerTerritoryAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrokerTerritoryAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    put:
+      operationId: api_third_parties_broker_territories_update
+      parameters:
+      - description: A unique integer value identifying this Broker territory.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrokerTerritoryAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BrokerTerritoryAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BrokerTerritoryAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrokerTerritoryAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/broker-users/:
+    get:
+      operationId: api_third_parties_broker_users_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ThirdParty2BaseUserAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    post:
+      operationId: api_third_parties_broker_users_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThirdParty2BaseUserAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ThirdParty2BaseUserAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ThirdParty2BaseUserAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThirdParty2BaseUserAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/broker-users/{id}/:
+    delete:
+      operationId: api_third_parties_broker_users_destroy
+      parameters:
+      - description: A unique integer value identifying this Third Party to Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    get:
+      operationId: api_third_parties_broker_users_retrieve
+      parameters:
+      - description: A unique integer value identifying this Third Party to Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThirdParty2BaseUserAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    patch:
+      operationId: api_third_parties_broker_users_partial_update
+      parameters:
+      - description: A unique integer value identifying this Third Party to Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedThirdParty2BaseUserAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedThirdParty2BaseUserAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedThirdParty2BaseUserAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThirdParty2BaseUserAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    put:
+      operationId: api_third_parties_broker_users_update
+      parameters:
+      - description: A unique integer value identifying this Third Party to Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ThirdParty2BaseUserAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ThirdParty2BaseUserAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ThirdParty2BaseUserAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ThirdParty2BaseUserAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/brokers-imports/:
+    get:
+      operationId: api_third_parties_brokers_imports_list
+      parameters:
+      - description: Which field to use when ordering the results.
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+      - description: '* `initialized` - Initialized
+
+          * `running` - Running
+
+          * `error` - Error
+
+          * `finished` - Finished'
+        in: query
+        name: status
+        schema:
+          enum:
+          - error
+          - finished
+          - initialized
+          - running
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BrokerBulkImportLog'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    post:
+      operationId: api_third_parties_brokers_imports_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrokerBulkImportLog'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BrokerBulkImportLog'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BrokerBulkImportLog'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrokerBulkImportLog'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/brokers-imports/{id}/:
+    get:
+      operationId: api_third_parties_brokers_imports_retrieve
+      parameters:
+      - description: A unique integer value identifying this Broker Bulk Import Log.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrokerBulkImportLog'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/brokers/:
+    get:
+      description: 'Returns the list of brokers.
+
+        For brokers, this returns only themselves.
+
+        For analysts, this returns all brokers.'
+      operationId: api_third_parties_brokers_list
+      parameters:
+      - description: A search term.
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ListBroker'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    post:
+      description: 'Returns the list of brokers.
+
+        For brokers, this returns only themselves.
+
+        For analysts, this returns all brokers.'
+      operationId: api_third_parties_brokers_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Broker'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Broker'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Broker'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Broker'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/brokers/direct-broker/:
+    get:
+      operationId: api_third_parties_brokers_direct_broker_retrieve
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DirectBroker'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/brokers/user-profiles/import:
+    post:
+      operationId: api_third_parties_brokers_user_profiles_import_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BrokerUserProfileBulkImport'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BrokerUserProfileBulkImport'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BrokerUserProfileBulkImport'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BrokerUserProfileBulkImport'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/brokers/{id}/:
+    get:
+      description: 'Returns the list of brokers.
+
+        For brokers, this returns only themselves.
+
+        For analysts, this returns all brokers.'
+      operationId: api_third_parties_brokers_retrieve
+      parameters:
+      - description: A unique integer value identifying this Broker.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Broker'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    patch:
+      description: 'Returns the list of brokers.
+
+        For brokers, this returns only themselves.
+
+        For analysts, this returns all brokers.'
+      operationId: api_third_parties_brokers_partial_update
+      parameters:
+      - description: A unique integer value identifying this Broker.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBroker'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBroker'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBroker'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Broker'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+    put:
+      description: 'Returns the list of brokers.
+
+        For brokers, this returns only themselves.
+
+        For analysts, this returns all brokers.'
+      operationId: api_third_parties_brokers_update
+      parameters:
+      - description: A unique integer value identifying this Broker.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Broker'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Broker'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Broker'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Broker'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/estimators/:
+    get:
+      description: Returns the list of estimators.
+      operationId: api_third_parties_estimators_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ReducedEstimator'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/estimators/{id}/:
+    get:
+      description: Returns the list of estimators.
+      operationId: api_third_parties_estimators_retrieve
+      parameters:
+      - description: A unique integer value identifying this Estimator.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Estimator'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/insurance-providers/:
+    get:
+      description: Returns the list of insurance providers.
+      operationId: api_third_parties_insurance_providers_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ReducedInsuranceProvider'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/insurance-providers/{id}/:
+    get:
+      description: Returns the list of insurance providers.
+      operationId: api_third_parties_insurance_providers_retrieve
+      parameters:
+      - description: A unique integer value identifying this Insurance provider.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InsuranceProvider'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/lead-generators/:
+    get:
+      description: Returns the list of lead generators.
+      operationId: api_third_parties_lead_generators_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ReducedLeadGenerator'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/lead-generators/{id}/:
+    get:
+      description: Returns the list of lead generators.
+      operationId: api_third_parties_lead_generators_retrieve
+      parameters:
+      - description: A unique integer value identifying this Lead Generator.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeadGenerator'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/notaries/:
+    get:
+      description: Returns the list of notaries.
+      operationId: api_third_parties_notaries_list
+      parameters:
+      - description: A search term.
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Notary'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+  /api/third-parties/notaries/{id}/:
+    get:
+      description: Returns the list of notaries.
+      operationId: api_third_parties_notaries_retrieve
+      parameters:
+      - description: A unique integer value identifying this Notary.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Notary'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Third Parties
+components:
+  schemas:
+    ReducedLeadGenerator:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+          readOnly: true
+        fsma_reference:
+          nullable: true
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - vat_number
+      type: object
+    DirectBroker:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        bank_account:
+          readOnly: true
+          type: string
+        company_registration_number:
+          nullable: true
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+          readOnly: true
+        fsma_reference:
+          nullable: true
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        main_address:
+          additionalProperties: {}
+          nullable: true
+          readOnly: true
+          type: object
+        name:
+          readOnly: true
+          type: string
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - bank_account
+      - company_registration_number
+      - company_type
+      - fsma_reference
+      - id
+      - main_address
+      - name
+      - vat_number
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Estimator:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          readOnly: true
+          type: array
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+          readOnly: true
+        default_for_active_directory:
+          readOnly: true
+          type: boolean
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          readOnly: true
+          type: array
+        external_reference:
+          maxLength: 128
+          readOnly: true
+          type: string
+        fsma_reference:
+          nullable: true
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_active:
+          readOnly: true
+          type: boolean
+        name:
+          readOnly: true
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          readOnly: true
+          type: array
+        profile:
+          readOnly: true
+          type: integer
+        sector:
+          allOf:
+          - $ref: '#/components/schemas/Sector'
+          nullable: true
+          readOnly: true
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - addresses
+      - bank_account
+      - company_type
+      - default_for_active_directory
+      - emails
+      - external_reference
+      - fsma_reference
+      - id
+      - is_active
+      - name
+      - oper_reference
+      - phone_numbers
+      - profile
+      - sector
+      - vat_number
+      type: object
+    BrokerTerritoryAuto:
+      properties:
+        broker:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        location:
+          maxLength: 256
+          type: string
+      required:
+      - broker
+      - id
+      - location
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
+      type: object
+    BulkUserProfile:
+      properties:
+        birth_city:
+          maxLength: 128
+          type: string
+        birth_date:
+          format: date
+          nullable: true
+          type: string
+        first_name:
+          maxLength: 64
+          type: string
+        last_name:
+          maxLength: 128
+          type: string
+        mother_maiden_name:
+          maxLength: 128
+          type: string
+      type: object
+    PatchedBrokerTerritoryAuto:
+      properties:
+        broker:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        location:
+          maxLength: 256
+          type: string
+      type: object
+    Broker:
+      properties:
+        account_manager:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          nullable: true
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
+        bank_account:
+          type: string
+        commission_email:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Email'
+          readOnly: true
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+        confiscate_commission:
+          type: boolean
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
+        fsma_reference:
+          nullable: true
+          type: string
+        fsma_status:
+          allOf:
+          - $ref: '#/components/schemas/FsmaStatus'
+          nullable: true
+        id:
+          readOnly: true
+          type: integer
+        legal_address:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Address'
+          readOnly: true
+        main_contact:
+          allOf:
+          - $ref: '#/components/schemas/BaseUserProfileWithContacts'
+          readOnly: true
+        name:
+          type: string
+        outstanding_debt:
+          format: double
+          readOnly: true
+          type: number
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        sector:
+          allOf:
+          - $ref: '#/components/schemas/Sector'
+          nullable: true
+        vat_number:
+          type: string
+      required:
+      - addresses
+      - commission_email
+      - emails
+      - id
+      - legal_address
+      - main_contact
+      - name
+      - outstanding_debt
+      - phone_numbers
+      - vat_number
+      type: object
+    FsmaStatus:
+      description: Can be managed at /resources/fsma-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedInsuranceProvider:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        external_reference:
+          readOnly: true
+          type: string
+        fsma_reference:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+      required:
+      - external_reference
+      - fsma_reference
+      - id
+      - name
+      type: object
+    BrokerUserProfileBulkImport:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/BulkBrokerUserProfile'
+          maxItems: 100000
+          minItems: 1
+          type: array
+      required:
+      - items
+      type: object
+    ListBroker:
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
+        id:
+          readOnly: true
+          type: integer
+        name:
+          type: string
+      required:
+      - addresses
+      - id
+      - name
+      type: object
+    BulkUser:
+      properties:
+        external_id:
+          type: string
+        profile:
+          $ref: '#/components/schemas/BulkUserProfile'
+      required:
+      - external_id
+      - profile
+      type: object
+    PatchedThirdParty2BaseUserAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        main_contact:
+          type: boolean
+        third_party:
+          type: integer
+        user:
+          type: integer
+      type: object
+    PatchedBroker:
+      properties:
+        account_manager:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          nullable: true
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
+        bank_account:
+          type: string
+        commission_email:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Email'
+          readOnly: true
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+        confiscate_commission:
+          type: boolean
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
+        fsma_reference:
+          nullable: true
+          type: string
+        fsma_status:
+          allOf:
+          - $ref: '#/components/schemas/FsmaStatus'
+          nullable: true
+        id:
+          readOnly: true
+          type: integer
+        legal_address:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Address'
+          readOnly: true
+        main_contact:
+          allOf:
+          - $ref: '#/components/schemas/BaseUserProfileWithContacts'
+          readOnly: true
+        name:
+          type: string
+        outstanding_debt:
+          format: double
+          readOnly: true
+          type: number
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        sector:
+          allOf:
+          - $ref: '#/components/schemas/Sector'
+          nullable: true
+        vat_number:
+          type: string
+      type: object
+    BrokerRelationshipAuto:
+      properties:
+        broker_from:
+          type: integer
+        broker_to:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+      required:
+      - broker_from
+      - broker_to
+      - id
+      type: object
+    BrokerBulkImportLogStatusEnum:
+      description: '* `initialized` - Initialized
+
+        * `running` - Running
+
+        * `error` - Error
+
+        * `finished` - Finished'
+      enum:
+      - initialized
+      - running
+      - error
+      - finished
+      type: string
+    ContactType:
+      description: Can be managed at /resources/contact-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    CompanyProfile2Website:
+      properties:
+        value:
+          type: string
+        website_type:
+          $ref: '#/components/schemas/ContactType'
+      required:
+      - value
+      type: object
+    StreetType:
+      description: Can be managed at /resources/street-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Profile2Email:
+      properties:
+        email_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          format: email
+          type: string
+      required:
+      - value
+      type: object
+    ReducedEstimator:
+      description: Estimator reduced representation
+      properties:
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+          readOnly: true
+        fsma_reference:
+          nullable: true
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - vat_number
+      type: object
+    Sector:
+      description: Can be managed at /resources/sector
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ThirdParty2BaseUserAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        main_contact:
+          type: boolean
+        third_party:
+          type: integer
+        user:
+          type: integer
+      required:
+      - id
+      - third_party
+      - user
+      type: object
+    BaseUserProfileWithContacts:
+      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
+        first_name:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_name:
+          type: string
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        profile:
+          allOf:
+          - $ref: '#/components/schemas/BaseUserProfile'
+          writeOnly: true
+      required:
+      - addresses
+      - emails
+      - first_name
+      - id
+      - last_name
+      - phone_numbers
+      type: object
+    BulkNestedBroker:
+      properties:
+        external_id:
+          type: string
+      required:
+      - external_id
+      type: object
+    BulkBrokerUserProfile:
+      properties:
+        broker:
+          $ref: '#/components/schemas/BulkNestedBroker'
+        user:
+          $ref: '#/components/schemas/BulkUser'
+      required:
+      - broker
+      - user
+      type: object
+    Country:
+      description: Can be managed at /resources/country
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Notary:
+      description: The same as ThirdPartySerializer but specifically for a Notary, without VAT, with bank account
+      properties:
+        VAT:
+          readOnly: true
+          type: string
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          readOnly: true
+          type: array
+        bankAccount:
+          readOnly: true
+          type: string
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          readOnly: true
+          type: array
+        fsmaReference:
+          readOnly: true
+          type: string
+        logo:
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        phones:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          readOnly: true
+          type: array
+        profileName:
+          readOnly: true
+          type: string
+        websites:
+          items:
+            $ref: '#/components/schemas/CompanyProfile2Website'
+          readOnly: true
+          type: array
+      required:
+      - VAT
+      - addresses
+      - bankAccount
+      - emails
+      - fsmaReference
+      - logo
+      - name
+      - phones
+      - profileName
+      - websites
+      type: object
+    BrokerBulkImportLog:
+      properties:
+        celery_task_id:
+          format: uuid
+          readOnly: true
+          type: string
+        exception:
+          nullable: true
+          readOnly: true
+          type: string
+        finished_at:
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        payload:
+          nullable: true
+          readOnly: true
+        running_at:
+          format: date-time
+          nullable: true
+          readOnly: true
+          type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/BrokerBulkImportLogStatusEnum'
+          readOnly: true
+      required:
+      - celery_task_id
+      - exception
+      - finished_at
+      - id
+      - payload
+      - running_at
+      - status
+      type: object
+    Profile2Address:
+      properties:
+        address_type:
+          allOf:
+          - $ref: '#/components/schemas/ContactType'
+          nullable: true
+        box:
+          type: string
+        building:
+          type: string
+        city:
+          type: string
+        country:
+          $ref: '#/components/schemas/Country'
+        floor:
+          type: string
+        heading:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        house_number:
+          type: string
+        latitude:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        longitude:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        pitch:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        staircase:
+          type: string
+        street:
+          type: string
+        street_type:
+          allOf:
+          - $ref: '#/components/schemas/StreetType'
+          nullable: true
+        zip_code:
+          type: string
+        zoom:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+      required:
+      - city
+      - country
+      - street
+      - zip_code
+      type: object
+    InsuranceProvider:
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
+        bank_account:
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+        default_for_active_directory:
+          type: boolean
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
+        external_reference:
+          type: string
+        fsma_reference:
+          type: string
+        id:
+          type: integer
+        is_active:
+          type: boolean
+        name:
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        profile:
+          type: integer
+        sector:
+          allOf:
+          - $ref: '#/components/schemas/Sector'
+          nullable: true
+        vat_number:
+          type: string
+      required:
+      - addresses
+      - emails
+      - external_reference
+      - fsma_reference
+      - id
+      - name
+      - oper_reference
+      - phone_numbers
+      - profile
+      - vat_number
+      type: object
+    LeadGenerator:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        account_manager:
+          nullable: true
+          readOnly: true
+          type: integer
+        broker_type:
+          nullable: true
+          readOnly: true
+          type: integer
+        brokers:
+          items:
+            type: integer
+          readOnly: true
+          type: array
+        commission_fee:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 10
+          minimum: -10
+          nullable: true
+          readOnly: true
+          type: number
+        default_for_active_directory:
+          readOnly: true
+          type: boolean
+        external_id:
+          maxLength: 64
+          readOnly: true
+          type: string
+        fsma_reference:
+          nullable: true
+          readOnly: true
+          type: string
+        fsma_status:
+          nullable: true
+          readOnly: true
+          type: integer
+        id:
+          type: integer
+        is_active:
+          readOnly: true
+          type: boolean
+        name:
+          readOnly: true
+          type: string
+        profile:
+          readOnly: true
+          type: integer
+      required:
+      - account_manager
+      - broker_type
+      - brokers
+      - commission_fee
+      - default_for_active_directory
+      - external_id
+      - fsma_reference
+      - fsma_status
+      - id
+      - is_active
+      - name
+      - profile
+      type: object
+    CompanyType:
+      description: Can be managed at /resources/company-types
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    BaseUserProfile:
+      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
+      properties:
+        birth_city:
+          maxLength: 128
+          type: string
+        birth_date:
+          format: date
+          nullable: true
+          type: string
+        first_name:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_name:
+          maxLength: 128
+          type: string
+        middle_name:
+          maxLength: 64
+          type: string
+        mother_maiden_name:
+          maxLength: 128
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        title:
+          nullable: true
+          type: integer
+        title2:
+          nullable: true
+          type: integer
+        user:
+          type: integer
+      required:
+      - id
+      - oper_reference
+      - user
+      type: object
+    PatchedBrokerRelationshipAuto:
+      properties:
+        broker_from:
+          type: integer
+        broker_to:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+      type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

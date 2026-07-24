@@ -1,0 +1,63 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Contact Policy API
+  version: ''
+tags:
+- name: Contact Policy
+paths:
+  /api/contact-policy/:
+    get:
+      operationId: api_contact_policy_retrieve
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactPolicy'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Contact Policy
+components:
+  schemas:
+    ContactPolicy:
+      properties:
+        configuration_id:
+          format: uuid
+          type: string
+        content:
+          type: string
+        language:
+          $ref: '#/components/schemas/Language'
+        tenant:
+          nullable: true
+          type: integer
+        title:
+          maxLength: 128
+          type: string
+      required:
+      - content
+      - language
+      - title
+      type: object
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

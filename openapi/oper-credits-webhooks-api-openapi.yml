@@ -1,0 +1,4986 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Webhooks API
+  version: ''
+  description: Your Webhooks tag description
+tags:
+- name: Webhooks
+  description: Your Webhooks tag description
+paths:
+  /your-webhook-endpoint:
+    post:
+      tags:
+      - Webhooks
+      summary: Your endpoint implementation for handling Oper Connect's webhooks
+      description: This path represents the path to your API implementation of the end point that is configured in Oper Connect. It describes what Oper Connect will send to your endpoint, and what it expects in response.
+      requestBody:
+        description: Post information about the loan request
+        content:
+          application/json:
+            schema:
+              discriminator:
+                propertyName: payload_type
+                mapping:
+                  loan_request: '#/components/schemas/LoanRequestEvent'
+                  loan_request_data_connection: '#/components/schemas/LoanRequestDataConnectionEvent'
+                  client_onboarding: '#/components/schemas/ClientOnboardingEvent'
+                  realty_valuation: '#/components/schemas/RealtyValuationEvent'
+                  loan_request_status: '#/components/schemas/LoanRequestStatusEvent'
+                  insurance_simulation: '#/components/schemas/InsuranceSimulationEvent'
+              oneOf:
+              - $ref: '#/components/schemas/LoanRequestEvent'
+              - $ref: '#/components/schemas/LoanRequestDataConnectionEvent'
+              - $ref: '#/components/schemas/ClientOnboardingEvent'
+              - $ref: '#/components/schemas/RealtyValuationEvent'
+              - $ref: '#/components/schemas/LoanRequestStatusEvent'
+              - $ref: '#/components/schemas/InsuranceSimulationEvent'
+        required: true
+      responses:
+        '201':
+          description: created
+        '202':
+          description: Updated
+        '400':
+          description: Generic error
+        '422':
+          description: Invalid input
+components:
+  schemas:
+    SourceType:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the source type.
+        definition:
+          type: string
+          description: Description of the source type.
+        order:
+          type: integer
+          nullable: true
+          description: Optional order of the type.
+      required:
+      - id
+      - definition
+    Liability:
+      type: object
+      discriminator:
+        propertyName: liability_type
+        mapping:
+          rent: '#/components/schemas/RentalLiability'
+          alimony: '#/components/schemas/AlimonyLiability'
+          additional_liabilities: '#/components/schemas/OtherLiability'
+          general_credit_expense: '#/components/schemas/CreditLiability'
+          consumer_loan_immovable: '#/components/schemas/CreditLiability'
+          consumer_loan_movable: '#/components/schemas/CreditLiability'
+          mortgage_immovable: '#/components/schemas/CreditLiability'
+          mortgage_movable: '#/components/schemas/CreditLiability'
+          purchase_credit: '#/components/schemas/CreditLiability'
+          credit_expense: '#/components/schemas/CreditLiability'
+          credit_card: '#/components/schemas/CreditLiability'
+          credit_line: '#/components/schemas/CreditLiability'
+          leasing: '#/components/schemas/CreditLiability'
+      properties:
+        liability_type:
+          type:
+          - string
+          - 'null'
+          description: The type of liability.
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        id:
+          type: integer
+          description: Oper Liability ID
+          examples:
+          - 1
+          - 123
+        amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The amount of the liability based upon the defined periodicity.
+          example: 1234.56
+        periodicity:
+          type:
+          - string
+          - 'null'
+          description: The periodicity to which the liability is being paid or calculated
+          enum:
+          - null
+          - yearly
+          - semestrial
+          - quarterly
+          - monthly
+          - one_shot
+      required:
+      - oper_reference
+      - id
+      - liability_type
+      - amount
+      - periodicity
+    DocumentDescription:
+      allOf:
+      - $ref: '#/components/schemas/DocumentDescriptionBase'
+      unevaluatedProperties: false
+    NewDataInsuranceSimulation:
+      type: object
+      properties:
+        loan_request:
+          $ref: '#/components/schemas/LoanRequestInsuranceSimulation'
+        insurance_simulation:
+          $ref: '#/components/schemas/InsuranceSimulation'
+        action:
+          type: string
+          description: Action that triggered the webhook
+          enum:
+          - updated
+      required:
+      - action
+      - loan_request
+      - insurance_simulation
+      additionalProperties: false
+    SourceComparison:
+      type: object
+      properties:
+        source_data_id:
+          type: integer
+          description: ID of the source data record.
+        source_data_field_id:
+          type: integer
+          description: ID of the source data field.
+        document_proof_object_id:
+          type:
+          - integer
+          - 'null'
+          description: ID of the document proof object.
+        ai_verification_id:
+          type:
+          - integer
+          - 'null'
+          description: ID of the AI verification.
+        source_value:
+          type: string
+          description: Value extracted from the source.
+        status:
+          type: string
+          description: Comparison status.
+      required:
+      - source_data_id
+      - source_data_field_id
+      - source_value
+      - status
+    APUser:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        first_name:
+          type:
+          - string
+          - 'null'
+          description: The first name (i.e. surname) of the advisor.
+          example: John
+        middle_name:
+          type:
+          - string
+          - 'null'
+          description: The middle name of the advisor.
+          example: Mary
+        last_name:
+          type:
+          - string
+          - 'null'
+          description: The last name (i.e. family name) of the advisor.
+          example: Doe
+        mother_maiden_name:
+          type:
+          - string
+          - 'null'
+          description: The mother's maiden name of the advisor.
+          example: Jane
+        birth_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The birth date of the advisor.
+        birth_city:
+          type:
+          - string
+          - 'null'
+          description: The city of birth of the advisor.
+          example: Brussels
+        language:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - nl-BE
+          - fr-BE
+          - en-UK
+          - de-CH
+          - it-CH
+          description: The preferred language of the advisor, which is also the language in which the Oper platform appears to the advisor after log-in.
+        role:
+          type:
+          - string
+          - 'null'
+          description: The role of the advisor within its company.
+          enum:
+          - null
+          - decider
+          - account_manager
+          - broker_manager
+          - analyst
+          - broker
+          - upload
+          - senior_decider
+          - head_decider
+          - operations_manager
+          - client
+        external_reference:
+          type:
+          - string
+          - 'null'
+          example: 211698
+          description: External reference of the advisor.
+        lender_identifier:
+          type:
+          - string
+          - 'null'
+          example: '12345678'
+          description: The advisor's identifier at the lender (credit provider) associated with the loan request. Sourced from the advisor's per-lender bank ID configuration.
+        is_available:
+          type:
+          - boolean
+          - 'null'
+          example: true
+          description: Whether the user has marked themselves as available. Defaults to true.
+        emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/Email'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+      required:
+      - oper_reference
+      - first_name
+      - middle_name
+      - last_name
+      - mother_maiden_name
+      - birth_date
+      - birth_city
+      - emails
+      - language
+      - role
+      additionalProperties: false
+    ObjectComparison:
+      type: object
+      properties:
+        model_name:
+          type: string
+          description: Name of the compared model.
+        object_id:
+          type: integer
+          description: ID of the compared object.
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/FieldComparison'
+      required:
+      - model_name
+      - object_id
+      - fields
+    FinancialPlan:
+      type:
+      - object
+      - 'null'
+      properties:
+        cost:
+          $ref: '#/components/schemas/Cost'
+        investment:
+          $ref: '#/components/schemas/Investment'
+        financing:
+          $ref: '#/components/schemas/Financing'
+      required:
+      - cost
+      - investment
+      - financing
+      additionalProperties: false
+    Cost:
+      type:
+      - object
+      - 'null'
+      properties:
+        amount_incl_vat:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          example: 10.0
+        amount_excl_vat:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          example: 80.0
+        amount_vat:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          example: 2.0
+        amount_aprc_costs_incl_vat:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: All costs (incl. VAT) that are included in the APRC calculation.
+          example: 3.5
+        cost_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/CostItem'
+      required:
+      - amount_incl_vat
+      - amount_excl_vat
+      - amount_vat
+      - amount_aprc_costs_incl_vat
+      - cost_items
+      additionalProperties: false
+    QualityAdjustment:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the quality adjustment applied, values depend on the tenant
+        interest_rate:
+          type: number
+          description: Interest rate related to the quality adjustment of the offer item
+          examples:
+          - -0.001
+      required:
+      - name
+      - interest_rate
+    Insurance:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        id:
+          type: integer
+          description: Oper Insurance ID
+          examples:
+          - 1
+          - 123
+        amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The insured amount.
+          example: 85000.0
+        periodicity:
+          type:
+          - string
+          - 'null'
+          description: The periodicity of the insurance payment
+          enum:
+          - null
+          - monthly
+          - yearly
+          - one_shot
+          - quarterly
+          - semestrial
+        premium:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The premium to pay for the insurance
+          example: 5200.0
+        policy_number:
+          type:
+          - string
+          - 'null'
+          description: The number of the contract at the insurer company for the insurance in question
+          example: 345345345
+        insurance_provider:
+          allOf:
+          - $ref: '#/components/schemas/Company'
+          - type: object
+            properties:
+              external_reference:
+                type:
+                - string
+                - 'null'
+                example: '1234456'
+                description: Partner Insurance Provider ID
+      required:
+      - oper_reference
+      - id
+      - insurance_provider
+      - amount
+      - periodicity
+      - premium
+      - policy_number
+    Property:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        id:
+          type: integer
+          description: Oper Property ID
+          examples:
+          - 1
+          - 123
+        acquisition_source:
+          type:
+          - string
+          - 'null'
+          description: How the property was acquired.
+          enum:
+          - null
+          - buy_out
+          - definitive_allocation
+          - gift
+          - heritage
+          - other
+          - purchase
+        property_type:
+          type:
+          - string
+          - 'null'
+          description: The type of building that the property represents.
+          enum:
+          - null
+          - terraced_house
+          - investment_property
+          - natural_reserve
+          - warehouse
+          - studio
+          - villa
+          - mixed_building
+          - apartment_complex
+          - agricultural_land
+          - house
+          - construction_land
+          - apartment
+          - chalet_no_domicile
+          - other
+          - chalet
+        is_main_first_residence:
+          type: boolean
+          description: If the property is a main first residence or not.
+        condition_of_property:
+          type:
+          - string
+          - 'null'
+          description: In which condition the property is.
+          enum:
+          - null
+          - renovated
+          - run_down
+          - to_be_demolished
+          - in_good_condition
+          - medium_condition
+          - like_new
+          - new_build
+        building_permit:
+          type: boolean
+          description: Whether a building permit has been obtained for the property.
+        building_year:
+          type:
+          - number
+          - 'null'
+          format: integer
+          description: The building year of the property.
+        land_register:
+          type:
+          - string
+          - 'null'
+          description: The reference of the property in the land register.
+        district_court:
+          type:
+          - string
+          - 'null'
+          description: Which district court the property belongs to.
+        plot_number:
+          type:
+          - string
+          - 'null'
+          description: Which plot number the property has.
+        property_number:
+          type:
+          - string
+          - 'null'
+          description: The property number.
+        cadastral_location:
+          type:
+          - string
+          - 'null'
+          description: The cadastral location of the property.
+        surface_area:
+          type:
+          - number
+          - 'null'
+          description: The surface area of the property in square meters.
+        number_of_rooms:
+          type:
+          - number
+          - 'null'
+          description: The number of rooms in the property.
+        housing_units:
+          type:
+          - number
+          - 'null'
+          description: The number of housing units in the property.
+        epc_before_renovation:
+          type:
+          - integer
+          - 'null'
+          description: The EPC-value of the property before renovation.
+        epc_after_renovation:
+          type:
+          - integer
+          - 'null'
+          description: The EPC-value of the property after renovation.
+        energy_rating_before_renovations:
+          type:
+          - string
+          - 'null'
+          description: The energy rating of the property before renovation.
+          enum:
+          - null
+          - a3
+          - a2
+          - a1
+          - a0
+          - b
+          - c
+          - d
+        energy_rating_after_renovations:
+          type:
+          - string
+          - 'null'
+          description: The energy rating of the property after renovation.
+          enum:
+          - null
+          - a3
+          - a2
+          - a1
+          - a0
+          - b
+          - c
+          - d
+        comfort_type:
+          type:
+          - string
+          - 'null'
+          description: The comfort type classification of the property.
+          enum:
+          - null
+          - comfortable
+          - semi_comfortable
+          - without_comfortable
+          - all_comfort
+          - double_comfort
+          - emergency_housing
+        energy_demand_before_renovations:
+          type:
+          - integer
+          - 'null'
+          description: The energy demand of the property before renovation.
+          minimum: 0
+        energy_demand_after_renovations:
+          type:
+          - integer
+          - 'null'
+          description: The energy demand of the property after renovation.
+          minimum: 0
+        epc_contract_number:
+          type:
+          - string
+          - 'null'
+          description: The number of the contract stating the EPC values.
+        epc_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date on which the EPC has been defined.
+        epc_date_valid_until:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date on which the EPC certificate expires.
+        epc_missing_reason:
+          type:
+          - string
+          - 'null'
+          description: The reason why an EPC certificate is missing from the loan request.
+        e_level:
+          type:
+          - number
+          - 'null'
+          format: integer
+          description: The E-level of the property.
+        has_energetic_renovation:
+          type: boolean
+          description: If any energetic renovation has taken place.
+        has_small_cadastral_income:
+          type: boolean
+          description: If the property has a small cadastral income.
+        has_lift:
+          type: boolean
+          description: If the property contains a lift.
+        cadastral_income:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Cadastral income of the property
+        price:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The actual price of the property.
+        price_building:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The price of building a new property. This datapoint is necessary only when building a new property from scratch.
+        price_land_purchase:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The price of the land to be bought. This datapoint is most often used when wanting to build a new property on land to buy.
+        fair_value:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The fair value of the property.
+        fair_value_after_renovation:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The fair value of the renovated property.
+        forced_sale_value_before_renovation:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The forced sale fair value of the property before renovation.
+        forced_sale_value_after_renovation:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The forced sale fair value of the property.
+        reference_value:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Reference value of the property.
+        is_reference_value_overridden:
+          type: boolean
+          description: True if the reference value was overridden by the user.
+        pro_fisco_value:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Pro fisco value of the property.
+        acquisition_type:
+          type:
+          - string
+          - 'null'
+          description: The way the property was acquired.
+          enum:
+          - null
+          - other
+          - Definitive allocation
+          - heritage
+          - buy out
+          - purchase
+          - gift
+        living_percentage:
+          type:
+          - number
+          - 'null'
+          format: percentage
+          description: The percentage of the property that is attributed to living, compared to the share of the property that is attributed to another purpose (such as commercial use).
+        architect_fees:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The amount of the architect fees for new build.
+        purchase_sale_type:
+          type:
+          - string
+          - 'null'
+          description: Type of the sale when purchasing realty.
+          enum:
+          - null
+          - private_sale
+          - public_auction
+          - vat_regime
+        realty_valuation_type:
+          type:
+          - string
+          - 'null'
+          description: Type of the realty valuation.
+          enum:
+          - desktop
+          - onsite
+        land_purchase_type:
+          type:
+          - string
+          - 'null'
+          description: Type of the land purchase.
+          enum:
+          - null
+          - registration
+          - under_vat_regime
+        estimation_expiration_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The expiration date of the valuation.
+        total_parcel_area:
+          type:
+          - number
+          - 'null'
+          format: decimal
+          description: The total surface of the parcel.
+        living_area:
+          type:
+          - number
+          - 'null'
+          format: decimal
+          description: The surface that serves as a living area.
+        commercial_area:
+          type:
+          - number
+          - 'null'
+          format: decimal
+          description: The surface that serves as a commercial area.
+        flood_risk:
+          type:
+          - string
+          - 'null'
+          description: The risk level of flooding.
+          enum:
+          - null
+          - low
+          - medium
+          - high
+        nearest_flood_zone:
+          type:
+          - number
+          - 'null'
+          format: decimal
+          description: The distance from parcel to the nearest flood zone, expressed in m.
+        mobi_score:
+          type:
+          - number
+          - 'null'
+          format: decimal
+          description: The Mobiscore indicates the environmental impact for trips from your home to the nearest point of interest, e.g. school, public transport...
+          minimum: 0
+          maximum: 10
+          multipleOf: 0.1
+        co2_emission_per_year:
+          type:
+          - number
+          - 'null'
+          format: decimal
+          description: The CO² emission of the property in kg.
+        address:
+          $ref: '#/components/schemas/Address'
+        fire_insurance:
+          $ref: '#/components/schemas/FireInsurance'
+        valuation:
+          $ref: '#/components/schemas/Valuation'
+        features:
+          type: array
+          description: Property features attached to the realty.
+          items:
+            type:
+            - string
+            enum:
+            - null
+            - lift
+            - basement
+            - balcony
+            - garage
+            - loggia
+            - attic
+            - terrace
+            - pool
+        usage_types:
+          type: array
+          description: What the property will be used for once inhabited.
+          items:
+            type:
+            - string
+            enum:
+            - null
+            - co_living_inclusion
+            - investment_property
+            - co_living
+            - other
+            - private_rent
+            - professional_rent
+            - second_stay
+            - living
+            - commercial
+        purposes:
+          type: array
+          description: The purpose of the property in the loan request.
+          items:
+            type:
+            - string
+            enum:
+            - null
+            - buy
+            - refinance
+            - collateral
+            - buy_out
+            - renovate
+            - build
+            - sell
+        participant_authorization:
+          type:
+          - string
+          - 'null'
+          description: The participant authorization status for the property.
+        community_property_involvement:
+          type:
+          - string
+          - 'null'
+          description: Whether community property is involved for the property.
+          enum:
+          - null
+          - 'yes'
+          - 'no'
+          - no_but_agreement_exists
+        renovations:
+          type: array
+          items:
+            $ref: '#/components/schemas/Renovation'
+        mortgage_ranks:
+          type: array
+          items:
+            $ref: '#/components/schemas/MortgageRank'
+        ownership_scheme:
+          type: array
+          items:
+            $ref: '#/components/schemas/Ownership'
+      required:
+      - oper_reference
+      - id
+      - purposes
+      - property_type
+      - usage_types
+      - is_main_first_residence
+      - condition_of_property
+      - building_year
+      - land_register
+      - district_court
+      - plot_number
+      - property_number
+      - cadastral_location
+      - surface_area
+      - number_of_rooms
+      - epc_before_renovation
+      - epc_after_renovation
+      - epc_contract_number
+      - epc_date
+      - e_level
+      - has_energetic_renovation
+      - has_small_cadastral_income
+      - has_lift
+      - price
+      - architect_fees
+      - purchase_sale_type
+      - land_purchase_type
+      - address
+      - renovations
+      - mortgage_ranks
+      - ownership_scheme
+      additionalProperties: false
+    OfferItem:
+      type: object
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        external_reference_base_product:
+          type:
+          - string
+          description: External reference
+        end_payment:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Last monthly installment of the offer item.
+          example: 890.0
+        monthly_installment:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: First monthly installment of the offer item.
+          example: 750.0
+        aprc:
+          type:
+          - number
+          - 'null'
+          format: percentage
+          description: APRC related to the offer item.
+          example: 0.0394
+        max_aprc:
+          type:
+          - number
+          - 'null'
+          format: percentage
+          description: The APRC based upon the max interest rate in case of a variable interest rate.
+          example: 0.049
+        base_rate:
+          type:
+          - number
+          - 'null'
+          format: percentage
+          description: Base interest rate related to the offer item, not taking into account any add-ons/quality adjustments.
+          example: 0.034
+        delta_adjustment:
+          type:
+          - number
+          - 'null'
+          format: percentage
+          description: Computes the manual correction (delta) between the final rate and the expected rate (base + quality + conditional adjustments)
+          example: 0.04
+        applied_add_ons_rate:
+          type:
+          - number
+          - 'null'
+          format: percentage
+          description: Sum of the interest rate of all add-ons of the offer item.
+          example: -0.005
+        adjusted_rate:
+          type:
+          - number
+          - 'null'
+          format: percentage
+          description: Sum of base rate and quality adjustments.
+          example: 0.036
+        final_rate:
+          type:
+          - number
+          - 'null'
+          format: percentage
+          description: Interest rate related to the offer item.
+          example: 0.036
+        amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Amount allocated to the offer item.
+          example: 456000.0
+        duration:
+          type:
+          - number
+          - 'null'
+          format: integer
+          description: Duration of the offer item. (In months)
+          example: 240
+        financed_items:
+          type: array
+          items:
+            oneOf:
+            - $ref: '#/components/schemas/PropertyFinancedItem'
+            - $ref: '#/components/schemas/CreditFinancedItem'
+          description: A list of items (realty/credit) that are going to be financed
+        tax_deductability:
+          type: boolean
+          description: Indicates whether the credit qualifies for tax deducibility.
+          example: true
+        waive_early_repayment_fee:
+          type: boolean
+          description: Indicates whether the early repayment fee is waived.
+          example: true
+        attestation_amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Registration amount that qualifies for tax deducibility.
+        deductable_amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Actual fiscal deductible amount of the credit.
+        fiscal_purpose_type:
+          type:
+          - string
+          - 'null'
+          description: The fiscal purpose of the credit.
+          enum:
+          - purchase_residential_property
+          - other_purpose
+          - home_construction
+          - inheritance_donation_rights
+          - conversion_of_og_into_residential
+          - loan_repayment
+          - home_renovation
+          - renovation
+        grace_period_applicable:
+          type: boolean
+          description: Indicates whether a grace period is applicable.
+          example: true
+        payout_at_deed:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Amount that has to be paid to the notary at deed date.
+        drawdown:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The amount of the credit that can be drawn down later in case of renovation or new construction.
+        variability:
+          type:
+          - string
+          - 'null'
+          description: Variability of the offer item.
+          enum:
+          - null
+          - 10-10-cap+2/-5
+          - 20-5-5
+          - 20-fix
+          - 10-5-5-cap3
+          - 16-5-5
+          - 20-5
+          - 10-5-5
+          - 13-1-1-cap3
+          - 10-3-3
+          - 20-5-5-cap3
+          - 5-5-5-cap3
+          - 20-3-3
+          - 15-3-3
+          - 13-5-5
+          - 6-1-1-cap3
+          - 20-1-1-cap3
+          - 3-3-3-cap2
+          - 5-5-5
+          - 1-1-1-cap4
+          - 5-5-5-cap2
+          - 5-5-5-cap5
+          - 10-5-5-cap5
+          - 10-5-5-cap+2/-5
+          - 3-3-3-cap5
+          - 15-5-5-cap+2/-5
+          - fix
+          - 1-1-1-cap3
+          - 1-1-1-acc
+          - 10-5-5-cap2
+          - 5-5-5-cap4
+          - 1-1-1
+          - 3-3-3
+          - 15-5-5-cap5
+          - 12-5-5-cap3
+          - 15-5-5-cap3
+        product:
+          type:
+          - string
+          - 'null'
+          description: Product name allocated to the offer item.
+          example: Variable Mortgage Credit
+        loan_type:
+          type:
+          - string
+          - 'null'
+          description: Loan type relating to the offer item.
+          enum:
+          - null
+          - mensuality
+          - bridge_loan
+          - crescendo
+          - balloon_credit
+          - balloon_credit_no_payment
+          - progressive_amortization
+        commission_amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Commission amount of the offer item.
+          example: 750.0
+        contract_number:
+          type:
+          - string
+          - 'null'
+          description: The number of the contract as defined on the contract itself
+          example: 12345678
+        cost_file:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: File costs amount of the offer item.
+          example: 750.0
+        liability_insurance_add_on_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: Date of the liability insurance add-on.
+          example: '2024-12-01'
+        liability_insurance_ids:
+          type: array
+          items:
+            type:
+            - number
+            - 'null'
+            description: The unique identifier of the liability insurance.
+            example: 123456
+        loan_purpose:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - purchase
+          - refinance
+          - new_build
+          - buy_out
+          - renovation
+        loan_sub_purposes:
+          type: array
+          items:
+            type:
+            - string
+            - 'null'
+            description: The sub purpose of the loan.
+            enum:
+            - null
+            - buyOut
+            - heritageTaxes
+            - newBuild
+            - notaryFees
+            - propertyDownPayment
+            - purchase
+            - purchaseOfGarage
+            - purchaseOfLand
+            - refinance
+            - renovation
+        applied_add_ons:
+          type: array
+          items:
+            $ref: '#/components/schemas/Discount'
+        quality_adjustments:
+          type: array
+          items:
+            $ref: '#/components/schemas/QualityAdjustment'
+        grace_period:
+          type:
+          - number
+          - 'null'
+          description: The number of months of grace period.
+          example: 20
+        due_day:
+          type:
+          - integer
+          - 'null'
+          description: Due day of the loan.
+          example: 15
+        is_interest_paid_in_grace_period:
+          type:
+          - boolean
+          description: Indicates whether interest was paid in grace period.
+          example: false
+        first_principal_repayment_date:
+          type:
+          - string
+          format: date
+          description: Date of the first principal repayment.
+          example: '2024-12-01'
+        pricing_sheet_valid_from_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The valid from date of the pricing sheet associated with the product item.
+          example: '2025-01-01'
+        pricing_sheet_version:
+          type:
+          - string
+          - 'null'
+          description: The version of the pricing sheet associated with the product item.
+          example: v2.1
+      required:
+      - oper_reference
+      - end_payment
+      - monthly_installments
+      - aprc
+      - base_rate
+      - quality_adjustments
+      - adjusted_rate
+      - applied_add_ons_rate
+      - final_rate
+      - amount
+      - duration
+      - variability
+      - product
+      - loan_type
+      - applied_add_ons
+      - cost_file
+      - grace_period
+      - due_day
+      - is_interest_paid_in_grace_period
+      - first_principal_repayment_date
+      additionalProperties: false
+    Offer:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        id:
+          type: integer
+          description: Oper Offer ID
+          examples:
+          - 1
+          - 123
+        lender:
+          type:
+          - string
+          - 'null'
+          description: Lender name relating to the offer item.
+          enum:
+          - null
+          - credimo
+          - record_credits
+          - creafin
+          - elantis
+          - krefima
+          - key_trade
+          - triodos
+          - axa
+          - dvv
+          - ckv
+          - onesto
+          - allianz
+          - vdk
+          - hypo_start
+          - eb_lease
+          - demetris
+          - vlaams_sociaal_woonkrediet
+        offer_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OfferItem'
+        cost_file:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: File costs amount of the loan request.
+          example: 750.0
+      required:
+      - oper_reference
+      - id
+      - lender
+      - offer_items
+      - cost_file
+      additionalProperties: false
+    DocumentDescriptionBase:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        id:
+          type: integer
+          description: Oper Document ID
+          examples:
+          - 1
+          - 123
+        name:
+          type:
+          - string
+          - 'null'
+          description: The name of the document that was uploaded
+          example: id_card_12_01_2021_john_doe
+        document_type:
+          type:
+          - string
+          - 'null'
+          description: This is the type of document as requested in Oper. All document types are documented and updated in a list that can be found on https://gitlab.com/oper-engineering/hyponation-api-documentation/-/tree/main/Annexed%20documentation?ref_type=heads.
+        status:
+          type:
+          - string
+          description: document status as seen on agent portal. Can be managed at /resources/proof-status.
+          enum:
+          - informative
+          - invalid
+          - rejected
+          - requested
+          - toBeSigned
+          - toBeVerified
+          - verified
+          - sentToLender
+          - verifiedByAdvisor
+          - verifiedByAnalyst
+          - rejectedByAdvisor
+          - rejectedByAnalyst
+          - signed
+        date_modified:
+          type:
+          - string
+          - 'null'
+          format: date-time
+        signed_url:
+          type:
+          - string
+          - 'null'
+          format: uri
+          description: A generated pre-signed link to the document file, valid for N hours
+        sha256_hash:
+          type:
+          - string
+          - 'null'
+          format: hash
+          description: This is the check-sum hash that will ensure the validity of the document
+        url_expiration_time:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: This field describes until when the pre-signed link can be used. If the invalidity date is prior to the current date, you will have to request a new pre-signed link.
+        is_signed:
+          type: boolean
+          description: This field indicates whether a document is signed.
+        signed_date:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: The date and time when the document was signed
+        document_proof_object_status:
+          type:
+          - string
+          - 'null'
+          description: The status of the proof object associated with this document. Represents the verification/validation state of the document within the proof workflow. Only available from version 1.4.
+          enum:
+          - informative
+          - invalid
+          - rejected
+          - requested
+          - toBeSigned
+          - toBeVerified
+          - verified
+          - sentToLender
+          - verifiedByAdvisor
+          - verifiedByAnalyst
+          - rejectedByAdvisor
+          - rejectedByAnalyst
+          - signed
+        doc_ai_verification:
+          $ref: '#/components/schemas/AIVerification'
+        doc_ai_data_extraction:
+          $ref: '#/components/schemas/AIVerification'
+        relations:
+          type: array
+          items:
+            $ref: '#/components/schemas/DocumentRelation'
+      required:
+      - oper_reference
+      - id
+      - name
+      - document_type
+      - status
+      - date_modified
+      - signed_url
+      - sha256_hash
+      - url_expiration_time
+      - doc_ai_verification
+      - doc_ai_data_extraction
+      - relations
+    LoanRequestPurpose:
+      type: object
+      properties:
+        is_main:
+          type:
+          - boolean
+          - 'null'
+        purpose:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - purchase
+          - refinance
+          - new_build
+          - buy_out
+          - renovation
+    LoanRequestStatusEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          new_data:
+            $ref: '#/components/schemas/LoanRequestStatusNewData'
+        required:
+        - new_data
+    DependentIncome:
+      allOf:
+      - $ref: '#/components/schemas/Income'
+      - type: object
+        properties:
+          income_type:
+            type: string
+            description: The type of income of the client
+            enum:
+            - child_benefit
+          dependents:
+            type: array
+            items:
+              $ref: '#/components/schemas/Dependent'
+      unevaluatedProperties: false
+    CostItem:
+      type:
+      - object
+      - 'null'
+      properties:
+        cost_type:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - cost_purchase
+          - cost_land_purchase
+          - cost_renovation
+          - cost_building
+          - cost_buyout
+          - cost_credit_takeover
+          - cost_insurance
+          - cost_handling
+          - cost_file
+          - cost_additional_financing_need
+          - cost_distribution_notary
+          - cost_distribution_registration
+          - cost_notary_fees
+          - cost_credit_notary
+          - cost_credit_notary_fees
+          - cost_credit_notary_administration
+          - cost_credit_notary_mortgage_registration_fee
+          - cost_credit_notary_mortgage_guarantee_fee
+          - cost_credit_notary_disbursements
+          - cost_credit_notary_annexes
+          - cost_credit_registration
+          - cost_credit_notary_act
+          - cost_purchase_notary
+          - cost_purchase_notary_act
+          - cost_purchase_notary_annexes
+          - cost_purchase_notary_fees
+          - cost_purchase_notary_administration
+          - cost_purchase_notary_mortgage_transcript
+          - cost_purchase_notary_disbursements
+          - cost_purchase_registration
+          - cost_land_query_fees
+          - cost_stamp_duty_fees
+          - cost_administration
+          - cost_realtor
+          - cost_land_registry
+          - cost_estimation
+          - cost_bank_disbursements
+        description:
+          type:
+          - string
+          - 'null'
+          description: All necessary details to describe the cost
+          example: this is a cost relating to the notary's efforts when purchasing a house
+        amount_incl_vat:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The amount of the cost type including the VAT
+        amount_excl_vat:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The amount of the cost type excluding the VAT
+        vat_rate:
+          type:
+          - number
+          - 'null'
+          format: percentage
+          description: The percentage amount of the vat for a specific cost type
+          example: 21
+        amount_vat:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The monetary amount of the vat for a specific cost type
+          example: 150
+        is_included_in_aprc:
+          type: boolean
+          description: True if the specific cost type is included in the APRC calculation of the credit
+      required:
+      - cost_type
+      - description
+      - amount_incl_vat
+      - amount_excl_vat
+      - vat_rate
+      - amount_vat
+      - is_included_in_aprc
+      additionalProperties: false
+    BankBranch:
+      type:
+      - object
+      - 'null'
+      properties:
+        id:
+          type: integer
+          description: Oper Bank Branch ID
+          example: 123
+        definition:
+          type:
+          - string
+          - 'null'
+          description: The name of the bank branch.
+        order:
+          type: integer
+          nullable: true
+          description: Optional order of the bank branch.
+      required:
+      - id
+      - definition
+    LeadGenerator:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        name:
+          type:
+          - string
+          - 'null'
+          description: The name of the lead generator company.
+          example: LeadGen Brussels ltd.
+        is_active:
+          type: boolean
+          description: If the lead generator company is still active or not.
+        external_reference:
+          type:
+          - string
+          - 'null'
+          example: '1234456'
+          description: Partner Lead Generator ID
+        company:
+          $ref: '#/components/schemas/Company'
+      required:
+      - oper_reference
+      - name
+      - company
+      - is_active
+      - external_reference
+      additionalProperties: false
+    RentIncome:
+      allOf:
+      - $ref: '#/components/schemas/Income'
+      - type: object
+        properties:
+          income_type:
+            type: string
+            description: The type of income of the client
+            enum:
+            - rent
+            - future_rent
+          rental_type:
+            type:
+            - string
+            - 'null'
+            description: The type of rental
+            enum:
+            - private
+            - other
+          property_id:
+            type:
+            - integer
+            - 'null'
+            description: ID of the property of the loan request linked to this rental income.
+            example: 1
+          address:
+            $ref: '#/components/schemas/Address'
+          start_date:
+            type:
+            - string
+            - 'null'
+            format: date
+            description: The date on which the first payment of the rent was issued.
+            example: '2020-12-02'
+        required:
+        - property_id
+        - address
+        - start_date
+        - rental_type
+    Email:
+      type:
+      - object
+      - 'null'
+      properties:
+        email_type:
+          type:
+          - string
+          - 'null'
+          description: The type of email that is used as contact information
+          example: main
+          enum:
+          - null
+          - main
+          - land_line
+          - commission
+          - professional
+          - legal
+          - office
+          - personal
+          - mobile
+          - data_protection
+        email_address:
+          type:
+          - string
+          - 'null'
+          format: email
+          description: The email address
+          example: john.doe@example.com
+      required:
+      - email_type
+      - email_address
+      additionalProperties: false
+    SourceDataFieldStatus:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the source data field status.
+        definition:
+          type: string
+          description: Description of the source data field status.
+        order:
+          type: integer
+          nullable: true
+          description: Optional order of the status.
+      required:
+      - id
+      - definition
+    SourceData:
+      oneOf:
+      - $ref: '#/components/schemas/GenericSourceData'
+      - $ref: '#/components/schemas/RealtySourceData'
+    Estimator:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        external_reference:
+          type:
+          - string
+          description: External reference
+        name:
+          type:
+          - string
+          - 'null'
+          description: The name of the estimator.
+        vat_number:
+          type:
+          - string
+          description: The VAT number of the company (for companies operating under the legislation that uses VAT numbers).
+          example: DE123456789
+      required:
+      - oper_reference
+      - name
+      additionalProperties: false
+    CreditLiability:
+      allOf:
+      - $ref: '#/components/schemas/Liability'
+      - type: object
+        properties:
+          liability_type:
+            type:
+            - string
+            description: The type of liability of the client
+            enum:
+            - general_credit_expense
+            - consumer_loan_immovable
+            - consumer_loan_movable
+            - mortgage_immovable
+            - mortgage_movable
+            - purchase_credit
+            - credit_expense
+            - credit_card
+            - credit_line
+            - leasing
+          initial_amount:
+            type:
+            - number
+            - 'null'
+            format: valuta
+            description: The initial amount of the liability to this day
+            example: 1234.56
+          interest_rate:
+            type:
+            - number
+            - 'null'
+            format: percentage
+            description: The interest rate on the repayment as indicated at the start of the credit
+            example: 0.03
+          balance:
+            type:
+            - number
+            - 'null'
+            format: valuta
+            description: The currently outstanding amount of the liability
+            example: 1234.56
+          takeover:
+            type:
+            - string
+            - 'null'
+            description: If the loan will be taken over in the current loan request credit amount or not. Repay means that the current credit liability will be repaid before the start of the current credit.
+            enum:
+            - null
+            - 'yes'
+            - 'no'
+            - repay
+            - unknown
+          handling_costs:
+            type:
+            - number
+            - 'null'
+            format: valuta
+            description: The amount of costs relating to the administrative processing of the liability at the liability provider's side
+            example: 1234.56
+          early_repayment_fee:
+            type:
+            - number
+            - 'null'
+            format: valuta
+            description: The fee that needs to be paid if the credit is repaid earlier than expected in the initial contract
+            example: 1234.56
+          credit_provider:
+            type:
+            - string
+            - 'null'
+            description: The company providing the liability to the borrower
+            example: LendingCorp Belgium
+          regularity:
+            type:
+            - string
+            - 'null'
+            description: The regularity of the liability
+            enum:
+            - null
+            - regularized
+            - regular
+            - open_notification
+            - zeroed_out
+          contract_number:
+            type:
+            - string
+            - 'null'
+            description: The number of the contract as defined on the contract itself
+            example: 12345678
+          end_date:
+            type:
+            - string
+            - 'null'
+            format: date
+            description: The date on which the last payment of the liability should be issued.
+            example: '2020-12-02'
+          start_date:
+            type:
+            - string
+            - 'null'
+            format: date
+            description: The date on which the first payment of the liability was issued.
+            example: '2020-12-02'
+          irregularity_start_date:
+            type:
+            - string
+            - 'null'
+            format: date
+            description: If the liability is being paid irregularly, this field describes when this first occured.
+            example: '2020-12-02'
+          duration:
+            type: integer
+            description: Existing credit's duration
+            examples:
+            - 1
+            - 123
+          monthly_amount:
+            type:
+            - number
+            - 'null'
+            format: valuta
+            description: The monthly amortization of the liability
+            example: 1234.56
+          fiscal_attestation_amount:
+            type:
+            - number
+            - 'null'
+            format: valuta
+            description: Fiscal attestation amount
+            example: 1234.56
+          fiscal_attestation_factor:
+            type:
+            - number
+            - 'null'
+            format: percentage
+            description: Fiscal attestation factor
+            example: 0.04
+          immovable_amount:
+            type:
+            - number
+            - 'null'
+            format: valuta
+            description: Portion of the credit liability secured by immovable property
+            example: 1234.56
+          regularization_date:
+            type:
+            - string
+            - 'null'
+            format: date
+            description: Date when credit liability was regularized
+            example: '2020-12-02'
+          client_ids:
+            type: array
+            items:
+              type:
+              - integer
+              - 'null'
+              description: The Oper IDs of the clients paying out the credit liability, which relates to the field id in the Client schema.
+          related_realties:
+            type: array
+            items:
+              type:
+              - integer
+              - 'null'
+              description: The Oper IDs of the realties related to the credit liability, which relates to the field id in the Realty schema.
+          original_purpose:
+            type:
+            - string
+            - 'null'
+            description: The sub purpose of the loan.
+            enum:
+            - null
+            - buyOut
+            - heritageTaxes
+            - newBuild
+            - notaryFees
+            - propertyDownPayment
+            - purchase
+            - purchaseOfGarage
+            - purchaseOfLand
+            - refinance
+            - renovation
+          loan_repayment_account:
+            type:
+            - string
+            - 'null'
+            description: The IBAN bank account used to repay this specific credit liability. When present, takes precedence over the loan-request-level loan_repayment_account.
+            example: HU93 1160 0006 0000 0000 1234 5678
+        required:
+        - initial_amount
+        - interest_rate
+        - balance
+        - takeover
+        - handling_costs
+        - early_repayment_fee
+        - credit_provider
+        - regularity
+        - contract_number
+        - end_date
+        - start_date
+        - irregularity_start_date
+        - client_ids
+        - related_realties
+        - duration
+        - monthly_amount
+        - original_purpose
+      unevaluatedProperties: false
+    Income:
+      type: object
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        id:
+          type: integer
+          description: Oper Income ID
+          examples:
+          - 1
+          - 123
+        amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The monthly amount of income
+          example: 1234.56
+        periodicity:
+          type:
+          - string
+          - 'null'
+          description: The periodicity to which the income is being paid or calculated
+          enum:
+          - null
+          - yearly
+          - semestrial
+          - quarterly
+          - monthly
+          - one_shot
+      required:
+      - oper_reference
+      - id
+      - income_type
+      - amount
+      - periodicity
+    LoanRequestNewData:
+      type: object
+      properties:
+        loan_request:
+          $ref: '#/components/schemas/LoanRequest'
+        action:
+          type: string
+          description: Action that triggered the webhook
+          enum:
+          - updated
+      required:
+      - action
+      - loan_request
+      additionalProperties: false
+    ClientOnboardingNewData:
+      type: object
+      properties:
+        loan_request:
+          $ref: '#/components/schemas/LoanRequestClientOnboarding'
+        action:
+          type: string
+          description: Action that triggered the webhook
+          enum:
+          - updated
+      required:
+      - action
+      - loan_request
+      additionalProperties: false
+    Broker:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        name:
+          type:
+          - string
+          - 'null'
+          description: The name of the broker company.
+          example: BrokerTrust Brussels ltd.
+        is_active:
+          type: boolean
+          description: If the broker company is still active or not.
+        parent:
+          $ref: '#/components/schemas/Company'
+          description: If the broker has a parent company, the company profile of that parent.
+        fsma_status:
+          type:
+          - string
+          - 'null'
+          description: The status of the broker company as registered in the Financial Services and Markets Authority (FSMA).
+          enum:
+          - null
+          - suspended
+          - active
+          - stopped
+        commission_fee:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The amount of commission fee that is attributed to the broker company.
+          example: 300
+        is_commission_to_be_confiscated:
+          type: boolean
+          description: Must be set to true if the commission needs to be confiscated for this specific broker.
+        is_client_facing:
+          type: boolean
+          description: Must be set to true if the broker can be seen by the borrower in the Journey Builder tool.
+          example: A borrower creates an account through the Journey Builder tool on the website of BrokerTrust Global ltd. and has the possibility to select between multiple sub-brokers (such as BrokerTrust Brussels ltd.). Brokers that are not client-facing might exist but will not appear in this specific list.
+        external_reference:
+          type:
+          - string
+          - 'null'
+          example: '1234456'
+          description: Partner Broker ID
+        parent_external_reference:
+          type:
+          - string
+          - 'null'
+          example: '1234456'
+          description: Partner Broker ID of the parent broker
+        company:
+          $ref: '#/components/schemas/Company'
+        account_manager:
+          $ref: '#/components/schemas/APUser'
+      required:
+      - oper_reference
+      - name
+      - company
+      - is_active
+      - parent
+      - fsma_status
+      - account_manager
+      - commission_fee
+      - is_commission_to_be_confiscated
+      - is_client_facing
+      - external_reference
+      - parent_external_reference
+      additionalProperties: false
+    PropertyValuationBorrower:
+      type: object
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        id:
+          type: integer
+          description: Oper Client ID
+          examples:
+          - 1
+          - 123
+        external_reference:
+          type:
+          - string
+          - 'null'
+          examples:
+          - ABC123456
+          - '9876543210'
+        first_name:
+          type:
+          - string
+          - 'null'
+          example: John
+        last_name:
+          type:
+          - string
+          - 'null'
+          example: Doe
+        middle_name:
+          type:
+          - string
+          - 'null'
+          example: Johnny
+        language:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - nl-BE
+          - fr-BE
+          - en-UK
+          - de-CH
+          - it-CH
+        emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/Email'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+      required:
+      - oper_reference
+      - id
+      - external_reference
+      - first_name
+      - last_name
+      - middle_name
+      - language
+      - emails
+      - phones
+      additionalProperties: false
+    Decision:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Categorization or classification of the decision.
+          enum:
+          - seniorDecision
+          - decision
+          - recommendation
+        description:
+          type: string
+          description: The actual text content of the decision.
+        author:
+          type: string
+          description: Identifier or name of the user who posted the decision.
+        timestamp:
+          type: string
+          format: datetime
+          description: Date and time when the decision was created.
+      required:
+      - type
+      - description
+      - author
+      - timestamp
+    Guarantee:
+      type:
+      - object
+      - 'null'
+      properties:
+        guarantee_id:
+          type: number
+          description: The unique identifier of the guarantee.
+          example: 123456
+        total_guarantee_amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The total amount of the guarantees in collateral for the given loan request.
+          example: 600.0
+        guarantee_type:
+          type: string
+          enum:
+          - inscription
+          - mandate
+          - promise
+        guarantee_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/GuaranteeItem'
+      required:
+      - guarantee_id
+      - total_guarantee_amount
+      - guarantee_items
+      additionalProperties: false
+    RentalLiability:
+      allOf:
+      - $ref: '#/components/schemas/Liability'
+      - type: object
+        properties:
+          liability_type:
+            type:
+            - string
+            description: The type of liability of the client
+            enum:
+            - rent
+          gone_after_request:
+            type: boolean
+            description: Is true if the liability will be gone once the loan request has been closed.
+          start_date:
+            type:
+            - string
+            - 'null'
+            format: date
+            description: The date on which the first payment of the liability was issued.
+            example: '2020-12-02'
+        required:
+        - gone_after_request
+        - start_date
+      unevaluatedProperties: false
+    ClientRelationship:
+      type: object
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        client_id:
+          type: integer
+          description: Oper Client ID
+          examples:
+          - 1
+          - 123
+        relationship:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - childOf
+          - marriedTo
+          - nonRelated
+          - otherDirectRelative
+          - parentOf
+          - partnerOf
+      required:
+      - oper_reference
+      - client_id
+      - relationship
+      additionalProperties: false
+    InvestmentItem:
+      type:
+      - object
+      - 'null'
+      properties:
+        investment_type:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - cost_purchase
+          - cost_renovation
+          - cost_land_purchase
+          - cost_building
+          - cost_buyout
+          - cost_credit_takeover
+          - cost_additional_financing_need
+        description:
+          type:
+          - string
+          - 'null'
+          description: All necessary details to describe the cost
+          example: this is a cost relating to the notary's efforts when purchasing a house
+        amount_incl_vat:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The amount of the cost type including the VAT
+        amount_excl_vat:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The amount of the cost type excluding the VAT
+        vat_rate:
+          type:
+          - number
+          - 'null'
+          format: percentage
+          description: The percentage amount of the vat for a specific cost type
+          example: 21
+        amount_vat:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The monetary amount of the vat for a specific cost type
+      required:
+      - investment_type
+      - description
+      - amount_incl_vat
+      - amount_excl_vat
+      - vat_rate
+      - amount_vat
+      additionalProperties: false
+    RealtySourceData:
+      type: object
+      properties:
+        realty_id:
+          type: integer
+          description: ID of the realty associated with the source data.
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceDataField'
+        source_data_type:
+          $ref: '#/components/schemas/SourceDataType'
+        source_type:
+          $ref: '#/components/schemas/SourceType'
+      required:
+      - realty_id
+      - fields
+      - source_data_type
+      - source_type
+    FieldComparison:
+      type: object
+      properties:
+        field_name:
+          type: string
+          description: Name of the compared field.
+        loan_request_value:
+          type: string
+          description: Value from the loan request.
+        sources:
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceComparison'
+      required:
+      - field_name
+      - loan_request_value
+      - sources
+    RegulatoryReporting:
+      type: object
+      properties:
+        buy_to_let:
+          type: boolean
+          description: Should be true if any of the realties with property purpose that is not collateral or sell has a usage type of investmentProperty, privateRent, or professionalRent.
+        owner_occupied:
+          type: boolean
+          description: Should be true if buy_to_let is false, and vice versa.
+        first_time_buyer:
+          type: boolean
+          description: Should be true if all the clients with role = borrower have first_time_buyer = true.
+        mortgage_guarantee:
+          type: boolean
+          description: True if there is a property with a mortgage guarantee type promise or inscription.
+        loan_amount:
+          type: number
+          format: decimal
+          description: The total loan amount including bridge loans.
+        value:
+          type: number
+          format: decimal
+          description: The sum of reference value of all the realties provided as collateral minus the sum of the amounts of existing mortgage ranks linked to these realties.
+        loan_to_value:
+          type: number
+          format: decimal
+          description: Calculated as loan_amount / value.
+        debt_service:
+          type: number
+          format: decimal
+          description: The total amount that the borrower pays monthly for existing and new credit (including interest and principal). Calculated as the sum of (A) amortization of all active product items in the offer and (B) monthly_amount of each credit_liability object with take_over = no linked to borrowers.
+        total_income:
+          type: number
+          format: decimal
+          description: The total yearly income of all borrowers.
+        total_liabilities:
+          type: number
+          format: decimal
+          description: The total yearly liabilities of all borrowers, including new credits. The total amount that is used to calculate DSTI.
+        debt_service_to_income:
+          type: number
+          format: decimal
+          description: Calculated as debt_service / total_income.
+        debt_amount:
+          type: number
+          format: decimal
+          description: The debt of all the existing loans and new loans. Calculated as the sum of (A) amount of all the product items in the offer where is_active = true and (B) the balance of each of the credit_liability objects where take_over = no linked to the clients with role = borrower.
+        debt_to_income:
+          type: number
+          format: decimal
+          description: Calculated as debt_amount / total_income.
+        loan_to_income:
+          type: number
+          format: decimal
+          description: Calculated as loan_amount / total_income.
+        loan_service:
+          type: number
+          format: decimal
+          description: The total monthly payment by borrowers for all product items in the new loan. Calculated as the sum of amortization of all active product items in the offer.
+        loan_service_to_income:
+          type: number
+          format: decimal
+          description: Calculated as loan_service / total_income.
+        gross_annual_rental_income:
+          type: number
+          format: decimal
+          description: The total (unweighted) rental income of all borrowers. Calculated as the sum of monthly_amount of each income object with type = TBD linked to borrowers.
+        loan_to_rent:
+          type: number
+          format: decimal
+          description: Calculated as loan_amount / gross_annual_rental_income.
+        only_refinancing:
+          type: boolean
+          description: True in case there is only a loan request purpose linked to the loan request with type = refinance.
+        annual_interest_cost:
+          type: number
+          format: decimal
+          description: In case buy_to_let = true, this field should contain the sum of all the interest that will be paid in year 1 of all the product items in the offer where is_active = true.
+        reason_threshold_exceeding:
+          type: string
+          description: ' '
+          enum:
+          - ltv_impacted_by_movable_guarantees
+          - increase_in_initial_amount
+          - buy_out
+          - payment_of_inheritance_taxes
+          - specific_professional_target_group
+          - commercially_important_target_group
+          - credit_committee
+          - temporary_situation_bridge_loan_credit
+          - guarantee_exchange
+          - compliant_with_acceptance_policy
+        detailed_reason_threshold_exceeding:
+          type: string
+          description: ' '
+    Notary:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        name:
+          type:
+          - string
+          - 'null'
+          example: Operland Notary Brussels
+        is_active:
+          type: boolean
+          description: Is true if the notary company is still registered as an active company
+          example: true
+        external_reference:
+          type:
+          - string
+          - 'null'
+          example: 211698
+          description: External reference of a notary
+        company:
+          $ref: '#/components/schemas/Company'
+      required:
+      - oper_reference
+      - name
+      - is_active
+      - company
+      additionalProperties: false
+    LoanRequestStatus:
+      type:
+      - object
+      - 'null'
+      properties:
+        id:
+          type: integer
+          description: Oper Loan Request ID
+          examples:
+          - 1
+          - 123
+        status:
+          type:
+          - string
+          enum:
+          - new_lead
+          - positive_preapproval
+          - negative_preapproval
+          - documents_uploaded
+          - analysis_ongoing
+          - decision_pending
+          - positive_decision
+          - negative_decision
+          - offer_signed
+          - credit_closed
+          - request_cancelled
+          - dip_accepted
+          - dip_rejected
+          description: Current status of the loan request, values depend on the tenant.
+    LoanRequest:
+      allOf:
+      - $ref: '#/components/schemas/LoanRequestBase'
+      - type: object
+        properties:
+          documents:
+            type: array
+            items:
+              $ref: '#/components/schemas/DocumentDescription'
+    LoanRequestDataConnection:
+      allOf:
+      - $ref: '#/components/schemas/LoanRequestBase'
+      - type: object
+        properties:
+          documents:
+            type: array
+            items:
+              $ref: '#/components/schemas/LoanRequestDataConnectionDocumentDescription'
+    Ownership:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        client_id:
+          type: integer
+          description: The Oper Client ID in the loan request.
+        share:
+          type:
+          - number
+          - 'null'
+          format: percentage
+          description: The percentage of ownership, or share, of a client in the specific property.
+        ownership_type:
+          type:
+          - string
+          - 'null'
+          description: The type of ownership depending on the legally accepted possibilities.
+          enum:
+          - null
+          - full_ownership
+          - ground_lease
+          - building_right
+          - undivided
+          - free_hold
+          - usufruct
+      required:
+      - oper_reference
+      - client_id
+      - share
+      - ownership_type
+      additionalProperties: false
+    OtherLiability:
+      allOf:
+      - $ref: '#/components/schemas/Liability'
+      - type: object
+        properties:
+          liability_type:
+            type:
+            - string
+            description: The type of liability of the client
+            enum:
+            - additional_liabilities
+      unevaluatedProperties: false
+    InsuranceSimulationEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          new_data:
+            $ref: '#/components/schemas/NewDataInsuranceSimulation'
+        required:
+        - new_data
+    AIVerification:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Oper AI verification ID
+          example: 12345
+        payload:
+          type: string
+          description: AI prediction payload.
+      required:
+      - payload
+    CreditFinancedItem:
+      allOf:
+      - $ref: '#/components/schemas/FinancedItem'
+      - type: object
+        properties:
+          financed_item_type:
+            type: string
+            enum:
+            - credit
+          credit_id:
+            type: integer
+            description: The ID of the credit being financed
+            example: 2001
+        required:
+        - credit_id
+        unevaluatedProperties: false
+    LoanRequestInsuranceSimulation:
+      type:
+      - object
+      - 'null'
+      properties:
+        id:
+          type: integer
+          description: Oper Loan Request ID
+          examples:
+          - 1
+          - 123
+        purposes:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoanPurpose'
+        offer:
+          $ref: '#/components/schemas/Offer'
+        clients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Client'
+        credit_liabilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditLiability'
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+        liability_insurances:
+          type: array
+          items:
+            $ref: '#/components/schemas/LiabilityInsurance'
+      required:
+      - id
+      - purposes
+      - clients
+      - properties
+      - liability_insurances
+      - offer
+      - credit_liabilities
+      additionalProperties: false
+    ComplianceSection:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique ID of the section
+        name:
+          type: string
+          description: Internal name of the section
+        title:
+          type: object
+          description: Display title of the section in multiple languages
+          additionalProperties:
+            type: string
+        questions:
+          type: array
+          description: List of compliance questions
+          items:
+            $ref: '#/components/schemas/ComplianceQuestion'
+      required:
+      - id
+      - name
+      - title
+      - questions
+    Address:
+      type:
+      - object
+      - 'null'
+      properties:
+        id:
+          type: integer
+          description: Oper Address ID
+          examples:
+          - 1
+          - 123
+        street:
+          type:
+          - string
+          - 'null'
+          description: The street of the client's current or future property
+          example: Operstreet
+        house_number:
+          type:
+          - string
+          - 'null'
+          format: integer
+          description: The house number of the client's current or future property
+          example: '10'
+        floor:
+          type:
+          - string
+          - 'null'
+          description: The floor of the client's current or future property
+          example: '2'
+        box:
+          type:
+          - string
+          - 'null'
+          description: The box number of the client's current or future property, if there are multiple boxes for one house number
+          example: b
+        city:
+          type:
+          - string
+          - 'null'
+          description: The city of the client's current or future property
+          example: Brussels
+        postal_code:
+          type:
+          - string
+          - 'null'
+          description: The postal code of the client's current or future property. This code can include numbers and letters depending on the iso norm defined per country.
+          example: 9486
+        country:
+          type:
+          - string
+          - 'null'
+          description: The country in which the client's current or future property is situated, expressed as ISO 3166-1 alpha-2 code.
+          example: BE
+      required:
+      - street
+      - house_number
+      - box
+      - city
+      - postal_code
+      - country
+      additionalProperties: false
+    LoanRequestBase:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        id:
+          type: integer
+          description: Oper Loan Request ID
+          examples:
+          - 1
+          - 123
+        external_reference:
+          type:
+          - string
+          - 'null'
+          description: Partner Loan Request ID
+          examples:
+          - ABC123456
+          - '9876543210'
+        internal_reference:
+          type:
+          - string
+          description: Loan Request Internal Reference
+          example: '2411131234'
+        purpose:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoanPurpose'
+        purposes:
+          type: array
+          items:
+            $ref: '#/components/schemas/LoanRequestPurpose'
+        deed_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date on which the mortgage deed has been/will be signed at the notary.
+          example: '2000-12-01'
+        latest_deed_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The latest date on which the deed must be signed.
+          example: '2000-12-01'
+        acquisition_source:
+          type:
+          - string
+          - 'null'
+          description: The channel through which the loan request was initiated
+          enum:
+          - null
+          - email_campaign
+          - print
+          - event
+          - facecbook_instagram
+          - website
+          - google
+          - bing
+          - affiliate_marketing
+          - existing_customer
+        source:
+          type:
+          - string
+          - 'null'
+          description: The source of creation of loan request, regular creation by agent, advisor simulation, or client preapproval request
+          enum:
+          - null
+          - brokerage_simulation
+          - self_service_pre_approval
+          - regular
+        currency:
+          type:
+          - string
+          - 'null'
+          description: The primary currency used in the loan request, computed using ISO 4217 alpha-3 codes.
+          enum:
+          - null
+          - EUR
+        status:
+          type:
+          - string
+          enum:
+          - new_lead
+          - positive_preapproval
+          - negative_preapproval
+          - documents_uploaded
+          - analysis_ongoing
+          - decision_pending
+          - positive_decision
+          - negative_decision
+          - offer_signed
+          - credit_closed
+          - request_cancelled
+          - dip_accepted
+          - dip_rejected
+          description: Current status of the loan request, values depend on the tenant.
+        ltv:
+          type:
+          - number
+          - 'null'
+          description: Loan to value of the selected offer.
+        dsti:
+          type:
+          - number
+          - 'null'
+          description: Debt service to income of the selected offer.
+        living_surplus:
+          type:
+          - number
+          - 'null'
+          description: Living surplus taking into account the selected offer.
+        future_dsti:
+          type:
+          - number
+          - 'null'
+          description: Forecasted debt service to income after the loan.
+        future_surplus:
+          type:
+          - number
+          - 'null'
+          description: Forecasted living surplus after the loan.
+        last_date_credit_check:
+          type:
+          - string
+          - 'null'
+          description: Date of the last credit consulation that happened in the loan request.
+          example: '2024-12-01'
+        offer_signed_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date on which the offer was signed.
+          example: '2000-12-01'
+        date_expected_disbursement:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The expected date for loan disbursement.
+          example: '2025-06-01'
+        dispursement_schedule:
+          type:
+          - string
+          - 'null'
+          description: The disbursement schedule type for the loan request.
+        community_property_involvement:
+          type:
+          - string
+          - 'null'
+          description: Whether community property is involved for this loan request. This field is moving from the property level to the loan request level (controlled by the brokerage_community_property_involvement feature flag).
+          enum:
+          - null
+          - 'yes'
+          - 'no'
+        termination_of_marital_property_law:
+          type:
+          - boolean
+          description: Indicates whether the termination of marital property law applies to this loan request.
+        motivation_for_refinancing:
+          type:
+          - string
+          - 'null'
+          description: Free-text field capturing the borrower's motivation or reason for refinancing an existing loan. Populated when the loan request purpose is refinance or an existing credit has takeover set to yes.
+        date_draft_offer_sent:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date when draft offer documents were first shared with the client. This is set automatically when documents from the offer bundle (e.g. ESIS, offer, SEPA form) are shared.
+          example: '2025-03-15'
+        date_loan_request_form:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date when the loan request form was finalized and submitted by the advisor. This marks the moment the application data is considered complete for processing.
+          example: '2025-03-10'
+        date_submission:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date when the application was formally submitted, typically set after the client signs the required documents.
+          example: '2025-03-12'
+        loan_repayment_account:
+          type:
+          - string
+          - 'null'
+          description: The single IBAN bank account that will be used to repay the loan.
+          example: GB29 NWBK 6016 1331 9268 19
+        loan_repayment_account_holders:
+          type: array
+          items:
+            type: integer
+          description: List of client IDs who are holders of the loan repayment account (borrowers).
+          example:
+          - 2
+          - 3
+          - 10
+        outside_risk_policy:
+          type:
+          - boolean
+          description: Indicates if the loan request does not fall within the risk policy of the bank.
+        payout_at_deed:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Total payout at deed for the loan request.
+        drawdown:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Total drawdown amount for the loan request.
+        offer:
+          $ref: '#/components/schemas/Offer'
+        financial_plan:
+          $ref: '#/components/schemas/FinancialPlan'
+        creator:
+          $ref: '#/components/schemas/APUser'
+        owner:
+          $ref: '#/components/schemas/APUser'
+        analyst:
+          $ref: '#/components/schemas/APUser'
+        broker:
+          $ref: '#/components/schemas/Broker'
+        notary:
+          $ref: '#/components/schemas/Notary'
+        fiduciary:
+          $ref: '#/components/schemas/Fiduciary'
+        lead_generator:
+          $ref: '#/components/schemas/LeadGenerator'
+        bank_branch:
+          $ref: '#/components/schemas/BankBranch'
+        regulatory_reporting:
+          $ref: '#/components/schemas/RegulatoryReporting'
+        clients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Client'
+        credit_liabilities:
+          type: array
+          items:
+            $ref: '#/components/schemas/CreditLiability'
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/Property'
+        liability_insurances:
+          type: array
+          items:
+            $ref: '#/components/schemas/LiabilityInsurance'
+        additional_financing_needs:
+          type: array
+          items:
+            $ref: '#/components/schemas/AdditionalFinancingNeed'
+        guarantees:
+          type: array
+          items:
+            $ref: '#/components/schemas/Guarantee'
+        documents:
+          type: array
+        missing_documents:
+          type: array
+          items:
+            allOf:
+            - $ref: '#/components/schemas/DocumentRelation'
+            - type: object
+              properties:
+                document_type:
+                  type:
+                  - string
+                  - 'null'
+                  description: This is the type of document as requested in Oper. All document types are documented and updated in a list that can be found on https://gitlab.com/oper-engineering/hyponation-api-documentation/-/tree/main/Annexed%20documentation?ref_type=heads.
+            required:
+            - oper_reference
+            - id
+            - type
+            - document_type
+        comments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Comment'
+        decisions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Decision'
+        compliance_checks:
+          type: array
+          items:
+            $ref: '#/components/schemas/ComplianceCheck'
+        latest_compliance_check:
+          allOf:
+          - $ref: '#/components/schemas/ComplianceCheck'
+          nullable: true
+        fact_check:
+          type:
+          - array
+          - 'null'
+          description: Comparison between loan request data and extracted source data.
+          items:
+            $ref: '#/components/schemas/ObjectComparison'
+        source_data:
+          type:
+          - array
+          - 'null'
+          description: Extracted source data used for fact checks.
+          items:
+            $ref: '#/components/schemas/SourceData'
+      required:
+      - oper_reference
+      - id
+      - external_reference
+      - internal_reference
+      - purpose
+      - currency
+      - broker
+      - creator
+      - owner
+      - analyst
+      - lead_generator
+      - deed_date
+      - acquisition_source
+      - source
+      - clients
+      - properties
+      - liability_insurances
+      - financial_plan
+      - offer
+      - notary
+      - documents
+      - credit_liabilities
+      additionalProperties: false
+    DocumentRelation:
+      type: object
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        id:
+          type:
+          - integer
+          - 'null'
+          description: The Oper ID of the model that is related to the uploaded document, or null if the model is loan_request
+          examples:
+          - 1
+          - 123
+          - null
+        type:
+          type: string
+          description: The name of the schema, as indicated in the current OpenAPI specification document, to which the specific document is related.
+          enum:
+          - client
+          - insurance
+          - income
+          - liability
+          - loan_request
+          - property
+          - financial_asset
+          - additional_financing_need
+      required:
+      - oper_reference
+      - id
+      - type
+      additionalProperties: false
+    Event:
+      type:
+      - object
+      - 'null'
+      properties:
+        payload_type:
+          type: string
+          description: This field provides more information about the type of the payload sent by the webhook.
+          enum:
+          - loan_request
+          - loan_request_data_connection
+          - client_onboarding
+          - realty_valuation
+          - loan_request_status
+          - insurance_simulation
+        created:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: Contains the date on which the object was made. The date should be communicated in compliance with the ISO 8601 standard, which is defined as YYYY-MM-DD.
+        origin_id:
+          type: string
+          description: This field represents the webhook origin.
+        livemode:
+          type: boolean
+          description: If the object exists in livemode, this will have the value 'true'. If not, this will have the value 'false'
+      required:
+      - id
+      - created
+      - livemode
+      - payload_type
+      additionalProperties: false
+    LoanRequestDataConnectionDocumentDescription:
+      allOf:
+      - $ref: '#/components/schemas/DocumentDescriptionBase'
+      - type: object
+        properties:
+          transfer_round:
+            type: number
+            description: Transfer round number for the document representing the round when it was initially transferred.
+            example: 1
+        required:
+        - transfer_round
+      unevaluatedProperties: false
+    Investment:
+      type:
+      - object
+      - 'null'
+      properties:
+        amount_incl_vat:
+          type:
+          - number
+          - 'null'
+          example: 80000
+        amount_excl_vat:
+          type:
+          - number
+          - 'null'
+          example: 50000
+        amount_vat:
+          type:
+          - number
+          - 'null'
+          example: 20000
+        investment_items:
+          type: array
+          items:
+            $ref: '#/components/schemas/InvestmentItem'
+      required:
+      - amount_incl_vat
+      - amount_excl_vat
+      - amount_vat
+      - investment_items
+      additionalProperties: false
+    Company:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        name:
+          type:
+          - string
+          - 'null'
+          description: The name of the company.
+          example: Cardiff
+        legal_name:
+          type:
+          - string
+          - 'null'
+          description: The legal name of the company as written on the balance sheet.
+          example: Cardiff ltd.
+        vat_number:
+          type:
+          - string
+          description: The VAT number of the company (for companies operating under the legislation that uses VAT numbers).
+          example: DE123456789
+        company_registration_number:
+          type:
+          - string
+          - 'null'
+          description: The company registration number of the company (for companies operating under the legislation that uses company registration numbers).
+          example: HRB 12345
+        sector:
+          type:
+          - string
+          - 'null'
+          description: The sector in which the company operates.
+          enum:
+          - null
+          - financial_services
+          - industry
+          - it
+          - services
+          - hospitality
+          - culture
+          - art
+          - metal_tech
+          - retail
+          - agriculture
+          - tourism
+          - transport
+          - social_industry
+          - real_estate
+          - education
+          - professional_services
+          - construction
+          - post
+          - recruitment
+          - public_sector
+          - other
+        international_bank_account_number:
+          type:
+          - string
+          - 'null'
+          description: The bank account information of the company.
+          example: GB82 WEST1234 5678
+        fsma_reference:
+          type:
+          - string
+          - 'null'
+          description: The FSMA (Financial Services and Markets Authority) reference number of the company.
+          example: FSMA123456
+        company_type:
+          type:
+          - string
+          - 'null'
+          description: Company types are sourced from the ECB's (European Central Bank) AnaCredit dataset maintaining all company legal forms in Europe. This dataset can be found in the annexed Excel file of the Oper documentation (https://gitlab.com/oper-engineering/hyponation-api-documentation/-/blob/V0_1_5/Annexed%20documentation/List_of_legal_forms_AnaCredit.xlsx) or on the ECB's official website (https://www.ecb.europa.eu/stats/money_credit_banking/anacredit/html/index.en.html, see "list of legal forms"). How to use this file? Open it and click on the second tab called "List of legal forms". Then, filter on the country ISO-code for your own country of application. You can find all legal information and translations for the company types included in Oper. How to understand the correct datamapping? Oper uses the "legal form" code from column A as a reference value.
+          example: For "Country ISO code" filter = BE and "Legal form" field = "BE015", company_type = private limited company (SPRL or BVBA or GmbH depending on the language in Oper)
+        address:
+          $ref: '#/components/schemas/Address'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+        emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/Email'
+      required:
+      - oper_reference
+      - name
+      - legal_name
+      - vat_number
+      - company_registration_number
+      - sector
+      - international_bank_account_number
+      - fsma_reference
+      - company_type
+      - address
+      - phones
+      - emails
+      additionalProperties: false
+    FinancedItem:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the financed item
+          example: 1
+        financed_item_type:
+          type: string
+          description: The type of financed item
+          enum:
+          - realty
+          - credit
+      required:
+      - id
+      - financed_item_type
+      discriminator:
+        propertyName: financed_item_type
+        mapping:
+          realty: '#/components/schemas/PropertyFinancedItem'
+          credit: '#/components/schemas/CreditFinancedItem'
+    SourceDataField:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the source data field.
+        field_name:
+          type: string
+          description: Name of the extracted field.
+        field_value:
+          type:
+          - string
+          - number
+          - boolean
+          - object
+          - array
+          - 'null'
+          description: Value of the extracted field.
+        status:
+          $ref: '#/components/schemas/SourceDataFieldStatus'
+      required:
+      - id
+      - field_name
+      - field_value
+      - status
+    RealtyValuationNewData:
+      type: object
+      properties:
+        realty:
+          $ref: '#/components/schemas/Property'
+        valuation:
+          $ref: '#/components/schemas/PropertyValuation'
+        loan_request:
+          $ref: '#/components/schemas/PropertyValuationLoanRequest'
+      required:
+      - action
+      - loan_request
+      additionalProperties: false
+    PhoneNumber:
+      type:
+      - object
+      - 'null'
+      properties:
+        country_code:
+          type: string
+          description: Country code of the phone number of the client
+          example: '+32'
+        phone_type:
+          type: string
+          description: The type of phone that is used as contact information
+          example: main
+          enum:
+          - main
+          - landline
+          - commission
+          - professional
+          - legal
+          - office
+          - personal
+          - mobile
+          - data_protection
+        phone_number:
+          type: string
+          description: The phone number value, without the country code prefix
+          example: '499140348'
+        is_secret:
+          type: boolean
+          description: Indicates whether a phone number is secret
+      required:
+      - country_code
+      - phone_type
+      - phone_number
+      additionalProperties: false
+    Renovation:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        renovation_type:
+          type:
+          - string
+          - 'null'
+          description: The type of renovation that the client wishes to do or has recently done on a property. These should ideally have an impact on the property price after renovation.
+          enum:
+          - null
+          - boiler
+          - carpentry
+          - carport
+          - connection_costs
+          - driveway
+          - electricity
+          - garage
+          - garden
+          - glazing
+          - heating
+          - insulation
+          - kitchen
+          - landscaping
+          - other
+          - painting
+          - plastering
+          - plumbing_and_heating
+          - porch
+          - roof
+          - sauna
+          - solar_panels
+          - structural_renovation
+          - swimming_pool
+          - tiling
+        amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The costs involved with the specific renovation type.
+      required:
+      - oper_reference
+      - renovation_type
+      - amount
+      additionalProperties: false
+    Client:
+      type: object
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        id:
+          type: integer
+          description: Oper Client ID
+          examples:
+          - 1
+          - 123
+        role:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - borrower
+          - collateral_provider
+          - third_party
+          - spouse
+        external_reference:
+          type:
+          - string
+          - 'null'
+          examples:
+          - ABC123456
+          - '9876543210'
+        first_name:
+          type:
+          - string
+          - 'null'
+          example: John
+        last_name:
+          type:
+          - string
+          - 'null'
+          example: Doe
+        middle_name:
+          type:
+          - string
+          - 'null'
+          example: Johnny
+        maiden_name:
+          type:
+          - string
+          - 'null'
+          example: Jane
+        mother_maiden_name:
+          type:
+          - string
+          - 'null'
+          example: Sarah
+        nationality:
+          type:
+          - string
+          - 'null'
+          description: ISO 3166-1 alpha-2 code
+          example: BEL
+        language:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - nl-BE
+          - fr-BE
+          - en-UK
+          - de-CH
+          - it-CH
+        civil_status:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - married_separate_goods
+          - single
+          - widow
+          - married_lawful
+          - defacto_union
+          - defacto_divorced
+          - cohabiting
+          - divorced
+        company_name:
+          type:
+          - string
+          - 'null'
+          description: Name of the company that the client is an owner of (if applicable).
+          example: Acme Kft.
+        company_tax_number:
+          type:
+          - string
+          - 'null'
+          description: Tax number of the company that the client is an owner of (if applicable).
+          example: 12345678-1-42
+        is_self_employed_or_partner:
+          type: boolean
+          description: Whether the client is a self-employed entrepreneur or a member of a partnership.
+          example: false
+        gender:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - m
+          - f
+          - o
+          - n
+          - u
+        birth_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date of birth of the client
+          example: '2000-12-01'
+        birth_city:
+          type:
+          - string
+          - 'null'
+          example: Brussels
+        birth_country:
+          type:
+          - string
+          - 'null'
+          description: The birth country of the client, expressed as ISO 3166-1 alpha-2 code.
+          example: BE
+        national_number:
+          type:
+          - string
+          - 'null'
+          example: 1122334455
+        id_card_number:
+          type:
+          - string
+          - 'null'
+          example: 1122334455
+        id_card_issuance_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date of the issuance of the identity card, which can be found on the card itself
+          example: '2008-01-12'
+        id_card_expiration_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date of the expiry of the identity card, which can be found on the card itself
+          example: '2023-12-24'
+        tax_id_number:
+          type:
+          - string
+          - 'null'
+          example: 1122233
+        international_bank_account_number:
+          type:
+          - string
+          - 'null'
+          description: This is the IBAN
+          example: GB29 NWBK 6016 1331 9268 19
+        local_bank_account_number:
+          type:
+          - string
+          - 'null'
+          description: The local (non-IBAN) bank account number of the client.
+          example: 12345678-12345678-12345678
+        bank_identifier_code:
+          type:
+          - string
+          - 'null'
+          description: This is the BIC-code
+          example: MELWAS6B
+        country_arrival_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date on which the client arrived and registered itself in the country.
+          example: '2015-01-11'
+        dependent_children:
+          type:
+          - number
+          - 'null'
+          format: integer
+          example: 2
+        planned_children:
+          type:
+          - number
+          - 'null'
+          format: integer
+          description: Number of children the client is planning to have. Used for subsidy eligibility (e.g. CSOK).
+          example: 1
+        number_of_dependent_persons_with_no_income:
+          type:
+          - number
+          - 'null'
+          format: integer
+          example: 2
+        number_of_dependent_persons_with_income:
+          type:
+          - number
+          - 'null'
+          format: integer
+          example: 2
+        a_card_details:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - coDebtorPermanentResidence
+          - employedByEU
+          - other
+        employment_status:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - civil_servant
+          - company_owner
+          - director
+          - disabled
+          - employee
+          - health_insurance_settlement
+          - house_man_wife
+          - liberal_profession
+          - military
+          - retired
+          - sole_proprietor
+          - student
+          - unemployed
+          - unknown_worker
+          - worker
+        living_status:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - living_with_parents
+          - renter
+          - apartment_owner
+          - cooperative_flat
+          - room_mate
+          - home_owner
+          - concierge
+        future_living_status:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - living_with_parents
+          - renter
+          - apartment_owner
+          - cooperative_flat
+          - room_mate
+          - home_owner
+          - concierge
+        education:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - commercial_school
+          - teaching
+          - polytechnic_school
+          - master
+          - university_of_applied_science
+          - high_school
+          - secondary_school
+        residence_permit:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - l
+          - c
+          - b
+          - other
+        has_tax_residence_in_che:
+          type: boolean
+          example: true
+        has_tax_residence_in_usa:
+          type: boolean
+          example: false
+        is_first_time_buyer:
+          type: boolean
+          example: false
+        fiscal_residence:
+          type:
+          - string
+          - 'null'
+          description: The fiscal residence of the client
+          example: BE
+        id_document_type:
+          type:
+          - string
+          - 'null'
+          description: Type of the id document
+        id_issuing_authority:
+          type:
+          - string
+          - 'null'
+          description: Authority that issued the id document
+        sector:
+          type:
+          - string
+          - 'null'
+          description: Employment sector of the client
+        segment:
+          type:
+          - string
+          - 'null'
+          description: Segment of the client
+        oep_certification_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: Date of the NEAK/OEP health insurance certificate for the client.
+          example: '2025-06-15'
+        number_of_dependents:
+          type:
+          - integer
+          - 'null'
+          description: Total number of dependents of the client.
+          example: 3
+        address:
+          $ref: '#/components/schemas/Address'
+        temporary_address:
+          allOf:
+          - $ref: '#/components/schemas/Address'
+          nullable: true
+        correspondence_address:
+          allOf:
+          - $ref: '#/components/schemas/Address'
+          nullable: true
+        emails:
+          type: array
+          items:
+            $ref: '#/components/schemas/Email'
+        phones:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhoneNumber'
+        incomes:
+          type: array
+          items:
+            type: object
+            discriminator:
+              propertyName: income_type
+              mapping:
+                variable_income: '#/components/schemas/OtherIncome'
+                alimony: '#/components/schemas/OtherIncome'
+                health_insurance: '#/components/schemas/OtherIncome'
+                meal_vouchers: '#/components/schemas/OtherIncome'
+                other: '#/components/schemas/OtherIncome'
+                retirement: '#/components/schemas/OtherIncome'
+                unemployment_benefit: '#/components/schemas/OtherIncome'
+                company_car: '#/components/schemas/OtherIncome'
+                rent: '#/components/schemas/RentIncome'
+                future_rent: '#/components/schemas/RentIncome'
+                child_benefit: '#/components/schemas/DependentIncome'
+                salary_employed: '#/components/schemas/SalaryIncome'
+                selft_employed: '#/components/schemas/SalaryIncome'
+                household_income: '#/components/schemas/HouseholdIncome'
+            oneOf:
+            - $ref: '#/components/schemas/OtherIncome'
+            - $ref: '#/components/schemas/DependentIncome'
+            - $ref: '#/components/schemas/SalaryIncome'
+            - $ref: '#/components/schemas/HouseholdIncome'
+            - $ref: '#/components/schemas/RentIncome'
+        liabilities:
+          type: array
+          items:
+            type: object
+            discriminator:
+              propertyName: liability_type
+              mapping:
+                rent: '#/components/schemas/RentalLiability'
+                alimony: '#/components/schemas/AlimonyLiability'
+                additional_liabilities: '#/components/schemas/OtherLiability'
+            oneOf:
+            - $ref: '#/components/schemas/RentalLiability'
+            - $ref: '#/components/schemas/AlimonyLiability'
+            - $ref: '#/components/schemas/OtherLiability'
+        assets:
+          type: array
+          items:
+            $ref: '#/components/schemas/Asset'
+        relationships:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClientRelationship'
+      required:
+      - oper_reference
+      - id
+      - role
+      - external_reference
+      - first_name
+      - last_name
+      - middle_name
+      - maiden_name
+      - mother_maiden_name
+      - nationality
+      - language
+      - civil_status
+      - gender
+      - birth_date
+      - birth_city
+      - birth_country
+      - national_number
+      - id_card_number
+      - id_card_issuance_date
+      - id_card_expiration_date
+      - tax_id_number
+      - international_bank_account_number
+      - bank_identifier_code
+      - country_arrival_date
+      - dependent_children
+      - employment_status
+      - living_status
+      - future_living_status
+      - education
+      - residence_permit
+      - has_tax_residence_in_che
+      - has_tax_residence_in_usa
+      - address
+      - emails
+      - phones
+      - incomes
+      - liabilities
+      - assets
+      - relationships
+      additionalProperties: false
+    LoanRequestDataConnectionEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          new_data:
+            $ref: '#/components/schemas/LoanRequestDataConnectionNewData'
+        required:
+        - new_data
+    ComplianceAnswerBoolean:
+      type: object
+      properties:
+        value:
+          type: boolean
+          description: Boolean value of the answer
+        compliance_answer_type:
+          $ref: '#/components/schemas/ComplianceAnswerType'
+          description: Type of the compliance answer
+        compliance_question_id:
+          type: integer
+          description: ID of the associated compliance question
+        instance_type:
+          type: string
+          description: Instance type of the answer (e.g., 'boolean')
+      required:
+      - value
+      - compliance_answer_type
+      - compliance_question_id
+      - instance_type
+    ComplianceQuestion:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique ID of the question
+        name:
+          type: string
+          description: Internal name of the question
+        text:
+          type: object
+          description: Question text shown to the user in multiple languages
+          additionalProperties:
+            type: string
+        answer:
+          $ref: '#/components/schemas/ComplianceAnswer'
+          description: The answer provided for this question
+      required:
+      - id
+      - name
+      - text
+      - answer
+    ClientOnboardingEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          new_data:
+            $ref: '#/components/schemas/ClientOnboardingNewData'
+        required:
+        - new_data
+    InsuranceSimulation:
+      type:
+      - object
+      - 'null'
+      properties:
+        id:
+          type: integer
+          description: Oper Insurance ID
+          examples:
+          - 1
+          - 123
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        coverage_type:
+          type:
+          - string
+          - 'null'
+          description: The insurance package coverage type
+          enum:
+          - null
+          - packageA
+          - packageB
+          - packageC
+        status:
+          type:
+          - string
+          - 'null'
+          description: The status of the simulation
+          enum:
+          - null
+          - error
+          - warning
+          - success
+          - notCalculated
+        message:
+          type:
+          - string
+          - 'null'
+          description: The possible error message translation key
+        product:
+          $ref: '#/components/schemas/OfferItem'
+        insurance_provider:
+          allOf:
+          - $ref: '#/components/schemas/Company'
+          - type: object
+            properties:
+              external_reference:
+                type:
+                - string
+                - 'null'
+                example: '1234456'
+                description: Partner Insurance Provider ID
+        premium:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The premium to pay for the insurance
+          example: 5200.0
+        periodicity:
+          type:
+          - string
+          - 'null'
+          description: The periodicity of the insurance payment
+          enum:
+          - null
+          - monthly
+          - yearly
+          - one_shot
+          - quarterly
+          - semestrial
+        covered_amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The insured amount.
+          example: 85000.0
+        duration:
+          type:
+          - integer
+          - 'null'
+          description: Duration of the offer item. (In months)
+          example: 240
+        to_be_financed:
+          type: boolean
+          description: True if the liability insurance needs to be taken into account in the current loan request as a liability to be financed together with the new credit.
+        mandatory:
+          type: boolean
+          description: True if the liability insurance needs to be taken because of an obligation coming from the lending company.
+        policy_number:
+          type:
+          - string
+          - 'null'
+          description: The number of the contract at the insurer company for the insurance in question
+          example: 345345345
+        client_ids:
+          type: array
+          items:
+            type: integer
+            description: The Oper IDs of the clients, which relates to the field id in the Client schema.
+      required:
+      - id
+      - oper_reference
+      - coverage_type
+      - status
+      - product
+      - insurance_provider
+      - premium
+      - periodicity
+      - covered_amount
+      - duration
+      - to_be_financed
+      - mandatory
+      - policy_number
+      - client_ids
+    Valuation:
+      type:
+      - object
+      - 'null'
+      properties:
+        fair_value:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The fair value of the property.
+        fair_value_after_renovation:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The fair value of the renovated property.
+        forced_sale_value_before_renovation:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The forced sale fair value of the property before renovation.
+        forced_sale_value_after_renovation:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The forced sale fair value of the property.
+        reference_value:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Reference value of the property.
+        is_reference_value_overridden:
+          type: boolean
+          description: True if the reference value was overridden by the user.
+        pro_fisco_value:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: Pro fisco value of the property.
+        valuation_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date on which the valuation of the property was done.
+        valuation_expiration_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The expiration date of the valuation.
+        valuation_type:
+          type: string
+          enum:
+          - automatic
+          - desktop
+          - onsite
+        valuation_reference:
+          type:
+          - string
+          description: Unique reference of the valuation.
+        estimator:
+          $ref: '#/components/schemas/Estimator'
+        epc_reference_number:
+          type:
+          - string
+          - 'null'
+          description: The EPC contract number of the property.
+        epc_validity:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The date until which the EPC certificate is valid.
+    LoanRequestDataConnectionNewData:
+      type: object
+      properties:
+        lender_state:
+          $ref: '#/components/schemas/LenderState'
+        expected_number_of_transfer_rounds:
+          type:
+          - number
+          - 'null'
+          description: Expected number of transfer rounds for this loan request.
+          example: 3
+        current_transfer_round:
+          type: number
+          description: Current transfer round number.
+          example: 1
+        is_marked_as_last_transfer_round:
+          type: boolean
+          description: Indicates whether the current transfer round is marked as the last transfer round by the user.
+          example: false
+        loan_request:
+          $ref: '#/components/schemas/LoanRequestDataConnection'
+        action:
+          type: string
+          description: Action that triggered the webhook
+          enum:
+          - created
+      required:
+      - lender_state
+      - expected_number_of_transfer_rounds
+      - current_transfer_round
+      - is_marked_as_last_transfer_round
+      - action
+      - loan_request
+      additionalProperties: false
+    HouseholdIncome:
+      allOf:
+      - $ref: '#/components/schemas/Income'
+      - type: object
+        properties:
+          income_type:
+            type: string
+            description: The type of income of the client
+            enum:
+            - household_income
+      unevaluatedProperties: false
+    LoanRequestEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          new_data:
+            $ref: '#/components/schemas/LoanRequestNewData'
+        required:
+        - new_data
+    FireInsurance:
+      allOf:
+      - $ref: '#/components/schemas/Insurance'
+      - type: object
+        properties:
+          has_apartment_complex_policy:
+            type: boolean
+            description: True if the fire insurance applies to an appartment complex.
+          insurance_provider:
+            allOf:
+            - $ref: '#/components/schemas/Company'
+            - type: object
+              properties:
+                external_reference:
+                  type:
+                  - string
+                  - 'null'
+                  example: '1234456'
+                  description: Provider of insurance
+        required:
+        - has_apartment_complex_policy
+      unevaluatedProperties: false
+    ComplianceCheck:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the compliance check
+        created:
+          type: string
+          format: date-time
+          description: Timestamp when the compliance check was created
+        conducted_by:
+          type: integer
+          description: ID of the user who conducted the compliance check
+        conducted_by_email:
+          type: string
+          description: Email of the user who conducted the compliance check
+        sections:
+          type: array
+          description: List of sections within the compliance check
+          items:
+            $ref: '#/components/schemas/ComplianceSection'
+      required:
+      - id
+      - created
+      - conducted_by
+      - sections
+    LoanPurpose:
+      type: object
+      properties:
+        is_main:
+          type:
+          - boolean
+          - 'null'
+        definition:
+          type:
+          - string
+          - 'null'
+          enum:
+          - null
+          - purchase
+          - refinance
+          - new_build
+          - buy_out
+          - renovation
+    LenderState:
+      type:
+      - object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier of each lender state
+          example: 12345
+      required:
+      - id
+      additionalProperties: false
+    Fiduciary:
+      type:
+      - object
+      - 'null'
+      properties:
+        id:
+          type: integer
+          description: Oper Fiduciary ID
+          examples:
+          - 1
+          - 123
+        name:
+          type:
+          - string
+          - 'null'
+          description: The name of the fiduciary.
+        address:
+          $ref: '#/components/schemas/Address'
+      required:
+      - id
+      - name
+      additionalProperties: false
+    PropertyValuation:
+      type:
+      - object
+      properties:
+        id:
+          type: integer
+          description: The unique identifier of each valuation
+          example: '12345'
+      required:
+      - id
+      additionalProperties: false
+    LoanRequestStatusNewData:
+      type: object
+      properties:
+        loan_request_status:
+          $ref: '#/components/schemas/LoanRequestStatus'
+        action:
+          type: string
+          description: Action that triggered the webhook
+          enum:
+          - created
+      required:
+      - loan_request_status
+      - action
+    Dependent:
+      type:
+      - object
+      - 'null'
+      properties:
+        age:
+          type:
+          - integer
+          description: Number representing age
+          example: 10
+      required:
+      - age
+      additionalProperties: false
+    SourceDataType:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the source data type.
+        definition:
+          type: string
+          description: Description of the source data type.
+        order:
+          type: integer
+          nullable: true
+          description: Optional order of the type.
+      required:
+      - id
+      - definition
+    ComplianceAnswer:
+      type: object
+      discriminator:
+        propertyName: compliance_answer_type
+      oneOf:
+      - $ref: '#/components/schemas/ComplianceAnswerBoolean'
+      - $ref: '#/components/schemas/ComplianceAnswerFreeText'
+      required:
+      - compliance_answer_type
+    ComplianceAnswerType:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the answer type
+        definition:
+          type: string
+          description: Description of the answer type (e.g., 'boolean', 'text')
+          enum:
+          - boolean
+          - text
+        order:
+          type: integer
+          nullable: true
+          description: Optional order of the answer type
+      required:
+      - id
+      - definition
+    PropertyValuationLoanRequest:
+      type:
+      - object
+      - 'null'
+      properties:
+        liability_type:
+          type:
+          - string
+          - 'null'
+          description: The type of liability.
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        id:
+          type: integer
+          description: Oper Loan Request ID
+          examples:
+          - 1
+          - 123
+        external_reference:
+          type:
+          - string
+          - 'null'
+          description: Partner Loan Request ID
+          examples:
+          - ABC123456
+          - '9876543210'
+        loan_amount:
+          type: number
+          format: decimal
+          description: The total loan amount
+        borrowers:
+          type: array
+          items:
+            $ref: '#/components/schemas/PropertyValuationBorrower'
+      required:
+      - oper_reference
+      - id
+      - external_reference
+      - borrowers
+      - loan_amount
+      additionalProperties: false
+    Comment:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Categorization or classification of the comment.
+          enum:
+          - loanRequest
+          - phone
+          - email
+          - appointment
+        description:
+          type: string
+          description: The actual text content of the comment.
+        author:
+          type: string
+          description: Identifier or name of the user who posted the comment.
+        timestamp:
+          type: string
+          format: datetime
+          description: Date and time when the comment was created.
+      required:
+      - type
+      - description
+      - author
+      - timestamp
+    Discount:
+      type: object
+      properties:
+        name:
+          type: string
+          description: The name of the add-on applied, values depend on the tenant
+          enum:
+          - life_insurance
+          - pension_savings
+        interest_rate:
+          type: number
+          description: The interest rate of the add-on added to the base rate
+          examples:
+          - -0.001
+      required:
+      - name
+      - interest_rate
+    AlimonyLiability:
+      allOf:
+      - $ref: '#/components/schemas/Liability'
+      - type: object
+        properties:
+          liability_type:
+            type:
+            - string
+            description: The type of liability of the client
+            enum:
+            - alimony
+          end_date:
+            type:
+            - string
+            - 'null'
+            format: date
+            description: The date on which the last payment of the liability should be issued.
+            example: '2020-12-02'
+          start_date:
+            type:
+            - string
+            - 'null'
+            format: date
+            description: The date on which the first payment of the liability was issued.
+            example: '2020-12-02'
+          outstanding_amount:
+            type:
+            - number
+            - 'null'
+            format: valuta
+            description: The full outstanding amount of the liability to this day
+            example: 1234.56
+        required:
+        - end_date
+        - start_date
+        - outstanding_amount
+      unevaluatedProperties: false
+    GuaranteeItem:
+      type:
+      - object
+      - 'null'
+      properties:
+        id:
+          type: integer
+          description: Oper Guarantee Item ID
+          examples:
+          - 1
+          - 123
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        property_id:
+          type:
+          - number
+          - 'null'
+          description: The unique identifier of the property, which allows the guarantee amount to be linked to a specific property.
+          example: 123456
+        mortgage_rank:
+          type:
+          - integer
+          - 'null'
+          description: The rank of the mortgage inscription.
+          example: 1
+        registration_amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The registration amount of the individual guarantee item.
+          example: 0.6
+      required:
+      - registration_amount
+      additionalProperties: false
+    Asset:
+      type: object
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        asset_type:
+          type:
+          - string
+          - 'null'
+          description: The type of asset of the client
+          enum:
+          - null
+          - life_insurance
+          - pension_fund
+          - other
+          - cash
+          - investment_portfolio
+        amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The monthly amount of the liability
+          example: 1234.56
+        usage_type:
+          type:
+          - string
+          - 'null'
+          description: What the client is using the asset for
+          enum:
+          - null
+          - keep
+          - withdraw
+          - pledge
+      required:
+      - oper_reference
+      - asset_type
+      - amount
+      - usage_type
+      additionalProperties: false
+    ComplianceAnswerFreeText:
+      type: object
+      properties:
+        value:
+          type: string
+          description: Text value of the answer
+        compliance_answer_type:
+          $ref: '#/components/schemas/ComplianceAnswerType'
+          description: Type of the compliance answer
+        compliance_question_id:
+          type: integer
+          description: ID of the associated compliance question
+        instance_type:
+          type: string
+          description: Instance type of the answer (e.g., 'text')
+      required:
+      - value
+      - compliance_answer_type
+      - compliance_question_id
+      - instance_type
+    Financing:
+      type:
+      - object
+      - 'null'
+      properties:
+        amount:
+          type:
+          - number
+          - 'null'
+          description: The total amount to finance. This can consist of multiple elements, whereunder the own funds and loans.
+          example: 800.0
+        amount_own_funds:
+          type:
+          - number
+          - 'null'
+          description: The total amount of own funds needed to finance the current loan request
+          example: 200.0
+        amount_loans:
+          type:
+          - number
+          - 'null'
+          description: The total amount of the loans needed to finance the current loan request
+          example: 200.0
+      required:
+      - amount
+      - amount_own_funds
+      - amount_loans
+      additionalProperties: false
+    PropertyFinancedItem:
+      allOf:
+      - $ref: '#/components/schemas/FinancedItem'
+      - type: object
+        properties:
+          financed_item_type:
+            type: string
+            enum:
+            - realty
+          property_id:
+            type: integer
+            description: The ID of the property being financed
+            example: 1001
+        required:
+        - property_id
+        unevaluatedProperties: false
+    OtherIncome:
+      allOf:
+      - $ref: '#/components/schemas/Income'
+      - type: object
+        properties:
+          income_type:
+            type: string
+            description: The type of income of the client
+            enum:
+            - variable_income
+            - alimony
+            - health_insurance
+            - meal_vouchers
+            - other
+            - retirement
+            - unemployment_benefit
+            - company_car
+          comment:
+            type:
+            - string
+            - 'null'
+            description: A free text field allowing a comment to be made and more information to be given
+          payer:
+            type:
+            - string
+            - 'null'
+            description: A free text field allowing to input the paying instance of an income
+      unevaluatedProperties: false
+    AdditionalFinancingNeed:
+      type: object
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        id:
+          type: integer
+          description: Oper Additional Financing Need ID
+          examples:
+          - 1
+          - 123
+        additional_financing_need_type:
+          type:
+          - string
+          description: The type of additional financing need of the client
+          enum:
+          - executed_renovations
+          - heritage_taxes_movable
+          - family_debt
+          - heritage_or_donation_costs
+          - heritage_taxes_immovable
+          - purchase_car
+          - personal_taxes
+          - donation_taxes_immovable
+          - city_taxes
+          - handling_costs
+          - liquidities
+          - registration_rights_and_notary_costs
+        amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The amount of the additional financing need
+          example: 1234.56
+      required:
+      - oper_reference
+      - id
+      - additional_financing_need_type
+      - amount
+    MortgageRank:
+      type:
+      - object
+      - 'null'
+      properties:
+        oper_reference:
+          type:
+          - string
+          description: Oper reference
+          examples:
+          - 092117b8-8c7e-4fd8-827c-cbadc3b037b9
+        credit_provider:
+          $ref: '#/components/schemas/Company'
+        rank:
+          type:
+          - integer
+          - 'null'
+          description: A number describing in which rank a specific company is added and for which amount.
+        amount:
+          type:
+          - number
+          - 'null'
+          format: valuta
+          description: The amount of money allocated to that specific rank.
+        mortgage_inscription_start_date:
+          type:
+          - string
+          - 'null'
+          format: date
+          description: The start date of the existing mortgage inscription on the collateral.
+      required:
+      - oper_reference
+      - credit_provider
+      - rank
+      - amount
+      additionalProperties: false
+    SalaryIncome:
+      allOf:
+      - $ref: '#/components/schemas/Income'
+      - type: object
+        properties:
+          income_type:
+            type: string
+            description: The type of income of the client
+            enum:
+            - salary_employed
+            - self_employed
+          start_date:
+            type:
+            - string
+            - 'null'
+            format: date
+            description: The start date of the employment
+          end_date:
+            type:
+            - string
+            - 'null'
+            format: date
+            description: The end date of the employment
+          job_function:
+            type:
+            - string
+            - 'null'
+            description: A free text field to describe the job function
+          wage_garnishment:
+            type: boolean
+            description: Indicates whether the salary is subject to wage garnishment
+          is_holiday_pay_included:
+            type: boolean
+            description: Indicates whether holiday pay is included in the reported income
+          employment_type:
+            type:
+            - string
+            - 'null'
+            enum:
+            - null
+            - self_employed_company
+            - director
+            - unemployed
+            - civil_servant
+            - student
+            - unclear
+            - self_employed_sole_proprietorship
+            - health_insurance_settlement
+            - retired
+            - liberal_profession
+            - military
+            - worker
+            - house_wife
+            - employee
+            - disabled
+          contract_type:
+            type:
+            - string
+            - 'null'
+            enum:
+            - null
+            - interim
+            - indefinite
+            - definite
+          comment:
+            type:
+            - string
+            - 'null'
+            description: A free text field allowing a comment to be made and more information to be given
+          employer:
+            $ref: '#/components/schemas/Company'
+        required:
+        - start_date
+        - job_function
+        - employment_type
+        - contract_type
+        - comment
+        - employer
+      unevaluatedProperties: false
+    GenericSourceData:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the source data record.
+        model_name:
+          type: string
+          description: Name of the model associated with the source data.
+        object_id:
+          type: integer
+          description: ID of the model instance associated with the source data.
+        source_data_type:
+          $ref: '#/components/schemas/SourceDataType'
+        source_type:
+          $ref: '#/components/schemas/SourceType'
+        ai_verification:
+          $ref: '#/components/schemas/AIVerification'
+        fields:
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceDataField'
+      required:
+      - id
+      - model_name
+      - object_id
+      - source_data_type
+      - source_type
+      - ai_verification
+      - fields
+    RealtyValuationEvent:
+      allOf:
+      - $ref: '#/components/schemas/Event'
+      - type: object
+        properties:
+          new_data:
+            $ref: '#/components/schemas/RealtyValuationNewData'
+        required:
+        - new_data
+    LoanRequestClientOnboarding:
+      type:
+      - object
+      - 'null'
+      properties:
+        id:
+          type: integer
+          description: Oper Loan Request ID
+          examples:
+          - 1
+          - 123
+        clients:
+          type: array
+          items:
+            $ref: '#/components/schemas/Client'
+      required:
+      - id
+      - clients
+      additionalProperties: false
+    LiabilityInsurance:
+      allOf:
+      - $ref: '#/components/schemas/Insurance'
+      - type: object
+        properties:
+          client_ids:
+            type: array
+            items:
+              type: integer
+              description: The Oper IDs of the clients, which relates to the field id in the Client schema.
+          is_required_by_lender:
+            type: boolean
+            description: True if the liability insurance needs to be taken because of an obligation coming from the lending company.
+          has_to_be_financed:
+            type: boolean
+            description: True if the liability insurance needs to be taken into account in the current loan request as a liability to be financed together with the new credit.
+          duration:
+            type:
+            - integer
+            - 'null'
+            description: Duration of the offer item. (In months)
+            example: 240
+        required:
+        - client_ids
+        - duration
+        - is_required_by_lender
+        - has_to_be_financed
+      unevaluatedProperties: false
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

@@ -1,0 +1,91 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Legal Links API
+  version: ''
+tags:
+- name: Legal Links
+paths:
+  /api/legal-links/:
+    get:
+      operationId: api_legal_links_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/LegalLink'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Legal Links
+  /api/legal-links/{language__definition}/:
+    get:
+      operationId: api_legal_links_retrieve
+      parameters:
+      - in: path
+        name: language__definition
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LegalLink'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Legal Links
+components:
+  schemas:
+    LegalLink:
+      properties:
+        display_text:
+          maxLength: 128
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        language:
+          $ref: '#/components/schemas/Language'
+        legal_link_type:
+          nullable: true
+          type: integer
+        tenant:
+          nullable: true
+          type: integer
+        url:
+          format: uri
+          maxLength: 1024
+          type: string
+      required:
+      - display_text
+      - id
+      - language
+      - url
+      type: object
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

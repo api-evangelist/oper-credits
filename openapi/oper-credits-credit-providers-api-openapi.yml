@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Credit Providers API
+  version: ''
+tags:
+- name: Credit Providers
+paths:
+  /api/credit-providers/:
+    get:
+      description: Abstract class to support default ordering on order field
+      operationId: api_credit_providers_list
+      parameters:
+      - in: query
+        name: active
+        schema:
+          type: boolean
+      - in: query
+        name: exclude_blacklisted
+        schema:
+          type: boolean
+      - in: query
+        name: is_liability_provider
+        schema:
+          type: boolean
+      - description: Which field to use when ordering the results.
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ReducedCreditProvider'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Credit Providers
+components:
+  schemas:
+    ReducedCreditProvider:
+      description: To be used for a short summary of the CreditProvider
+      properties:
+        active:
+          readOnly: true
+          type: boolean
+        fsma_reference:
+          maxLength: 128
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_liability_provider:
+          readOnly: true
+          type: boolean
+        loan_request_form_documents:
+          readOnly: true
+          type: string
+        logo_url:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        order:
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          readOnly: true
+          type: integer
+      required:
+      - active
+      - fsma_reference
+      - full_name
+      - id
+      - is_liability_provider
+      - loan_request_form_documents
+      - logo_url
+      - name
+      - order
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

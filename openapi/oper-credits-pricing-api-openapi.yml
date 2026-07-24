@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Pricing API
+  version: ''
+tags:
+- name: Pricing
+paths:
+  /api/pricing/excel-pricer/download-template/:
+    get:
+      operationId: api_pricing_excel_pricer_download_template_retrieve
+      responses:
+        '200':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Pricing
+components:
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

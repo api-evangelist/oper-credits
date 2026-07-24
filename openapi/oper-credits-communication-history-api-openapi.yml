@@ -1,0 +1,95 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Communication History API
+  version: ''
+tags:
+- name: Communication History
+paths:
+  /api/communication-history/:
+    get:
+      operationId: api_communication_history_list
+      parameters:
+      - description: A page number within the paginated result set.
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+      - description: Number of results to return per page.
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBaseLoanRequestCommunicationHistoryList'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Communication History
+  /api/communication-history/{id}/:
+    delete:
+      operationId: api_communication_history_destroy
+      parameters:
+      - description: A unique integer value identifying this Loan request communication history.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Communication History
+components:
+  schemas:
+    BaseLoanRequestCommunicationHistory:
+      properties:
+        history_type:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        log_level:
+          type: integer
+      required:
+      - history_type
+      - id
+      - log_level
+      type: object
+    PaginatedBaseLoanRequestCommunicationHistoryList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          nullable: true
+          type: string
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/BaseLoanRequestCommunicationHistory'
+          type: array
+      required:
+      - count
+      - results
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

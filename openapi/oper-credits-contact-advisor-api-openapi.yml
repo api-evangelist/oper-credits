@@ -1,0 +1,133 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Contact Advisor API
+  version: ''
+tags:
+- name: Contact Advisor
+paths:
+  /api/contact-advisor/:
+    post:
+      operationId: api_contact_advisor_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactAdvisor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ContactAdvisor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ContactAdvisor'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactAdvisor'
+          description: ''
+      security:
+      - jwtAuth: []
+      - {}
+      tags:
+      - Contact Advisor
+components:
+  schemas:
+    Calculation:
+      description: Serializer for the calculation of the mortgage
+      properties:
+        additional_costs:
+          format: double
+          minimum: 0
+          type: number
+        ammortisation_per_year:
+          format: double
+          minimum: 0
+          type: number
+        interest_per_year:
+          format: double
+          minimum: 0
+          type: number
+        interest_rate:
+          format: double
+          minimum: 0
+          type: number
+        monthly_amount:
+          format: double
+          type: number
+        portability:
+          format: double
+          type: number
+        yearly_amount:
+          format: double
+          type: number
+      required:
+      - additional_costs
+      - ammortisation_per_year
+      - interest_per_year
+      - interest_rate
+      - monthly_amount
+      - portability
+      - yearly_amount
+      type: object
+    ContactAdvisor:
+      properties:
+        availability:
+          maxLength: 100
+          type: string
+        calculations:
+          items:
+            $ref: '#/components/schemas/Calculation'
+          type: array
+        comment:
+          maxLength: 5000
+          type: string
+        customer_nr:
+          maxLength: 100
+          type: string
+        date_of_birth:
+          format: date
+          type: string
+        email:
+          format: email
+          type: string
+        first_name:
+          maxLength: 100
+          type: string
+        household_income:
+          format: double
+          type: number
+        last_name:
+          maxLength: 100
+          type: string
+        loan_amount:
+          format: double
+          type: number
+        own_funds:
+          format: double
+          type: number
+        phone_number:
+          maxLength: 100
+          type: string
+        realty_price:
+          format: double
+          type: number
+        salutation:
+          maxLength: 100
+          type: string
+        street:
+          maxLength: 100
+          type: string
+        zip_code:
+          maxLength: 100
+          type: string
+      required:
+      - first_name
+      - last_name
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

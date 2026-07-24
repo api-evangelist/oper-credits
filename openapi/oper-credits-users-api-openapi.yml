@@ -1,0 +1,78 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Users API
+  version: ''
+tags:
+- name: Users
+paths:
+  /api/users/:
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_users_list
+      parameters:
+      - in: query
+        name: role
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ReducedBaseUser'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Users
+components:
+  schemas:
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

@@ -1,0 +1,453 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Tasks API
+  version: ''
+tags:
+- name: Tasks
+paths:
+  /api/tasks/:
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_tasks_list
+      parameters:
+      - in: query
+        name: assigned_to
+        schema:
+          type: integer
+      - in: query
+        name: created_by
+        schema:
+          type: integer
+      - in: query
+        name: loan_request
+        schema:
+          type: integer
+      - description: Which field to use when ordering the results.
+        in: query
+        name: ordering
+        required: false
+        schema:
+          type: string
+      - description: A page number within the paginated result set.
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+      - description: Number of results to return per page.
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+      - description: A search term.
+        in: query
+        name: search
+        required: false
+        schema:
+          type: string
+      - in: query
+        name: status
+        schema:
+          type: integer
+      - in: query
+        name: status__not
+        schema:
+          type: integer
+      - in: query
+        name: task_category
+        schema:
+          type: integer
+      - in: query
+        name: task_type
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedTaskList'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Tasks
+    post:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_tasks_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Task'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Task'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Tasks
+  /api/tasks/{id}/:
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_tasks_retrieve
+      parameters:
+      - description: A unique integer value identifying this Task.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Tasks
+    patch:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_tasks_partial_update
+      parameters:
+      - description: A unique integer value identifying this Task.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTask'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTask'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTask'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Tasks
+    put:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_tasks_update
+      parameters:
+      - description: A unique integer value identifying this Task.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Task'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Task'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Task'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Task'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Tasks
+components:
+  schemas:
+    Status:
+      description: Can be managed at /resources/status
+      properties:
+        borrower_facing_status:
+          readOnly: true
+          type: string
+        check_if_selected_offer_is_still_valid_when_data_is_changed:
+          type: boolean
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        icon:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_active:
+          type: boolean
+        is_terminal:
+          type: boolean
+        notify_analyst_on_draft_offer_rate_change:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+        recalculate_selected_offer_when_data_is_changed:
+          type: boolean
+      required:
+      - borrower_facing_status
+      - color
+      - definition
+      - icon
+      - id
+      - order
+      type: object
+    TaskCategory:
+      description: Can be managed at /resources/task-category
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    TaskStatus:
+      description: Can be managed at /resources/task-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    TaskType:
+      description: Can be managed at /resources/task-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        navigation_path:
+          maxLength: 256
+          type: string
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Task:
+      properties:
+        assigned_to:
+          $ref: '#/components/schemas/ReducedBaseUser'
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          nullable: true
+          readOnly: true
+        description:
+          type: string
+        due_date:
+          format: date-time
+          nullable: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        loan_request:
+          $ref: '#/components/schemas/ReducedLoanRequest'
+        status:
+          $ref: '#/components/schemas/TaskStatus'
+        task_category:
+          $ref: '#/components/schemas/TaskCategory'
+        task_type:
+          $ref: '#/components/schemas/TaskType'
+      required:
+      - assigned_to
+      - created
+      - created_by
+      - id
+      - last_modified
+      - loan_request
+      - task_category
+      - task_type
+      type: object
+    PaginatedTaskList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          nullable: true
+          type: string
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/Task'
+          type: array
+      required:
+      - count
+      - results
+      type: object
+    ReducedLoanRequest:
+      description: Loan request reduced representation
+      properties:
+        borrower_reference:
+          readOnly: true
+          type: string
+        external_reference:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        internal_reference:
+          readOnly: true
+          type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/Status'
+          readOnly: true
+      required:
+      - borrower_reference
+      - external_reference
+      - id
+      - internal_reference
+      - status
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
+      type: object
+    PatchedTask:
+      properties:
+        assigned_to:
+          $ref: '#/components/schemas/ReducedBaseUser'
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          nullable: true
+          readOnly: true
+        description:
+          type: string
+        due_date:
+          format: date-time
+          nullable: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        loan_request:
+          $ref: '#/components/schemas/ReducedLoanRequest'
+        status:
+          $ref: '#/components/schemas/TaskStatus'
+        task_category:
+          $ref: '#/components/schemas/TaskCategory'
+        task_type:
+          $ref: '#/components/schemas/TaskType'
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

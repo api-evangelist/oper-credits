@@ -1,0 +1,46 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Sso API
+  version: ''
+tags:
+- name: Sso
+paths:
+  /api/sso/mock/profiles/:
+    get:
+      description: List of pre-built profiles, exposed only when the triple-gate passes.
+      operationId: api_sso_mock_profiles_retrieve
+      responses:
+        '200':
+          description: No response body
+      security:
+      - {}
+      tags:
+      - Sso
+  /api/sso/mock/token/:
+    post:
+      description: 'Mint a mock SSO token signed with the dev RSA keypair.
+
+
+        Endpoint is hard-gated: any of `DEBUG=False`, `OPER_ALLOW_SSO_MOCK` env
+
+        var unset, or the `core_sso_mock` feature flag off → 404. When all
+
+        three are on, the returned token is accepted by the real
+
+        KeycloakAuthentication code path because its public key is added to
+
+        the JWK set by `main.authentication.azure_ad.AzureAuthentication.jwk_keys`.'
+      operationId: api_sso_mock_token_create
+      responses:
+        '200':
+          description: No response body
+      security:
+      - {}
+      tags:
+      - Sso
+components:
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

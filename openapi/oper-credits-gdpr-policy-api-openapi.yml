@@ -1,0 +1,60 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Gdpr Policy API
+  version: ''
+tags:
+- name: Gdpr Policy
+paths:
+  /api/gdpr-policy/:
+    get:
+      operationId: api_gdpr_policy_retrieve
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GdprPolicy'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Gdpr Policy
+components:
+  schemas:
+    GdprPolicy:
+      properties:
+        configuration_id:
+          format: uuid
+          type: string
+        content:
+          type: string
+        language:
+          $ref: '#/components/schemas/Language'
+        title:
+          maxLength: 128
+          type: string
+      required:
+      - content
+      - language
+      - title
+      type: object
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

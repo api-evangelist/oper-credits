@@ -1,0 +1,222 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Sign In API
+  version: ''
+tags:
+- name: Sign In
+paths:
+  /api/sign-in/activate/:
+    post:
+      description: 'This View will request a OTP for a user.
+
+        If no authy account exists yet, it will also create an Authy account'
+      operationId: api_sign_in_activate_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignInActivate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignInActivate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignInActivate'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignInActivate'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Sign In
+  /api/sign-in/otp/:
+    post:
+      description: 'Takes a set of user credentials and returns an access and refresh JSON web
+
+        token pair to prove the authentication of those credentials.'
+      operationId: api_sign_in_otp_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignInOtp'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignInOtp'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignInOtp'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignInOtp'
+          description: ''
+      security:
+      - {}
+      tags:
+      - Sign In
+  /api/sign-in/reset-password/:
+    post:
+      description: 'API view to actually change the password of the user.
+
+        Only post is allowed.
+
+        Security is checked by comparing the JWT secret with the current hashed password of the user.'
+      operationId: api_sign_in_reset_password_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignInResetPassword'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SignInResetPassword'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SignInResetPassword'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignInResetPassword'
+          description: ''
+      tags:
+      - Sign In
+  /api/sign-in/verify/:
+    post:
+      description: 'This View will request a OTP for a user.
+
+        If no authy account exists yet, it will also create an Authy account'
+      operationId: api_sign_in_verify_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RoleTokenObtainPairOtp'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/RoleTokenObtainPairOtp'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RoleTokenObtainPairOtp'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RoleTokenObtainPairOtp'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Sign In
+components:
+  schemas:
+    RoleTokenObtainPairOtp:
+      properties:
+        code:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - code
+      - token
+      type: object
+    SignInResetPassword:
+      description: 'This serializer will update the password to a new password if:
+
+        * They match
+
+        * The token is verified in regards to expiration date, signing code and user id
+
+        * The password is strong enough'
+      properties:
+        bank_release_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        contact_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        gdpr_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        new_password_one:
+          maxLength: 128
+          type: string
+          writeOnly: true
+        new_password_two:
+          maxLength: 128
+          type: string
+          writeOnly: true
+        privacy_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        terms_and_conditions_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - new_password_one
+      - new_password_two
+      - token
+      type: object
+    SignInActivate:
+      description: 'Serializer to create a verified user.
+
+        This will return a request for a OTP'
+      properties:
+        cell_phone:
+          readOnly: true
+          type: string
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - cell_phone
+      - token
+      type: object
+    SignInOtp:
+      properties:
+        access:
+          readOnly: true
+          type: string
+        password:
+          type: string
+          writeOnly: true
+        refresh:
+          readOnly: true
+          type: string
+        username:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - password
+      - refresh
+      - username
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

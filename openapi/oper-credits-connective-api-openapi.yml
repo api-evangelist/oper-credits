@@ -1,0 +1,33 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Connective API
+  version: ''
+tags:
+- name: Connective
+paths:
+  /api/connective/auth-id/:
+    get:
+      operationId: api_connective_auth_id_retrieve
+      responses:
+        '200':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Connective
+  /api/connective/login-url/:
+    get:
+      operationId: api_connective_login_url_retrieve
+      responses:
+        '200':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Connective
+components:
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

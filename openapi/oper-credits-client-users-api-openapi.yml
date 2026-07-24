@@ -1,0 +1,261 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Client Users API
+  version: ''
+tags:
+- name: Client Users
+paths:
+  /api/client-users/:
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_client_users_list
+      parameters:
+      - description: A page number within the paginated result set.
+        in: query
+        name: page
+        required: false
+        schema:
+          type: integer
+      - description: Number of results to return per page.
+        in: query
+        name: page_size
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedReducedBaseUserList'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Client Users
+    post:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_client_users_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClientUser'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientUser'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Client Users
+  /api/client-users/{id}/:
+    delete:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_client_users_destroy
+      parameters:
+      - description: A unique integer value identifying this Client User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Client Users
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_client_users_retrieve
+      parameters:
+      - description: A unique integer value identifying this Client User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReducedBaseUser'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Client Users
+components:
+  schemas:
+    ContactType:
+      description: Can be managed at /resources/contact-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PaginatedReducedBaseUserList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          nullable: true
+          type: string
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          nullable: true
+          type: string
+        results:
+          items:
+            $ref: '#/components/schemas/ReducedBaseUser'
+          type: array
+      required:
+      - count
+      - results
+      type: object
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
+      type: object
+    ClientUser:
+      properties:
+        email:
+          type: string
+        first_name:
+          default: ''
+          type: string
+          writeOnly: true
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+          nullable: true
+        last_name:
+          default: ''
+          type: string
+          writeOnly: true
+        phone_number:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Phone'
+          writeOnly: true
+      required:
+      - email
+      - phone_number
+      type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

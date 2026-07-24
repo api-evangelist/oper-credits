@@ -1,0 +1,290 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents User Management API
+  version: ''
+tags:
+- name: User Management
+paths:
+  /api/user-management/application-users/:
+    get:
+      description: Manage Application User by API
+      operationId: api_user_management_application_users_list
+      parameters:
+      - in: query
+        name: email
+        schema:
+          format: email
+          title: Email address
+          type: string
+      - in: query
+        name: is_active
+        schema:
+          type: boolean
+      - in: query
+        name: is_staff
+        schema:
+          type: boolean
+      - in: query
+        name: is_superuser
+        schema:
+          type: boolean
+      - in: query
+        name: verified
+        schema:
+          type: boolean
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ApplicationUser'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - User Management
+    post:
+      description: Manage Application User by API
+      operationId: api_user_management_application_users_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ApplicationUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ApplicationUser'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationUser'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - User Management
+  /api/user-management/application-users/{id}/:
+    delete:
+      description: Manage Application User by API
+      operationId: api_user_management_application_users_destroy
+      parameters:
+      - description: A unique integer value identifying this Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - User Management
+    get:
+      description: Manage Application User by API
+      operationId: api_user_management_application_users_retrieve
+      parameters:
+      - description: A unique integer value identifying this Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationUser'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - User Management
+    patch:
+      description: Manage Application User by API
+      operationId: api_user_management_application_users_partial_update
+      parameters:
+      - description: A unique integer value identifying this Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationUser'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationUser'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - User Management
+    put:
+      description: Manage Application User by API
+      operationId: api_user_management_application_users_update
+      parameters:
+      - description: A unique integer value identifying this Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ApplicationUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ApplicationUser'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationUser'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - User Management
+  /api/user-management/application-users/{id}/activate-super-admin/:
+    patch:
+      description: Manage Application User by API
+      operationId: api_user_management_application_users_activate_super_admin_partial_update
+      parameters:
+      - description: A unique integer value identifying this Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationUser'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationUser'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - User Management
+  /api/user-management/application-users/{id}/deactivate-super-admin/:
+    patch:
+      description: Manage Application User by API
+      operationId: api_user_management_application_users_deactivate_super_admin_partial_update
+      parameters:
+      - description: A unique integer value identifying this Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationUser'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationUser'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - User Management
+components:
+  schemas:
+    ApplicationUser:
+      properties:
+        email:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        is_staff:
+          type: boolean
+          writeOnly: true
+        is_superuser:
+          type: boolean
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - email
+      - id
+      - is_staff
+      - is_superuser
+      - password
+      type: object
+    PatchedApplicationUser:
+      properties:
+        email:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        is_staff:
+          type: boolean
+          writeOnly: true
+        is_superuser:
+          type: boolean
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

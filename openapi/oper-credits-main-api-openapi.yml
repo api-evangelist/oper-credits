@@ -1,0 +1,2972 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Main API
+  version: ''
+tags:
+- name: Main
+paths:
+  /api/main/addresses/:
+    get:
+      operationId: api_main_addresses_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AddressAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_addresses_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AddressAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AddressAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/addresses/{id}/:
+    delete:
+      operationId: api_main_addresses_destroy
+      parameters:
+      - description: A unique integer value identifying this Address.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_addresses_retrieve
+      parameters:
+      - description: A unique integer value identifying this Address.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_addresses_partial_update
+      parameters:
+      - description: A unique integer value identifying this Address.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAddressAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAddressAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAddressAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_addresses_update
+      parameters:
+      - description: A unique integer value identifying this Address.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddressAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AddressAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AddressAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/application-users/:
+    get:
+      operationId: api_main_application_users_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ApplicationUserCrud'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_application_users_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationUserCrud'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ApplicationUserCrud'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ApplicationUserCrud'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationUserCrud'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/application-users/{id}/:
+    delete:
+      operationId: api_main_application_users_destroy
+      parameters:
+      - description: A unique integer value identifying this Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_application_users_retrieve
+      parameters:
+      - description: A unique integer value identifying this Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationUserCrud'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_application_users_partial_update
+      parameters:
+      - description: A unique integer value identifying this Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationUserCrud'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationUserCrud'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedApplicationUserCrud'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationUserCrud'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_application_users_update
+      parameters:
+      - description: A unique integer value identifying this Application User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ApplicationUserCrud'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ApplicationUserCrud'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ApplicationUserCrud'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApplicationUserCrud'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/bank-branches/:
+    post:
+      operationId: api_main_bank_branches_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankBranchAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BankBranchAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BankBranchAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankBranchAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/bank-branches/{id}/:
+    patch:
+      operationId: api_main_bank_branches_partial_update
+      parameters:
+      - description: A unique integer value identifying this Bank Branch.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBankBranchAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBankBranchAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBankBranchAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankBranchAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_bank_branches_update
+      parameters:
+      - description: A unique integer value identifying this Bank Branch.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BankBranchAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BankBranchAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BankBranchAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BankBranchAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/base-users/:
+    get:
+      operationId: api_main_base_users_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BaseUserCrud'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_base_users_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BaseUserCrud'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BaseUserCrud'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BaseUserCrud'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseUserCrud'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/base-users/{id}/:
+    delete:
+      operationId: api_main_base_users_destroy
+      parameters:
+      - description: A unique integer value identifying this Base User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_base_users_retrieve
+      parameters:
+      - description: A unique integer value identifying this Base User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseUserCrud'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_base_users_partial_update
+      parameters:
+      - description: A unique integer value identifying this Base User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBaseUserCrud'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBaseUserCrud'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBaseUserCrud'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseUserCrud'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_base_users_update
+      parameters:
+      - description: A unique integer value identifying this Base User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BaseUserCrud'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BaseUserCrud'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BaseUserCrud'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseUserCrud'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/client-users/:
+    get:
+      operationId: api_main_client_users_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ClientUserCrud'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_client_users_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientUserCrud'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientUserCrud'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClientUserCrud'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientUserCrud'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/client-users/{id}/:
+    delete:
+      operationId: api_main_client_users_destroy
+      parameters:
+      - description: A unique integer value identifying this Client User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_client_users_retrieve
+      parameters:
+      - description: A unique integer value identifying this Client User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientUserCrud'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_client_users_partial_update
+      parameters:
+      - description: A unique integer value identifying this Client User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedClientUserCrud'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedClientUserCrud'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedClientUserCrud'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientUserCrud'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_client_users_update
+      parameters:
+      - description: A unique integer value identifying this Client User.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ClientUserCrud'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ClientUserCrud'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ClientUserCrud'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClientUserCrud'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/content-types/:
+    get:
+      operationId: api_main_content_types_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/ContentTypeAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/content-types/{id}/:
+    get:
+      operationId: api_main_content_types_retrieve
+      parameters:
+      - description: A unique integer value identifying this content type.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentTypeAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/emails/:
+    get:
+      operationId: api_main_emails_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/EmailAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_emails_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmailAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmailAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/emails/{id}/:
+    delete:
+      operationId: api_main_emails_destroy
+      parameters:
+      - description: A unique integer value identifying this Email Address.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_emails_retrieve
+      parameters:
+      - description: A unique integer value identifying this Email Address.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_emails_partial_update
+      parameters:
+      - description: A unique integer value identifying this Email Address.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedEmailAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedEmailAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedEmailAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_emails_update
+      parameters:
+      - description: A unique integer value identifying this Email Address.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/EmailAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/EmailAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/groups/:
+    get:
+      operationId: api_main_groups_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/GroupAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_groups_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GroupAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GroupAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/groups/{id}/:
+    delete:
+      operationId: api_main_groups_destroy
+      parameters:
+      - description: A unique integer value identifying this group.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_groups_retrieve
+      parameters:
+      - description: A unique integer value identifying this group.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_groups_partial_update
+      parameters:
+      - description: A unique integer value identifying this group.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedGroupAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_groups_update
+      parameters:
+      - description: A unique integer value identifying this group.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GroupAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GroupAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GroupAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GroupAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/permissions/:
+    get:
+      operationId: api_main_permissions_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PermissionAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_permissions_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermissionAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PermissionAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PermissionAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/permissions/{id}/:
+    delete:
+      operationId: api_main_permissions_destroy
+      parameters:
+      - description: A unique integer value identifying this permission.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_permissions_retrieve
+      parameters:
+      - description: A unique integer value identifying this permission.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_permissions_partial_update
+      parameters:
+      - description: A unique integer value identifying this permission.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPermissionAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPermissionAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPermissionAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_permissions_update
+      parameters:
+      - description: A unique integer value identifying this permission.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PermissionAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PermissionAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PermissionAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PermissionAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/phones/:
+    get:
+      operationId: api_main_phones_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PhoneAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_phones_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhoneAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PhoneAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PhoneAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhoneAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/phones/{id}/:
+    delete:
+      operationId: api_main_phones_destroy
+      parameters:
+      - description: A unique integer value identifying this Phone Number.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_phones_retrieve
+      parameters:
+      - description: A unique integer value identifying this Phone Number.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhoneAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_phones_partial_update
+      parameters:
+      - description: A unique integer value identifying this Phone Number.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPhoneAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPhoneAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPhoneAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhoneAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_phones_update
+      parameters:
+      - description: A unique integer value identifying this Phone Number.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhoneAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PhoneAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PhoneAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PhoneAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/profile-addresses/:
+    get:
+      operationId: api_main_profile_addresses_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Profile2AddressAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_profile_addresses_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile2AddressAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Profile2AddressAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Profile2AddressAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile2AddressAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/profile-addresses/{id}/:
+    delete:
+      operationId: api_main_profile_addresses_destroy
+      parameters:
+      - description: A unique integer value identifying this Profile to Address.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_profile_addresses_retrieve
+      parameters:
+      - description: A unique integer value identifying this Profile to Address.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile2AddressAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_profile_addresses_partial_update
+      parameters:
+      - description: A unique integer value identifying this Profile to Address.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProfile2AddressAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProfile2AddressAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProfile2AddressAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile2AddressAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_profile_addresses_update
+      parameters:
+      - description: A unique integer value identifying this Profile to Address.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile2AddressAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Profile2AddressAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Profile2AddressAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile2AddressAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/profile-emails/:
+    get:
+      operationId: api_main_profile_emails_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Profile2EmailAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_profile_emails_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile2EmailAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Profile2EmailAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Profile2EmailAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile2EmailAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/profile-emails/{id}/:
+    delete:
+      operationId: api_main_profile_emails_destroy
+      parameters:
+      - description: A unique integer value identifying this Profile to Email.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_profile_emails_retrieve
+      parameters:
+      - description: A unique integer value identifying this Profile to Email.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile2EmailAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_profile_emails_partial_update
+      parameters:
+      - description: A unique integer value identifying this Profile to Email.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProfile2EmailAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProfile2EmailAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProfile2EmailAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile2EmailAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_profile_emails_update
+      parameters:
+      - description: A unique integer value identifying this Profile to Email.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile2EmailAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Profile2EmailAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Profile2EmailAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile2EmailAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/profile-phones/:
+    get:
+      operationId: api_main_profile_phones_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Profile2PhoneAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_profile_phones_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile2PhoneAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Profile2PhoneAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Profile2PhoneAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile2PhoneAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/profile-phones/{id}/:
+    delete:
+      operationId: api_main_profile_phones_destroy
+      parameters:
+      - description: A unique integer value identifying this Profile to Phone.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_profile_phones_retrieve
+      parameters:
+      - description: A unique integer value identifying this Profile to Phone.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile2PhoneAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_profile_phones_partial_update
+      parameters:
+      - description: A unique integer value identifying this Profile to Phone.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProfile2PhoneAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProfile2PhoneAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProfile2PhoneAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile2PhoneAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_profile_phones_update
+      parameters:
+      - description: A unique integer value identifying this Profile to Phone.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile2PhoneAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Profile2PhoneAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Profile2PhoneAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile2PhoneAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/user-credit-providers/:
+    get:
+      operationId: api_main_user_credit_providers_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/User2CreditProviderAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_user_credit_providers_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User2CreditProviderAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User2CreditProviderAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User2CreditProviderAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User2CreditProviderAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/user-credit-providers/{id}/:
+    delete:
+      operationId: api_main_user_credit_providers_destroy
+      parameters:
+      - description: A unique integer value identifying this User to Credit Provider.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_user_credit_providers_retrieve
+      parameters:
+      - description: A unique integer value identifying this User to Credit Provider.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User2CreditProviderAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_user_credit_providers_partial_update
+      parameters:
+      - description: A unique integer value identifying this User to Credit Provider.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser2CreditProviderAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser2CreditProviderAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser2CreditProviderAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User2CreditProviderAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_user_credit_providers_update
+      parameters:
+      - description: A unique integer value identifying this User to Credit Provider.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User2CreditProviderAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User2CreditProviderAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User2CreditProviderAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User2CreditProviderAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/user-profiles/:
+    get:
+      operationId: api_main_user_profiles_list
+      parameters:
+      - in: query
+        name: user
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/UserProfileAuto'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    post:
+      operationId: api_main_user_profiles_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfileAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserProfileAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserProfileAuto'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+  /api/main/user-profiles/{id}/:
+    delete:
+      operationId: api_main_user_profiles_destroy
+      parameters:
+      - description: A unique integer value identifying this User Profile.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    get:
+      operationId: api_main_user_profiles_retrieve
+      parameters:
+      - description: A unique integer value identifying this User Profile.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    patch:
+      operationId: api_main_user_profiles_partial_update
+      parameters:
+      - description: A unique integer value identifying this User Profile.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserProfileAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUserProfileAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUserProfileAuto'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+    put:
+      operationId: api_main_user_profiles_update
+      parameters:
+      - description: A unique integer value identifying this User Profile.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserProfileAuto'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserProfileAuto'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserProfileAuto'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfileAuto'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Main
+components:
+  schemas:
+    PatchedUserProfileAuto:
+      properties:
+        birth_city:
+          maxLength: 128
+          type: string
+        birth_date:
+          format: date
+          nullable: true
+          type: string
+        first_name:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_name:
+          maxLength: 128
+          type: string
+        middle_name:
+          maxLength: 64
+          type: string
+        mother_maiden_name:
+          maxLength: 128
+          type: string
+        oper_reference:
+          format: uuid
+          type: string
+        title:
+          nullable: true
+          type: integer
+        title2:
+          nullable: true
+          type: integer
+        user:
+          type: integer
+      type: object
+    PatchedUser2CreditProviderAuto:
+      properties:
+        bank_id:
+          maxLength: 64
+          type: string
+        credit_provider:
+          nullable: true
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        user:
+          type: integer
+      type: object
+    PermissionAuto:
+      properties:
+        codename:
+          maxLength: 100
+          type: string
+        content_type:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 255
+          type: string
+      required:
+      - codename
+      - content_type
+      - id
+      - name
+      type: object
+    Profile2PhoneAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        is_secret:
+          type: boolean
+        phone_number:
+          type: integer
+        phone_type:
+          type: integer
+        profile:
+          type: integer
+      required:
+      - id
+      - phone_number
+      - phone_type
+      - profile
+      type: object
+    PatchedAddressAuto:
+      properties:
+        box:
+          maxLength: 64
+          type: string
+        building:
+          default: ''
+          maxLength: 64
+          type: string
+        city:
+          maxLength: 64
+          type: string
+        country:
+          nullable: true
+          type: integer
+        floor:
+          maxLength: 64
+          type: string
+        heading:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        house_number:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        latitude:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        longitude:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        pitch:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        staircase:
+          default: ''
+          maxLength: 64
+          type: string
+        street:
+          maxLength: 64
+          type: string
+        street_type:
+          nullable: true
+          type: integer
+        zip_code:
+          maxLength: 8
+          type: string
+        zoom:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+      type: object
+    PatchedPhoneAuto:
+      properties:
+        country_code:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        value:
+          maxLength: 32
+          type: string
+      type: object
+    PatchedGroupAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 150
+          type: string
+        permissions:
+          items:
+            type: integer
+          type: array
+      type: object
+    PatchedProfile2EmailAuto:
+      properties:
+        email:
+          type: integer
+        email_type:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        profile:
+          type: integer
+      type: object
+    ClientUserCrud:
+      properties:
+        away_until:
+          format: date
+          nullable: true
+          type: string
+        date_joined:
+          format: date-time
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        enrichment_status:
+          nullable: true
+          type: integer
+        enrichment_status_updated_at:
+          format: date-time
+          nullable: true
+          type: string
+        external_id:
+          maxLength: 64
+          type: string
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          items:
+            type: integer
+          type: array
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        is_available:
+          type: boolean
+        is_staff:
+          description: Designates whether the user can log into this admin site.
+          title: Staff status
+          type: boolean
+        is_superuser:
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser status
+          type: boolean
+        last_language:
+          type: integer
+        last_login:
+          format: date-time
+          nullable: true
+          type: string
+        oper_reference:
+          format: uuid
+          type: string
+        password:
+          type: string
+          writeOnly: true
+        preferred_language:
+          type: integer
+        role:
+          type: integer
+        updated_password_at:
+          format: date-time
+          nullable: true
+          type: string
+        user_permissions:
+          description: Specific permissions for this user.
+          items:
+            type: integer
+          type: array
+        verified:
+          type: boolean
+      required:
+      - email
+      - id
+      - last_language
+      - preferred_language
+      - role
+      type: object
+    PatchedBankBranchAuto:
+      properties:
+        configuration_id:
+          format: uuid
+          type: string
+        definition:
+          maxLength: 128
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        order:
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          type: integer
+      type: object
+    BankBranchAuto:
+      properties:
+        configuration_id:
+          format: uuid
+          type: string
+        definition:
+          maxLength: 128
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        order:
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          type: integer
+      required:
+      - definition
+      - id
+      type: object
+    AddressAuto:
+      properties:
+        box:
+          maxLength: 64
+          type: string
+        building:
+          default: ''
+          maxLength: 64
+          type: string
+        city:
+          maxLength: 64
+          type: string
+        country:
+          nullable: true
+          type: integer
+        floor:
+          maxLength: 64
+          type: string
+        heading:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        house_number:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        latitude:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        longitude:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        pitch:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+        staircase:
+          default: ''
+          maxLength: 64
+          type: string
+        street:
+          maxLength: 64
+          type: string
+        street_type:
+          nullable: true
+          type: integer
+        zip_code:
+          maxLength: 8
+          type: string
+        zoom:
+          exclusiveMaximum: true
+          exclusiveMinimum: true
+          format: double
+          maximum: 100000
+          minimum: -100000
+          nullable: true
+          type: number
+      required:
+      - box
+      - city
+      - floor
+      - house_number
+      - id
+      - street
+      - zip_code
+      type: object
+    UserProfileAuto:
+      properties:
+        birth_city:
+          maxLength: 128
+          type: string
+        birth_date:
+          format: date
+          nullable: true
+          type: string
+        first_name:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_name:
+          maxLength: 128
+          type: string
+        middle_name:
+          maxLength: 64
+          type: string
+        mother_maiden_name:
+          maxLength: 128
+          type: string
+        oper_reference:
+          format: uuid
+          type: string
+        title:
+          nullable: true
+          type: integer
+        title2:
+          nullable: true
+          type: integer
+        user:
+          type: integer
+      required:
+      - id
+      - user
+      type: object
+    EmailAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        value:
+          format: email
+          maxLength: 254
+          type: string
+      required:
+      - id
+      - value
+      type: object
+    User2CreditProviderAuto:
+      properties:
+        bank_id:
+          maxLength: 64
+          type: string
+        credit_provider:
+          nullable: true
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        user:
+          type: integer
+      required:
+      - bank_id
+      - id
+      - user
+      type: object
+    PatchedClientUserCrud:
+      properties:
+        away_until:
+          format: date
+          nullable: true
+          type: string
+        date_joined:
+          format: date-time
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        enrichment_status:
+          nullable: true
+          type: integer
+        enrichment_status_updated_at:
+          format: date-time
+          nullable: true
+          type: string
+        external_id:
+          maxLength: 64
+          type: string
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          items:
+            type: integer
+          type: array
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        is_available:
+          type: boolean
+        is_staff:
+          description: Designates whether the user can log into this admin site.
+          title: Staff status
+          type: boolean
+        is_superuser:
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser status
+          type: boolean
+        last_language:
+          type: integer
+        last_login:
+          format: date-time
+          nullable: true
+          type: string
+        oper_reference:
+          format: uuid
+          type: string
+        password:
+          type: string
+          writeOnly: true
+        preferred_language:
+          type: integer
+        role:
+          type: integer
+        updated_password_at:
+          format: date-time
+          nullable: true
+          type: string
+        user_permissions:
+          description: Specific permissions for this user.
+          items:
+            type: integer
+          type: array
+        verified:
+          type: boolean
+      type: object
+    ContentTypeAuto:
+      properties:
+        app_label:
+          maxLength: 100
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        model:
+          maxLength: 100
+          title: Python model class name
+          type: string
+      required:
+      - app_label
+      - id
+      - model
+      type: object
+    GroupAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 150
+          type: string
+        permissions:
+          items:
+            type: integer
+          type: array
+      required:
+      - id
+      - name
+      type: object
+    PatchedApplicationUserCrud:
+      properties:
+        away_until:
+          format: date
+          nullable: true
+          type: string
+        date_joined:
+          format: date-time
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        email_task_subscription:
+          type: boolean
+        enrichment_status:
+          nullable: true
+          type: integer
+        enrichment_status_updated_at:
+          format: date-time
+          nullable: true
+          type: string
+        external_id:
+          maxLength: 64
+          type: string
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          items:
+            type: integer
+          type: array
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        is_available:
+          type: boolean
+        is_staff:
+          description: Designates whether the user can log into this admin site.
+          title: Staff status
+          type: boolean
+        is_superuser:
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser status
+          type: boolean
+        last_language:
+          type: integer
+        last_login:
+          format: date-time
+          nullable: true
+          type: string
+        oper_reference:
+          format: uuid
+          type: string
+        password:
+          type: string
+          writeOnly: true
+        preferred_language:
+          type: integer
+        role:
+          type: integer
+        updated_password_at:
+          format: date-time
+          nullable: true
+          type: string
+        user_permissions:
+          description: Specific permissions for this user.
+          items:
+            type: integer
+          type: array
+        verified:
+          type: boolean
+      type: object
+    PatchedBaseUserCrud:
+      properties:
+        away_until:
+          format: date
+          nullable: true
+          type: string
+        date_joined:
+          format: date-time
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        enrichment_status:
+          nullable: true
+          type: integer
+        enrichment_status_updated_at:
+          format: date-time
+          nullable: true
+          type: string
+        external_id:
+          maxLength: 64
+          type: string
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          items:
+            type: integer
+          type: array
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        is_available:
+          type: boolean
+        is_staff:
+          description: Designates whether the user can log into this admin site.
+          title: Staff status
+          type: boolean
+        is_superuser:
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser status
+          type: boolean
+        last_language:
+          type: integer
+        last_login:
+          format: date-time
+          nullable: true
+          type: string
+        oper_reference:
+          format: uuid
+          type: string
+        password:
+          type: string
+          writeOnly: true
+        preferred_language:
+          type: integer
+        role:
+          type: integer
+        updated_password_at:
+          format: date-time
+          nullable: true
+          type: string
+        user_permissions:
+          description: Specific permissions for this user.
+          items:
+            type: integer
+          type: array
+        verified:
+          type: boolean
+      type: object
+    PhoneAuto:
+      properties:
+        country_code:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        value:
+          maxLength: 32
+          type: string
+      required:
+      - country_code
+      - id
+      - value
+      type: object
+    PatchedProfile2AddressAuto:
+      properties:
+        address:
+          type: integer
+        address_type:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        profile:
+          type: integer
+      type: object
+    PatchedEmailAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        value:
+          format: email
+          maxLength: 254
+          type: string
+      type: object
+    Profile2EmailAuto:
+      properties:
+        email:
+          type: integer
+        email_type:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        profile:
+          type: integer
+      required:
+      - email
+      - email_type
+      - id
+      - profile
+      type: object
+    BaseUserCrud:
+      properties:
+        away_until:
+          format: date
+          nullable: true
+          type: string
+        date_joined:
+          format: date-time
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        enrichment_status:
+          nullable: true
+          type: integer
+        enrichment_status_updated_at:
+          format: date-time
+          nullable: true
+          type: string
+        external_id:
+          maxLength: 64
+          type: string
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          items:
+            type: integer
+          type: array
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        is_available:
+          type: boolean
+        is_staff:
+          description: Designates whether the user can log into this admin site.
+          title: Staff status
+          type: boolean
+        is_superuser:
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser status
+          type: boolean
+        last_language:
+          type: integer
+        last_login:
+          format: date-time
+          nullable: true
+          type: string
+        oper_reference:
+          format: uuid
+          type: string
+        password:
+          type: string
+          writeOnly: true
+        preferred_language:
+          type: integer
+        role:
+          type: integer
+        updated_password_at:
+          format: date-time
+          nullable: true
+          type: string
+        user_permissions:
+          description: Specific permissions for this user.
+          items:
+            type: integer
+          type: array
+        verified:
+          type: boolean
+      required:
+      - email
+      - id
+      - last_language
+      - preferred_language
+      - role
+      type: object
+    PatchedProfile2PhoneAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        is_secret:
+          type: boolean
+        phone_number:
+          type: integer
+        phone_type:
+          type: integer
+        profile:
+          type: integer
+      type: object
+    PatchedPermissionAuto:
+      properties:
+        codename:
+          maxLength: 100
+          type: string
+        content_type:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 255
+          type: string
+      type: object
+    Profile2AddressAuto:
+      properties:
+        address:
+          type: integer
+        address_type:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        profile:
+          type: integer
+      required:
+      - address
+      - address_type
+      - id
+      - profile
+      type: object
+    ApplicationUserCrud:
+      properties:
+        away_until:
+          format: date
+          nullable: true
+          type: string
+        date_joined:
+          format: date-time
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        email_task_subscription:
+          type: boolean
+        enrichment_status:
+          nullable: true
+          type: integer
+        enrichment_status_updated_at:
+          format: date-time
+          nullable: true
+          type: string
+        external_id:
+          maxLength: 64
+          type: string
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          items:
+            type: integer
+          type: array
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        is_available:
+          type: boolean
+        is_staff:
+          description: Designates whether the user can log into this admin site.
+          title: Staff status
+          type: boolean
+        is_superuser:
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser status
+          type: boolean
+        last_language:
+          type: integer
+        last_login:
+          format: date-time
+          nullable: true
+          type: string
+        oper_reference:
+          format: uuid
+          type: string
+        password:
+          type: string
+          writeOnly: true
+        preferred_language:
+          type: integer
+        role:
+          type: integer
+        updated_password_at:
+          format: date-time
+          nullable: true
+          type: string
+        user_permissions:
+          description: Specific permissions for this user.
+          items:
+            type: integer
+          type: array
+        verified:
+          type: boolean
+      required:
+      - email
+      - id
+      - last_language
+      - preferred_language
+      - role
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

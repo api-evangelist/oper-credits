@@ -1,0 +1,443 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Calculate API
+  version: ''
+tags:
+- name: Calculate
+paths:
+  /api/calculate/baby-loan/:
+    post:
+      operationId: api_calculate_baby_loan_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculateBabyLoan'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CalculateBabyLoan'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CalculateBabyLoan'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculateBabyLoan'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Calculate
+  /api/calculate/credit-theoretical-amortization/:
+    post:
+      operationId: api_calculate_credit_theoretical_amortization_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculateCreditTheoreticalAmortization'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CalculateCreditTheoreticalAmortization'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CalculateCreditTheoreticalAmortization'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculateCreditTheoreticalAmortization'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Calculate
+  /api/calculate/credit/:
+    post:
+      operationId: api_calculate_credit_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SharedCalculateAmortization'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SharedCalculateAmortization'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SharedCalculateAmortization'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SharedCalculateAmortization'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Calculate
+  /api/calculate/csok-cash/:
+    post:
+      operationId: api_calculate_csok_cash_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculateCsokCash'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CalculateCsokCash'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CalculateCsokCash'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculateCsokCash'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Calculate
+  /api/calculate/csok-mortgage/:
+    post:
+      operationId: api_calculate_csok_mortgage_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculateCsokMortgage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CalculateCsokMortgage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CalculateCsokMortgage'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculateCsokMortgage'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Calculate
+  /api/calculate/village-csok-cash/:
+    post:
+      operationId: api_calculate_village_csok_cash_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculateVillageCsokCash'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CalculateVillageCsokCash'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CalculateVillageCsokCash'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculateVillageCsokCash'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Calculate
+  /api/calculate/village-csok-mortgage/:
+    post:
+      operationId: api_calculate_village_csok_mortgage_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculateVillageCsokMortgage'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CalculateVillageCsokMortgage'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CalculateVillageCsokMortgage'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculateVillageCsokMortgage'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Calculate
+components:
+  schemas:
+    CalculateCreditTheoreticalAmortization:
+      properties:
+        input:
+          $ref: '#/components/schemas/CalculateCreditTheoreticalAmortizationSerializerInput'
+        output:
+          properties:
+            amortization:
+              format: double
+              type: number
+            theoretical_interest_rate:
+              format: double
+              type: number
+          readOnly: true
+          required:
+          - amortization
+          - theoretical_interest_rate
+          type: object
+      required:
+      - input
+      - output
+      type: object
+    CalculateMaxAmountInputAbstract:
+      properties:
+        client:
+          $ref: '#/components/schemas/ReducedClient'
+        realty:
+          $ref: '#/components/schemas/ReducedRealty'
+      type: object
+    ReducedRealty:
+      properties:
+        purposes:
+          items:
+            $ref: '#/components/schemas/RealtyPurpose'
+          type: array
+        realty_type:
+          $ref: '#/components/schemas/RealtyType'
+        surface:
+          format: double
+          type: number
+      type: object
+    CalculateVillageCsokCash:
+      properties:
+        input:
+          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
+        output:
+          additionalProperties:
+            format: double
+            type: number
+          readOnly: true
+          type: object
+      required:
+      - input
+      - output
+      type: object
+    LiabilityType:
+      description: Can be managed at /resources/liability-type
+      properties:
+        category:
+          readOnly: true
+          type: string
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        is_mandatory:
+          type: boolean
+        is_mandatory_in_simulation:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - category
+      - color
+      - definition
+      - id
+      - order
+      type: object
+    RealtyPurpose:
+      description: Can be managed at /resources/realty-purpose
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RealtyType:
+      description: Can be managed at /resources/realty-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LoanType:
+      description: Can be managed at /resources/loan-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        is_grace_period_supported:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedClient:
+      properties:
+        dependent_children:
+          type: integer
+        planned_children:
+          type: integer
+      type: object
+    CalculateCsokMortgage:
+      properties:
+        input:
+          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
+        output:
+          readOnly: true
+          type: string
+      required:
+      - input
+      - output
+      type: object
+    CalculateVillageCsokMortgage:
+      properties:
+        input:
+          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
+        output:
+          additionalProperties:
+            format: double
+            type: number
+          readOnly: true
+          type: object
+      required:
+      - input
+      - output
+      type: object
+    CalculateCreditTheoreticalAmortizationSerializerInput:
+      properties:
+        initial_amount:
+          format: double
+          type: number
+        liability_type:
+          $ref: '#/components/schemas/LiabilityType'
+      required:
+      - initial_amount
+      - liability_type
+      type: object
+    CalculateCsokCash:
+      properties:
+        input:
+          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
+        output:
+          readOnly: true
+          type: string
+      required:
+      - input
+      - output
+      type: object
+    CalculateBabyLoan:
+      properties:
+        input:
+          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
+        output:
+          readOnly: true
+          type: string
+      required:
+      - input
+      - output
+      type: object
+    SharedCalculateAmortization:
+      description: Serializer for the general calculate amortization API
+      properties:
+        amortization:
+          format: double
+          minimum: 1
+          type: number
+        amount:
+          format: double
+          minimum: 0
+          type: number
+        balance:
+          format: double
+          readOnly: true
+          type: number
+        duration:
+          maximum: 420
+          minimum: 1
+          type: integer
+        early_repayment_fee:
+          format: double
+          nullable: true
+          readOnly: true
+          type: number
+        end_amount:
+          format: double
+          readOnly: true
+          type: number
+        handling_costs:
+          format: double
+          nullable: true
+          readOnly: true
+          type: number
+        interest_rate:
+          format: double
+          minimum: 0
+          type: number
+        liability_type:
+          $ref: '#/components/schemas/LiabilityType'
+        loan_type:
+          $ref: '#/components/schemas/LoanType'
+        start_date:
+          format: date
+          type: string
+      required:
+      - amount
+      - balance
+      - duration
+      - early_repayment_fee
+      - end_amount
+      - handling_costs
+      - liability_type
+      - loan_type
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

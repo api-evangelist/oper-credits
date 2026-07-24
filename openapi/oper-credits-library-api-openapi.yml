@@ -1,0 +1,141 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Library API
+  version: ''
+tags:
+- name: Library
+paths:
+  /api/library/documents/:
+    get:
+      operationId: api_library_documents_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/LibraryDocument'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Library
+  /api/library/documents/{id}/:
+    get:
+      operationId: api_library_documents_retrieve
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LibraryDocument'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Library
+components:
+  schemas:
+    LibraryDocument:
+      properties:
+        category:
+          $ref: '#/components/schemas/LibraryCategory'
+        context:
+          type: string
+        document:
+          $ref: '#/components/schemas/NestedSignedDocument'
+        language:
+          $ref: '#/components/schemas/Language'
+      required:
+      - category
+      - context
+      - document
+      - language
+      type: object
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    NestedSignedDocument:
+      properties:
+        document_type:
+          allOf:
+          - $ref: '#/components/schemas/DocumentType'
+          readOnly: true
+        mime_type:
+          readOnly: true
+          type: string
+        url:
+          readOnly: true
+          type: string
+      required:
+      - document_type
+      - mime_type
+      - url
+      type: object
+    LibraryCategory:
+      description: Can be managed at /resources/library-category
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DocumentType:
+      description: Can be managed at /resources/document-type
+      properties:
+        add_to_handover_letter:
+          type: boolean
+        allows_generation:
+          type: boolean
+        append_file_version:
+          type: boolean
+        can_be_added_manually_as_informative_document:
+          type: boolean
+        definition:
+          type: string
+        document_generation_configuration: {}
+        id:
+          type: integer
+        is_informative:
+          type: boolean
+        is_proof_to_sign:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

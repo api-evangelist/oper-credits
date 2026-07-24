@@ -1,0 +1,767 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Me API
+  version: ''
+tags:
+- name: Me
+paths:
+  /api/me/:
+    get:
+      operationId: api_me_retrieve
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSelf'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+    patch:
+      operationId: api_me_partial_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUserSelf'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUserSelf'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUserSelf'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSelf'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+    put:
+      operationId: api_me_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserSelf'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UserSelf'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UserSelf'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserSelf'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+  /api/me/activate/:
+    post:
+      description: 'This View will request a OTP for a user.
+
+        If no authy account exists yet, it will also create an Authy account'
+      operationId: api_me_activate_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivateUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ActivateUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ActivateUser'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivateUser'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+  /api/me/credit-providers/:
+    get:
+      operationId: api_me_credit_providers_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/User2CreditProvider'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+    post:
+      operationId: api_me_credit_providers_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User2CreditProvider'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User2CreditProvider'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User2CreditProvider'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User2CreditProvider'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+  /api/me/credit-providers/{id}/:
+    delete:
+      operationId: api_me_credit_providers_destroy
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+    get:
+      operationId: api_me_credit_providers_retrieve
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User2CreditProvider'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+    patch:
+      operationId: api_me_credit_providers_partial_update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser2CreditProvider'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser2CreditProvider'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser2CreditProvider'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User2CreditProvider'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+    put:
+      operationId: api_me_credit_providers_update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User2CreditProvider'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User2CreditProvider'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User2CreditProvider'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User2CreditProvider'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+  /api/me/enrichment-retry/:
+    post:
+      operationId: api_me_enrichment_retry_create
+      responses:
+        '200':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+  /api/me/enrichment-status/:
+    get:
+      operationId: api_me_enrichment_status_retrieve
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EnrichmentStatus'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+  /api/me/permissions/:
+    get:
+      operationId: api_me_permissions_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Permission'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+  /api/me/verify/:
+    post:
+      description: 'This View will request a OTP for a user.
+
+        If no authy account exists yet, it will also create an Authy account'
+      operationId: api_me_verify_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/VerifyUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/VerifyUser'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyUser'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Me
+components:
+  schemas:
+    UserSelf:
+      description: Serializer to update the user himself
+      properties:
+        away_until:
+          format: date
+          nullable: true
+          type: string
+        bank_ids:
+          items:
+            $ref: '#/components/schemas/User2CreditProvider'
+          type: array
+        birth_city:
+          readOnly: true
+          type: string
+        birth_date:
+          format: date
+          readOnly: true
+          type: string
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/MinimalBroker'
+          nullable: true
+        broker_id:
+          readOnly: true
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        enrichment_status:
+          allOf:
+          - $ref: '#/components/schemas/EnrichmentStatus'
+          nullable: true
+          readOnly: true
+        first_name:
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        is_available:
+          type: boolean
+        language:
+          $ref: '#/components/schemas/Language'
+        last_name:
+          readOnly: true
+          type: string
+        middle_name:
+          readOnly: true
+          type: string
+        mobile_phone_number:
+          additionalProperties: {}
+          nullable: true
+          readOnly: true
+          type: object
+        mother_maiden_name:
+          readOnly: true
+          type: string
+        permissions:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          readOnly: true
+          type: array
+        profile_id:
+          readOnly: true
+          type: integer
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        role_groups:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - bank_ids
+      - birth_city
+      - birth_date
+      - broker_id
+      - email
+      - enrichment_status
+      - first_name
+      - full_name
+      - id
+      - language
+      - last_name
+      - middle_name
+      - mobile_phone_number
+      - mother_maiden_name
+      - permissions
+      - phone_numbers
+      - profile_id
+      - role
+      - role_groups
+      - verified
+      type: object
+    EnrichmentStatus:
+      description: Can be managed at /resources/enrichment-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ContactType:
+      description: Can be managed at /resources/contact-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    VerifyUser:
+      description: Serializer to verify a user and provide permissions
+      properties:
+        code:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - code
+      - token
+      type: object
+    PatchedUserSelf:
+      description: Serializer to update the user himself
+      properties:
+        away_until:
+          format: date
+          nullable: true
+          type: string
+        bank_ids:
+          items:
+            $ref: '#/components/schemas/User2CreditProvider'
+          type: array
+        birth_city:
+          readOnly: true
+          type: string
+        birth_date:
+          format: date
+          readOnly: true
+          type: string
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/MinimalBroker'
+          nullable: true
+        broker_id:
+          readOnly: true
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        enrichment_status:
+          allOf:
+          - $ref: '#/components/schemas/EnrichmentStatus'
+          nullable: true
+          readOnly: true
+        first_name:
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        is_available:
+          type: boolean
+        language:
+          $ref: '#/components/schemas/Language'
+        last_name:
+          readOnly: true
+          type: string
+        middle_name:
+          readOnly: true
+          type: string
+        mobile_phone_number:
+          additionalProperties: {}
+          nullable: true
+          readOnly: true
+          type: object
+        mother_maiden_name:
+          readOnly: true
+          type: string
+        permissions:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          readOnly: true
+          type: array
+        profile_id:
+          readOnly: true
+          type: integer
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        role_groups:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        verified:
+          readOnly: true
+          type: boolean
+      type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    PatchedUser2CreditProvider:
+      properties:
+        bank_id:
+          maxLength: 64
+          type: string
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+          nullable: true
+        id:
+          readOnly: true
+          type: integer
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedCreditProvider:
+      description: To be used for a short summary of the CreditProvider
+      properties:
+        active:
+          readOnly: true
+          type: boolean
+        fsma_reference:
+          maxLength: 128
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_liability_provider:
+          readOnly: true
+          type: boolean
+        loan_request_form_documents:
+          readOnly: true
+          type: string
+        logo_url:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        order:
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          readOnly: true
+          type: integer
+      required:
+      - active
+      - fsma_reference
+      - full_name
+      - id
+      - is_liability_provider
+      - loan_request_form_documents
+      - logo_url
+      - name
+      - order
+      type: object
+    User2CreditProvider:
+      properties:
+        bank_id:
+          maxLength: 64
+          type: string
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+          nullable: true
+        id:
+          readOnly: true
+          type: integer
+      required:
+      - bank_id
+      - id
+      type: object
+    CompanyType:
+      description: Can be managed at /resources/company-types
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Permission:
+      properties:
+        app_label:
+          type: string
+        codename:
+          maxLength: 100
+          type: string
+      required:
+      - app_label
+      - codename
+      type: object
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    MinimalBroker:
+      description: Broker minimal representation
+      properties:
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          nullable: true
+          readOnly: true
+        fsma_reference:
+          nullable: true
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - vat_number
+      type: object
+    ActivateUser:
+      description: 'Serializer to create a verified user.
+
+        This will return a request for a OTP'
+      properties:
+        cell_phone:
+          readOnly: true
+          type: string
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - cell_phone
+      - token
+      type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

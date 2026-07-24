@@ -1,0 +1,375 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Documentation Library API
+  version: ''
+tags:
+- name: Documentation Library
+paths:
+  /api/documentation-library/documents/:
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_documentation_library_documents_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Documentation Library
+    post:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_documentation_library_documents_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Documentation Library
+  /api/documentation-library/documents/{id}/:
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_documentation_library_documents_retrieve
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Documentation Library
+    patch:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_documentation_library_documents_partial_update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedDocumentationLibrary.LibraryDocument'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedDocumentationLibrary.LibraryDocument'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedDocumentationLibrary.LibraryDocument'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Documentation Library
+    put:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_documentation_library_documents_update
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Documentation Library
+  /api/documentation-library/documents/{id}/generate-presigned-url-config-panel/:
+    get:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_documentation_library_documents_generate_presigned_url_config_panel_retrieve
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Documentation Library
+  /api/documentation-library/documents/{id}/generate-presigned-url/:
+    post:
+      description: A ViewSet mixin that parametrizes DRF methods over roles
+      operationId: api_documentation_library_documents_generate_presigned_url_create
+      parameters:
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DocumentationLibrary.LibraryDocument'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Documentation Library
+components:
+  schemas:
+    LibraryDocumentType:
+      description: Can be managed at /resources/library-document-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedCreditProvider:
+      description: To be used for a short summary of the CreditProvider
+      properties:
+        active:
+          readOnly: true
+          type: boolean
+        fsma_reference:
+          maxLength: 128
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_liability_provider:
+          readOnly: true
+          type: boolean
+        loan_request_form_documents:
+          readOnly: true
+          type: string
+        logo_url:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        order:
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          readOnly: true
+          type: integer
+      required:
+      - active
+      - fsma_reference
+      - full_name
+      - id
+      - is_liability_provider
+      - loan_request_form_documents
+      - logo_url
+      - name
+      - order
+      type: object
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PatchedDocumentationLibrary.LibraryDocument:
+      properties:
+        active:
+          type: boolean
+        base_products:
+          items:
+            type: integer
+          readOnly: true
+          type: array
+        check_function_configuration: {}
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+          nullable: true
+        custom_font_name:
+          maxLength: 128
+          nullable: true
+          type: string
+        data_merge_strategy:
+          type: string
+        data_override_template:
+          type: string
+        document_generation_configuration: {}
+        document_type:
+          $ref: '#/components/schemas/LibraryDocumentType'
+        file:
+          format: uri
+          type: string
+          writeOnly: true
+        file_name:
+          type: string
+        file_path:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        language:
+          $ref: '#/components/schemas/Language'
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+      type: object
+    DocumentationLibrary.LibraryDocument:
+      properties:
+        active:
+          type: boolean
+        base_products:
+          items:
+            type: integer
+          readOnly: true
+          type: array
+        check_function_configuration: {}
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+          nullable: true
+        custom_font_name:
+          maxLength: 128
+          nullable: true
+          type: string
+        data_merge_strategy:
+          type: string
+        data_override_template:
+          type: string
+        document_generation_configuration: {}
+        document_type:
+          $ref: '#/components/schemas/LibraryDocumentType'
+        file:
+          format: uri
+          type: string
+          writeOnly: true
+        file_name:
+          type: string
+        file_path:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        language:
+          $ref: '#/components/schemas/Language'
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+      required:
+      - base_products
+      - created
+      - document_type
+      - id
+      - language
+      - last_modified
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

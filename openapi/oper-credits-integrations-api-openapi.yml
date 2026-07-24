@@ -1,0 +1,100 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Integrations API
+  version: ''
+tags:
+- name: Integrations
+paths:
+  /api/integrations/allowed-integrators/:
+    get:
+      operationId: api_integrations_allowed_integrators_list
+      parameters:
+      - in: query
+        name: integrator_type
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/Integrator'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Integrations
+  /api/integrations/allowed-integrators/{id}/:
+    get:
+      operationId: api_integrations_allowed_integrators_retrieve
+      parameters:
+      - description: A unique integer value identifying this Integrator.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Integrator'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Integrations
+components:
+  schemas:
+    Integrator:
+      properties:
+        credit_provider:
+          nullable: true
+          type: integer
+        documents_push_email:
+          format: email
+          readOnly: true
+          type: string
+        external_url:
+          format: uri
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        integrator_type:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 128
+          type: string
+        number_of_transfer_rounds:
+          nullable: true
+          readOnly: true
+          type: integer
+        version:
+          default: ''
+          readOnly: true
+          type: string
+        webhook:
+          nullable: true
+          readOnly: true
+          type: integer
+      required:
+      - documents_push_email
+      - external_url
+      - id
+      - integrator_type
+      - name
+      - number_of_transfer_rounds
+      - version
+      - webhook
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

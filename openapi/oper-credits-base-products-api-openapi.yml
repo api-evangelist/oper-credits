@@ -1,0 +1,1245 @@
+openapi: 3.0.3
+info:
+  title: Oper Credits Agent Documents Base Products API
+  version: ''
+tags:
+- name: Base Products
+paths:
+  /api/base-products/:
+    get:
+      operationId: api_base_products_list
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BaseProduct'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+  /api/base-products/whitelisted-brokers/import:
+    post:
+      operationId: api_base_products_whitelisted_brokers_import_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProductWhitelistedBrokerBulkImport'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ProductWhitelistedBrokerBulkImport'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ProductWhitelistedBrokerBulkImport'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProductWhitelistedBrokerBulkImport'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+  /api/base-products/{base_product_id}/allowed-product-variabilities/:
+    get:
+      operationId: api_base_products_allowed_product_variabilities_list
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AllowedProductVariability'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+  /api/base-products/{base_product_id}/allowed-product-variabilities/{id}/:
+    get:
+      operationId: api_base_products_allowed_product_variabilities_retrieve
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - description: A unique integer value identifying this Allowed Product Variability.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllowedProductVariability'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+    patch:
+      operationId: api_base_products_allowed_product_variabilities_partial_update
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - description: A unique integer value identifying this Allowed Product Variability.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAllowedProductVariability'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAllowedProductVariability'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAllowedProductVariability'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllowedProductVariability'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+    put:
+      operationId: api_base_products_allowed_product_variabilities_update
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - description: A unique integer value identifying this Allowed Product Variability.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AllowedProductVariability'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AllowedProductVariability'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AllowedProductVariability'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AllowedProductVariability'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+  /api/base-products/{base_product_id}/pricing-sheets/:
+    get:
+      operationId: api_base_products_pricing_sheets_list
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PricingSheet'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+    post:
+      operationId: api_base_products_pricing_sheets_create
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PricingSheet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PricingSheet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PricingSheet'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricingSheet'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+  /api/base-products/{base_product_id}/pricing-sheets/{id}/:
+    delete:
+      operationId: api_base_products_pricing_sheets_destroy
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - description: A unique integer value identifying this Pricing sheet.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: No response body
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+    get:
+      operationId: api_base_products_pricing_sheets_retrieve
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - description: A unique integer value identifying this Pricing sheet.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricingSheet'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+    patch:
+      operationId: api_base_products_pricing_sheets_partial_update
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - description: A unique integer value identifying this Pricing sheet.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPricingSheet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPricingSheet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPricingSheet'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricingSheet'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+    put:
+      operationId: api_base_products_pricing_sheets_update
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - description: A unique integer value identifying this Pricing sheet.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PricingSheet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PricingSheet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PricingSheet'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricingSheet'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+  /api/base-products/{base_product_id}/pricing-sheets/{id}/bulk-update-base-rates/:
+    patch:
+      operationId: api_base_products_pricing_sheets_bulk_update_base_rates_partial_update
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - description: A unique integer value identifying this Pricing sheet.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPricingSheet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPricingSheet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPricingSheet'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricingSheet'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+  /api/base-products/{base_product_id}/pricing-sheets/{id}/bulk-update-discounts/:
+    patch:
+      operationId: api_base_products_pricing_sheets_bulk_update_discounts_partial_update
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - description: A unique integer value identifying this Pricing sheet.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedPricingSheet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedPricingSheet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedPricingSheet'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PricingSheet'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+  /api/base-products/{base_product_id}/pricing-sheets/{pricing_sheet_id}/base-rates/:
+    get:
+      operationId: api_base_products_pricing_sheets_base_rates_list
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - in: path
+        name: pricing_sheet_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/BaseRate'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+    post:
+      operationId: api_base_products_pricing_sheets_base_rates_create
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - in: path
+        name: pricing_sheet_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BaseRate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BaseRate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BaseRate'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseRate'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+  /api/base-products/{base_product_id}/pricing-sheets/{pricing_sheet_id}/base-rates/{id}/:
+    get:
+      operationId: api_base_products_pricing_sheets_base_rates_retrieve
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - description: A unique integer value identifying this Base rate.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: pricing_sheet_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseRate'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+    patch:
+      operationId: api_base_products_pricing_sheets_base_rates_partial_update
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - description: A unique integer value identifying this Base rate.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: pricing_sheet_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBaseRate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBaseRate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBaseRate'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseRate'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+    put:
+      operationId: api_base_products_pricing_sheets_base_rates_update
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - description: A unique integer value identifying this Base rate.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: pricing_sheet_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BaseRate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BaseRate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BaseRate'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseRate'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+  /api/base-products/{base_product_id}/pricing-sheets/{pricing_sheet_id}/discounts/:
+    get:
+      operationId: api_base_products_pricing_sheets_discounts_list
+      parameters:
+      - in: path
+        name: base_product_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      - in: path
+        name: pricing_sheet_id
+        required: true
+        schema:
+          pattern: ^\d+$
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/PricingSheetDiscount'
+                type: array
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+  /api/base-products/{id}/:
+    get:
+      operationId: api_base_products_retrieve
+      parameters:
+      - description: A unique integer value identifying this Base product.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseProduct'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+    patch:
+      operationId: api_base_products_partial_update
+      parameters:
+      - description: A unique integer value identifying this Base product.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBaseProduct'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBaseProduct'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBaseProduct'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseProduct'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+    put:
+      operationId: api_base_products_update
+      parameters:
+      - description: A unique integer value identifying this Base product.
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BaseProduct'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BaseProduct'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BaseProduct'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BaseProduct'
+          description: ''
+      security:
+      - jwtAuth: []
+      tags:
+      - Base Products
+components:
+  schemas:
+    ProductWhitelistedBrokerBulkImport:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/BulkProduct2BrokerWhitelist'
+          maxItems: 100000
+          minItems: 1
+          type: array
+      required:
+      - items
+      type: object
+    Funder:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 256
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    BaseRate:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        percentage:
+          readOnly: true
+          type: string
+        pricing_sheet:
+          $ref: '#/components/schemas/ReducedPricingSheet'
+        rate:
+          format: double
+          type: number
+        variability:
+          $ref: '#/components/schemas/Variability'
+      required:
+      - id
+      - percentage
+      - pricing_sheet
+      - rate
+      - variability
+      type: object
+    BaseProduct:
+      properties:
+        active:
+          type: boolean
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+          readOnly: true
+        custom_translations:
+          nullable: true
+        funder:
+          allOf:
+          - $ref: '#/components/schemas/Funder'
+          readOnly: true
+        has_funder_specific_pricer:
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        is_simulator_reference_product:
+          type: boolean
+        loan_type:
+          allOf:
+          - $ref: '#/components/schemas/LoanType'
+          readOnly: true
+        logo_url:
+          format: uri
+          type: string
+        name:
+          maxLength: 64
+          type: string
+      required:
+      - credit_provider
+      - funder
+      - id
+      - loan_type
+      - logo_url
+      - name
+      type: object
+    Variability:
+      description: Can be managed at /resources/variability
+      properties:
+        definition:
+          type: string
+        group_type:
+          nullable: true
+          type: integer
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedCreditProvider:
+      description: To be used for a short summary of the CreditProvider
+      properties:
+        active:
+          readOnly: true
+          type: boolean
+        fsma_reference:
+          maxLength: 128
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_liability_provider:
+          readOnly: true
+          type: boolean
+        loan_request_form_documents:
+          readOnly: true
+          type: string
+        logo_url:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        order:
+          maximum: 2147483647
+          minimum: 0
+          nullable: true
+          readOnly: true
+          type: integer
+      required:
+      - active
+      - fsma_reference
+      - full_name
+      - id
+      - is_liability_provider
+      - loan_request_form_documents
+      - logo_url
+      - name
+      - order
+      type: object
+    ReducedPricingSheet:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        id:
+          type: integer
+      required:
+      - id
+      type: object
+    PricingSheet:
+      properties:
+        base_rates:
+          items:
+            $ref: '#/components/schemas/NestedBaseRate'
+          type: array
+        created:
+          format: date-time
+          nullable: true
+          readOnly: true
+          title: Creation date and time
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          nullable: true
+          readOnly: true
+          title: Modification date and time
+          type: string
+        pricing_configuration: {}
+        product:
+          $ref: '#/components/schemas/MinimalBaseProduct'
+        valid_from:
+          format: date
+          type: string
+        version:
+          maxLength: 32
+          type: string
+      required:
+      - base_rates
+      - created
+      - id
+      - is_active
+      - last_modified
+      - product
+      - valid_from
+      - version
+      type: object
+    MinimalBaseProduct:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        id:
+          type: integer
+      required:
+      - id
+      type: object
+    PatchedBaseRate:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        percentage:
+          readOnly: true
+          type: string
+        pricing_sheet:
+          $ref: '#/components/schemas/ReducedPricingSheet'
+        rate:
+          format: double
+          type: number
+        variability:
+          $ref: '#/components/schemas/Variability'
+      type: object
+    PatchedAllowedProductVariability:
+      properties:
+        active:
+          type: boolean
+        default_duration:
+          maximum: 999
+          minimum: 1
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        is_simulator_reference_variability:
+          type: boolean
+        max_duration:
+          maximum: 999
+          minimum: 1
+          type: integer
+        min_duration:
+          maximum: 999
+          minimum: 1
+          type: integer
+        variability:
+          $ref: '#/components/schemas/Variability'
+      type: object
+    PricingSheetDiscount:
+      properties:
+        discounts:
+          items:
+            $ref: '#/components/schemas/AdminDiscount'
+          type: array
+      required:
+      - discounts
+      type: object
+    Explanation:
+      properties:
+        explanation:
+          type: string
+        language:
+          $ref: '#/components/schemas/Language'
+      required:
+      - explanation
+      - language
+      type: object
+    PatchedBaseProduct:
+      properties:
+        active:
+          type: boolean
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+          readOnly: true
+        custom_translations:
+          nullable: true
+        funder:
+          allOf:
+          - $ref: '#/components/schemas/Funder'
+          readOnly: true
+        has_funder_specific_pricer:
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        is_simulator_reference_product:
+          type: boolean
+        loan_type:
+          allOf:
+          - $ref: '#/components/schemas/LoanType'
+          readOnly: true
+        logo_url:
+          format: uri
+          type: string
+        name:
+          maxLength: 64
+          type: string
+      type: object
+    ParameterType:
+      description: Can be managed at /resources/parameter-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Parameter:
+      properties:
+        name:
+          type: string
+        type:
+          $ref: '#/components/schemas/ParameterType'
+        value:
+          type: string
+      required:
+      - name
+      - type
+      - value
+      type: object
+    AdminDiscount2ndLevel:
+      properties:
+        discounts:
+          items:
+            $ref: '#/components/schemas/AdminDiscount3rdLevel'
+          type: array
+        explanations:
+          items:
+            $ref: '#/components/schemas/Explanation'
+          type: array
+        interest_rate:
+          format: double
+          type: number
+        is_default:
+          type: boolean
+        is_selected_by_default:
+          type: boolean
+        max_discounts_allowed:
+          type: integer
+        name:
+          type: string
+        parameters:
+          items:
+            $ref: '#/components/schemas/Parameter'
+          type: array
+      required:
+      - name
+      type: object
+    LoanType:
+      description: Can be managed at /resources/loan-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        is_grace_period_supported:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    AdminDiscount:
+      properties:
+        discounts:
+          items:
+            $ref: '#/components/schemas/AdminDiscount2ndLevel'
+          type: array
+        max_discounts_allowed:
+          type: integer
+        name:
+          type: string
+      required:
+      - discounts
+      - max_discounts_allowed
+      - name
+      type: object
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    NestedBaseRate:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        percentage:
+          readOnly: true
+          type: string
+        rate:
+          format: double
+          type: number
+        variability:
+          $ref: '#/components/schemas/Variability'
+      required:
+      - id
+      - percentage
+      - rate
+      - variability
+      type: object
+    AllowedProductVariability:
+      properties:
+        active:
+          type: boolean
+        default_duration:
+          maximum: 999
+          minimum: 1
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        is_simulator_reference_variability:
+          type: boolean
+        max_duration:
+          maximum: 999
+          minimum: 1
+          type: integer
+        min_duration:
+          maximum: 999
+          minimum: 1
+          type: integer
+        variability:
+          $ref: '#/components/schemas/Variability'
+      required:
+      - id
+      - variability
+      type: object
+    BulkProduct2BrokerWhitelist:
+      properties:
+        external_broker_id:
+          type: string
+        product_id:
+          type: integer
+      required:
+      - external_broker_id
+      - product_id
+      type: object
+    AdminDiscount3rdLevel:
+      properties:
+        interest_rate:
+          format: double
+          type: number
+        is_default:
+          type: boolean
+        is_selected_by_default:
+          type: boolean
+        name:
+          type: string
+        parameters:
+          items:
+            $ref: '#/components/schemas/Parameter'
+          type: array
+      required:
+      - interest_rate
+      - name
+      type: object
+    PatchedPricingSheet:
+      properties:
+        base_rates:
+          items:
+            $ref: '#/components/schemas/NestedBaseRate'
+          type: array
+        created:
+          format: date-time
+          nullable: true
+          readOnly: true
+          title: Creation date and time
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          nullable: true
+          readOnly: true
+          title: Modification date and time
+          type: string
+        pricing_configuration: {}
+        product:
+          $ref: '#/components/schemas/MinimalBaseProduct'
+        valid_from:
+          format: date
+          type: string
+        version:
+          maxLength: 32
+          type: string
+      type: object
+  securitySchemes:
+    jwtAuth:
+      bearerFormat: JWT
+      scheme: bearer
+      type: http

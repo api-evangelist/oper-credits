@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/oper-credits-loan-request-webhook-openapi.json (4xx responses) + Django REST Framework default error contract
+format: drf-detail
+envelope:
+  shape: '{ "detail": "<message>" }'
+  validation_shape: '{ "<field>": ["<error>", ...] }'
+  notes: >-
+    The core REST specs declare only 2xx responses; the codes below combine the
+    webhook spec's declared 4xx responses (real, in-spec) with the standard Django
+    REST Framework status codes the platform returns for the JWT-authenticated API.
+problems:
+- status: 400
+  title: Bad Request
+  description: Malformed request body or failed field validation; response carries per-field error maps.
+  source_operation: openapi/oper-credits-loan-request-webhook-openapi.json#/paths/~1your-webhook-endpoint/post
+  in_spec: true
+- status: 422
+  title: Unprocessable Entity
+  description: Well-formed request that fails semantic/business validation on the loan-request payload.
+  source_operation: openapi/oper-credits-loan-request-webhook-openapi.json#/paths/~1your-webhook-endpoint/post
+  in_spec: true
+- status: 401
+  title: Unauthorized
+  description: Missing, expired, or invalid JWT bearer access token. Refresh the token and retry.
+  in_spec: false
+- status: 403
+  title: Forbidden
+  description: Authenticated user's role does not permit the requested action on this loan request.
+  in_spec: false
+- status: 404
+  title: Not Found
+  description: The referenced loan request or nested resource does not exist or is not visible to this tenant/role.
+  in_spec: false

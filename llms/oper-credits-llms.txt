@@ -1,0 +1,39 @@
+# Oper Credits
+
+> Oper Credits is a Belgian digital mortgage origination platform (Brussels, founded 2019) that lets banks, lenders, and brokers offer and process end-to-end digital mortgages. The white-labelled, multi-tenant Oper Connect platform exposes a JWT-authenticated REST API organized around the loan request as the central object, plus a loan-request webhook surface and an AI underwriting agent ("Herman").
+
+## APIs
+
+- [Oper Mortgage API (core)](https://developers.opercredits.com/#/api): JWT-bearer REST API; loan requests and all nested resources (clients, realties, offers, documents, guarantees, decisions).
+- [Oper resources API](https://developers.opercredits.com/#/api/resources): reference/lookup collections backing the mortgage domain.
+- [Loan Request Webhook API](https://developers.opercredits.com/#/webhook): outbound webhook payload contract (versions 1.0-1.4).
+
+## Specs
+
+- openapi/oper-credits-api-openapi.json — core API (OpenAPI 3.0.3, 286 paths)
+- openapi/oper-credits-resources-openapi.json — resources API (OpenAPI 3.0.3, 332 paths)
+- openapi/oper-credits-metrics-openapi.json — metrics API (OpenAPI 3.0.3)
+- openapi/oper-credits-loan-request-webhook-openapi.json — webhook payload (OpenAPI 3.1.0)
+
+## Docs
+
+- [Developer hub (Oper Connect Documentation)](https://developers.opercredits.com/)
+- [Website](https://www.opercredits.com/)
+- [Blog](https://www.opercredits.com/blog)
+- [Legal hub](https://www.opercredits.com/legal)
+- [Privacy policy](https://www.opercredits.com/privacy-policy)
+- [Terms of use](https://www.opercredits.com/terms-of-use)
+- [Compliance (ISO 27001, GDPR)](https://www.opercredits.com/compliance)
+- [Reporting a security issue](https://www.opercredits.com/reporting-a-security-issue)
+
+## Artifacts
+
+- authentication/oper-credits-authentication.yml — JWT bearer auth profile
+- conventions/oper-credits-conventions.yml — pagination, versioning, error envelope
+- errors/oper-credits-problem-types.yml — error catalog
+- data-model/oper-credits-data-model.yml — loan-request entity graph
+- lifecycle/oper-credits-lifecycle.yml — versioning + retention
+- conformance/oper-credits-conformance.yml — standards + compliance
+- security/oper-credits-vulnerability-disclosure.yml — responsible disclosure
+- security/oper-credits-trust-center.yml — ISO 27001 / GDPR
+- skills/ — packaged agent skills for the origination flow

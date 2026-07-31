@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Oper Credits Agent Documents Third Party Api API
-  version: ''
+  version: "1.0"
 tags:
 - name: Third Party Api
 paths:

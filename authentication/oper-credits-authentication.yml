@@ -1,0 +1,15 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/oper-credits-api-openapi.json, openapi/oper-credits-metrics-openapi.json, openapi/oper-credits-resources-openapi.json
+summary:
+  types:
+  - http
+schemes:
+- name: jwtAuth
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/oper-credits-api-openapi.json
+  - openapi/oper-credits-metrics-openapi.json
+  - openapi/oper-credits-resources-openapi.json

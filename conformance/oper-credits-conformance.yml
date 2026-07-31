@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://www.opercredits.com/compliance + openapi/oper-credits-api-openapi.json
+standards:
+- id: oauth2
+  conforms: false
+  evidence: No oauth2 securityScheme; the API uses JWT bearer (http bearer) authentication.
+- id: jwt-bearer
+  conforms: true
+  evidence: openapi securityScheme jwtAuth (type http, scheme bearer, bearerFormat JWT).
+- id: openid-connect
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors use the Django REST Framework detail envelope, not application/problem+json.
+- id: pagination
+  conforms: true
+  evidence: Page-number pagination via page / page_size query parameters.
+- id: iso-27001
+  conforms: true
+  evidence: ISO/IEC 27001 named on https://www.opercredits.com/compliance ; bank-grade security posture.
+- id: gdpr
+  conforms: true
+  evidence: GDPR compliance and configurable data anonymisation named on the compliance page and privacy policy.

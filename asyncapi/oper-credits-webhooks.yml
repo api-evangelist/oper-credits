@@ -1,0 +1,19 @@
+generated: '2026-07-20'
+method: searched
+source: https://developers.opercredits.com/#/webhook + openapi/oper-credits-loan-request-webhook-openapi.json
+spec_type: Webhooks
+summary: >-
+  Oper Connect delivers loan-request events to a customer-configured HTTPS endpoint.
+  The Loan Request Webhook API (OpenAPI 3.1, versions 1.0-1.4) describes the payload
+  Oper POSTs and the responses it expects from the receiver. No AsyncAPI document is
+  published; this is a webhook (outbound HTTP callback) surface.
+webhook_spec: openapi/oper-credits-loan-request-webhook-openapi.json
+versions: ['1.0', '1.1', '1.2', '1.3', '1.4']
+stable: '1.3'
+beta: '1.4'
+delivery:
+  method: POST
+  target: customer-configured endpoint (documented as https://api.your-server.com/your-webhook-endpoint)
+  content_type: application/json
+  expected_responses: [201, 202, 400, 422]
+  description: Oper POSTs the full loan-request payload; the receiver acknowledges with 201/202 or rejects with 400/422.

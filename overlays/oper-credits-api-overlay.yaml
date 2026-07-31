@@ -1,0 +1,18 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Oper Mortgage API
+  version: 1.0.0
+extends: openapi/oper-credits-api-openapi.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: oper-credits
+    x-apievangelist-auth: JWT bearer (jwtAuth); refresh-token rotation; OTP on some tenants
+    x-apievangelist-central-entity: loan_request
+    x-apievangelist-pagination: page-number (page / page_size)
+    x-apievangelist-webhooks: openapi/oper-credits-loan-request-webhook-openapi.json
+    x-apievangelist-compliance: [ISO 27001, GDPR]
+    x-apievangelist-notes: >-
+      Multi-tenant Django REST Framework platform for digital mortgage origination.
+      Core operations under /api/ and /resources/; the loan request is the central
+      object under which all resources are nested.

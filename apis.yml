@@ -1,7 +1,14 @@
 aid: oper-credits
 name: Oper Credits
-description: Oper Credits is a company surfaced as a portfolio company of techstars and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Oper Credits is a Belgian digital mortgage origination platform (Brussels, founded
+  2019) that lets banks, lenders, insurers, and brokers offer and process end-to-end
+  digital mortgages. Its white-labelled, multi-tenant Oper Connect platform exposes a
+  JWT-authenticated REST API organized around the loan request as the central object,
+  under which borrowers, properties, offers, documents, guarantees, and decisions are
+  nested, plus a versioned loan-request webhook surface and an AI underwriting agent
+  ("Herman") that automates document collection, extraction, verification, and
+  policy analysis. The platform is ISO/IEC 27001 certified and GDPR compliant.
 url: https://raw.githubusercontent.com/api-evangelist/oper-credits/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,12 +16,559 @@ x-backed-by:
 - techstars
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
+image: https://cdn.prod.website-files.com/64f9bcce0d3210a55e4458ee/6530e0daf5885d89e8bf233f_Screenshot%202023-10-19%20at%2009.54.44.png
 tags:
 - Company
-apis: []
+- Mortgages
+- Lending
+- Credit
+- Fintech
+- Banking
+- Loan Origination
+- Real Estate
+- Financial Services
+apis:
+- aid: oper-credits:oper-credits-agent-documents-api
+  name: Oper Credits Agent Documents API
+  description: The Agent Documents API from Oper Credits — 2 operation(s) for agent documents.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Agent Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-agent-documents-api-openapi.yml
+- aid: oper-credits:oper-credits-appointment-booking-websites-api
+  name: Oper Credits Appointment Booking Websites API
+  description: >-
+    The Appointment Booking Websites API from Oper Credits — 2 operation(s) for appointment booking websites.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Appointment Booking Websites
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-appointment-booking-websites-api-openapi.yml
+- aid: oper-credits:oper-credits-approvals-api
+  name: Oper Credits Approvals API
+  description: The Approvals API from Oper Credits — 6 operation(s) for approvals.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Approvals
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-approvals-api-openapi.yml
+- aid: oper-credits:oper-credits-bank-release-policy-api
+  name: Oper Credits Bank Release Policy API
+  description: The Bank Release Policy API from Oper Credits — 1 operation(s) for bank release policy.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Bank Release Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-bank-release-policy-api-openapi.yml
+- aid: oper-credits:oper-credits-base-products-api
+  name: Oper Credits Base Products API
+  description: The Base Products API from Oper Credits — 12 operation(s) for base products.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Base Products
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-base-products-api-openapi.yml
+- aid: oper-credits:oper-credits-calculate-api
+  name: Oper Credits Calculate API
+  description: The Calculate API from Oper Credits — 7 operation(s) for calculate.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Calculate
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-calculate-api-openapi.yml
+- aid: oper-credits:oper-credits-check-invite-token-api
+  name: Oper Credits Check Invite Token API
+  description: The Check Invite Token API from Oper Credits — 1 operation(s) for check invite token.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Check Invite Token
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-check-invite-token-api-openapi.yml
+- aid: oper-credits:oper-credits-check-reset-password-api
+  name: Oper Credits Check Reset Password API
+  description: >-
+    The Check Reset Password API from Oper Credits — 1 operation(s) for check reset password.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Check Reset Password
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-check-reset-password-api-openapi.yml
+- aid: oper-credits:oper-credits-client-users-api
+  name: Oper Credits Client Users API
+  description: The Client Users API from Oper Credits — 2 operation(s) for client users.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Client Users
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-client-users-api-openapi.yml
+- aid: oper-credits:oper-credits-clients-api
+  name: Oper Credits Clients API
+  description: The Clients API from Oper Credits — 2 operation(s) for clients.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Clients
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-clients-api-openapi.yml
+- aid: oper-credits:oper-credits-commissions-api
+  name: Oper Credits Commissions API
+  description: The Commissions API from Oper Credits — 8 operation(s) for commissions.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Commissions
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-commissions-api-openapi.yml
+- aid: oper-credits:oper-credits-communication-history-api
+  name: Oper Credits Communication History API
+  description: >-
+    The Communication History API from Oper Credits — 2 operation(s) for communication history.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Communication History
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-communication-history-api-openapi.yml
+- aid: oper-credits:oper-credits-connective-api
+  name: Oper Credits Connective API
+  description: The Connective API from Oper Credits — 2 operation(s) for connective.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Connective
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-connective-api-openapi.yml
+- aid: oper-credits:oper-credits-contact-advisor-api
+  name: Oper Credits Contact Advisor API
+  description: The Contact Advisor API from Oper Credits — 1 operation(s) for contact advisor.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Contact Advisor
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-contact-advisor-api-openapi.yml
+- aid: oper-credits:oper-credits-contact-api
+  name: Oper Credits Contact API
+  description: The Contact API from Oper Credits — 1 operation(s) for contact.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Contact
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-contact-api-openapi.yml
+- aid: oper-credits:oper-credits-contact-policy-api
+  name: Oper Credits Contact Policy API
+  description: The Contact Policy API from Oper Credits — 1 operation(s) for contact policy.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Contact Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-contact-policy-api-openapi.yml
+- aid: oper-credits:oper-credits-credit-providers-api
+  name: Oper Credits Credit Providers API
+  description: The Credit Providers API from Oper Credits — 1 operation(s) for credit providers.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Credit Providers
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-credit-providers-api-openapi.yml
+- aid: oper-credits:oper-credits-documentation-library-api
+  name: Oper Credits Documentation Library API
+  description: >-
+    The Documentation Library API from Oper Credits — 4 operation(s) for documentation library.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Documentation Library
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-documentation-library-api-openapi.yml
+- aid: oper-credits:oper-credits-documents-api
+  name: Oper Credits Documents API
+  description: The Documents API from Oper Credits — 2 operation(s) for documents.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-documents-api-openapi.yml
+- aid: oper-credits:oper-credits-easy-audit-api
+  name: Oper Credits Easy Audit API
+  description: The Easy Audit API from Oper Credits — 1 operation(s) for easy audit.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Easy Audit
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-easy-audit-api-openapi.yml
+- aid: oper-credits:oper-credits-forgot-password-api
+  name: Oper Credits Forgot Password API
+  description: The Forgot Password API from Oper Credits — 1 operation(s) for forgot password.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Forgot Password
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-forgot-password-api-openapi.yml
+- aid: oper-credits:oper-credits-gdpr-policy-api
+  name: Oper Credits Gdpr Policy API
+  description: The Gdpr Policy API from Oper Credits — 1 operation(s) for gdpr policy.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Gdpr Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-gdpr-policy-api-openapi.yml
+- aid: oper-credits:oper-credits-health-api
+  name: Oper Credits Health API
+  description: The Health API from Oper Credits — 1 operation(s) for health.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Health
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-health-api-openapi.yml
+- aid: oper-credits:oper-credits-integrations-api
+  name: Oper Credits Integrations API
+  description: The Integrations API from Oper Credits — 2 operation(s) for integrations.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Integrations
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-integrations-api-openapi.yml
+- aid: oper-credits:oper-credits-internaldocuments-api
+  name: Oper Credits Internaldocuments API
+  description: The Internaldocuments API from Oper Credits — 3 operation(s) for internaldocuments.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Internaldocuments
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-internaldocuments-api-openapi.yml
+- aid: oper-credits:oper-credits-jwt-api
+  name: Oper Credits Jwt API
+  description: The Jwt API from Oper Credits — 2 operation(s) for jwt.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Jwt
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-jwt-api-openapi.yml
+- aid: oper-credits:oper-credits-legal-links-api
+  name: Oper Credits Legal Links API
+  description: The Legal Links API from Oper Credits — 2 operation(s) for legal links.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Legal Links
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-legal-links-api-openapi.yml
+- aid: oper-credits:oper-credits-library-api
+  name: Oper Credits Library API
+  description: The Library API from Oper Credits — 2 operation(s) for library.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Library
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-library-api-openapi.yml
+- aid: oper-credits:oper-credits-loan-requests-api
+  name: Oper Credits Loan Requests API
+  description: The Loan Requests API from Oper Credits — 113 operation(s) for loan requests.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Loan Requests
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-loan-requests-api-openapi.yml
+- aid: oper-credits:oper-credits-loan-requests-client-info-api
+  name: Oper Credits Loan Requests Client Info API
+  description: >-
+    The Loan Requests Client Info API from Oper Credits — 1 operation(s) for loan requests client info.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Loan Requests Client Info
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-loan-requests-client-info-api-openapi.yml
+- aid: oper-credits:oper-credits-main-api
+  name: Oper Credits Main API
+  description: The Main API from Oper Credits — 30 operation(s) for main.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Main
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-main-api-openapi.yml
+- aid: oper-credits:oper-credits-me-api
+  name: Oper Credits Me API
+  description: The Me API from Oper Credits — 8 operation(s) for me.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Me
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-me-api-openapi.yml
+- aid: oper-credits:oper-credits-metrics-api
+  name: Oper Credits Metrics API
+  description: The Metrics API from Oper Credits — 1 operation(s) for metrics.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-metrics-api-openapi.yml
+- aid: oper-credits:oper-credits-model-fields-api
+  name: Oper Credits Model Fields API
+  description: The Model Fields API from Oper Credits — 1 operation(s) for model fields.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Model Fields
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-model-fields-api-openapi.yml
+- aid: oper-credits:oper-credits-pricing-api
+  name: Oper Credits Pricing API
+  description: The Pricing API from Oper Credits — 1 operation(s) for pricing.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Pricing
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-pricing-api-openapi.yml
+- aid: oper-credits:oper-credits-privacy-policy-api
+  name: Oper Credits Privacy Policy API
+  description: The Privacy Policy API from Oper Credits — 1 operation(s) for privacy policy.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Privacy Policy
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-privacy-policy-api-openapi.yml
+- aid: oper-credits:oper-credits-products-api
+  name: Oper Credits Products API
+  description: The Products API from Oper Credits — 1 operation(s) for products.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-products-api-openapi.yml
+- aid: oper-credits:oper-credits-reset-password-api
+  name: Oper Credits Reset Password API
+  description: The Reset Password API from Oper Credits — 1 operation(s) for reset password.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Reset Password
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-reset-password-api-openapi.yml
+- aid: oper-credits:oper-credits-resources-api
+  name: Oper Credits Resources API
+  description: The Resources API from Oper Credits — 332 operation(s) for resources.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Resources
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-resources-api-openapi.yml
+- aid: oper-credits:oper-credits-send-generic-email-api
+  name: Oper Credits Send Generic Email API
+  description: The Send Generic Email API from Oper Credits — 1 operation(s) for send generic email.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Send Generic Email
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-send-generic-email-api-openapi.yml
+- aid: oper-credits:oper-credits-sign-in-api
+  name: Oper Credits Sign In API
+  description: The Sign In API from Oper Credits — 4 operation(s) for sign in.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Sign In
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-sign-in-api-openapi.yml
+- aid: oper-credits:oper-credits-sign-up-api
+  name: Oper Credits Sign Up API
+  description: The Sign Up API from Oper Credits — 4 operation(s) for sign up.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Sign Up
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-sign-up-api-openapi.yml
+- aid: oper-credits:oper-credits-simulators-api
+  name: Oper Credits Simulators API
+  description: The Simulators API from Oper Credits — 15 operation(s) for simulators.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Simulators
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-simulators-api-openapi.yml
+- aid: oper-credits:oper-credits-sso-api
+  name: Oper Credits Sso API
+  description: The Sso API from Oper Credits — 2 operation(s) for sso.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Sso
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-sso-api-openapi.yml
+- aid: oper-credits:oper-credits-tasks-api
+  name: Oper Credits Tasks API
+  description: The Tasks API from Oper Credits — 2 operation(s) for tasks.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Tasks
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-tasks-api-openapi.yml
+- aid: oper-credits:oper-credits-terms-and-conditions-api
+  name: Oper Credits Terms And Conditions API
+  description: >-
+    The Terms And Conditions API from Oper Credits — 1 operation(s) for terms and conditions.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Terms And Conditions
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-terms-and-conditions-api-openapi.yml
+- aid: oper-credits:oper-credits-third-parties-api
+  name: Oper Credits Third Parties API
+  description: The Third Parties API from Oper Credits — 20 operation(s) for third parties.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Third Parties
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-third-parties-api-openapi.yml
+- aid: oper-credits:oper-credits-third-party-api-api
+  name: Oper Credits Third Party Api API
+  description: The Third Party Api API from Oper Credits — 1 operation(s) for third party api.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Third Party Api
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-third-party-api-api-openapi.yml
+- aid: oper-credits:oper-credits-user-management-api
+  name: Oper Credits User Management API
+  description: The User Management API from Oper Credits — 4 operation(s) for user management.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - User Management
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-user-management-api-openapi.yml
+- aid: oper-credits:oper-credits-users-api
+  name: Oper Credits Users API
+  description: The Users API from Oper Credits — 1 operation(s) for users.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-users-api-openapi.yml
+- aid: oper-credits:oper-credits-validators-api
+  name: Oper Credits Validators API
+  description: The Validators API from Oper Credits — 1 operation(s) for validators.
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Validators
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-validators-api-openapi.yml
+- aid: oper-credits:oper-credits-webhooks-api
+  name: Oper Credits Webhooks API
+  description: Your Webhooks tag description
+  humanURL: https://developers.opercredits.com/
+  baseURL: https://developers.opercredits.com/
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/oper-credits-webhooks-api-openapi.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +577,56 @@ maintainers:
 common:
 - type: Website
   url: https://opercredits.com/
+- type: DeveloperPortal
+  url: https://developers.opercredits.com/
+- type: Documentation
+  url: https://developers.opercredits.com/
+- type: APIReference
+  url: https://developers.opercredits.com/#/api
+- type: Blog
+  url: https://www.opercredits.com/blog
+- type: GitHubOrganization
+  url: https://github.com/opercredits
+- type: Support
+  url: https://www.opercredits.com/contact
+- type: TermsOfService
+  url: https://www.opercredits.com/terms-of-use
+- type: PrivacyPolicy
+  url: https://www.opercredits.com/privacy-policy
+- type: Authentication
+  url: authentication/oper-credits-authentication.yml
+- type: Conventions
+  url: conventions/oper-credits-conventions.yml
+- type: ErrorCatalog
+  url: errors/oper-credits-problem-types.yml
+- type: DataModel
+  url: data-model/oper-credits-data-model.yml
+- type: Lifecycle
+  url: lifecycle/oper-credits-lifecycle.yml
+- type: Conformance
+  url: conformance/oper-credits-conformance.yml
+- type: Compliance
+  url: https://www.opercredits.com/compliance
+- type: DomainSecurity
+  url: security/oper-credits-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/oper-credits-vulnerability-disclosure.yml
+- type: Security
+  url: https://www.opercredits.com/reporting-a-security-issue
+- type: TrustCenter
+  url: security/oper-credits-trust-center.yml
+- type: Webhooks
+  url: asyncapi/oper-credits-webhooks.yml
+- type: MCPServer
+  url: mcp/oper-credits-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/oper-credits-llms.txt
+- type: Overlay
+  url: overlays/oper-credits-api-overlay.yaml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 20
+  pass: local-v1

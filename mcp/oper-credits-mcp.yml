@@ -1,0 +1,44 @@
+generated: '2026-07-20'
+method: derived
+status: candidate
+source: openapi/oper-credits-api-openapi.json
+notes: >-
+  No official hosted/remote MCP server was found for Oper Connect. The tools below
+  are a candidate surface derived from the OpenAPI, curated to the marquee
+  loan-origination flow (create request, add borrower/property, quote & place an
+  offer, push documents). Auth would be JWT bearer per authentication/oper-credits-authentication.yml.
+server:
+  name: oper-credits
+  transport: http
+  url: null
+tools:
+- name: list_loan_requests
+  description: List loan requests for the tenant.
+  source_operation: openapi/oper-credits-api-openapi.json#api_loan_requests_list
+- name: create_loan_request
+  description: Create an empty loan request to populate.
+  source_operation: openapi/oper-credits-api-openapi.json#api_loan_requests_create
+- name: get_loan_request
+  description: Retrieve a loan request by id.
+  source_operation: openapi/oper-credits-api-openapi.json#api_loan_requests_retrieve
+- name: add_client
+  description: Add a borrower/client to a loan request.
+  source_operation: openapi/oper-credits-api-openapi.json#api_loan_requests_clients_create
+- name: add_realty
+  description: Add a property to a loan request.
+  source_operation: openapi/oper-credits-api-openapi.json#api_loan_requests_realties_create
+- name: list_offers
+  description: List offers on a loan request.
+  source_operation: openapi/oper-credits-api-openapi.json#api_loan_requests_offers_list
+- name: create_offer
+  description: Create an offer on a loan request.
+  source_operation: openapi/oper-credits-api-openapi.json#api_loan_requests_offers_create
+- name: simulate_offer
+  description: Run an offer/pricing simulation.
+  source_operation: openapi/oper-credits-api-openapi.json#api_simulators_offer_create
+- name: push_documents
+  description: Push documents to a loan request.
+  source_operation: openapi/oper-credits-api-openapi.json#api_loan_requests_documents_push_create
+- name: create_decision
+  description: Record an underwriting decision on a loan request.
+  source_operation: openapi/oper-credits-api-openapi.json#api_loan_requests_decisions_create

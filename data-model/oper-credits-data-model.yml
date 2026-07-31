@@ -1,0 +1,92 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/oper-credits-api-openapi.json (path structure + nested resources under /api/loan-requests/)
+central_entity: loan_request
+notes: >-
+  All entities are proprietary to a single loan request and addressed under
+  /api/loan-requests/{loan_request_id}/. Even a shared real-world client is
+  represented as a distinct object per loan request. Derived from the REST path
+  hierarchy; id-prefix / domain detail was not published in a machine-readable form.
+entities:
+- name: loan_request
+  path: /api/loan-requests/{id}/
+  description: Central overarching object holding all information for one credit request.
+- name: client
+  path: /api/loan-requests/{loan_request_id}/clients/
+- name: realty
+  path: /api/loan-requests/{loan_request_id}/realties/
+- name: offer
+  path: /api/loan-requests/{loan_request_id}/offers/
+- name: document
+  path: /api/loan-requests/{loan_request_id}/documents/
+- name: guarantee
+  path: /api/loan-requests/{loan_request_id}/guarantees/
+- name: bank_guarantee
+  path: /api/loan-requests/{loan_request_id}/bank-guarantees/
+- name: fire_insurance
+  path: /api/loan-requests/{loan_request_id}/fire-insurances/
+- name: liability_insurance
+  path: /api/loan-requests/{loan_request_id}/liability-insurances/
+- name: decision
+  path: /api/loan-requests/{loan_request_id}/decisions/
+- name: compliance_check
+  path: /api/loan-requests/{loan_request_id}/compliance-checks/
+- name: additional_financing_need
+  path: /api/loan-requests/{loan_request_id}/additional-financing-needs/
+- name: milestone
+  path: /api/loan-requests/{loan_request_id}/milestones/
+- name: comment
+  path: /api/loan-requests/{loan_request_id}/comments/
+relationships:
+- from: loan_request
+  to: client
+  type: has_many
+  via: loan_request_id
+- from: loan_request
+  to: realty
+  type: has_many
+  via: loan_request_id
+- from: loan_request
+  to: offer
+  type: has_many
+  via: loan_request_id
+- from: loan_request
+  to: document
+  type: has_many
+  via: loan_request_id
+- from: loan_request
+  to: guarantee
+  type: has_many
+  via: loan_request_id
+- from: loan_request
+  to: bank_guarantee
+  type: has_many
+  via: loan_request_id
+- from: loan_request
+  to: fire_insurance
+  type: has_many
+  via: loan_request_id
+- from: loan_request
+  to: liability_insurance
+  type: has_many
+  via: loan_request_id
+- from: loan_request
+  to: decision
+  type: has_many
+  via: loan_request_id
+- from: loan_request
+  to: compliance_check
+  type: has_many
+  via: loan_request_id
+- from: loan_request
+  to: additional_financing_need
+  type: has_many
+  via: loan_request_id
+- from: loan_request
+  to: milestone
+  type: has_many
+  via: loan_request_id
+- from: loan_request
+  to: comment
+  type: has_many
+  via: loan_request_id

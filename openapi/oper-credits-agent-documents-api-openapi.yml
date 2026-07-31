@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Oper Credits Agent Documents API
-  version: ''
+  version: "1.0"
 tags:
 - name: Agent Documents
 paths:

@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/oper-credits-api-openapi.json (operationIds verified against the spec)
+skills:
+- file: oper-credits-originate-loan-request.md
+  name: Originate a mortgage loan request
+  api: openapi/oper-credits-api-openapi.json
+  operations: [api_loan_requests_create, api_loan_requests_clients_create, api_loan_requests_realties_create, api_loan_requests_retrieve]
+- file: oper-credits-quote-and-place-offer.md
+  name: Quote and place a mortgage offer
+  api: openapi/oper-credits-api-openapi.json
+  operations: [api_simulators_offer_create, api_loan_requests_offers_list, api_loan_requests_offers_create, api_loan_requests_decisions_create]

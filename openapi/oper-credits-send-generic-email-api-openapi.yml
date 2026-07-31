@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Oper Credits Agent Documents Send Generic Email API
-  version: ''
+  version: "1.0"
 tags:
 - name: Send Generic Email
 paths:

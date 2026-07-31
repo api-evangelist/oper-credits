@@ -1,0 +1,14 @@
+{
+  "repo": "oper-credits",
+  "feeds": [
+    {
+      "source": "https://developers.opercredits.com/#/api",
+      "feed_url": "https://developers.opercredits.com/#/api",
+      "title": "",
+      "saved": 0,
+      "method": "none"
+    }
+  ],
+  "post_count": 0,
+  "fetched": "2026-07-25T15:00:33Z"
+}

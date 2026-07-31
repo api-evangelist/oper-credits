@@ -1,7 +1,7 @@
 openapi: 3.0.3
 info:
   title: Oper Credits Agent Documents Bank Release Policy API
-  version: ''
+  version: "1.0"
 tags:
 - name: Bank Release Policy
 paths:

@@ -1,0 +1,32 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Bank Release Policy API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bank Release Policy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_bank_release_policy_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/bank-release-policy/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

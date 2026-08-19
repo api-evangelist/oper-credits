@@ -1,0 +1,224 @@
+{
+  "item": [
+    {
+      "id": "c0b3f7d3-2f0c-44eb-a572-9723215dd970",
+      "name": "Webhooks",
+      "description": {
+        "content": "Your Webhooks tag description",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fd3804c3-67e9-4244-a9d2-b3ee9f3c840c",
+          "name": "Your endpoint implementation for handling Oper Connect's webhooks",
+          "request": {
+            "name": "Your endpoint implementation for handling Oper Connect's webhooks",
+            "description": {
+              "content": "This path represents the path to your API implementation of the end point that is configured in Oper Connect. It describes what Oper Connect will send to your endpoint, and what it expects in response.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "your-webhook-endpoint"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"created\": \"<string,null-date>\",\n  \"livemode\": \"<boolean>\",\n  \"new_data\": {\n    \"action\": \"<string>\",\n    \"loan_request\": {\n      \"oper_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"external_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"internal_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"purpose\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"broker\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"creator\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"owner\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"analyst\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"lead_generator\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"deed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"acquisition_source\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"source\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clients\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"properties\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"liability_insurances\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"financial_plan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"offer\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"notary\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"documents\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"credit_liabilities\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"purposes\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"latest_deed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"ltv\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"dsti\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"living_surplus\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"future_dsti\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"future_surplus\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"last_date_credit_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"offer_signed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_expected_disbursement\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"dispursement_schedule\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"community_property_involvement\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"termination_of_marital_property_law\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"motivation_for_refinancing\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_draft_offer_sent\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_loan_request_form\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_submission\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"loan_repayment_account\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"loan_repayment_account_holders\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"outside_risk_policy\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"payout_at_deed\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"drawdown\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"fiduciary\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"bank_branch\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"regulatory_reporting\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"additional_financing_needs\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"guarantees\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"missing_documents\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"comments\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"decisions\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"compliance_checks\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"latest_compliance_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"fact_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"source_data\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  },\n  \"payload_type\": \"<string>\",\n  \"origin_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "63838a56-f34c-43c6-a53e-217153891ea2",
+              "name": "created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "your-webhook-endpoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"created\": \"<string,null-date>\",\n  \"livemode\": \"<boolean>\",\n  \"new_data\": {\n    \"action\": \"<string>\",\n    \"loan_request\": {\n      \"oper_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"external_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"internal_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"purpose\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"broker\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"creator\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"owner\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"analyst\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"lead_generator\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"deed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"acquisition_source\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"source\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clients\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"properties\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"liability_insurances\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"financial_plan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"offer\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"notary\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"documents\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"credit_liabilities\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"purposes\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"latest_deed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"ltv\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"dsti\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"living_surplus\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"future_dsti\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"future_surplus\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"last_date_credit_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"offer_signed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_expected_disbursement\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"dispursement_schedule\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"community_property_involvement\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"termination_of_marital_property_law\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"motivation_for_refinancing\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_draft_offer_sent\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_loan_request_form\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_submission\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"loan_repayment_account\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"loan_repayment_account_holders\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"outside_risk_policy\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"payout_at_deed\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"drawdown\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"fiduciary\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"bank_branch\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"regulatory_reporting\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"additional_financing_needs\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"guarantees\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"missing_documents\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"comments\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"decisions\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"compliance_checks\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"latest_compliance_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"fact_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"source_data\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  },\n  \"payload_type\": \"<string>\",\n  \"origin_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6120cc9e-06fd-41c5-ad24-eb01ad3c244b",
+              "name": "Updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "your-webhook-endpoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"created\": \"<string,null-date>\",\n  \"livemode\": \"<boolean>\",\n  \"new_data\": {\n    \"action\": \"<string>\",\n    \"loan_request\": {\n      \"oper_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"external_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"internal_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"purpose\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"broker\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"creator\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"owner\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"analyst\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"lead_generator\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"deed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"acquisition_source\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"source\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clients\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"properties\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"liability_insurances\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"financial_plan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"offer\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"notary\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"documents\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"credit_liabilities\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"purposes\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"latest_deed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"ltv\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"dsti\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"living_surplus\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"future_dsti\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"future_surplus\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"last_date_credit_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"offer_signed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_expected_disbursement\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"dispursement_schedule\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"community_property_involvement\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"termination_of_marital_property_law\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"motivation_for_refinancing\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_draft_offer_sent\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_loan_request_form\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_submission\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"loan_repayment_account\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"loan_repayment_account_holders\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"outside_risk_policy\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"payout_at_deed\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"drawdown\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"fiduciary\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"bank_branch\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"regulatory_reporting\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"additional_financing_needs\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"guarantees\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"missing_documents\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"comments\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"decisions\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"compliance_checks\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"latest_compliance_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"fact_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"source_data\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  },\n  \"payload_type\": \"<string>\",\n  \"origin_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a2aada46-ef68-4117-86fd-0f05a51f47de",
+              "name": "Generic error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "your-webhook-endpoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"created\": \"<string,null-date>\",\n  \"livemode\": \"<boolean>\",\n  \"new_data\": {\n    \"action\": \"<string>\",\n    \"loan_request\": {\n      \"oper_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"external_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"internal_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"purpose\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"broker\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"creator\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"owner\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"analyst\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"lead_generator\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"deed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"acquisition_source\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"source\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clients\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"properties\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"liability_insurances\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"financial_plan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"offer\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"notary\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"documents\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"credit_liabilities\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"purposes\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"latest_deed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"ltv\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"dsti\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"living_surplus\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"future_dsti\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"future_surplus\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"last_date_credit_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"offer_signed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_expected_disbursement\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"dispursement_schedule\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"community_property_involvement\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"termination_of_marital_property_law\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"motivation_for_refinancing\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_draft_offer_sent\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_loan_request_form\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_submission\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"loan_repayment_account\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"loan_repayment_account_holders\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"outside_risk_policy\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"payout_at_deed\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"drawdown\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"fiduciary\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"bank_branch\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"regulatory_reporting\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"additional_financing_needs\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"guarantees\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"missing_documents\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"comments\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"decisions\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"compliance_checks\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"latest_compliance_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"fact_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"source_data\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  },\n  \"payload_type\": \"<string>\",\n  \"origin_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "44af25dd-d592-49f0-814c-06fd3ee91a8d",
+              "name": "Invalid input",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "your-webhook-endpoint"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"created\": \"<string,null-date>\",\n  \"livemode\": \"<boolean>\",\n  \"new_data\": {\n    \"action\": \"<string>\",\n    \"loan_request\": {\n      \"oper_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"id\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"external_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"internal_reference\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"purpose\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"currency\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"broker\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"creator\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"owner\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"analyst\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"lead_generator\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"deed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"acquisition_source\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"source\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"clients\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"properties\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"liability_insurances\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"financial_plan\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"offer\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"notary\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"documents\": [\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      ],\n      \"credit_liabilities\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"purposes\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"latest_deed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"status\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"ltv\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"dsti\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"living_surplus\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"future_dsti\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"future_surplus\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"last_date_credit_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"offer_signed_date\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_expected_disbursement\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"dispursement_schedule\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"community_property_involvement\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"termination_of_marital_property_law\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"motivation_for_refinancing\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_draft_offer_sent\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_loan_request_form\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"date_submission\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"loan_repayment_account\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"loan_repayment_account_holders\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"outside_risk_policy\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"payout_at_deed\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"drawdown\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"fiduciary\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"bank_branch\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"regulatory_reporting\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"additional_financing_needs\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"guarantees\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"missing_documents\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"comments\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"decisions\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"compliance_checks\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"latest_compliance_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"fact_check\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      },\n      \"source_data\": {\n        \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n      }\n    }\n  },\n  \"payload_type\": \"<string>\",\n  \"origin_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4b31f182-475d-41d0-84ce-b3b707b07f2a",
+    "name": "Oper Credits Agent Documents Webhooks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Your Webhooks tag description",
+      "type": "text/plain"
+    }
+  }
+}

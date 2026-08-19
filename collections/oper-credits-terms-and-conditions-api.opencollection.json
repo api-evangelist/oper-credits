@@ -1,0 +1,32 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Terms And Conditions API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Terms And Conditions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_terms_and_conditions_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/terms-and-conditions/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

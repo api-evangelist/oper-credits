@@ -1,0 +1,46 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Connective API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connective",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_connective_auth_id_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/connective/auth-id/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "api_connective_login_url_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/connective/login-url/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

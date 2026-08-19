@@ -1,0 +1,118 @@
+{
+  "item": [
+    {
+      "id": "4b8fa41e-b542-4665-97cf-eb4350f49893",
+      "name": "Contact",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "14342428-1b53-4768-b67d-4ca0b3067aea",
+          "name": "api contact retrieve",
+          "request": {
+            "name": "api contact retrieve",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "contact",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "effc2baf-4d55-4da5-9026-b6182930c745",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "contact",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"broker\": {\n    \"account_manager\": {\n      \"first_name\": \"\",\n      \"id\": 680,\n      \"last_name\": \"\",\n      \"role\": {\n        \"definition\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"order\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        }\n      },\n      \"verified\": true\n    },\n    \"bank_account\": \"string\",\n    \"company_type\": {\n      \"definition\": \"string\",\n      \"id\": 1103,\n      \"order\": 8275\n    },\n    \"fsma_reference\": \"string\",\n    \"id\": 8194,\n    \"name\": \"string\",\n    \"outstanding_debt\": 3397.5470553490795,\n    \"vat_number\": \"string\"\n  },\n  \"office_address\": {\n    \"box\": \"string\",\n    \"city\": \"string\",\n    \"country\": {\n      \"definition\": \"string\",\n      \"id\": 4230,\n      \"order\": 2746\n    },\n    \"floor\": \"string\",\n    \"house_number\": \"string\",\n    \"id\": 1488,\n    \"street\": \"string\",\n    \"zip_code\": \"string\",\n    \"building\": \"string\",\n    \"heading\": 11968.262438764417,\n    \"latitude\": -78624.60714943925,\n    \"longitude\": 70244.660573984,\n    \"pitch\": 67985.72845799301,\n    \"staircase\": \"string\",\n    \"street_type\": {\n      \"definition\": \"string\",\n      \"id\": 3438,\n      \"order\": 6963\n    },\n    \"zoom\": 40367.714740439376\n  },\n  \"office_email\": {\n    \"id\": 8490,\n    \"value\": \"qGMYQH@BNLU.sl\"\n  },\n  \"office_name\": \"string\",\n  \"office_opening_hours\": \"string\",\n  \"office_phone\": {\n    \"country_code\": {\n      \"country\": \"string\",\n      \"definition\": \"string\",\n      \"id\": 9062,\n      \"order\": 8045\n    },\n    \"id\": 5320,\n    \"value\": \"string\"\n  },\n  \"tenant\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "170e8669-ca98-4c89-89e9-6bad1d5198be",
+    "name": "Oper Credits Agent Documents Contact API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Jwt API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Jwt",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_jwt_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/jwt/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes a set of user credentials and returns an access and refresh JSON web\ntoken pair to prove the authentication of those credentials."
+        },
+        {
+          "info": {
+            "name": "api_jwt_refresh_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/jwt/refresh/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes a refresh type JSON web token and returns an access type JSON web\ntoken if the refresh token is valid."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

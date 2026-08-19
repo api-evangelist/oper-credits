@@ -1,0 +1,1075 @@
+{
+  "item": [
+    {
+      "id": "1db17974-8c26-4c8f-98a8-c2dc8d016587",
+      "name": "Tasks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "830393e8-4e91-407b-ba49-a26d5bf94288",
+          "name": "api tasks list",
+          "request": {
+            "name": "api tasks list",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tasks",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "assigned_to",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_by",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "loan_request",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Which field to use when ordering the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                },
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "A search term."
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "status__not",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "task_category",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "task_type",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "daaf25ff-24d6-4dd8-a06e-0ac84276dc3b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tasks",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "assigned_to",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "created_by",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "loan_request",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status__not",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "task_category",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "task_type",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"assigned_to\": {\n        \"first_name\": \"\",\n        \"id\": 2460,\n        \"last_name\": \"\",\n        \"role\": {\n          \"definition\": \"string\",\n          \"id\": 7395,\n          \"order\": 8221\n        },\n        \"verified\": false\n      },\n      \"created\": \"1978-04-24T12:32:10.417Z\",\n      \"created_by\": {\n        \"first_name\": \"\",\n        \"id\": 3029,\n        \"last_name\": \"\",\n        \"role\": {\n          \"definition\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"order\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"verified\": false\n      },\n      \"id\": 7250,\n      \"last_modified\": \"1983-11-26T00:06:21.298Z\",\n      \"loan_request\": {\n        \"borrower_reference\": \"string\",\n        \"external_reference\": \"string\",\n        \"id\": 4931,\n        \"internal_reference\": \"string\",\n        \"status\": {\n          \"borrower_facing_status\": \"string\",\n          \"color\": \"string\",\n          \"definition\": \"string\",\n          \"icon\": \"string\",\n          \"id\": 9415,\n          \"order\": 5333,\n          \"check_if_selected_offer_is_still_valid_when_data_is_changed\": false,\n          \"is_active\": true,\n          \"is_terminal\": true,\n          \"notify_analyst_on_draft_offer_rate_change\": false,\n          \"recalculate_selected_offer_when_data_is_changed\": false\n        }\n      },\n      \"task_category\": {\n        \"definition\": \"string\",\n        \"id\": 4560,\n        \"order\": 3288\n      },\n      \"task_type\": {\n        \"definition\": \"string\",\n        \"id\": 7076,\n        \"order\": 5330,\n        \"navigation_path\": \"string\"\n      },\n      \"description\": \"string\",\n      \"due_date\": \"1999-08-20T16:45:16.937Z\",\n      \"status\": {\n        \"definition\": \"string\",\n        \"id\": 5623,\n        \"order\": 9881\n      }\n    },\n    {\n      \"assigned_to\": {\n        \"first_name\": \"\",\n        \"id\": 8338,\n        \"last_name\": \"\",\n        \"role\": {\n          \"definition\": \"string\",\n          \"id\": 8737,\n          \"order\": 5919\n        },\n        \"verified\": true\n      },\n      \"created\": \"2014-12-23T16:34:54.062Z\",\n      \"created_by\": {\n        \"first_name\": \"\",\n        \"id\": 6076,\n        \"last_name\": \"\",\n        \"role\": {\n          \"definition\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"id\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          },\n          \"order\": {\n            \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n          }\n        },\n        \"verified\": true\n      },\n      \"id\": 4284,\n      \"last_modified\": \"2012-02-10T04:35:38.789Z\",\n      \"loan_request\": {\n        \"borrower_reference\": \"string\",\n        \"external_reference\": \"string\",\n        \"id\": 2497,\n        \"internal_reference\": \"string\",\n        \"status\": {\n          \"borrower_facing_status\": \"string\",\n          \"color\": \"string\",\n          \"definition\": \"string\",\n          \"icon\": \"string\",\n          \"id\": 1756,\n          \"order\": 8786,\n          \"check_if_selected_offer_is_still_valid_when_data_is_changed\": true,\n          \"is_active\": true,\n          \"is_terminal\": false,\n          \"notify_analyst_on_draft_offer_rate_change\": false,\n          \"recalculate_selected_offer_when_data_is_changed\": true\n        }\n      },\n      \"task_category\": {\n        \"definition\": \"string\",\n        \"id\": 4074,\n        \"order\": 2596\n      },\n      \"task_type\": {\n        \"definition\": \"string\",\n        \"id\": 5252,\n        \"order\": 5429,\n        \"navigation_path\": \"string\"\n      },\n      \"description\": \"string\",\n      \"due_date\": \"1999-03-24T17:54:55.258Z\",\n      \"status\": {\n        \"definition\": \"string\",\n        \"id\": 542,\n        \"order\": 6502\n      }\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?page=4\",\n  \"previous\": \"http://api.example.org/accounts/?page=2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "02bdc30c-dd85-45e4-a340-1e68c8690e14",
+          "name": "api tasks create",
+          "request": {
+            "name": "api tasks create",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tasks",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "navigation_path",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "7b0eba74-8ac7-419f-a05f-d438f1e6af77",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tasks",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "navigation_path",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "due_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assigned_to\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"\",\n    \"last_name\": \"\",\n    \"role\": {\n      \"definition\": \"string\",\n      \"id\": 9329,\n      \"order\": 8720\n    },\n    \"verified\": false\n  },\n  \"loan_request\": {\n    \"id\": \"<integer>\",\n    \"borrower_reference\": \"string\",\n    \"external_reference\": \"string\",\n    \"internal_reference\": \"string\",\n    \"status\": {\n      \"borrower_facing_status\": \"string\",\n      \"color\": \"string\",\n      \"definition\": \"string\",\n      \"icon\": \"string\",\n      \"id\": 5167,\n      \"order\": 4122,\n      \"check_if_selected_offer_is_still_valid_when_data_is_changed\": true,\n      \"is_active\": false,\n      \"is_terminal\": true,\n      \"notify_analyst_on_draft_offer_rate_change\": false,\n      \"recalculate_selected_offer_when_data_is_changed\": false\n    }\n  },\n  \"task_category\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 3557\n  },\n  \"task_type\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"navigation_path\": \"<string>\",\n    \"order\": 6226\n  },\n  \"created\": \"1957-11-23T18:30:59.424Z\",\n  \"created_by\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"\",\n    \"last_name\": \"\",\n    \"role\": {\n      \"definition\": \"string\",\n      \"id\": 8505,\n      \"order\": 2141\n    },\n    \"verified\": false\n  },\n  \"description\": \"<string>\",\n  \"due_date\": \"<dateTime>\",\n  \"id\": 8608,\n  \"last_modified\": \"1983-02-13T01:07:24.130Z\",\n  \"status\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 1826\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "07cb8930-d0c5-414e-a6a6-c26f3e472f6c",
+          "name": "api tasks retrieve",
+          "request": {
+            "name": "api tasks retrieve",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tasks",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this Task."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "938e1233-86cc-43c7-bc11-52635cefafd8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tasks",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this Task."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assigned_to\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"\",\n    \"last_name\": \"\",\n    \"role\": {\n      \"definition\": \"string\",\n      \"id\": 9329,\n      \"order\": 8720\n    },\n    \"verified\": false\n  },\n  \"loan_request\": {\n    \"id\": \"<integer>\",\n    \"borrower_reference\": \"string\",\n    \"external_reference\": \"string\",\n    \"internal_reference\": \"string\",\n    \"status\": {\n      \"borrower_facing_status\": \"string\",\n      \"color\": \"string\",\n      \"definition\": \"string\",\n      \"icon\": \"string\",\n      \"id\": 5167,\n      \"order\": 4122,\n      \"check_if_selected_offer_is_still_valid_when_data_is_changed\": true,\n      \"is_active\": false,\n      \"is_terminal\": true,\n      \"notify_analyst_on_draft_offer_rate_change\": false,\n      \"recalculate_selected_offer_when_data_is_changed\": false\n    }\n  },\n  \"task_category\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 3557\n  },\n  \"task_type\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"navigation_path\": \"<string>\",\n    \"order\": 6226\n  },\n  \"created\": \"1957-11-23T18:30:59.424Z\",\n  \"created_by\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"\",\n    \"last_name\": \"\",\n    \"role\": {\n      \"definition\": \"string\",\n      \"id\": 8505,\n      \"order\": 2141\n    },\n    \"verified\": false\n  },\n  \"description\": \"<string>\",\n  \"due_date\": \"<dateTime>\",\n  \"id\": 8608,\n  \"last_modified\": \"1983-02-13T01:07:24.130Z\",\n  \"status\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 1826\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35a8c7f1-30a2-4a4f-bc78-1b8d931f87b7",
+          "name": "api tasks partial update",
+          "request": {
+            "name": "api tasks partial update",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tasks",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this Task."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "navigation_path",
+                  "value": "<string>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "28b8f951-7ebd-4859-9142-18d9c57c3150",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tasks",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this Task."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "due_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "navigation_path",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assigned_to\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"\",\n    \"last_name\": \"\",\n    \"role\": {\n      \"definition\": \"string\",\n      \"id\": 9329,\n      \"order\": 8720\n    },\n    \"verified\": false\n  },\n  \"loan_request\": {\n    \"id\": \"<integer>\",\n    \"borrower_reference\": \"string\",\n    \"external_reference\": \"string\",\n    \"internal_reference\": \"string\",\n    \"status\": {\n      \"borrower_facing_status\": \"string\",\n      \"color\": \"string\",\n      \"definition\": \"string\",\n      \"icon\": \"string\",\n      \"id\": 5167,\n      \"order\": 4122,\n      \"check_if_selected_offer_is_still_valid_when_data_is_changed\": true,\n      \"is_active\": false,\n      \"is_terminal\": true,\n      \"notify_analyst_on_draft_offer_rate_change\": false,\n      \"recalculate_selected_offer_when_data_is_changed\": false\n    }\n  },\n  \"task_category\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 3557\n  },\n  \"task_type\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"navigation_path\": \"<string>\",\n    \"order\": 6226\n  },\n  \"created\": \"1957-11-23T18:30:59.424Z\",\n  \"created_by\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"\",\n    \"last_name\": \"\",\n    \"role\": {\n      \"definition\": \"string\",\n      \"id\": 8505,\n      \"order\": 2141\n    },\n    \"verified\": false\n  },\n  \"description\": \"<string>\",\n  \"due_date\": \"<dateTime>\",\n  \"id\": 8608,\n  \"last_modified\": \"1983-02-13T01:07:24.130Z\",\n  \"status\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 1826\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7309a92f-adf4-4513-a71f-c61244a9bb9a",
+          "name": "api tasks update",
+          "request": {
+            "name": "api tasks update",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "tasks",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this Task."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "navigation_path",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "description",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_date",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "99c35537-db6b-4ed0-b574-1f9eec27df44",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "tasks",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this Task."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "navigation_path",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "description",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "due_date",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"assigned_to\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"\",\n    \"last_name\": \"\",\n    \"role\": {\n      \"definition\": \"string\",\n      \"id\": 9329,\n      \"order\": 8720\n    },\n    \"verified\": false\n  },\n  \"loan_request\": {\n    \"id\": \"<integer>\",\n    \"borrower_reference\": \"string\",\n    \"external_reference\": \"string\",\n    \"internal_reference\": \"string\",\n    \"status\": {\n      \"borrower_facing_status\": \"string\",\n      \"color\": \"string\",\n      \"definition\": \"string\",\n      \"icon\": \"string\",\n      \"id\": 5167,\n      \"order\": 4122,\n      \"check_if_selected_offer_is_still_valid_when_data_is_changed\": true,\n      \"is_active\": false,\n      \"is_terminal\": true,\n      \"notify_analyst_on_draft_offer_rate_change\": false,\n      \"recalculate_selected_offer_when_data_is_changed\": false\n    }\n  },\n  \"task_category\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 3557\n  },\n  \"task_type\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"navigation_path\": \"<string>\",\n    \"order\": 6226\n  },\n  \"created\": \"1957-11-23T18:30:59.424Z\",\n  \"created_by\": {\n    \"id\": \"<integer>\",\n    \"first_name\": \"\",\n    \"last_name\": \"\",\n    \"role\": {\n      \"definition\": \"string\",\n      \"id\": 8505,\n      \"order\": 2141\n    },\n    \"verified\": false\n  },\n  \"description\": \"<string>\",\n  \"due_date\": \"<dateTime>\",\n  \"id\": 8608,\n  \"last_modified\": \"1983-02-13T01:07:24.130Z\",\n  \"status\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 1826\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "4713df98-9b3d-4bce-b47b-0939a7a6aa0b",
+    "name": "Oper Credits Agent Documents Tasks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Check Invite Token API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Check Invite Token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_check_invite_token_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/check-invite-token/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This check verifies whether the reset password token is valid."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

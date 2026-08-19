@@ -1,0 +1,53 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Appointment Booking Websites API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Appointment Booking Websites",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_appointment_booking_websites_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/appointment-booking-websites/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "api_appointment_booking_websites_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/appointment-booking-websites/:language__definition/",
+            "params": [
+              {
+                "name": "language__definition",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

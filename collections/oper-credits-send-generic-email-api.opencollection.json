@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Send Generic Email API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Send Generic Email",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_send_generic_email_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/send-generic-email/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

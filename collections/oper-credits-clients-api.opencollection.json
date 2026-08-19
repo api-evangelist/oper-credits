@@ -1,0 +1,172 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Clients API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clients",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_clients_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/clients/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Mixin that routes to the loan request and verifies if the requestor has access to the requested resource\nTo use the Role View Mixin, you must define either queryset or overwrite get_base_queryset"
+        },
+        {
+          "info": {
+            "name": "api_clients_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/clients/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Mixin that routes to the loan request and verifies if the requestor has access to the requested resource\nTo use the Role View Mixin, you must define either queryset or overwrite get_base_queryset"
+        },
+        {
+          "info": {
+            "name": "api_clients_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/clients/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Client Profile."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Mixin that routes to the loan request and verifies if the requestor has access to the requested resource\nTo use the Role View Mixin, you must define either queryset or overwrite get_base_queryset"
+        },
+        {
+          "info": {
+            "name": "api_clients_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/clients/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Client Profile."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Mixin that routes to the loan request and verifies if the requestor has access to the requested resource\nTo use the Role View Mixin, you must define either queryset or overwrite get_base_queryset"
+        },
+        {
+          "info": {
+            "name": "api_clients_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/clients/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Client Profile."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Mixin that routes to the loan request and verifies if the requestor has access to the requested resource\nTo use the Role View Mixin, you must define either queryset or overwrite get_base_queryset"
+        },
+        {
+          "info": {
+            "name": "api_clients_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/clients/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Client Profile."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Mixin that routes to the loan request and verifies if the requestor has access to the requested resource\nTo use the Role View Mixin, you must define either queryset or overwrite get_base_queryset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

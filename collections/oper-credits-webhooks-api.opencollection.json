@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Webhooks API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Your endpoint implementation for handling Oper Connect's webhooks",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/your-webhook-endpoint",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This path represents the path to your API implementation of the end point that is configured in Oper Connect. It describes what Oper Connect will send to your endpoint, and what it expects in response."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

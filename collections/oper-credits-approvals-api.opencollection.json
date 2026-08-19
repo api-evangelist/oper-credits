@@ -1,0 +1,223 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Approvals API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Approvals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_approvals_action_availability_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/approvals/action-availability/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "api_approvals_audit_bundles_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/approvals/audit/bundles/",
+            "params": [
+              {
+                "name": "action_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "credit_provider_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "host_kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to_date",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "api_approvals_audit_configurations_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/approvals/audit/configurations/",
+            "params": [
+              {
+                "name": "credit_provider_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "saved_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subject_kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "tenant_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to_date",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "api_approvals_audit_configurations_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/approvals/audit/configurations/:version_id/",
+            "params": [
+              {
+                "name": "version_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "api_approvals_audit_requests_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/approvals/audit/requests/",
+            "params": [
+              {
+                "name": "action_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "credit_provider_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "from_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "host_id",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "host_kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "performed_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "subject_kind",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "to_date",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "api_approvals_audit_requests_actions_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/approvals/audit/requests/:request_id/actions/",
+            "params": [
+              {
+                "name": "request_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "`GET /approvals/audit/requests/<request_id>/actions/` (Notion E5).\n\nCompact per-request action history used by the FE's §1.4 side-by-side\ndisplay: at the Head Decider level the FE renders both the advisor's\noriginal submit value AND the previous Decider's counter (modify)\nvalue side-by-side. Reads `results[0]` for the submit + walks the\nlist for the latest `modify` action.\n\nAuth: standard advisor/decider permission — the FE caller is whoever\nis acting on the bundle, not a compliance-team auditor"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -2,11 +2,9 @@ generated: '2026-07-20'
 method: derived
 status: candidate
 source: openapi/oper-credits-api-openapi.json
-notes: >-
-  No official hosted/remote MCP server was found for Oper Connect. The tools below
-  are a candidate surface derived from the OpenAPI, curated to the marquee
-  loan-origination flow (create request, add borrower/property, quote & place an
-  offer, push documents). Auth would be JWT bearer per authentication/oper-credits-authentication.yml.
+notes: No official hosted/remote MCP server was found for Oper Connect. The tools below are a candidate
+  surface derived from the OpenAPI, curated to the marquee loan-origination flow (create request, add
+  borrower/property, quote & place an offer, push documents). Auth would be JWT bearer per authentication/oper-credits-authentication.yml.
 server:
   name: oper-credits
   transport: http
@@ -42,3 +40,9 @@ tools:
 - name: create_decision
   description: Record an underwriting decision on a loan request.
   source_operation: openapi/oper-credits-api-openapi.json#api_loan_requests_decisions_create
+deployment:
+  mode: none
+  verified: derived
+  tools: 10
+  checked: '2026-08-12'
+  source: catalog MCP census

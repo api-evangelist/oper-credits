@@ -1,0 +1,339 @@
+{
+  "item": [
+    {
+      "id": "3a24ea06-b457-4db4-84bc-f8e6ae4152e1",
+      "name": "Internaldocuments",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "66663540-44a9-4281-958b-04a80d78cb2b",
+          "name": "api internaldocuments documents list",
+          "request": {
+            "name": "api internaldocuments documents list",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "internaldocuments",
+                "documents",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dd6542bc-ef09-4fd7-90bc-febba0c23887",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internaldocuments",
+                    "documents",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"created\": \"1973-05-07T01:52:51.128Z\",\n      \"created_object_id\": 1777,\n      \"document_type\": {\n        \"definition\": \"string\",\n        \"id\": 2757,\n        \"order\": 3358,\n        \"add_to_handover_letter\": true,\n        \"allows_generation\": false,\n        \"append_file_version\": true,\n        \"can_be_added_manually_as_informative_document\": false,\n        \"document_generation_configuration\": \"\",\n        \"is_informative\": true,\n        \"is_proof_to_sign\": true\n      },\n      \"file_name\": \"string\",\n      \"id\": 1274,\n      \"integrator_transfer_rounds\": [\n        {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        {\n          \"key_0\": {}\n        }\n      ],\n      \"last_modified\": \"1998-06-25T11:10:16.592Z\",\n      \"link_id\": 9680,\n      \"object_id\": \"712ce1b4-9ad8-8347-01a9-d93f413311d9\",\n      \"oper_reference\": \"52d3aec7-1644-6b64-b31c-d17909954b5b\",\n      \"status\": {\n        \"definition\": \"string\",\n        \"id\": 3265,\n        \"order\": 8854\n      },\n      \"version\": \"string\",\n      \"configuration_id\": \"df213023-5349-ae97-18d4-bb5215a55a68\",\n      \"is_sent\": false,\n      \"is_signed\": true,\n      \"object_file_name\": \"string\",\n      \"sha256_hash\": \"string\",\n      \"signed_date\": \"1998-05-22T17:05:16.358Z\"\n    },\n    {\n      \"created\": \"1975-06-02T09:47:23.998Z\",\n      \"created_object_id\": 7900,\n      \"document_type\": {\n        \"definition\": \"string\",\n        \"id\": 5334,\n        \"order\": 3932,\n        \"add_to_handover_letter\": true,\n        \"allows_generation\": true,\n        \"append_file_version\": true,\n        \"can_be_added_manually_as_informative_document\": false,\n        \"document_generation_configuration\": \"\",\n        \"is_informative\": false,\n        \"is_proof_to_sign\": true\n      },\n      \"file_name\": \"string\",\n      \"id\": 9291,\n      \"integrator_transfer_rounds\": [\n        {\n          \"key_0\": {},\n          \"key_1\": {}\n        },\n        {\n          \"key_0\": {}\n        }\n      ],\n      \"last_modified\": \"1955-03-13T04:39:42.851Z\",\n      \"link_id\": 7866,\n      \"object_id\": \"e9977504-50af-f514-8656-d9f71e2ef511\",\n      \"oper_reference\": \"3c0572ce-97f2-cb86-979b-4ef8048569c3\",\n      \"status\": {\n        \"definition\": \"string\",\n        \"id\": 7478,\n        \"order\": 7757\n      },\n      \"version\": \"string\",\n      \"configuration_id\": \"5d516e3a-9421-f634-fc3a-0e944379514e\",\n      \"is_sent\": true,\n      \"is_signed\": true,\n      \"object_file_name\": \"string\",\n      \"sha256_hash\": \"string\",\n      \"signed_date\": \"2013-08-30T17:26:11.236Z\"\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?page=4\",\n  \"previous\": \"http://api.example.org/accounts/?page=2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c50efa24-6378-4d70-aa3d-d49522056c5a",
+          "name": "api internaldocuments documents retrieve",
+          "request": {
+            "name": "api internaldocuments documents retrieve",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "internaldocuments",
+                "documents",
+                ":configuration_id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "configuration_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4681aa7a-b345-4ecf-80d0-b216456943be",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internaldocuments",
+                    "documents",
+                    ":configuration_id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "configuration_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1978-05-13T07:41:37.204Z\",\n  \"created_object_id\": 6044,\n  \"document_type\": {\n    \"definition\": \"string\",\n    \"id\": 2784,\n    \"order\": 1051,\n    \"add_to_handover_letter\": false,\n    \"allows_generation\": true,\n    \"append_file_version\": false,\n    \"can_be_added_manually_as_informative_document\": false,\n    \"document_generation_configuration\": \"\",\n    \"is_informative\": false,\n    \"is_proof_to_sign\": false\n  },\n  \"file_name\": \"string\",\n  \"id\": 9289,\n  \"integrator_transfer_rounds\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ],\n  \"last_modified\": \"2001-09-22T21:44:49.772Z\",\n  \"link_id\": 4737,\n  \"mime_type\": \"string\",\n  \"object_id\": \"fc9d2eb8-4c45-c4fc-3944-82cfad8e4484\",\n  \"oper_reference\": \"28ab852c-f107-e257-285e-f96fbc7b5269\",\n  \"status\": {\n    \"definition\": \"string\",\n    \"id\": 8385,\n    \"order\": 5167\n  },\n  \"url\": \"string\",\n  \"version\": \"string\",\n  \"configuration_id\": \"deb75c38-3a83-e588-61ce-1c6081136493\",\n  \"is_sent\": false,\n  \"is_signed\": false,\n  \"object_file_name\": \"string\",\n  \"sha256_hash\": \"string\",\n  \"signed_date\": \"1997-05-31T15:57:18.845Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9368960-f674-4626-ba5e-8816e3c0cbfe",
+          "name": "api internaldocuments upload create",
+          "request": {
+            "name": "api internaldocuments upload create",
+            "description": {
+              "content": "Override to add query params to the data, serialize the full payload and return an empty response",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "internaldocuments",
+                "upload",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "31e6ac3a-e796-4e39-96ea-716bb3a20247",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "internaldocuments",
+                    "upload",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"configuration_id\": \"387e3a6d-4dab-ec3d-0602-d829f5c954c3\",\n  \"created\": \"1969-06-29T23:29:59.751Z\",\n  \"id\": 1696,\n  \"integrator_transfer_rounds\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  ],\n  \"last_modified\": \"2013-07-30T19:27:23.503Z\",\n  \"mime_type\": \"string\",\n  \"object_id\": \"8686000c-75e2-dbca-5c6b-cc79c43d32b8\",\n  \"oper_reference\": \"e5f84838-00fa-a30d-60c6-2c0aafc67203\",\n  \"status\": {\n    \"definition\": \"string\",\n    \"id\": 7230,\n    \"order\": 4490\n  },\n  \"url\": \"string\",\n  \"version\": \"string\",\n  \"created_object_id\": -404364680,\n  \"document_type\": {\n    \"definition\": \"string\",\n    \"id\": 4100,\n    \"order\": 9942,\n    \"add_to_handover_letter\": true,\n    \"allows_generation\": false,\n    \"append_file_version\": true,\n    \"can_be_added_manually_as_informative_document\": true,\n    \"document_generation_configuration\": \"\",\n    \"is_informative\": false,\n    \"is_proof_to_sign\": false\n  },\n  \"file_name\": \"string\",\n  \"is_sent\": false,\n  \"is_signed\": false,\n  \"link_id\": 2537,\n  \"object_file_name\": \"string\",\n  \"sha256_hash\": \"string\",\n  \"signed_date\": \"2011-10-16T02:17:16.209Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6582658e-44d9-4757-b0d2-bde7c96f12a5",
+    "name": "Oper Credits Agent Documents Internaldocuments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

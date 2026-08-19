@@ -1,0 +1,222 @@
+{
+  "item": [
+    {
+      "id": "1569feec-38b7-4274-8bcd-3ccd11d48cac",
+      "name": "Legal Links",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6c05d154-0a11-4f29-a420-5828187b3d24",
+          "name": "api legal links list",
+          "request": {
+            "name": "api legal links list",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "legal-links",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "80860d7d-36b6-4ad2-a987-cd670d0271bf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "legal-links",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"display_text\": \"string\",\n    \"id\": 2556,\n    \"language\": {\n      \"definition\": \"string\",\n      \"id\": 8165,\n      \"order\": 8853\n    },\n    \"url\": \"http://OouSdAqSTEvja.qlmSy8aJl6-0ejncxQ2V6sZBuHu5pqAY5j.8XqyOAKVlLGmCZmpI+r,\",\n    \"legal_link_type\": 6397,\n    \"tenant\": 5271\n  },\n  {\n    \"display_text\": \"string\",\n    \"id\": 6735,\n    \"language\": {\n      \"definition\": \"string\",\n      \"id\": 364,\n      \"order\": 6518\n    },\n    \"url\": \"https://dqZniBghdtHqnVAxkXZ.sephu+IZcRK,ip4-nLgjcEIY,kp2fN60NJmugPD+CBr,-J3UWtNSiOXKL0IfXYtT4Lt-TtgSbndm\",\n    \"legal_link_type\": 1953,\n    \"tenant\": 9687\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d78a9880-e5b8-4a0d-864c-78cb702075cd",
+          "name": "api legal links retrieve",
+          "request": {
+            "name": "api legal links retrieve",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "legal-links",
+                ":language__definition",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "language__definition",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "54a7a987-5fb2-440f-8caf-b4a36360ebf7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "legal-links",
+                    ":language__definition",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "language__definition",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"display_text\": \"string\",\n  \"id\": 3970,\n  \"language\": {\n    \"definition\": \"string\",\n    \"id\": 2366,\n    \"order\": 11\n  },\n  \"url\": \"http://inJ.ukztqDqe5M8dPoBuSPS70bk+Zd4DCqVLcSvslynJ\",\n  \"legal_link_type\": 8662,\n  \"tenant\": 4704\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f26455d6-6c1b-4419-a75c-0810e2947d79",
+    "name": "Oper Credits Agent Documents Legal Links API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

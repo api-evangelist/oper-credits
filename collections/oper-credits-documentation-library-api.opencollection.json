@@ -1,0 +1,174 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Documentation Library API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Documentation Library",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_documentation_library_documents_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/documentation-library/documents/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_documentation_library_documents_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/documentation-library/documents/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_documentation_library_documents_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/documentation-library/documents/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_documentation_library_documents_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/documentation-library/documents/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_documentation_library_documents_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/documentation-library/documents/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_documentation_library_documents_generate_presigned_url_config_panel_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/documentation-library/documents/:id/generate-presigned-url-config-panel/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_documentation_library_documents_generate_presigned_url_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/documentation-library/documents/:id/generate-presigned-url/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,142 @@
+{
+  "item": [
+    {
+      "id": "b3e8745c-3692-4b3d-aaa6-90c256a8f2af",
+      "name": "Easy Audit",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3711cb57-a6b1-4bc2-a2fb-12e38caa61e6",
+          "name": "api easy audit crud events list",
+          "request": {
+            "name": "api easy audit crud events list",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "easy-audit",
+                "crud-events",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2f61f3b5-e729-4021-9236-2a04d3733aa5",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "easy-audit",
+                    "crud-events",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"content_type\": 9180,\n      \"datetime\": \"1948-07-26T05:47:29.117Z\",\n      \"event_type\": 1,\n      \"id\": 7969,\n      \"object_id\": \"string\",\n      \"changed_fields\": \"string\",\n      \"object_json_repr\": \"string\",\n      \"object_repr\": \"string\",\n      \"user\": 8450,\n      \"user_pk_as_string\": \"string\"\n    },\n    {\n      \"content_type\": 5808,\n      \"datetime\": \"1973-05-26T02:19:00.330Z\",\n      \"event_type\": 1,\n      \"id\": 267,\n      \"object_id\": \"string\",\n      \"changed_fields\": \"string\",\n      \"object_json_repr\": \"string\",\n      \"object_repr\": \"string\",\n      \"user\": 3560,\n      \"user_pk_as_string\": \"string\"\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?page=4\",\n  \"previous\": \"http://api.example.org/accounts/?page=2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1a527b91-b173-46cc-bf04-f82b40d6b42b",
+    "name": "Oper Credits Agent Documents Easy Audit API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

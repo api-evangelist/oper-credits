@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Loan Requests Client Info API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Loan Requests Client Info",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_loan_requests_client_info_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/loan-requests-client-info/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Mixin that routes to the loan request and verifies if the requestor has access to the requested resource\nTo use the Role View Mixin, you must define either queryset or overwrite get_base_queryset"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

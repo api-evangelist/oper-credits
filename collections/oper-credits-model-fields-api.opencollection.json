@@ -1,0 +1,32 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Model Fields API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Model Fields",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_model_fields_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/model-fields/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

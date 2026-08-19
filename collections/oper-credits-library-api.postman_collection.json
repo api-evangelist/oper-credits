@@ -1,0 +1,226 @@
+{
+  "item": [
+    {
+      "id": "7a13cbe3-3f1f-40e9-b4b5-a1f90e196694",
+      "name": "Library",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0fa49a30-a455-461a-80ff-0aca103ae799",
+          "name": "api library documents list",
+          "request": {
+            "name": "api library documents list",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "library",
+                "documents",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6348eac7-39ab-41f4-99fc-7777d0a71a55",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "library",
+                    "documents",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"category\": {\n      \"definition\": \"string\",\n      \"id\": 7004,\n      \"order\": 8258\n    },\n    \"context\": \"string\",\n    \"document\": {\n      \"document_type\": {\n        \"definition\": \"string\",\n        \"id\": 7296,\n        \"order\": 8159,\n        \"add_to_handover_letter\": false,\n        \"allows_generation\": true,\n        \"append_file_version\": true,\n        \"can_be_added_manually_as_informative_document\": false,\n        \"document_generation_configuration\": \"\",\n        \"is_informative\": false,\n        \"is_proof_to_sign\": false\n      },\n      \"mime_type\": \"string\",\n      \"url\": \"string\"\n    },\n    \"language\": {\n      \"definition\": \"string\",\n      \"id\": 389,\n      \"order\": 1958\n    }\n  },\n  {\n    \"category\": {\n      \"definition\": \"string\",\n      \"id\": 8681,\n      \"order\": 4958\n    },\n    \"context\": \"string\",\n    \"document\": {\n      \"document_type\": {\n        \"definition\": \"string\",\n        \"id\": 8800,\n        \"order\": 6873,\n        \"add_to_handover_letter\": false,\n        \"allows_generation\": true,\n        \"append_file_version\": true,\n        \"can_be_added_manually_as_informative_document\": true,\n        \"document_generation_configuration\": \"\",\n        \"is_informative\": false,\n        \"is_proof_to_sign\": false\n      },\n      \"mime_type\": \"string\",\n      \"url\": \"string\"\n    },\n    \"language\": {\n      \"definition\": \"string\",\n      \"id\": 1848,\n      \"order\": 3967\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4fdfd636-6631-4dc4-8d75-c8a903175e9a",
+          "name": "api library documents retrieve",
+          "request": {
+            "name": "api library documents retrieve",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "library",
+                "documents",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "01ee0258-5fbe-4d50-a582-0e818ef5232d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "library",
+                    "documents",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"category\": {\n    \"definition\": \"string\",\n    \"id\": 5122,\n    \"order\": 1196\n  },\n  \"context\": \"string\",\n  \"document\": {\n    \"document_type\": {\n      \"definition\": \"string\",\n      \"id\": 5911,\n      \"order\": 9929,\n      \"add_to_handover_letter\": true,\n      \"allows_generation\": false,\n      \"append_file_version\": false,\n      \"can_be_added_manually_as_informative_document\": false,\n      \"document_generation_configuration\": \"\",\n      \"is_informative\": true,\n      \"is_proof_to_sign\": true\n    },\n    \"mime_type\": \"string\",\n    \"url\": \"string\"\n  },\n  \"language\": {\n    \"definition\": \"string\",\n    \"id\": 8157,\n    \"order\": 2328\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e5f87a52-2535-4a46-9854-29899320ed18",
+    "name": "Oper Credits Agent Documents Library API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

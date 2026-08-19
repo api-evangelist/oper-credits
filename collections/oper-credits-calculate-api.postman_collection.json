@@ -1,0 +1,1084 @@
+{
+  "item": [
+    {
+      "id": "c400d7b9-1ea8-4737-a34f-aa9511d05b6d",
+      "name": "Calculate",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "724fbf93-89f2-482d-9408-cc7e9cc9c225",
+          "name": "api calculate baby loan create",
+          "request": {
+            "name": "api calculate baby loan create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "calculate",
+                "baby-loan",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "client",
+                  "value": "{\"dependent_children\":\"<integer>\",\"planned_children\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "realty",
+                  "value": "{\"purposes\":[{\"definition\":\"<string>\",\"id\":\"<integer>\"},{\"definition\":\"<string>\",\"id\":\"<integer>\"}],\"realty_type\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"surface\":\"<double>\"}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08358cf6-32ba-4278-9f9f-115e8cebdb64",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "calculate",
+                    "baby-loan",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "client",
+                      "value": "{\"dependent_children\":\"<integer>\",\"planned_children\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "realty",
+                      "value": "{\"purposes\":[{\"definition\":\"<string>\",\"id\":\"<integer>\"},{\"definition\":\"<string>\",\"id\":\"<integer>\"}],\"realty_type\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"surface\":\"<double>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"input\": {\n    \"client\": {\n      \"dependent_children\": \"<integer>\",\n      \"planned_children\": \"<integer>\"\n    },\n    \"realty\": {\n      \"purposes\": [\n        {\n          \"definition\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"order\": 4405\n        },\n        {\n          \"definition\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"order\": 8180\n        }\n      ],\n      \"realty_type\": {\n        \"definition\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"order\": 305\n      },\n      \"surface\": \"<double>\"\n    }\n  },\n  \"output\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "26cf53fb-b3ee-4ea9-b3f7-fccc6256dc69",
+          "name": "api calculate credit theoretical amortization create",
+          "request": {
+            "name": "api calculate credit theoretical amortization create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "calculate",
+                "credit-theoretical-amortization",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "initial_amount",
+                  "value": "<double>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "liability_type",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\",\"is_mandatory\":\"<boolean>\",\"is_mandatory_in_simulation\":\"<boolean>\"}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6cb564f0-51ab-49fb-9161-90f9832457a7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "calculate",
+                    "credit-theoretical-amortization",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "initial_amount",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "liability_type",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\",\"is_mandatory\":\"<boolean>\",\"is_mandatory_in_simulation\":\"<boolean>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"input\": {\n    \"initial_amount\": \"<double>\",\n    \"liability_type\": {\n      \"definition\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"category\": \"string\",\n      \"color\": \"string\",\n      \"is_mandatory\": \"<boolean>\",\n      \"is_mandatory_in_simulation\": \"<boolean>\",\n      \"order\": 5225\n    }\n  },\n  \"output\": {\n    \"amortization\": 4716.063938053111,\n    \"theoretical_interest_rate\": 9891.264451417896\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62f6918b-457a-479a-ba8d-21c1cb3e4d9a",
+          "name": "api calculate credit create",
+          "request": {
+            "name": "api calculate credit create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "calculate",
+                "credit",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<double>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "duration",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "is_mandatory",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "is_mandatory_in_simulation",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "is_grace_period_supported",
+                  "value": "<boolean>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "amortization",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "interest_rate",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "start_date",
+                  "value": "<date>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "1128d350-7d29-430c-9ed6-68db6a11bd24",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "calculate",
+                    "credit",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "amount",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "duration",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "is_mandatory",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "is_mandatory_in_simulation",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "is_grace_period_supported",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "amortization",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "interest_rate",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "start_date",
+                      "value": "<date>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": \"<double>\",\n  \"duration\": \"<integer>\",\n  \"liability_type\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"category\": \"string\",\n    \"color\": \"string\",\n    \"is_mandatory\": \"<boolean>\",\n    \"is_mandatory_in_simulation\": \"<boolean>\",\n    \"order\": 2753\n  },\n  \"loan_type\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"is_grace_period_supported\": \"<boolean>\",\n    \"order\": 9293\n  },\n  \"amortization\": \"<double>\",\n  \"balance\": 2551.1261385472826,\n  \"early_repayment_fee\": 9666.26257695458,\n  \"end_amount\": 1285.1909102653492,\n  \"handling_costs\": 4856.510222036476,\n  \"interest_rate\": \"<double>\",\n  \"start_date\": \"<date>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7593eee8-9e6d-4281-ad4c-0f7a1d3fe167",
+          "name": "api calculate csok cash create",
+          "request": {
+            "name": "api calculate csok cash create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "calculate",
+                "csok-cash",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "client",
+                  "value": "{\"dependent_children\":\"<integer>\",\"planned_children\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "realty",
+                  "value": "{\"purposes\":[{\"definition\":\"<string>\",\"id\":\"<integer>\"},{\"definition\":\"<string>\",\"id\":\"<integer>\"}],\"realty_type\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"surface\":\"<double>\"}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "29927588-a990-479e-a9a4-6f2e56feb240",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "calculate",
+                    "csok-cash",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "client",
+                      "value": "{\"dependent_children\":\"<integer>\",\"planned_children\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "realty",
+                      "value": "{\"purposes\":[{\"definition\":\"<string>\",\"id\":\"<integer>\"},{\"definition\":\"<string>\",\"id\":\"<integer>\"}],\"realty_type\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"surface\":\"<double>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"input\": {\n    \"client\": {\n      \"dependent_children\": \"<integer>\",\n      \"planned_children\": \"<integer>\"\n    },\n    \"realty\": {\n      \"purposes\": [\n        {\n          \"definition\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"order\": 4405\n        },\n        {\n          \"definition\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"order\": 8180\n        }\n      ],\n      \"realty_type\": {\n        \"definition\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"order\": 305\n      },\n      \"surface\": \"<double>\"\n    }\n  },\n  \"output\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17eba29a-2d68-44e1-81e9-8cf2418bd497",
+          "name": "api calculate csok mortgage create",
+          "request": {
+            "name": "api calculate csok mortgage create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "calculate",
+                "csok-mortgage",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "client",
+                  "value": "{\"dependent_children\":\"<integer>\",\"planned_children\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "realty",
+                  "value": "{\"purposes\":[{\"definition\":\"<string>\",\"id\":\"<integer>\"},{\"definition\":\"<string>\",\"id\":\"<integer>\"}],\"realty_type\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"surface\":\"<double>\"}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "26bdac15-87c6-4957-a9a9-dbaf5571db39",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "calculate",
+                    "csok-mortgage",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "client",
+                      "value": "{\"dependent_children\":\"<integer>\",\"planned_children\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "realty",
+                      "value": "{\"purposes\":[{\"definition\":\"<string>\",\"id\":\"<integer>\"},{\"definition\":\"<string>\",\"id\":\"<integer>\"}],\"realty_type\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"surface\":\"<double>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"input\": {\n    \"client\": {\n      \"dependent_children\": \"<integer>\",\n      \"planned_children\": \"<integer>\"\n    },\n    \"realty\": {\n      \"purposes\": [\n        {\n          \"definition\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"order\": 4405\n        },\n        {\n          \"definition\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"order\": 8180\n        }\n      ],\n      \"realty_type\": {\n        \"definition\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"order\": 305\n      },\n      \"surface\": \"<double>\"\n    }\n  },\n  \"output\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "356ae035-66d1-4ec1-a301-7e2ebc70c505",
+          "name": "api calculate village csok cash create",
+          "request": {
+            "name": "api calculate village csok cash create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "calculate",
+                "village-csok-cash",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "client",
+                  "value": "{\"dependent_children\":\"<integer>\",\"planned_children\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "realty",
+                  "value": "{\"purposes\":[{\"definition\":\"<string>\",\"id\":\"<integer>\"},{\"definition\":\"<string>\",\"id\":\"<integer>\"}],\"realty_type\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"surface\":\"<double>\"}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "64debd32-0931-48d4-94a5-524a28c0f2da",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "calculate",
+                    "village-csok-cash",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "client",
+                      "value": "{\"dependent_children\":\"<integer>\",\"planned_children\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "realty",
+                      "value": "{\"purposes\":[{\"definition\":\"<string>\",\"id\":\"<integer>\"},{\"definition\":\"<string>\",\"id\":\"<integer>\"}],\"realty_type\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"surface\":\"<double>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"input\": {\n    \"client\": {\n      \"dependent_children\": \"<integer>\",\n      \"planned_children\": \"<integer>\"\n    },\n    \"realty\": {\n      \"purposes\": [\n        {\n          \"definition\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"order\": 6304\n        },\n        {\n          \"definition\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"order\": 3391\n        }\n      ],\n      \"realty_type\": {\n        \"definition\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"order\": 7668\n      },\n      \"surface\": \"<double>\"\n    }\n  },\n  \"output\": {\n    \"key_0\": 8046.378773821071,\n    \"key_1\": 4630.841011275989\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ad2c6ceb-97fa-476e-a676-74975d60d30d",
+          "name": "api calculate village csok mortgage create",
+          "request": {
+            "name": "api calculate village csok mortgage create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "calculate",
+                "village-csok-mortgage",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "client",
+                  "value": "{\"dependent_children\":\"<integer>\",\"planned_children\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "realty",
+                  "value": "{\"purposes\":[{\"definition\":\"<string>\",\"id\":\"<integer>\"},{\"definition\":\"<string>\",\"id\":\"<integer>\"}],\"realty_type\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"surface\":\"<double>\"}",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4261f587-ca5b-42f1-aea9-d96ee1a90bdc",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "calculate",
+                    "village-csok-mortgage",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "client",
+                      "value": "{\"dependent_children\":\"<integer>\",\"planned_children\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "realty",
+                      "value": "{\"purposes\":[{\"definition\":\"<string>\",\"id\":\"<integer>\"},{\"definition\":\"<string>\",\"id\":\"<integer>\"}],\"realty_type\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"surface\":\"<double>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"input\": {\n    \"client\": {\n      \"dependent_children\": \"<integer>\",\n      \"planned_children\": \"<integer>\"\n    },\n    \"realty\": {\n      \"purposes\": [\n        {\n          \"definition\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"order\": 6304\n        },\n        {\n          \"definition\": \"<string>\",\n          \"id\": \"<integer>\",\n          \"order\": 3391\n        }\n      ],\n      \"realty_type\": {\n        \"definition\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"order\": 7668\n      },\n      \"surface\": \"<double>\"\n    }\n  },\n  \"output\": {\n    \"key_0\": 8046.378773821071,\n    \"key_1\": 4630.841011275989\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fc033ca8-506c-48ab-bd50-206267805f8f",
+    "name": "Oper Credits Agent Documents Calculate API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

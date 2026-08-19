@@ -1,0 +1,565 @@
+{
+  "item": [
+    {
+      "id": "91710a45-5992-4173-b9a0-6cbde08e4c50",
+      "name": "Client Users",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "177b02ee-1e5d-4902-8a68-6ed2f6594c51",
+          "name": "api client users list",
+          "request": {
+            "name": "api client users list",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "client-users",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "2da16f1d-7df8-4a0c-856a-ba799c2a8f5e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "client-users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"first_name\": \"\",\n      \"id\": 7610,\n      \"last_name\": \"\",\n      \"role\": {\n        \"definition\": \"string\",\n        \"id\": 8986,\n        \"order\": 2205\n      },\n      \"verified\": true\n    },\n    {\n      \"first_name\": \"\",\n      \"id\": 6507,\n      \"last_name\": \"\",\n      \"role\": {\n        \"definition\": \"string\",\n        \"id\": 9284,\n        \"order\": 3346\n      },\n      \"verified\": true\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?page=4\",\n  \"previous\": \"http://api.example.org/accounts/?page=2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b5c2abb1-997f-48fa-b1e8-721bde9348d7",
+          "name": "api client users create",
+          "request": {
+            "name": "api client users create",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "client-users",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "country_code",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "is_secret",
+                  "value": "false",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "phone_type",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9bc88ec6-cde6-4f43-91ef-fdbcbb203a35",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "client-users",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "country_code",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "is_secret",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "phone_type",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "first_name",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "last_name",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"<string>\",\n  \"language\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 8965\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fe8228ef-74cb-4cd3-952d-2715538b654c",
+          "name": "api client users destroy",
+          "request": {
+            "name": "api client users destroy",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "client-users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this Client User."
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "0b8d0b79-cded-4453-92a6-b25b6f1e6a53",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "client-users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this Client User."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "88d359d0-4915-479b-9bab-c9a52c3db8e0",
+          "name": "api client users retrieve",
+          "request": {
+            "name": "api client users retrieve",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "client-users",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this Client User."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cf02b460-b7ed-4db2-bd14-e372f5d11715",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "client-users",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this Client User."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"first_name\": \"\",\n  \"id\": 3378,\n  \"last_name\": \"\",\n  \"role\": {\n    \"definition\": \"string\",\n    \"id\": 486,\n    \"order\": 2780\n  },\n  \"verified\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a296e062-957d-46c1-a365-45ac18712bb5",
+    "name": "Oper Credits Agent Documents Client Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,160 @@
+{
+  "item": [
+    {
+      "id": "32bc1923-d086-44b8-923f-49c41cd3f148",
+      "name": "Credit Providers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bf8cdd41-2a6b-425b-aede-43eea8fc3f4d",
+          "name": "api credit providers list",
+          "request": {
+            "name": "api credit providers list",
+            "description": {
+              "content": "Abstract class to support default ordering on order field",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "credit-providers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "active",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "exclude_blacklisted",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_liability_provider",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "ordering",
+                  "value": "<string>",
+                  "description": "Which field to use when ordering the results."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "705c010d-5abf-4ad9-a668-c79df7056c94",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "credit-providers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "active",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "exclude_blacklisted",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "is_liability_provider",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "ordering",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"active\": false,\n    \"fsma_reference\": \"string\",\n    \"full_name\": \"string\",\n    \"id\": 2568,\n    \"is_liability_provider\": true,\n    \"loan_request_form_documents\": \"string\",\n    \"logo_url\": \"https://qMMCkBfcgRKPJCzhChYr.mjdzDha-+EFCHr2+sBth-yjxLV91AHr5h1qcMZzVNxOPTEaX--EJutJFIGegPaMHC,4P0j5\",\n    \"name\": \"string\",\n    \"order\": 1973730666\n  },\n  {\n    \"active\": false,\n    \"fsma_reference\": \"string\",\n    \"full_name\": \"string\",\n    \"id\": 4871,\n    \"is_liability_provider\": true,\n    \"loan_request_form_documents\": \"string\",\n    \"logo_url\": \"http://EiQEBgiKVfxwhBTOfJsVbvHdodiehCe.wwtcst+j,IzJqxiom25Z\",\n    \"name\": \"string\",\n    \"order\": 1727190577\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "56e6b7be-7087-4066-9548-f133be9c219c",
+    "name": "Oper Credits Agent Documents Credit Providers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

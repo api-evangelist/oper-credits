@@ -1,0 +1,32 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Gdpr Policy API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Gdpr Policy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_gdpr_policy_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/gdpr-policy/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Sign In API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sign In",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_sign_in_activate_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/sign-in/activate/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This View will request a OTP for a user.\nIf no authy account exists yet, it will also create an Authy account"
+        },
+        {
+          "info": {
+            "name": "api_sign_in_otp_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/sign-in/otp/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Takes a set of user credentials and returns an access and refresh JSON web\ntoken pair to prove the authentication of those credentials."
+        },
+        {
+          "info": {
+            "name": "api_sign_in_reset_password_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/sign-in/reset-password/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "API view to actually change the password of the user.\nOnly post is allowed.\nSecurity is checked by comparing the JWT secret with the current hashed password of the user."
+        },
+        {
+          "info": {
+            "name": "api_sign_in_verify_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/sign-in/verify/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "This View will request a OTP for a user.\nIf no authy account exists yet, it will also create an Authy account"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,411 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Simulators API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Simulators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_simulators_calculate_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/simulators/calculate/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "api_simulators_default_products_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/simulators/default-products/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "The DynamicProductLiteViewSet provides a way to fetch the list of available products by providing loan request data\n as input since no actual LR will exist at the time of calling this in Advisor Simulator v2.\nIt is used to select products to add to an offer as product items.\n\nThe list is a multiplication of the active ProductVersions with a start date of at least today and\nthe allowed variabilities configured for the product.\nAs an example:\n2 Products (A & B) with each one version\nProduct A has "
+        },
+        {
+          "info": {
+            "name": "api_simulators_discounts_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/simulators/discounts/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "api_simulators_discounts_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/simulators/discounts/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_client_upload_document_types_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/client-upload-document-types/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Informative document types"
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_client_upload_document_types_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/client-upload-document-types/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Document Type."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Informative document types"
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_convert_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/convert/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Convert a simulation to Loan Request"
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_products_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/products/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "The DynamicProductLiteViewSet provides a way to fetch the list of available products by providing loan request data\n as input since no actual LR will exist at the time of calling this in Advisor Simulator v2.\nIt is used to select products to add to an offer as product items.\n\nThe list is a multiplication of the active ProductVersions with a start date of at least today and\nthe allowed variabilities configured for the product.\nAs an example:\n2 Products (A & B) with each one version\nProduct A has "
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_simulations_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/simulations/",
+            "params": [
+              {
+                "name": "analyst",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "loan_request",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "obsolete",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "A page number within the paginated result set."
+              },
+              {
+                "name": "page_size",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to return per page."
+              },
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "A search term."
+              },
+              {
+                "name": "source",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "status",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_simulations_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/simulations/"
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_simulations_clean_up_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/simulations/clean-up/"
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_simulations_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/simulations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Mortgage Simulation."
+              }
+            ]
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_simulations_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/simulations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Mortgage Simulation."
+              }
+            ]
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_simulations_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/simulations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Mortgage Simulation."
+              }
+            ]
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_simulations_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/simulations/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Mortgage Simulation."
+              }
+            ]
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_simulations_remove_destroy",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/simulations/:id/remove/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Mortgage Simulation."
+              }
+            ]
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_advisor_simulations_sync_simulations_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/simulators/mortgage/advisor/simulations/:id/sync-simulations/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Mortgage Simulation."
+              }
+            ]
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_simulators_mortgage_client_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/simulators/mortgage/client/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "api_simulators_offer_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/simulators/offer/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "api_simulators_offers_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/simulators/offers/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

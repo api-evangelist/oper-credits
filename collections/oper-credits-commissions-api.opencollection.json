@@ -1,0 +1,251 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Commissions API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Commissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_commissions_documents_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/commissions/documents/:year/:month/",
+            "params": [
+              {
+                "name": "month",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_commissions_files_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/commissions/files/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_commissions_files_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/commissions/files/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_commissions_files_recoveries_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/commissions/files/:commission_file_id/recoveries/",
+            "params": [
+              {
+                "name": "commission_file_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_commissions_objects_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/commissions/objects/:year/:month/",
+            "params": [
+              {
+                "name": "month",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "year",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_commissions_payment_files_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/commissions/payment-files/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_commissions_payment_files_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/api/commissions/payment-files/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Payment file."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_commissions_payment_files_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/commissions/payment-files/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Payment file."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_commissions_payment_files_download_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/commissions/payment-files/:id/download/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Payment file."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        },
+        {
+          "info": {
+            "name": "api_commissions_payment_files_regenerate_partial_update",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/api/commissions/payment-files/:id/regenerate/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "A unique integer value identifying this Payment file."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "A ViewSet mixin that parametrizes DRF methods over roles"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,967 @@
+{
+  "item": [
+    {
+      "id": "0e216773-c405-466c-98fe-497f44784611",
+      "name": "Sign Up",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c74297ce-8a8b-4f5b-bc5d-d1fe2e890f48",
+          "name": "api sign up create",
+          "request": {
+            "name": "api sign up create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "sign-up",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "country_code",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "is_secret",
+                  "value": "false",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "phone_type",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "593f50e8-7c3b-4057-ad75-daec2a7d89d8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "sign-up",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "country_code",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "is_secret",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "phone_type",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "first_name",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "last_name",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"<string>\",\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0a5b450-87d7-4feb-a789-8ad35a7338fd",
+          "name": "api sign up create create",
+          "request": {
+            "name": "api sign up create create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "sign-up",
+                "create",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "bank_release_policy_accepted",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_policy_accepted",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "gdpr_policy_accepted",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "language",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "privacy_policy_accepted",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "terms_and_conditions_accepted",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "423013fd-d628-4e34-8d6c-e328cfefd153",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "sign-up",
+                    "create",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "bank_release_policy_accepted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contact_policy_accepted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "first_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "gdpr_policy_accepted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "language",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "last_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "privacy_policy_accepted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "terms_and_conditions_accepted",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"<string>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f3fa2ee0-ad21-4a48-9d81-1903842e554b",
+          "name": "api sign up profile partial update",
+          "request": {
+            "name": "api sign up profile partial update",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "sign-up",
+                "profile",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "country_code",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_secret",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "phone_type",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4927b57e-7729-4ea8-9a07-ddc1078495da",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "sign-up",
+                    "profile",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "first_name",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "last_name",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "country_code",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "is_secret",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "phone_type",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"broker\": {\n    \"bank_account\": \"string\",\n    \"company_type\": {\n      \"definition\": \"string\",\n      \"id\": 7341,\n      \"order\": 5251\n    },\n    \"fsma_reference\": \"string\",\n    \"id\": 1709,\n    \"name\": \"string\",\n    \"vat_number\": \"string\"\n  },\n  \"phone_number\": {\n    \"value\": \"<string>\",\n    \"country_code\": {\n      \"definition\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"country\": \"string\",\n      \"order\": 3214\n    },\n    \"is_secret\": false,\n    \"phone_type\": {\n      \"definition\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"order\": 3155\n    }\n  },\n  \"token\": \"string\",\n  \"first_name\": \"\",\n  \"last_name\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5852434b-5e30-48d3-b16d-f037338d8f25",
+          "name": "api sign up profile update",
+          "request": {
+            "name": "api sign up profile update",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "sign-up",
+                "profile",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "value",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "country_code",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "is_secret",
+                  "value": "false",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "phone_type",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "first_name",
+                  "value": ""
+                },
+                {
+                  "disabled": false,
+                  "key": "last_name",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9ebbfd7e-3ebb-4704-8ed5-d6796e4198b9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "sign-up",
+                    "profile",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "value",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "country_code",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "is_secret",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "phone_type",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "first_name",
+                      "value": ""
+                    },
+                    {
+                      "disabled": false,
+                      "key": "last_name",
+                      "value": ""
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"phone_number\": {\n    \"value\": \"<string>\",\n    \"country_code\": {\n      \"definition\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"country\": \"string\",\n      \"order\": 9523\n    },\n    \"is_secret\": false,\n    \"phone_type\": {\n      \"definition\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"order\": 8646\n    }\n  },\n  \"broker\": {\n    \"bank_account\": \"string\",\n    \"company_type\": {\n      \"definition\": \"string\",\n      \"id\": 4665,\n      \"order\": 9555\n    },\n    \"fsma_reference\": \"string\",\n    \"id\": 9274,\n    \"name\": \"string\",\n    \"vat_number\": \"string\"\n  },\n  \"first_name\": \"\",\n  \"last_name\": \"\",\n  \"token\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3b85c481-4961-4c30-9f14-ac76bd757b56",
+          "name": "api sign up reset password create",
+          "request": {
+            "name": "api sign up reset password create",
+            "description": {
+              "content": "API view to actually change the password of the user.\nOnly post is allowed.\nSecurity is checked by comparing the JWT secret with the current hashed password of the user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "sign-up",
+                "reset-password",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "password",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "bank_release_policy_accepted",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "contact_policy_accepted",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "gdpr_policy_accepted",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "privacy_policy_accepted",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "terms_and_conditions_accepted",
+                  "value": "false"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d0e11717-0161-40b0-9282-1be7e1d4229c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "sign-up",
+                    "reset-password",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "password",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "bank_release_policy_accepted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "contact_policy_accepted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "gdpr_policy_accepted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "privacy_policy_accepted",
+                      "value": "false"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "terms_and_conditions_accepted",
+                      "value": "false"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "27f4a3a3-23b1-458b-96ba-b6e908d5f1e2",
+    "name": "Oper Credits Agent Documents Sign Up API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

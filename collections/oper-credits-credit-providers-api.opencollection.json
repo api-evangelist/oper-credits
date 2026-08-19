@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Credit Providers API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Credit Providers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_credit_providers_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/credit-providers/",
+            "params": [
+              {
+                "name": "active",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "exclude_blacklisted",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "is_liability_provider",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "ordering",
+                "value": "",
+                "type": "query",
+                "description": "Which field to use when ordering the results."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Abstract class to support default ordering on order field"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,40 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Sso API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sso",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_sso_mock_profiles_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/sso/mock/profiles/"
+          },
+          "docs": "List of pre-built profiles, exposed only when the triple-gate passes."
+        },
+        {
+          "info": {
+            "name": "api_sso_mock_token_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/sso/mock/token/"
+          },
+          "docs": "Mint a mock SSO token signed with the dev RSA keypair.\n\nEndpoint is hard-gated: any of `DEBUG=False`, `OPER_ALLOW_SSO_MOCK` env\nvar unset, or the `core_sso_mock` feature flag off → 404. When all\nthree are on, the returned token is accepted by the real\nKeycloakAuthentication code path because its public key is added to\nthe JWK set by `main.authentication.azure_ad.AzureAuthentication.jwk_keys`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

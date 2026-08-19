@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Validators API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Validators",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_validators_belgian_national_number_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/validators/belgian-national-number",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

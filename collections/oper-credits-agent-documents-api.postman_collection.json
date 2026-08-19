@@ -1,0 +1,448 @@
+{
+  "item": [
+    {
+      "id": "5abf0bdd-3a0c-414b-b0e3-292d9ceca41a",
+      "name": "Agent Documents",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "079d1233-390f-49ca-902b-834fb92568d0",
+          "name": "api agent documents list",
+          "request": {
+            "name": "api agent documents list",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "agent-documents",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>",
+                  "description": "A page number within the paginated result set."
+                },
+                {
+                  "disabled": false,
+                  "key": "page_size",
+                  "value": "<integer>",
+                  "description": "Number of results to return per page."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4e4fc2bd-f79d-4ffd-aa84-0c247e0bb1ad",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "agent-documents",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "page_size",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 123,\n  \"results\": [\n    {\n      \"id\": 8165,\n      \"uploaded_by\": \"pak-i5Ztg@JYRHPZvuegfQyW.rjcp\",\n      \"document\": {\n        \"created\": \"1988-09-13T06:19:06.832Z\",\n        \"created_object_id\": 8130,\n        \"document_type\": {\n          \"definition\": \"string\",\n          \"id\": 3197,\n          \"order\": 1695,\n          \"add_to_handover_letter\": true,\n          \"allows_generation\": true,\n          \"append_file_version\": true,\n          \"can_be_added_manually_as_informative_document\": false,\n          \"document_generation_configuration\": \"\",\n          \"is_informative\": false,\n          \"is_proof_to_sign\": true\n        },\n        \"file_name\": \"string\",\n        \"id\": 2683,\n        \"integrator_transfer_rounds\": [\n          {\n            \"key_0\": {},\n            \"key_1\": {},\n            \"key_2\": {},\n            \"key_3\": {}\n          },\n          {\n            \"key_0\": {},\n            \"key_1\": {}\n          }\n        ],\n        \"last_modified\": \"2019-05-19T08:08:17.107Z\",\n        \"link_id\": 8464,\n        \"mime_type\": \"string\",\n        \"oper_reference\": \"602b3927-0b53-e783-e5b0-60aa012942fe\",\n        \"status\": {\n          \"definition\": \"string\",\n          \"id\": 9231,\n          \"order\": 3504\n        },\n        \"url\": \"string\",\n        \"version\": \"string\",\n        \"configuration_id\": \"5fafc9c0-413d-825b-7e2b-df916c21b60c\",\n        \"is_sent\": true,\n        \"is_signed\": false,\n        \"object_file_name\": \"string\",\n        \"object_id\": \"ce18e15c-8f25-908c-cc8a-18d0e3c3433b\",\n        \"sha256_hash\": \"string\",\n        \"signed_date\": \"2007-05-04T02:46:15.596Z\"\n      }\n    },\n    {\n      \"id\": 7644,\n      \"uploaded_by\": \"mkEJByt0VGXU@pwrJuCGSvuYcyetPqlPbsaMmx.zc\",\n      \"document\": {\n        \"created\": \"2026-03-21T23:30:54.556Z\",\n        \"created_object_id\": 2175,\n        \"document_type\": {\n          \"definition\": \"string\",\n          \"id\": 7440,\n          \"order\": 7301,\n          \"add_to_handover_letter\": false,\n          \"allows_generation\": true,\n          \"append_file_version\": false,\n          \"can_be_added_manually_as_informative_document\": false,\n          \"document_generation_configuration\": \"\",\n          \"is_informative\": true,\n          \"is_proof_to_sign\": true\n        },\n        \"file_name\": \"string\",\n        \"id\": 2217,\n        \"integrator_transfer_rounds\": [\n          {\n            \"key_0\": {}\n          },\n          {\n            \"key_0\": {}\n          }\n        ],\n        \"last_modified\": \"1950-03-01T00:45:32.328Z\",\n        \"link_id\": 6610,\n        \"mime_type\": \"string\",\n        \"oper_reference\": \"ccd2b386-a3ca-51da-d91e-e93fe9a6a81a\",\n        \"status\": {\n          \"definition\": \"string\",\n          \"id\": 196,\n          \"order\": 494\n        },\n        \"url\": \"string\",\n        \"version\": \"string\",\n        \"configuration_id\": \"9369c6ae-ea62-a616-2751-c172e3a23427\",\n        \"is_sent\": true,\n        \"is_signed\": true,\n        \"object_file_name\": \"string\",\n        \"object_id\": \"13ba06af-1ff0-2078-7830-21020d8af1bd\",\n        \"sha256_hash\": \"string\",\n        \"signed_date\": \"1966-12-17T11:43:30.167Z\"\n      }\n    }\n  ],\n  \"next\": \"http://api.example.org/accounts/?page=4\",\n  \"previous\": \"http://api.example.org/accounts/?page=2\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "00834b05-6a1a-40a1-a482-28942ab6aad5",
+          "name": "api agent documents create",
+          "request": {
+            "name": "api agent documents create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "agent-documents",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "file",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "document_type",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\",\"add_to_handover_letter\":\"<boolean>\",\"allows_generation\":\"<boolean>\",\"append_file_version\":\"<boolean>\",\"can_be_added_manually_as_informative_document\":\"<boolean>\",\"document_generation_configuration\":\"\",\"is_informative\":\"<boolean>\",\"is_proof_to_sign\":\"<boolean>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "file_name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "configuration_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_sent",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_signed",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "object_file_name",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "object_id",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sha256_hash",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "signed_date",
+                  "value": "<dateTime>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "382efaf6-df8b-4a39-8962-591f9421c9b8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "agent-documents",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "document_type",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\",\"add_to_handover_letter\":\"<boolean>\",\"allows_generation\":\"<boolean>\",\"append_file_version\":\"<boolean>\",\"can_be_added_manually_as_informative_document\":\"<boolean>\",\"document_generation_configuration\":\"\",\"is_informative\":\"<boolean>\",\"is_proof_to_sign\":\"<boolean>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "file_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "configuration_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "is_sent",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "is_signed",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "object_file_name",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "object_id",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "sha256_hash",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "signed_date",
+                      "value": "<dateTime>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"document\": {\n    \"document_type\": {\n      \"definition\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"add_to_handover_letter\": \"<boolean>\",\n      \"allows_generation\": \"<boolean>\",\n      \"append_file_version\": \"<boolean>\",\n      \"can_be_added_manually_as_informative_document\": \"<boolean>\",\n      \"document_generation_configuration\": \"\",\n      \"is_informative\": \"<boolean>\",\n      \"is_proof_to_sign\": \"<boolean>\",\n      \"order\": 8282\n    },\n    \"file_name\": \"<string>\",\n    \"configuration_id\": \"<uuid>\",\n    \"created\": \"2020-11-03T14:09:03.872Z\",\n    \"created_object_id\": 8545,\n    \"id\": 2311,\n    \"integrator_transfer_rounds\": [\n      {\n        \"key_0\": {},\n        \"key_1\": {},\n        \"key_2\": {}\n      },\n      {\n        \"key_0\": {}\n      }\n    ],\n    \"is_sent\": \"<boolean>\",\n    \"is_signed\": \"<boolean>\",\n    \"last_modified\": \"1975-05-27T01:08:31.379Z\",\n    \"link_id\": 8923,\n    \"mime_type\": \"string\",\n    \"object_file_name\": \"<string>\",\n    \"object_id\": \"<uuid>\",\n    \"oper_reference\": \"06c1d11c-6c3b-0cce-f4b2-acea672d437b\",\n    \"sha256_hash\": \"<string>\",\n    \"signed_date\": \"<dateTime>\",\n    \"status\": {\n      \"definition\": \"string\",\n      \"id\": 6934,\n      \"order\": 6665\n    },\n    \"url\": \"string\",\n    \"version\": \"string\"\n  },\n  \"id\": 5499,\n  \"uploaded_by\": \"sb4fdCN@TaYZyOOBiYTZfVuIH.bk\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d37a48d-30e1-4255-bd58-0ef716b8a515",
+          "name": "api agent documents retrieve",
+          "request": {
+            "name": "api agent documents retrieve",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "agent-documents",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this Agent document."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6d301f9f-b69f-45fc-bd24-d66451d179fd",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "agent-documents",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this Agent document."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 589,\n  \"uploaded_by\": \"Mar@rkJ.tbpy\",\n  \"document\": {\n    \"document_type\": {\n      \"definition\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"add_to_handover_letter\": \"<boolean>\",\n      \"allows_generation\": \"<boolean>\",\n      \"append_file_version\": \"<boolean>\",\n      \"can_be_added_manually_as_informative_document\": \"<boolean>\",\n      \"document_generation_configuration\": \"\",\n      \"is_informative\": \"<boolean>\",\n      \"is_proof_to_sign\": \"<boolean>\",\n      \"order\": 677\n    },\n    \"file_name\": \"<string>\",\n    \"configuration_id\": \"<uuid>\",\n    \"created\": \"1971-04-30T01:24:25.083Z\",\n    \"created_object_id\": 5448,\n    \"id\": 645,\n    \"integrator_transfer_rounds\": [\n      {\n        \"key_0\": {},\n        \"key_1\": {}\n      },\n      {\n        \"key_0\": {}\n      }\n    ],\n    \"is_sent\": \"<boolean>\",\n    \"is_signed\": \"<boolean>\",\n    \"last_modified\": \"1973-01-29T20:55:33.262Z\",\n    \"link_id\": 392,\n    \"mime_type\": \"string\",\n    \"object_file_name\": \"<string>\",\n    \"object_id\": \"<uuid>\",\n    \"oper_reference\": \"ab2195f5-0aa9-ec67-3f8f-cebf95d29b52\",\n    \"sha256_hash\": \"<string>\",\n    \"signed_date\": \"<dateTime>\",\n    \"status\": {\n      \"definition\": \"string\",\n      \"id\": 938,\n      \"order\": 8729\n    },\n    \"url\": \"string\",\n    \"version\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "272e6f09-d2f0-4792-b84a-5aa4480f8958",
+    "name": "Oper Credits Agent Documents API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "item": [
+    {
+      "id": "c9c56aff-e511-4c6d-bf8e-d7d14734618d",
+      "name": "Bank Release Policy",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a17d6218-9542-43b7-ba19-4210061549cd",
+          "name": "api bank release policy retrieve",
+          "request": {
+            "name": "api bank release policy retrieve",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "bank-release-policy",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "d92817c3-bf5a-4798-94ea-28e86ca5f168",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "bank-release-policy",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"content\": \"string\",\n  \"language\": {\n    \"definition\": \"string\",\n    \"id\": 8319,\n    \"order\": 6843\n  },\n  \"title\": \"string\",\n  \"configuration_id\": \"d10e9c02-4a82-bae1-40dd-58da028e57a3\",\n  \"tenant\": 1525\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9efe22a0-3302-4642-84bd-acfd198fd1a1",
+    "name": "Oper Credits Agent Documents Bank Release Policy API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

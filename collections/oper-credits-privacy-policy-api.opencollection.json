@@ -1,0 +1,32 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Privacy Policy API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Privacy Policy",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_privacy_policy_retrieve",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "{{baseUrl}}/api/privacy-policy/",
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

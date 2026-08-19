@@ -1,0 +1,168 @@
+{
+  "item": [
+    {
+      "id": "27bb6297-9cbe-4a11-ace2-d0b9e60d70ed",
+      "name": "Sso",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ccbb141b-6eca-4627-8f22-ccdc6715b920",
+          "name": "api sso mock profiles retrieve",
+          "request": {
+            "name": "api sso mock profiles retrieve",
+            "description": {
+              "content": "List of pre-built profiles, exposed only when the triple-gate passes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "sso",
+                "mock",
+                "profiles",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "GET",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "0279f4e3-1d03-4815-8b7c-a6c62d4c18f7",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "sso",
+                    "mock",
+                    "profiles",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d161f018-2a05-4f2c-a07c-1c44e3f5a0c3",
+          "name": "api sso mock token create",
+          "request": {
+            "name": "api sso mock token create",
+            "description": {
+              "content": "Mint a mock SSO token signed with the dev RSA keypair.\n\nEndpoint is hard-gated: any of `DEBUG=False`, `OPER_ALLOW_SSO_MOCK` env\nvar unset, or the `core_sso_mock` feature flag off → 404. When all\nthree are on, the returned token is accepted by the real\nKeycloakAuthentication code path because its public key is added to\nthe JWK set by `main.authentication.azure_ad.AzureAuthentication.jwk_keys`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "sso",
+                "mock",
+                "token",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            }
+          },
+          "response": [
+            {
+              "id": "10b1cbb3-13db-4341-9c9f-69d464855c3b",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "sso",
+                    "mock",
+                    "token",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9c7bfeff-4bdf-4a89-b2fa-5c13a079e985",
+    "name": "Oper Credits Agent Documents Sso API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

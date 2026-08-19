@@ -1,0 +1,780 @@
+{
+  "item": [
+    {
+      "id": "a1ea3f12-92f8-4ddd-9f8e-157acdf130ce",
+      "name": "Third Party Api",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c22155a7-e163-4f21-8df3-4d39975ae058",
+          "name": "api third party api realty valuations partial update",
+          "request": {
+            "name": "api third party api realty valuations partial update",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "third-party-api",
+                "realty-valuations",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this Realty Valuation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "documents",
+                  "value": "{\"document_type\":\"<string>\",\"document_url\":\"<uri>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "documents",
+                  "value": "{\"document_type\":\"<string>\",\"document_url\":\"<uri>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "external_generation_uuid",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "valuation_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "valuation_expiration_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "valuation_redirection_url",
+                  "value": "<uri>"
+                },
+                {
+                  "disabled": false,
+                  "key": "valuation_reference",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "9315d526-1174-4603-9498-83029daed50d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "third-party-api",
+                    "realty-valuations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this Realty Valuation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "documents",
+                      "value": "{\"document_type\":\"<string>\",\"document_url\":\"<uri>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "documents",
+                      "value": "{\"document_type\":\"<string>\",\"document_url\":\"<uri>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "external_generation_uuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "valuation_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "valuation_expiration_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "valuation_redirection_url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "valuation_reference",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"2025-03-03T20:04:09.855Z\",\n  \"external_service\": \"string\",\n  \"id\": 3912,\n  \"last_modified\": \"1948-08-12T16:44:14.512Z\",\n  \"oper_reference\": \"815a7475-e8f8-4f10-b252-50d0deefa971\",\n  \"realty\": 9782,\n  \"valuation_reference\": \"string\",\n  \"documents\": [\n    {\n      \"document_type\": \"<string>\",\n      \"document_url\": \"<uri>\"\n    },\n    {\n      \"document_type\": \"<string>\",\n      \"document_url\": \"<uri>\"\n    }\n  ],\n  \"external_generation_uuid\": \"137a2b53-688c-9822-a761-cf5e6e441757\",\n  \"status\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 2053\n  },\n  \"valuation_date\": \"1974-09-06\",\n  \"valuation_expiration_date\": \"2004-07-09\",\n  \"valuation_redirection_url\": \"http://pQ.rmfsLHnVyf,5ynB5TM5m6z4GYm-M4D1S2+PbDTLWG0P6qKQH4,hbenasYWWWv\",\n  \"valuation_type\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 8439\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4752ed4a-1706-4e78-9cbf-dccd5cfab81d",
+          "name": "api third party api realty valuations update",
+          "request": {
+            "name": "api third party api realty valuations update",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "third-party-api",
+                "realty-valuations",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this Realty Valuation."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "valuation_reference",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "documents",
+                  "value": "[{\"document_type\":\"<string>\",\"document_url\":\"<uri>\"},{\"document_type\":\"<string>\",\"document_url\":\"<uri>\"}]",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "external_generation_uuid",
+                  "value": "<uuid>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "valuation_date",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "valuation_expiration_date",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "valuation_redirection_url",
+                  "value": "<uri>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "valuation_type",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "address",
+                  "value": "{\"city\":\"<string>\",\"house_number\":\"<string>\",\"street\":\"<string>\",\"zip_code\":\"<string>\",\"box\":\"<string>\",\"building\":\"<string>\",\"country\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"floor\":\"<string>\",\"heading\":\"<double>\",\"latitude\":\"<double>\",\"longitude\":\"<double>\",\"pitch\":\"<double>\",\"staircase\":\"<string>\",\"street_type\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"zoom\":\"<double>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "cadastral_references",
+                  "value": "[\"<string>\",\"<string>\"]"
+                },
+                {
+                  "disabled": false,
+                  "key": "co2_emission_per_year",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "commercial_area",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "e_level",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "epc_after_renovations",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "epc_before_renovations",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "epc_contract_number",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "epc_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "epc_date_valid_until",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "epc_label",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "epc_missing_reason",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "flood_risk",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "forced_value_after",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "forced_value_before",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "living_area",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "living_percentage",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "mobi_score",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "nearest_flood_zone",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "price_building",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "realty_type",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "realty_valuation_type",
+                  "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "rooms",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "surface",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "total_parcel_area",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "venal_value_after",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "venal_value_before",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "year_of_built",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "de00e75a-162d-4c0e-8b7f-277ce90a5267",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "third-party-api",
+                    "realty-valuations",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this Realty Valuation."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "valuation_reference",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "documents",
+                      "value": "[{\"document_type\":\"<string>\",\"document_url\":\"<uri>\"},{\"document_type\":\"<string>\",\"document_url\":\"<uri>\"}]"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "external_generation_uuid",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "status",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "valuation_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "valuation_expiration_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "valuation_redirection_url",
+                      "value": "<uri>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "valuation_type",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "address",
+                      "value": "{\"city\":\"<string>\",\"house_number\":\"<string>\",\"street\":\"<string>\",\"zip_code\":\"<string>\",\"box\":\"<string>\",\"building\":\"<string>\",\"country\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"floor\":\"<string>\",\"heading\":\"<double>\",\"latitude\":\"<double>\",\"longitude\":\"<double>\",\"pitch\":\"<double>\",\"staircase\":\"<string>\",\"street_type\":{\"definition\":\"<string>\",\"id\":\"<integer>\"},\"zoom\":\"<double>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "cadastral_references",
+                      "value": "[\"<string>\",\"<string>\"]"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "co2_emission_per_year",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "commercial_area",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "e_level",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "epc_after_renovations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "epc_before_renovations",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "epc_contract_number",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "epc_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "epc_date_valid_until",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "epc_label",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "epc_missing_reason",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "flood_risk",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "forced_value_after",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "forced_value_before",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "living_area",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "living_percentage",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "mobi_score",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "nearest_flood_zone",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "price_building",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "realty_type",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "realty_valuation_type",
+                      "value": "{\"definition\":\"<string>\",\"id\":\"<integer>\"}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "rooms",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "surface",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "total_parcel_area",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "venal_value_after",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "venal_value_before",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "year_of_built",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"valuation\": {\n    \"valuation_reference\": \"<string>\",\n    \"created\": \"1967-10-02T07:51:08.967Z\",\n    \"documents\": [\n      {\n        \"document_type\": \"<string>\",\n        \"document_url\": \"<uri>\"\n      },\n      {\n        \"document_type\": \"<string>\",\n        \"document_url\": \"<uri>\"\n      }\n    ],\n    \"external_generation_uuid\": \"<uuid>\",\n    \"external_service\": \"string\",\n    \"id\": 101,\n    \"last_modified\": \"1957-12-17T19:14:01.794Z\",\n    \"oper_reference\": \"66083973-08b1-52bc-d61f-decd1fa03662\",\n    \"realty\": 5093,\n    \"status\": {\n      \"definition\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"order\": 1012\n    },\n    \"valuation_date\": \"<date>\",\n    \"valuation_expiration_date\": \"<date>\",\n    \"valuation_redirection_url\": \"<uri>\",\n    \"valuation_type\": {\n      \"definition\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"order\": 7415\n    }\n  },\n  \"data\": {\n    \"address\": {\n      \"city\": \"<string>\",\n      \"house_number\": \"<string>\",\n      \"street\": \"<string>\",\n      \"zip_code\": \"<string>\",\n      \"box\": \"<string>\",\n      \"building\": \"<string>\",\n      \"country\": {\n        \"definition\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"order\": 9\n      },\n      \"floor\": \"<string>\",\n      \"heading\": \"<double>\",\n      \"id\": 9866,\n      \"latitude\": \"<double>\",\n      \"longitude\": \"<double>\",\n      \"pitch\": \"<double>\",\n      \"staircase\": \"<string>\",\n      \"street_type\": {\n        \"definition\": \"<string>\",\n        \"id\": \"<integer>\",\n        \"order\": 49\n      },\n      \"zoom\": \"<double>\"\n    },\n    \"cadastral_references\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"co2_emission_per_year\": \"<double>\",\n    \"commercial_area\": \"<double>\",\n    \"e_level\": \"<integer>\",\n    \"epc_after_renovations\": \"<integer>\",\n    \"epc_before_renovations\": \"<integer>\",\n    \"epc_contract_number\": \"<string>\",\n    \"epc_date\": \"<date>\",\n    \"epc_date_valid_until\": \"<date>\",\n    \"epc_label\": \"<string>\",\n    \"epc_missing_reason\": \"<string>\",\n    \"flood_risk\": {\n      \"definition\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"order\": 9935\n    },\n    \"forced_value_after\": \"<double>\",\n    \"forced_value_before\": \"<double>\",\n    \"living_area\": \"<double>\",\n    \"living_percentage\": \"<double>\",\n    \"mobi_score\": \"<double>\",\n    \"nearest_flood_zone\": \"<double>\",\n    \"price_building\": \"<double>\",\n    \"realty_type\": {\n      \"definition\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"order\": 9284\n    },\n    \"realty_valuation_type\": {\n      \"definition\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"order\": 2388\n    },\n    \"rooms\": \"<double>\",\n    \"surface\": \"<double>\",\n    \"total_parcel_area\": \"<double>\",\n    \"venal_value_after\": \"<double>\",\n    \"venal_value_before\": \"<double>\",\n    \"year_of_built\": \"<integer>\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8d1d9e02-778b-464d-837f-682b2cc3d27b",
+    "name": "Oper Credits Agent Documents Third Party Api API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

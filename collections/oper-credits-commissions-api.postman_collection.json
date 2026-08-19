@@ -1,0 +1,1336 @@
+{
+  "item": [
+    {
+      "id": "0677f006-dbfa-4111-b23f-949546d3effe",
+      "name": "Commissions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "640fff8c-ddb8-4ce1-aaee-16b656a866ad",
+          "name": "api commissions documents retrieve",
+          "request": {
+            "name": "api commissions documents retrieve",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "commissions",
+                "documents",
+                ":year",
+                ":month",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "month",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "year",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c760c294-295d-4e7e-874f-679c950c699b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "commissions",
+                    "documents",
+                    ":year",
+                    ":month",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "month",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "year",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1955-02-11T23:45:37.163Z\",\n  \"document_type\": {\n    \"definition\": \"string\",\n    \"id\": 378,\n    \"order\": 3240,\n    \"add_to_handover_letter\": false,\n    \"allows_generation\": true,\n    \"append_file_version\": false,\n    \"can_be_added_manually_as_informative_document\": true,\n    \"document_generation_configuration\": \"\",\n    \"is_informative\": false,\n    \"is_proof_to_sign\": false\n  },\n  \"file_name\": \"string\",\n  \"id\": 7106,\n  \"integrator_transfer_rounds\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"key_0\": {}\n    }\n  ],\n  \"last_modified\": \"1997-06-29T04:42:43.254Z\",\n  \"mime_type\": \"string\",\n  \"status\": {\n    \"definition\": \"string\",\n    \"id\": 4450,\n    \"order\": 9626\n  },\n  \"url\": \"string\",\n  \"version\": \"string\",\n  \"configuration_id\": \"12f8c3a8-045d-56e7-da32-ae14b99c0167\",\n  \"is_sent\": true,\n  \"is_signed\": true,\n  \"object_file_name\": \"string\",\n  \"oper_reference\": \"c95394db-129e-1df3-a93a-90d0bc2ef239\",\n  \"sha256_hash\": \"string\",\n  \"signed_date\": \"1950-06-22T03:27:05.322Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c2ce3733-c30a-48ae-a7fc-2d78da459926",
+          "name": "api commissions files list",
+          "request": {
+            "name": "api commissions files list",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "commissions",
+                "files",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "94935fd1-d07b-4197-8927-e9891f200cf2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "commissions",
+                    "files",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"amount\": 99584528018038.27,\n    \"borrower_reference\": \"string\",\n    \"broker\": \"string\",\n    \"credit_provider\": \"string\",\n    \"external_reference\": \"string\",\n    \"id\": 6835,\n    \"incoming_date\": \"1973-08-23\",\n    \"outstanding_amount\": \"string\",\n    \"product_item\": {\n      \"id\": 9532,\n      \"internal_reference\": \"string\",\n      \"name\": \"string\"\n    },\n    \"status\": {\n      \"definition\": \"string\",\n      \"id\": 362,\n      \"order\": 7787\n    }\n  },\n  {\n    \"amount\": 38699489048718.27,\n    \"borrower_reference\": \"string\",\n    \"broker\": \"string\",\n    \"credit_provider\": \"string\",\n    \"external_reference\": \"string\",\n    \"id\": 7443,\n    \"incoming_date\": \"2024-06-11\",\n    \"outstanding_amount\": \"string\",\n    \"product_item\": {\n      \"id\": 8745,\n      \"internal_reference\": \"string\",\n      \"name\": \"string\"\n    },\n    \"status\": {\n      \"definition\": \"string\",\n      \"id\": 5686,\n      \"order\": 9284\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a1c6719-a767-4ef5-bd6f-0f5729a889ee",
+          "name": "api commissions files create",
+          "request": {
+            "name": "api commissions files create",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "commissions",
+                "files",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<double>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "external_reference",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "incoming_date",
+                  "value": "<date>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "656a4014-43fb-4b63-9a2f-c00190d87497",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "commissions",
+                    "files",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "amount",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "external_reference",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "incoming_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"amount\": \"<double>\",\n  \"external_reference\": \"<string>\",\n  \"incoming_date\": \"<date>\",\n  \"product_item\": {\n    \"id\": \"<integer>\",\n    \"internal_reference\": \"string\",\n    \"name\": \"string\"\n  },\n  \"borrower_reference\": \"string\",\n  \"broker\": \"string\",\n  \"credit_provider\": \"string\",\n  \"id\": 6293,\n  \"outstanding_amount\": \"string\",\n  \"status\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 9012\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "98c6fcd1-0e85-4292-a27b-1019ff4f8a20",
+          "name": "api commissions files recoveries create",
+          "request": {
+            "name": "api commissions files recoveries create",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "commissions",
+                "files",
+                ":commission_file_id",
+                "recoveries",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "commission_file_id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "outstanding_amount",
+                  "value": "<double>"
+                },
+                {
+                  "disabled": false,
+                  "key": "prepayment_date",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bf771d82-3dd1-4a3d-994e-56e8b30ec602",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "commissions",
+                    "files",
+                    ":commission_file_id",
+                    "recoveries",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commission_file_id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "outstanding_amount",
+                      "value": "<double>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "prepayment_date",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"file\": {\n    \"id\": \"<integer>\"\n  },\n  \"amount\": 2708.2718975163657,\n  \"outstanding_amount\": \"<double>\",\n  \"prepayment_date\": \"<date>\",\n  \"status\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 3028\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "333ed678-f3e5-4ddc-b114-647cb133a18e",
+          "name": "api commissions objects list",
+          "request": {
+            "name": "api commissions objects list",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "commissions",
+                "objects",
+                ":year",
+                ":month",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "month",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "year",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6ed98760-ccf0-4c29-b4f4-28d054b4ddb4",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "commissions",
+                    "objects",
+                    ":year",
+                    ":month",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "month",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "year",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"amount\": 7655.664497973597,\n    \"commission_type\": {\n      \"definition\": \"string\",\n      \"id\": 3940,\n      \"order\": 232\n    },\n    \"external_reference\": \"string\",\n    \"id\": 2729,\n    \"loan_request\": \"string\"\n  },\n  {\n    \"amount\": 8545.229125898177,\n    \"commission_type\": {\n      \"definition\": \"string\",\n      \"id\": 5891,\n      \"order\": 2810\n    },\n    \"external_reference\": \"string\",\n    \"id\": 2048,\n    \"loan_request\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "592cb8bb-968a-430a-aa38-3024c6911c44",
+          "name": "api commissions payment files list",
+          "request": {
+            "name": "api commissions payment files list",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "commissions",
+                "payment-files",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4d65a80e-3df6-4240-a8d6-7ed0409f5c9f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "commissions",
+                    "payment-files",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"created\": \"1994-07-19T16:49:33.933Z\",\n    \"downloaded\": false,\n    \"id\": 6518,\n    \"internal_reference\": \"string\",\n    \"last_modified\": \"1990-08-05T21:04:16.785Z\",\n    \"processed\": true\n  },\n  {\n    \"created\": \"1976-12-01T11:49:53.715Z\",\n    \"downloaded\": false,\n    \"id\": 6055,\n    \"internal_reference\": \"string\",\n    \"last_modified\": \"1948-01-27T03:03:30.578Z\",\n    \"processed\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96b15dea-91fd-4977-88e5-ba49c6c528e7",
+          "name": "api commissions payment files partial update",
+          "request": {
+            "name": "api commissions payment files partial update",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "commissions",
+                "payment-files",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this Payment file."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "processed",
+                  "value": "<boolean>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c733f191-53fe-45d3-a57c-e77dfa5a63a9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "commissions",
+                    "payment-files",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this Payment file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "processed",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1989-08-01T14:39:08.851Z\",\n  \"downloaded\": true,\n  \"id\": 7919,\n  \"internal_reference\": \"string\",\n  \"last_modified\": \"1967-01-07T18:17:34.810Z\",\n  \"processed\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "510d1812-f0bc-4315-9502-3dd1ae67949b",
+          "name": "api commissions payment files update",
+          "request": {
+            "name": "api commissions payment files update",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "commissions",
+                "payment-files",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this Payment file."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "processed",
+                  "value": "<boolean>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5c2065d2-1361-4edc-a4ac-71932b0f810c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "commissions",
+                    "payment-files",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this Payment file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "processed",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1993-11-15T03:03:31.285Z\",\n  \"downloaded\": true,\n  \"id\": 4556,\n  \"internal_reference\": \"string\",\n  \"last_modified\": \"1953-04-30T23:32:24.479Z\",\n  \"processed\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a5831696-cade-47c5-802f-e113cff1a0fd",
+          "name": "api commissions payment files download retrieve",
+          "request": {
+            "name": "api commissions payment files download retrieve",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "commissions",
+                "payment-files",
+                ":id",
+                "download",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this Payment file."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cc566334-2747-4b08-997b-f17affc75f7a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "commissions",
+                    "payment-files",
+                    ":id",
+                    "download",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this Payment file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1993-11-15T03:03:31.285Z\",\n  \"downloaded\": true,\n  \"id\": 4556,\n  \"internal_reference\": \"string\",\n  \"last_modified\": \"1953-04-30T23:32:24.479Z\",\n  \"processed\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d7883b5d-0315-43da-971e-5a39fd03dafb",
+          "name": "api commissions payment files regenerate partial update",
+          "request": {
+            "name": "api commissions payment files regenerate partial update",
+            "description": {
+              "content": "A ViewSet mixin that parametrizes DRF methods over roles",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "commissions",
+                "payment-files",
+                ":id",
+                "regenerate",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) A unique integer value identifying this Payment file."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "processed",
+                  "value": "<boolean>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "59220cd5-4465-4a42-b6a7-9a6573ca4595",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "commissions",
+                    "payment-files",
+                    ":id",
+                    "regenerate",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) A unique integer value identifying this Payment file."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "processed",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"created\": \"1993-11-15T03:03:31.285Z\",\n  \"downloaded\": true,\n  \"id\": 4556,\n  \"internal_reference\": \"string\",\n  \"last_modified\": \"1953-04-30T23:32:24.479Z\",\n  \"processed\": \"<boolean>\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "62cd376f-5df9-43b3-a15d-f5f4e6ae8a08",
+    "name": "Oper Credits Agent Documents Commissions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

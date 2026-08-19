@@ -1,0 +1,36 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Oper Credits Agent Documents Contact Advisor API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contact Advisor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "api_contact_advisor_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "{{baseUrl}}/api/contact-advisor/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

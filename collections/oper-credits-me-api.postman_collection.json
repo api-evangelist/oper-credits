@@ -1,0 +1,1709 @@
+{
+  "item": [
+    {
+      "id": "5e558362-919d-4150-a38f-a525d16919d6",
+      "name": "Me",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "57a76867-a140-4abb-b770-6b1f863f0493",
+          "name": "api me retrieve",
+          "request": {
+            "name": "api me retrieve",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "me",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6d0a3e8b-5a35-4fa7-a7c0-60fe35738246",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bank_ids\": [\n    {\n      \"bank_id\": \"string\",\n      \"id\": 7266,\n      \"credit_provider\": {\n        \"active\": false,\n        \"fsma_reference\": \"string\",\n        \"full_name\": \"string\",\n        \"id\": 4193,\n        \"is_liability_provider\": true,\n        \"loan_request_form_documents\": \"string\",\n        \"logo_url\": \"http://wrgPzfcxPSfBegEuJVixreTlLBNAWtfd.wjfpw,q6eINmUCWlo\",\n        \"name\": \"string\",\n        \"order\": 1379499380\n      }\n    },\n    {\n      \"bank_id\": \"string\",\n      \"id\": 4573,\n      \"credit_provider\": {\n        \"active\": true,\n        \"fsma_reference\": \"string\",\n        \"full_name\": \"string\",\n        \"id\": 4213,\n        \"is_liability_provider\": true,\n        \"loan_request_form_documents\": \"string\",\n        \"logo_url\": \"https://sGF.ijH,utOa,YdB4ME8vSL\",\n        \"name\": \"string\",\n        \"order\": 1646546706\n      }\n    }\n  ],\n  \"birth_city\": \"string\",\n  \"birth_date\": \"1997-10-11\",\n  \"broker_id\": \"string\",\n  \"email\": \"XGQJi@l.vx\",\n  \"enrichment_status\": {\n    \"definition\": \"string\",\n    \"id\": 8820,\n    \"order\": 5594\n  },\n  \"first_name\": \"string\",\n  \"full_name\": \"string\",\n  \"id\": 788,\n  \"language\": {\n    \"definition\": \"string\",\n    \"id\": 3644,\n    \"order\": 5762\n  },\n  \"last_name\": \"string\",\n  \"middle_name\": \"string\",\n  \"mobile_phone_number\": {\n    \"key_0\": {}\n  },\n  \"mother_maiden_name\": \"string\",\n  \"permissions\": [\n    {\n      \"key_0\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  ],\n  \"phone_numbers\": [\n    {\n      \"value\": \"string\",\n      \"country_code\": {\n        \"country\": \"string\",\n        \"definition\": \"string\",\n        \"id\": 5723,\n        \"order\": 8604\n      },\n      \"is_secret\": false,\n      \"phone_type\": {\n        \"definition\": \"string\",\n        \"id\": 7721,\n        \"order\": 3626\n      }\n    },\n    {\n      \"value\": \"string\",\n      \"country_code\": {\n        \"country\": \"string\",\n        \"definition\": \"string\",\n        \"id\": 5861,\n        \"order\": 8503\n      },\n      \"is_secret\": false,\n      \"phone_type\": {\n        \"definition\": \"string\",\n        \"id\": 3009,\n        \"order\": 9640\n      }\n    }\n  ],\n  \"profile_id\": 5388,\n  \"role\": {\n    \"definition\": \"string\",\n    \"id\": 2912,\n    \"order\": 728\n  },\n  \"role_groups\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  ],\n  \"verified\": true,\n  \"away_until\": \"1975-10-26\",\n  \"broker\": {\n    \"bank_account\": \"string\",\n    \"company_type\": {\n      \"definition\": \"string\",\n      \"id\": 628,\n      \"order\": 3438\n    },\n    \"fsma_reference\": \"string\",\n    \"id\": 1492,\n    \"name\": \"string\",\n    \"vat_number\": \"string\"\n  },\n  \"is_available\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "014779cd-6ceb-42dd-92e6-a000c1ffeb48",
+          "name": "api me partial update",
+          "request": {
+            "name": "api me partial update",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "me",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "away_until",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "bank_ids",
+                  "value": "{\"bank_id\":\"<string>\",\"credit_provider\":{\"id\":\"<integer>\"}}"
+                },
+                {
+                  "disabled": false,
+                  "key": "bank_ids",
+                  "value": "{\"bank_id\":\"<string>\",\"credit_provider\":{\"id\":\"<integer>\"}}"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_available",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "bab8e17f-7e16-44ca-9275-9f2fc12d1171",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "away_until",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "bank_ids",
+                      "value": "{\"bank_id\":\"<string>\",\"credit_provider\":{\"id\":\"<integer>\"}}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "bank_ids",
+                      "value": "{\"bank_id\":\"<string>\",\"credit_provider\":{\"id\":\"<integer>\"}}"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "is_available",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bank_ids\": [\n    {\n      \"bank_id\": \"<string>\",\n      \"credit_provider\": {\n        \"id\": \"<integer>\",\n        \"active\": false,\n        \"fsma_reference\": \"string\",\n        \"full_name\": \"string\",\n        \"is_liability_provider\": true,\n        \"loan_request_form_documents\": \"string\",\n        \"logo_url\": \"http://SxFGwUnyeHdTadM.cthxNkYZ,\",\n        \"name\": \"string\",\n        \"order\": 1576390470\n      },\n      \"id\": 2460\n    },\n    {\n      \"bank_id\": \"<string>\",\n      \"credit_provider\": {\n        \"id\": \"<integer>\",\n        \"active\": true,\n        \"fsma_reference\": \"string\",\n        \"full_name\": \"string\",\n        \"is_liability_provider\": true,\n        \"loan_request_form_documents\": \"string\",\n        \"logo_url\": \"https://XOEgVMVbB.egnSYyeRf8DtRZWCo7ciUi,lVSqk8Uca,z3GGJq1YZDftuZkmNokxdQHldZKj2T.zjAqE\",\n        \"name\": \"string\",\n        \"order\": 910758222\n      },\n      \"id\": 3526\n    }\n  ],\n  \"birth_city\": \"string\",\n  \"birth_date\": \"2024-03-27\",\n  \"broker_id\": \"string\",\n  \"email\": \"kOZ@mpwJKixucrKirbWvV.vd\",\n  \"enrichment_status\": {\n    \"definition\": \"string\",\n    \"id\": 9746,\n    \"order\": 4356\n  },\n  \"first_name\": \"string\",\n  \"full_name\": \"string\",\n  \"id\": 1390,\n  \"language\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 9259\n  },\n  \"last_name\": \"string\",\n  \"middle_name\": \"string\",\n  \"mobile_phone_number\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"mother_maiden_name\": \"string\",\n  \"permissions\": [\n    {\n      \"key_0\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    }\n  ],\n  \"phone_numbers\": [\n    {\n      \"value\": \"string\",\n      \"country_code\": {\n        \"country\": \"string\",\n        \"definition\": \"string\",\n        \"id\": 1197,\n        \"order\": 6323\n      },\n      \"is_secret\": false,\n      \"phone_type\": {\n        \"definition\": \"string\",\n        \"id\": 9245,\n        \"order\": 9329\n      }\n    },\n    {\n      \"value\": \"string\",\n      \"country_code\": {\n        \"country\": \"string\",\n        \"definition\": \"string\",\n        \"id\": 4341,\n        \"order\": 9909\n      },\n      \"is_secret\": false,\n      \"phone_type\": {\n        \"definition\": \"string\",\n        \"id\": 5746,\n        \"order\": 6533\n      }\n    }\n  ],\n  \"profile_id\": 5184,\n  \"role\": {\n    \"definition\": \"string\",\n    \"id\": 9147,\n    \"order\": 6589\n  },\n  \"role_groups\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    },\n    {\n      \"key_0\": {}\n    }\n  ],\n  \"verified\": true,\n  \"away_until\": \"1962-09-27\",\n  \"broker\": {\n    \"id\": \"<integer>\",\n    \"bank_account\": \"string\",\n    \"company_type\": {\n      \"definition\": \"string\",\n      \"id\": 1543,\n      \"order\": 5315\n    },\n    \"fsma_reference\": \"string\",\n    \"name\": \"string\",\n    \"vat_number\": \"string\"\n  },\n  \"is_available\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6846088f-130c-42e9-bb89-86e873d79945",
+          "name": "api me update",
+          "request": {
+            "name": "api me update",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "me",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "bank_ids",
+                  "value": "{\"bank_id\":\"<string>\",\"credit_provider\":{\"id\":\"<integer>\"}}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "bank_ids",
+                  "value": "{\"bank_id\":\"<string>\",\"credit_provider\":{\"id\":\"<integer>\"}}",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "email",
+                  "value": "<email>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "definition",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "away_until",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "is_available",
+                  "value": "<boolean>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "472efaa6-16c9-44e7-b663-7bd07a37aa33",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "bank_ids",
+                      "value": "{\"bank_id\":\"<string>\",\"credit_provider\":{\"id\":\"<integer>\"}}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "bank_ids",
+                      "value": "{\"bank_id\":\"<string>\",\"credit_provider\":{\"id\":\"<integer>\"}}"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "email",
+                      "value": "<email>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "definition",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "away_until",
+                      "value": "<date>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "is_available",
+                      "value": "<boolean>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bank_ids\": [\n    {\n      \"bank_id\": \"<string>\",\n      \"credit_provider\": {\n        \"id\": \"<integer>\",\n        \"active\": true,\n        \"fsma_reference\": \"string\",\n        \"full_name\": \"string\",\n        \"is_liability_provider\": true,\n        \"loan_request_form_documents\": \"string\",\n        \"logo_url\": \"http://Nz.kytD+h8tZj2QSN1P2ymFO2lUaPEsrGSl\",\n        \"name\": \"string\",\n        \"order\": 1638454676\n      },\n      \"id\": 8042\n    },\n    {\n      \"bank_id\": \"<string>\",\n      \"credit_provider\": {\n        \"id\": \"<integer>\",\n        \"active\": true,\n        \"fsma_reference\": \"string\",\n        \"full_name\": \"string\",\n        \"is_liability_provider\": false,\n        \"loan_request_form_documents\": \"string\",\n        \"logo_url\": \"http://qnTZuzGpTfamoIOMsSWkVKl.vitrPFnDI,L321qu6nL5iptg+6IKz+nhy0sq4m8LHwTzO4\",\n        \"name\": \"string\",\n        \"order\": 434868498\n      },\n      \"id\": 9767\n    }\n  ],\n  \"email\": \"<email>\",\n  \"language\": {\n    \"definition\": \"<string>\",\n    \"id\": \"<integer>\",\n    \"order\": 917\n  },\n  \"away_until\": \"<date>\",\n  \"birth_city\": \"string\",\n  \"birth_date\": \"1957-03-25\",\n  \"broker\": {\n    \"id\": \"<integer>\",\n    \"bank_account\": \"string\",\n    \"company_type\": {\n      \"definition\": \"string\",\n      \"id\": 8776,\n      \"order\": 9018\n    },\n    \"fsma_reference\": \"string\",\n    \"name\": \"string\",\n    \"vat_number\": \"string\"\n  },\n  \"broker_id\": \"string\",\n  \"enrichment_status\": {\n    \"definition\": \"string\",\n    \"id\": 7635,\n    \"order\": 4348\n  },\n  \"first_name\": \"string\",\n  \"full_name\": \"string\",\n  \"id\": 3378,\n  \"is_available\": \"<boolean>\",\n  \"last_name\": \"string\",\n  \"middle_name\": \"string\",\n  \"mobile_phone_number\": {\n    \"key_0\": {},\n    \"key_1\": {}\n  },\n  \"mother_maiden_name\": \"string\",\n  \"permissions\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {}\n    },\n    {\n      \"key_0\": {},\n      \"key_1\": {}\n    }\n  ],\n  \"phone_numbers\": [\n    {\n      \"value\": \"string\",\n      \"country_code\": {\n        \"country\": \"string\",\n        \"definition\": \"string\",\n        \"id\": 1068,\n        \"order\": 2587\n      },\n      \"is_secret\": false,\n      \"phone_type\": {\n        \"definition\": \"string\",\n        \"id\": 9092,\n        \"order\": 1626\n      }\n    },\n    {\n      \"value\": \"string\",\n      \"country_code\": {\n        \"country\": \"string\",\n        \"definition\": \"string\",\n        \"id\": 6330,\n        \"order\": 6215\n      },\n      \"is_secret\": false,\n      \"phone_type\": {\n        \"definition\": \"string\",\n        \"id\": 1974,\n        \"order\": 18\n      }\n    }\n  ],\n  \"profile_id\": 2503,\n  \"role\": {\n    \"definition\": \"string\",\n    \"id\": 7360,\n    \"order\": 6288\n  },\n  \"role_groups\": [\n    {\n      \"key_0\": {},\n      \"key_1\": {},\n      \"key_2\": {},\n      \"key_3\": {}\n    },\n    {\n      \"key_0\": {}\n    }\n  ],\n  \"verified\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "51ffd216-625d-47b1-b68e-0935662e50d4",
+          "name": "api me activate create",
+          "request": {
+            "name": "api me activate create",
+            "description": {
+              "content": "This View will request a OTP for a user.\nIf no authy account exists yet, it will also create an Authy account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "me",
+                "activate",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "e594ac0c-2d06-4a48-b37c-48888dc2cb9c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    "activate",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"cell_phone\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0d4d85c-7b06-41b6-937d-fa382e7ebaf6",
+          "name": "api me credit providers list",
+          "request": {
+            "name": "api me credit providers list",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "me",
+                "credit-providers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "ead6601b-1c99-4c70-b4dc-613fd0b4f930",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    "credit-providers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"bank_id\": \"<string>\",\n    \"credit_provider\": {\n      \"id\": \"<integer>\",\n      \"active\": false,\n      \"fsma_reference\": \"string\",\n      \"full_name\": \"string\",\n      \"is_liability_provider\": true,\n      \"loan_request_form_documents\": \"string\",\n      \"logo_url\": \"https://RKHjMpY.paypaMeIhR+bvR3Vyc,FvH21yowgb8I4rKJSGXIk0jg9IZmdyC+D-rGFFb2IWgX+YwaeFWpkZ\",\n      \"name\": \"string\",\n      \"order\": 2144809985\n    },\n    \"id\": 6321\n  },\n  {\n    \"bank_id\": \"<string>\",\n    \"credit_provider\": {\n      \"id\": \"<integer>\",\n      \"active\": true,\n      \"fsma_reference\": \"string\",\n      \"full_name\": \"string\",\n      \"is_liability_provider\": false,\n      \"loan_request_form_documents\": \"string\",\n      \"logo_url\": \"https://wgeOwNvBSUKPwyilPNnROYEzJm.pfE2JZ0JDFKdmSoB+F5Xysm6\",\n      \"name\": \"string\",\n      \"order\": 1013089777\n    },\n    \"id\": 6147\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "42808e65-6703-4ecb-ab97-facafc449c6a",
+          "name": "api me credit providers create",
+          "request": {
+            "name": "api me credit providers create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "me",
+                "credit-providers",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "bank_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "f2f6459a-d365-4f4e-b371-8ffa03f978d1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    "credit-providers",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "bank_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bank_id\": \"<string>\",\n  \"credit_provider\": {\n    \"id\": \"<integer>\",\n    \"active\": true,\n    \"fsma_reference\": \"string\",\n    \"full_name\": \"string\",\n    \"is_liability_provider\": true,\n    \"loan_request_form_documents\": \"string\",\n    \"logo_url\": \"http://AlynShZDnuxyQZtTf.dwsXN7Sx4nYs8NiySv\",\n    \"name\": \"string\",\n    \"order\": 899266012\n  },\n  \"id\": 4574\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0669021e-f3a9-4a43-afa5-ac06ceba6430",
+          "name": "api me credit providers destroy",
+          "request": {
+            "name": "api me credit providers destroy",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "me",
+                "credit-providers",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "82a94692-b73f-4309-bf49-3d47e7db1252",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    "credit-providers",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f1fe5edf-b9fb-402d-adaf-e12f101af084",
+          "name": "api me credit providers retrieve",
+          "request": {
+            "name": "api me credit providers retrieve",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "me",
+                "credit-providers",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "36a1672e-ca27-4267-a7eb-5d307988e935",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    "credit-providers",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bank_id\": \"<string>\",\n  \"credit_provider\": {\n    \"id\": \"<integer>\",\n    \"active\": true,\n    \"fsma_reference\": \"string\",\n    \"full_name\": \"string\",\n    \"is_liability_provider\": true,\n    \"loan_request_form_documents\": \"string\",\n    \"logo_url\": \"http://AlynShZDnuxyQZtTf.dwsXN7Sx4nYs8NiySv\",\n    \"name\": \"string\",\n    \"order\": 899266012\n  },\n  \"id\": 4574\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b0e0287-d245-415c-aec0-0d480f64e85a",
+          "name": "api me credit providers partial update",
+          "request": {
+            "name": "api me credit providers partial update",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "me",
+                "credit-providers",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "bank_id",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "785e5daf-b6b3-4f31-991c-4583bd5d4074",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    "credit-providers",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "key": "bank_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bank_id\": \"<string>\",\n  \"credit_provider\": {\n    \"id\": \"<integer>\",\n    \"active\": true,\n    \"fsma_reference\": \"string\",\n    \"full_name\": \"string\",\n    \"is_liability_provider\": true,\n    \"loan_request_form_documents\": \"string\",\n    \"logo_url\": \"http://AlynShZDnuxyQZtTf.dwsXN7Sx4nYs8NiySv\",\n    \"name\": \"string\",\n    \"order\": 899266012\n  },\n  \"id\": 4574\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "de2afda5-498f-45c4-b9a8-c1d7e4b04381",
+          "name": "api me credit providers update",
+          "request": {
+            "name": "api me credit providers update",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "me",
+                "credit-providers",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "bank_id",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<integer>"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "add1b7df-27c8-4d16-a0d5-140a0b5ea5cf",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    "credit-providers",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "bank_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "key": "id",
+                      "value": "<integer>"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"bank_id\": \"<string>\",\n  \"credit_provider\": {\n    \"id\": \"<integer>\",\n    \"active\": true,\n    \"fsma_reference\": \"string\",\n    \"full_name\": \"string\",\n    \"is_liability_provider\": true,\n    \"loan_request_form_documents\": \"string\",\n    \"logo_url\": \"http://AlynShZDnuxyQZtTf.dwsXN7Sx4nYs8NiySv\",\n    \"name\": \"string\",\n    \"order\": 899266012\n  },\n  \"id\": 4574\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81813b9e-23de-45b3-932d-f1f1c34ba627",
+          "name": "api me enrichment retry create",
+          "request": {
+            "name": "api me enrichment retry create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "me",
+                "enrichment-retry",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "420e2575-4c95-40df-b0ec-eea542054010",
+              "name": "No response body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    "enrichment-retry",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "22ddbb18-34d9-48f5-bc1e-220bc7c8aeca",
+          "name": "api me enrichment status retrieve",
+          "request": {
+            "name": "api me enrichment status retrieve",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "me",
+                "enrichment-status",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "08780deb-860b-4e7a-9882-0fee078e9692",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    "enrichment-status",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"definition\": \"string\",\n  \"id\": 833,\n  \"order\": 5628\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16ba52d7-f373-4a3a-9df2-1dca767b619b",
+          "name": "api me permissions list",
+          "request": {
+            "name": "api me permissions list",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "me",
+                "permissions",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fd9be340-fb8f-4921-9abe-a115835e2ce1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    "permissions",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"app_label\": \"string\",\n    \"codename\": \"string\"\n  },\n  {\n    \"app_label\": \"string\",\n    \"codename\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "017aa6c8-986c-4e4e-b4da-3e659e2c09b2",
+          "name": "api me verify create",
+          "request": {
+            "name": "api me verify create",
+            "description": {
+              "content": "This View will request a OTP for a user.\nIf no authy account exists yet, it will also create an Authy account",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "me",
+                "verify",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "disabled": false,
+                  "key": "code",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "token",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "74d6983d-ee4c-4b76-9da4-1c8a498fbb1e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "me",
+                    "verify",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "urlencoded",
+                  "urlencoded": [
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "code",
+                      "value": "<string>"
+                    },
+                    {
+                      "disabled": false,
+                      "description": {
+                        "content": "(Required) ",
+                        "type": "text/plain"
+                      },
+                      "key": "token",
+                      "value": "<string>"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "/",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5b2e69e8-7171-4a40-ac0d-876e6e316e92",
+    "name": "Oper Credits Agent Documents Me API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "",
+      "type": "text/plain"
+    }
+  }
+}

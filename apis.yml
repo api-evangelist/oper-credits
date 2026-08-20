@@ -40,6 +40,16 @@ tags:
 - Fintech
 - Banking
 - Loan Origination
+- Real-Estate
+- Financial-Services
+tags_raw:
+- Company
+- Mortgages
+- Lending
+- Credit
+- Fintech
+- Banking
+- Loan Origination
 - Real Estate
 - Financial Services
 apis:
@@ -283,6 +293,8 @@ apis:
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
+  - Integration
+  tags_raw:
   - Integrations
   properties:
   - type: OpenAPI
@@ -303,6 +315,8 @@ apis:
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
+  - JWT
+  tags_raw:
   - Jwt
   properties:
   - type: OpenAPI
@@ -414,6 +428,8 @@ apis:
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -484,6 +500,8 @@ apis:
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
+  - SSO
+  tags_raw:
   - Sso
   properties:
   - type: OpenAPI
@@ -494,6 +512,8 @@ apis:
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
@@ -545,6 +565,8 @@ apis:
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
@@ -565,6 +587,8 @@ apis:
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI

@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Oper Credits Agent Documents Easy Audit API
-  version: "1.0"
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Easy Audit
 paths:
@@ -34,71 +37,6 @@ paths:
       - Easy Audit
 components:
   schemas:
-    EasyAuditCRUDEvent:
-      properties:
-        changed_fields:
-          type: string
-        content_type:
-          type: integer
-        datetime:
-          format: date-time
-          readOnly: true
-          title: Date time
-          type: string
-        event_type:
-          allOf:
-          - $ref: '#/components/schemas/EventTypeEnum'
-          maximum: 32767
-          minimum: -32768
-        id:
-          readOnly: true
-          type: integer
-        object_id:
-          maxLength: 255
-          type: string
-        object_json_repr:
-          title: Object JSON representation
-          type: string
-        object_repr:
-          title: Object representation
-          type: string
-        user:
-          nullable: true
-          type: integer
-        user_pk_as_string:
-          description: String version of the user pk
-          maxLength: 255
-          type: string
-      required:
-      - content_type
-      - datetime
-      - event_type
-      - id
-      - object_id
-      type: object
-    PaginatedEasyAuditCRUDEventList:
-      properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          nullable: true
-          type: string
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          nullable: true
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/EasyAuditCRUDEvent'
-          type: array
-      required:
-      - count
-      - results
-      type: object
     EventTypeEnum:
       description: '* `1` - Create
 
@@ -134,6 +72,74 @@ components:
       - 10
       - 11
       type: integer
+    EasyAuditCRUDEvent:
+      properties:
+        changed_fields:
+          type: string
+        content_type:
+          type: integer
+        datetime:
+          format: date-time
+          readOnly: true
+          title: Date time
+          type: string
+        event_type:
+          allOf:
+          - $ref: '#/components/schemas/EventTypeEnum'
+          maximum: 32767
+          minimum: -32768
+        id:
+          readOnly: true
+          type: integer
+        object_id:
+          maxLength: 255
+          type: string
+        object_json_repr:
+          title: Object JSON representation
+          type: string
+        object_repr:
+          title: Object representation
+          type: string
+        user:
+          type:
+          - integer
+          - 'null'
+        user_pk_as_string:
+          description: String version of the user pk
+          maxLength: 255
+          type: string
+      required:
+      - content_type
+      - datetime
+      - event_type
+      - id
+      - object_id
+      type: object
+    PaginatedEasyAuditCRUDEventList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
+          items:
+            $ref: '#/components/schemas/EasyAuditCRUDEvent'
+          type: array
+      required:
+      - count
+      - results
+      type: object
   securitySchemes:
     jwtAuth:
       bearerFormat: JWT

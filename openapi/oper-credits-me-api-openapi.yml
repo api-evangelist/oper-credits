@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Oper Credits Agent Documents Me API
-  version: "1.0"
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Me
 paths:
@@ -305,13 +308,29 @@ paths:
       - Me
 components:
   schemas:
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     UserSelf:
       description: Serializer to update the user himself
       properties:
         away_until:
           format: date
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         bank_ids:
           items:
             $ref: '#/components/schemas/User2CreditProvider'
@@ -326,7 +345,6 @@ components:
         broker:
           allOf:
           - $ref: '#/components/schemas/MinimalBroker'
-          nullable: true
         broker_id:
           readOnly: true
           type: string
@@ -338,7 +356,6 @@ components:
         enrichment_status:
           allOf:
           - $ref: '#/components/schemas/EnrichmentStatus'
-          nullable: true
           readOnly: true
         first_name:
           readOnly: true
@@ -361,9 +378,10 @@ components:
           type: string
         mobile_phone_number:
           additionalProperties: {}
-          nullable: true
           readOnly: true
-          type: object
+          type:
+          - object
+          - 'null'
         mother_maiden_name:
           readOnly: true
           type: string
@@ -416,8 +434,8 @@ components:
       - role_groups
       - verified
       type: object
-    EnrichmentStatus:
-      description: Can be managed at /resources/enrichment-status
+    UserRole:
+      description: Can be managed at /resources/user-role
       properties:
         definition:
           type: string
@@ -430,6 +448,18 @@ components:
       - definition
       - id
       - order
+      type: object
+    PatchedUser2CreditProvider:
+      properties:
+        bank_id:
+          maxLength: 64
+          type: string
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+        id:
+          readOnly: true
+          type: integer
       type: object
     ContactType:
       description: Can be managed at /resources/contact-type
@@ -446,129 +476,7 @@ components:
       - id
       - order
       type: object
-    VerifyUser:
-      description: Serializer to verify a user and provide permissions
-      properties:
-        code:
-          type: string
-          writeOnly: true
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - code
-      - token
-      type: object
-    PatchedUserSelf:
-      description: Serializer to update the user himself
-      properties:
-        away_until:
-          format: date
-          nullable: true
-          type: string
-        bank_ids:
-          items:
-            $ref: '#/components/schemas/User2CreditProvider'
-          type: array
-        birth_city:
-          readOnly: true
-          type: string
-        birth_date:
-          format: date
-          readOnly: true
-          type: string
-        broker:
-          allOf:
-          - $ref: '#/components/schemas/MinimalBroker'
-          nullable: true
-        broker_id:
-          readOnly: true
-          type: string
-        email:
-          format: email
-          maxLength: 254
-          title: Email address
-          type: string
-        enrichment_status:
-          allOf:
-          - $ref: '#/components/schemas/EnrichmentStatus'
-          nullable: true
-          readOnly: true
-        first_name:
-          readOnly: true
-          type: string
-        full_name:
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        is_available:
-          type: boolean
-        language:
-          $ref: '#/components/schemas/Language'
-        last_name:
-          readOnly: true
-          type: string
-        middle_name:
-          readOnly: true
-          type: string
-        mobile_phone_number:
-          additionalProperties: {}
-          nullable: true
-          readOnly: true
-          type: object
-        mother_maiden_name:
-          readOnly: true
-          type: string
-        permissions:
-          items:
-            additionalProperties: {}
-            type: object
-          readOnly: true
-          type: array
-        phone_numbers:
-          items:
-            $ref: '#/components/schemas/Profile2Phone'
-          readOnly: true
-          type: array
-        profile_id:
-          readOnly: true
-          type: integer
-        role:
-          allOf:
-          - $ref: '#/components/schemas/UserRole'
-          readOnly: true
-        role_groups:
-          items:
-            additionalProperties: {}
-            type: object
-          readOnly: true
-          type: array
-        verified:
-          readOnly: true
-          type: boolean
-      type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - country
-      - definition
-      - id
-      - order
-      type: object
-    PatchedUser2CreditProvider:
+    User2CreditProvider:
       properties:
         bank_id:
           maxLength: 64
@@ -576,13 +484,31 @@ components:
         credit_provider:
           allOf:
           - $ref: '#/components/schemas/ReducedCreditProvider'
-          nullable: true
         id:
           readOnly: true
           type: integer
+      required:
+      - bank_id
+      - id
       type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
+      type: object
+    CompanyType:
+      description: Can be managed at /resources/company-types
       properties:
         definition:
           type: string
@@ -595,6 +521,21 @@ components:
       - definition
       - id
       - order
+      type: object
+    ActivateUser:
+      description: 'Serializer to create a verified user.
+
+        This will return a request for a OTP'
+      properties:
+        cell_phone:
+          readOnly: true
+          type: string
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - cell_phone
+      - token
       type: object
     ReducedCreditProvider:
       description: To be used for a short summary of the CreditProvider
@@ -627,9 +568,10 @@ components:
         order:
           maximum: 2147483647
           minimum: 0
-          nullable: true
           readOnly: true
-          type: integer
+          type:
+          - integer
+          - 'null'
       required:
       - active
       - fsma_reference
@@ -639,37 +581,6 @@ components:
       - loan_request_form_documents
       - logo_url
       - name
-      - order
-      type: object
-    User2CreditProvider:
-      properties:
-        bank_id:
-          maxLength: 64
-          type: string
-        credit_provider:
-          allOf:
-          - $ref: '#/components/schemas/ReducedCreditProvider'
-          nullable: true
-        id:
-          readOnly: true
-          type: integer
-      required:
-      - bank_id
-      - id
-      type: object
-    CompanyType:
-      description: Can be managed at /resources/company-types
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
       - order
       type: object
     Permission:
@@ -683,8 +594,130 @@ components:
       - app_label
       - codename
       type: object
-    Language:
-      description: Can be managed at /resources/language
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    PatchedUserSelf:
+      description: Serializer to update the user himself
+      properties:
+        away_until:
+          format: date
+          type:
+          - string
+          - 'null'
+        bank_ids:
+          items:
+            $ref: '#/components/schemas/User2CreditProvider'
+          type: array
+        birth_city:
+          readOnly: true
+          type: string
+        birth_date:
+          format: date
+          readOnly: true
+          type: string
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/MinimalBroker'
+        broker_id:
+          readOnly: true
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        enrichment_status:
+          allOf:
+          - $ref: '#/components/schemas/EnrichmentStatus'
+          readOnly: true
+        first_name:
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        is_available:
+          type: boolean
+        language:
+          $ref: '#/components/schemas/Language'
+        last_name:
+          readOnly: true
+          type: string
+        middle_name:
+          readOnly: true
+          type: string
+        mobile_phone_number:
+          additionalProperties: {}
+          readOnly: true
+          type:
+          - object
+          - 'null'
+        mother_maiden_name:
+          readOnly: true
+          type: string
+        permissions:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          readOnly: true
+          type: array
+        profile_id:
+          readOnly: true
+          type: integer
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        role_groups:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        verified:
+          readOnly: true
+          type: boolean
+      type: object
+    VerifyUser:
+      description: Serializer to verify a user and provide permissions
+      properties:
+        code:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - code
+      - token
+      type: object
+    EnrichmentStatus:
+      description: Can be managed at /resources/enrichment-status
       properties:
         definition:
           type: string
@@ -707,12 +740,12 @@ components:
         company_type:
           allOf:
           - $ref: '#/components/schemas/CompanyType'
-          nullable: true
           readOnly: true
         fsma_reference:
-          nullable: true
           readOnly: true
-          type: string
+          type:
+          - string
+          - 'null'
         id:
           type: integer
         name:
@@ -728,37 +761,6 @@ components:
       - id
       - name
       - vat_number
-      type: object
-    ActivateUser:
-      description: 'Serializer to create a verified user.
-
-        This will return a request for a OTP'
-      properties:
-        cell_phone:
-          readOnly: true
-          type: string
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - cell_phone
-      - token
-      type: object
-    Profile2Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        is_secret:
-          default: false
-          type: boolean
-        phone_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          maxLength: 32
-          minLength: 4
-          type: string
-      required:
-      - value
       type: object
   securitySchemes:
     jwtAuth:

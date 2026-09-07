@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Third Party Api API
-  version: "1.0"
+  title: Oper Credits Agent Documents Third Party API
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Third Party Api
 paths:
@@ -71,8 +74,8 @@ paths:
       - Third Party Api
 components:
   schemas:
-    FloodRiskType:
-      description: Can be managed at /resources/flood-risk-type
+    Country:
+      description: Can be managed at /resources/country
       properties:
         definition:
           type: string
@@ -86,70 +89,16 @@ components:
       - id
       - order
       type: object
-    PatchedRealtyValuation:
+    RealtyValuationDocument:
       properties:
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
+        document_type:
           type: string
-        documents:
-          items:
-            $ref: '#/components/schemas/RealtyValuationDocument'
-          type: array
-        external_generation_uuid:
-          format: uuid
-          type: string
-        external_service:
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type: string
-        oper_reference:
-          format: uuid
-          readOnly: true
-          type: string
-        realty:
-          readOnly: true
-          type: integer
-        status:
-          allOf:
-          - $ref: '#/components/schemas/RealtyValuationStatus'
-          nullable: true
-        valuation_date:
-          format: date
-          nullable: true
-          type: string
-        valuation_expiration_date:
-          format: date
-          nullable: true
-          type: string
-        valuation_redirection_url:
+        document_url:
           format: uri
-          maxLength: 200
           type: string
-        valuation_reference:
-          maxLength: 255
-          type: string
-        valuation_type:
-          allOf:
-          - $ref: '#/components/schemas/RealtyValuationType'
-          nullable: true
-      type: object
-    RealtyValuationAndSourceData:
-      properties:
-        data:
-          $ref: '#/components/schemas/RealtySourceDataCreate'
-        valuation:
-          $ref: '#/components/schemas/RealtyValuation'
       required:
-      - valuation
+      - document_type
+      - document_url
       type: object
     RealtyValuationType:
       description: Can be managed at /resources/realty-valuation-type
@@ -168,6 +117,36 @@ components:
       type: object
     StreetType:
       description: Can be managed at /resources/street-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FloodRiskType:
+      description: Can be managed at /resources/flood-risk-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RealtyType:
+      description: Can be managed at /resources/realty-type
       properties:
         definition:
           type: string
@@ -216,15 +195,16 @@ components:
         status:
           allOf:
           - $ref: '#/components/schemas/RealtyValuationStatus'
-          nullable: true
         valuation_date:
           format: date
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         valuation_expiration_date:
           format: date
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         valuation_redirection_url:
           format: uri
           maxLength: 200
@@ -235,7 +215,6 @@ components:
         valuation_type:
           allOf:
           - $ref: '#/components/schemas/RealtyValuationType'
-          nullable: true
       required:
       - created
       - external_service
@@ -245,46 +224,131 @@ components:
       - realty
       - valuation_reference
       type: object
-    RealtyType:
-      description: Can be managed at /resources/realty-type
+    RealtySourceDataCreate:
       properties:
-        definition:
+        address:
+          allOf:
+          - $ref: '#/components/schemas/NonRequiredAddress'
+        cadastral_references:
+          items:
+            type: string
+          type:
+          - array
+          - 'null'
+        co2_emission_per_year:
+          format: double
+          type:
+          - number
+          - 'null'
+        commercial_area:
+          format: double
+          type: number
+        e_level:
+          maximum: 2147483647
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        epc_after_renovations:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+          - integer
+          - 'null'
+        epc_before_renovations:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+          - integer
+          - 'null'
+        epc_contract_number:
+          maxLength: 128
           type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RealtyValuationDocument:
-      properties:
-        document_type:
+        epc_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        epc_date_valid_until:
+          format: date
+          type:
+          - string
+          - 'null'
+        epc_label:
+          maxLength: 10
+          type:
+          - string
+          - 'null'
+        epc_missing_reason:
+          maxLength: 256
           type: string
-        document_url:
-          format: uri
-          type: string
-      required:
-      - document_type
-      - document_url
-      type: object
-    RealtyValuationStatus:
-      description: Can be managed at /resources/realty-valuation-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
+        flood_risk:
+          allOf:
+          - $ref: '#/components/schemas/FloodRiskType'
+        forced_value_after:
+          format: double
+          type:
+          - number
+          - 'null'
+        forced_value_before:
+          format: double
+          type:
+          - number
+          - 'null'
+        living_area:
+          format: double
+          type: number
+        living_percentage:
+          format: double
+          type: number
+        mobi_score:
+          format: double
+          maximum: 10
+          minimum: 0
+          type:
+          - number
+          - 'null'
+        nearest_flood_zone:
+          format: double
+          type:
+          - number
+          - 'null'
+        price_building:
+          format: double
+          type:
+          - number
+          - 'null'
+        realty_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyType'
+        realty_valuation_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyValuationType'
+        rooms:
+          format: double
+          type: number
+        surface:
+          format: double
+          type: number
+        total_parcel_area:
+          format: double
+          type: number
+        venal_value_after:
+          format: double
+          type:
+          - number
+          - 'null'
+        venal_value_before:
+          format: double
+          type:
+          - number
+          - 'null'
+        year_of_built:
+          maximum: 9999
+          minimum: 1000
+          type:
+          - integer
+          - 'null'
       type: object
     NonRequiredAddress:
       description: 'Inheriting from base address serializer and set with a few optional
@@ -302,18 +366,16 @@ components:
         country:
           allOf:
           - $ref: '#/components/schemas/Country'
-          nullable: true
         floor:
           maxLength: 64
           type: string
         heading:
-          exclusiveMaximum: true
-          exclusiveMinimum: true
           format: double
-          maximum: 100000
-          minimum: -100000
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
         house_number:
           maxLength: 64
           type: string
@@ -321,29 +383,26 @@ components:
           readOnly: true
           type: integer
         latitude:
-          exclusiveMaximum: true
-          exclusiveMinimum: true
           format: double
-          maximum: 100000
-          minimum: -100000
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
         longitude:
-          exclusiveMaximum: true
-          exclusiveMinimum: true
           format: double
-          maximum: 100000
-          minimum: -100000
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
         pitch:
-          exclusiveMaximum: true
-          exclusiveMinimum: true
           format: double
-          maximum: 100000
-          minimum: -100000
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
         staircase:
           type: string
         street:
@@ -352,18 +411,16 @@ components:
         street_type:
           allOf:
           - $ref: '#/components/schemas/StreetType'
-          nullable: true
         zip_code:
           maxLength: 8
           type: string
         zoom:
-          exclusiveMaximum: true
-          exclusiveMinimum: true
           format: double
-          maximum: 100000
-          minimum: -100000
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
       required:
       - city
       - house_number
@@ -371,122 +428,8 @@ components:
       - street
       - zip_code
       type: object
-    RealtySourceDataCreate:
-      properties:
-        address:
-          allOf:
-          - $ref: '#/components/schemas/NonRequiredAddress'
-          nullable: true
-        cadastral_references:
-          items:
-            type: string
-          nullable: true
-          type: array
-        co2_emission_per_year:
-          format: double
-          nullable: true
-          type: number
-        commercial_area:
-          format: double
-          type: number
-        e_level:
-          maximum: 2147483647
-          minimum: 0
-          nullable: true
-          type: integer
-        epc_after_renovations:
-          maximum: 2147483647
-          minimum: -2147483648
-          nullable: true
-          type: integer
-        epc_before_renovations:
-          maximum: 2147483647
-          minimum: -2147483648
-          nullable: true
-          type: integer
-        epc_contract_number:
-          maxLength: 128
-          type: string
-        epc_date:
-          format: date
-          nullable: true
-          type: string
-        epc_date_valid_until:
-          format: date
-          nullable: true
-          type: string
-        epc_label:
-          maxLength: 10
-          nullable: true
-          type: string
-        epc_missing_reason:
-          maxLength: 256
-          type: string
-        flood_risk:
-          allOf:
-          - $ref: '#/components/schemas/FloodRiskType'
-          nullable: true
-        forced_value_after:
-          format: double
-          nullable: true
-          type: number
-        forced_value_before:
-          format: double
-          nullable: true
-          type: number
-        living_area:
-          format: double
-          type: number
-        living_percentage:
-          format: double
-          type: number
-        mobi_score:
-          format: double
-          maximum: 10
-          minimum: 0
-          nullable: true
-          type: number
-        nearest_flood_zone:
-          format: double
-          nullable: true
-          type: number
-        price_building:
-          format: double
-          nullable: true
-          type: number
-        realty_type:
-          allOf:
-          - $ref: '#/components/schemas/RealtyType'
-          nullable: true
-        realty_valuation_type:
-          allOf:
-          - $ref: '#/components/schemas/RealtyValuationType'
-          nullable: true
-        rooms:
-          format: double
-          type: number
-        surface:
-          format: double
-          type: number
-        total_parcel_area:
-          format: double
-          type: number
-        venal_value_after:
-          format: double
-          nullable: true
-          type: number
-        venal_value_before:
-          format: double
-          nullable: true
-          type: number
-        year_of_built:
-          maximum: 9999
-          minimum: 1000
-          nullable: true
-          type: integer
-      type: object
-    Country:
-      description: Can be managed at /resources/country
+    RealtyValuationStatus:
+      description: Can be managed at /resources/realty-valuation-status
       properties:
         definition:
           type: string
@@ -499,6 +442,71 @@ components:
       - definition
       - id
       - order
+      type: object
+    RealtyValuationAndSourceData:
+      properties:
+        data:
+          $ref: '#/components/schemas/RealtySourceDataCreate'
+        valuation:
+          $ref: '#/components/schemas/RealtyValuation'
+      required:
+      - valuation
+      type: object
+    PatchedRealtyValuation:
+      properties:
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        documents:
+          items:
+            $ref: '#/components/schemas/RealtyValuationDocument'
+          type: array
+        external_generation_uuid:
+          format: uuid
+          type: string
+        external_service:
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        realty:
+          readOnly: true
+          type: integer
+        status:
+          allOf:
+          - $ref: '#/components/schemas/RealtyValuationStatus'
+        valuation_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        valuation_expiration_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        valuation_redirection_url:
+          format: uri
+          maxLength: 200
+          type: string
+        valuation_reference:
+          maxLength: 255
+          type: string
+        valuation_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyValuationType'
       type: object
   securitySchemes:
     jwtAuth:

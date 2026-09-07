@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Oper Credits Agent Documents Documentation Library API
-  version: "1.0"
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Documentation Library
 paths:
@@ -188,66 +191,6 @@ paths:
       - Documentation Library
 components:
   schemas:
-    LibraryDocumentType:
-      description: Can be managed at /resources/library-document-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ReducedCreditProvider:
-      description: To be used for a short summary of the CreditProvider
-      properties:
-        active:
-          readOnly: true
-          type: boolean
-        fsma_reference:
-          maxLength: 128
-          readOnly: true
-          type: string
-        full_name:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        is_liability_provider:
-          readOnly: true
-          type: boolean
-        loan_request_form_documents:
-          readOnly: true
-          type: string
-        logo_url:
-          format: uri
-          readOnly: true
-          type: string
-        name:
-          readOnly: true
-          type: string
-        order:
-          maximum: 2147483647
-          minimum: 0
-          nullable: true
-          readOnly: true
-          type: integer
-      required:
-      - active
-      - fsma_reference
-      - full_name
-      - id
-      - is_liability_provider
-      - loan_request_form_documents
-      - logo_url
-      - name
-      - order
-      type: object
     Language:
       description: Can be managed at /resources/language
       properties:
@@ -262,55 +205,6 @@ components:
       - definition
       - id
       - order
-      type: object
-    PatchedDocumentationLibrary.LibraryDocument:
-      properties:
-        active:
-          type: boolean
-        base_products:
-          items:
-            type: integer
-          readOnly: true
-          type: array
-        check_function_configuration: {}
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        credit_provider:
-          allOf:
-          - $ref: '#/components/schemas/ReducedCreditProvider'
-          nullable: true
-        custom_font_name:
-          maxLength: 128
-          nullable: true
-          type: string
-        data_merge_strategy:
-          type: string
-        data_override_template:
-          type: string
-        document_generation_configuration: {}
-        document_type:
-          $ref: '#/components/schemas/LibraryDocumentType'
-        file:
-          format: uri
-          type: string
-          writeOnly: true
-        file_name:
-          type: string
-        file_path:
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        language:
-          $ref: '#/components/schemas/Language'
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type: string
       type: object
     DocumentationLibrary.LibraryDocument:
       properties:
@@ -330,11 +224,11 @@ components:
         credit_provider:
           allOf:
           - $ref: '#/components/schemas/ReducedCreditProvider'
-          nullable: true
         custom_font_name:
           maxLength: 128
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         data_merge_strategy:
           type: string
         data_override_template:
@@ -367,6 +261,116 @@ components:
       - id
       - language
       - last_modified
+      type: object
+    PatchedDocumentationLibrary.LibraryDocument:
+      properties:
+        active:
+          type: boolean
+        base_products:
+          items:
+            type: integer
+          readOnly: true
+          type: array
+        check_function_configuration: {}
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+        custom_font_name:
+          maxLength: 128
+          type:
+          - string
+          - 'null'
+        data_merge_strategy:
+          type: string
+        data_override_template:
+          type: string
+        document_generation_configuration: {}
+        document_type:
+          $ref: '#/components/schemas/LibraryDocumentType'
+        file:
+          format: uri
+          type: string
+          writeOnly: true
+        file_name:
+          type: string
+        file_path:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        language:
+          $ref: '#/components/schemas/Language'
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+      type: object
+    ReducedCreditProvider:
+      description: To be used for a short summary of the CreditProvider
+      properties:
+        active:
+          readOnly: true
+          type: boolean
+        fsma_reference:
+          maxLength: 128
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_liability_provider:
+          readOnly: true
+          type: boolean
+        loan_request_form_documents:
+          readOnly: true
+          type: string
+        logo_url:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        order:
+          maximum: 2147483647
+          minimum: 0
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+      required:
+      - active
+      - fsma_reference
+      - full_name
+      - id
+      - is_liability_provider
+      - loan_request_form_documents
+      - logo_url
+      - name
+      - order
+      type: object
+    LibraryDocumentType:
+      description: Can be managed at /resources/library-document-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
       type: object
   securitySchemes:
     jwtAuth:

@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Oper Credits Agent Documents Sign Up API
-  version: "1.0"
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Sign Up
 paths:
@@ -140,12 +143,26 @@ paths:
       - Sign Up
 components:
   schemas:
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     SignUpProfile:
       properties:
         broker:
           allOf:
           - $ref: '#/components/schemas/MinimalBroker'
-          nullable: true
           readOnly: true
         first_name:
           default: ''
@@ -163,6 +180,24 @@ components:
       - phone_number
       - token
       type: object
+    PatchedSignUpProfile:
+      properties:
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/MinimalBroker'
+          readOnly: true
+        first_name:
+          default: ''
+          type: string
+        last_name:
+          default: ''
+          type: string
+        phone_number:
+          $ref: '#/components/schemas/Profile2Phone'
+        token:
+          readOnly: true
+          type: string
+      type: object
     ContactType:
       description: Can be managed at /resources/contact-type
       properties:
@@ -178,12 +213,25 @@ components:
       - id
       - order
       type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
+    Profile2Phone:
       properties:
-        country:
-          readOnly: true
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
           type: string
+      required:
+      - value
+      type: object
+    CompanyType:
+      description: Can be managed at /resources/company-types
+      properties:
         definition:
           type: string
         id:
@@ -192,29 +240,37 @@ components:
           readOnly: true
           type: integer
       required:
-      - country
       - definition
       - id
       - order
       type: object
-    PatchedSignUpProfile:
+    SignUp:
       properties:
-        broker:
-          allOf:
-          - $ref: '#/components/schemas/MinimalBroker'
-          nullable: true
-          readOnly: true
+        email:
+          type: string
         first_name:
           default: ''
           type: string
+          writeOnly: true
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+          writeOnly: true
         last_name:
           default: ''
           type: string
+          writeOnly: true
         phone_number:
-          $ref: '#/components/schemas/Profile2Phone'
+          allOf:
+          - $ref: '#/components/schemas/Profile2Phone'
+          writeOnly: true
         token:
           readOnly: true
           type: string
+      required:
+      - email
+      - phone_number
+      - token
       type: object
     SignUpResetPassword:
       description: 'This serializer will update the password to a new password if:
@@ -255,21 +311,6 @@ components:
       required:
       - password
       - token
-      type: object
-    CompanyType:
-      description: Can be managed at /resources/company-types
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
     SignUpCreate:
       properties:
@@ -312,33 +353,24 @@ components:
       - email
       - password
       type: object
-    SignUp:
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
       properties:
-        email:
-          type: string
-        first_name:
-          default: ''
-          type: string
-          writeOnly: true
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-          writeOnly: true
-        last_name:
-          default: ''
-          type: string
-          writeOnly: true
-        phone_number:
-          allOf:
-          - $ref: '#/components/schemas/Profile2Phone'
-          writeOnly: true
-        token:
+        country:
           readOnly: true
           type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
       required:
-      - email
-      - phone_number
-      - token
+      - country
+      - definition
+      - id
+      - order
       type: object
     MinimalBroker:
       description: Broker minimal representation
@@ -349,12 +381,12 @@ components:
         company_type:
           allOf:
           - $ref: '#/components/schemas/CompanyType'
-          nullable: true
           readOnly: true
         fsma_reference:
-          nullable: true
           readOnly: true
-          type: string
+          type:
+          - string
+          - 'null'
         id:
           type: integer
         name:
@@ -370,37 +402,6 @@ components:
       - id
       - name
       - vat_number
-      type: object
-    Language:
-      description: Can be managed at /resources/language
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Profile2Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        is_secret:
-          default: false
-          type: boolean
-        phone_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          maxLength: 32
-          minLength: 4
-          type: string
-      required:
-      - value
       type: object
   securitySchemes:
     jwtAuth:

@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Oper Credits Agent Documents Users API
-  version: "1.0"
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Users
 paths:
@@ -29,21 +32,6 @@ paths:
       - Users
 components:
   schemas:
-    UserRole:
-      description: Can be managed at /resources/user-role
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
     ReducedBaseUser:
       description: User reduced representation
       properties:
@@ -70,6 +58,21 @@ components:
       - last_name
       - role
       - verified
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
       type: object
   securitySchemes:
     jwtAuth:

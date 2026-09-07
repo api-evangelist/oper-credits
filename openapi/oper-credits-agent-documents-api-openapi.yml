@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Oper Credits Agent Documents API
-  version: "1.0"
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Agent Documents
 paths:
@@ -80,37 +83,6 @@ paths:
       - Agent Documents
 components:
   schemas:
-    DocumentStatus:
-      description: Can be managed at /resources/document-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    AgentDocument:
-      properties:
-        document:
-          $ref: '#/components/schemas/AgentDocumentSignedUrl'
-        id:
-          readOnly: true
-          type: integer
-        uploaded_by:
-          format: email
-          readOnly: true
-          title: Email address
-          type: string
-      required:
-      - id
-      - uploaded_by
-      type: object
     AgentDocumentUpload:
       properties:
         document:
@@ -132,91 +104,6 @@ components:
       - id
       - uploaded_by
       type: object
-    AgentDocumentSignedUrl:
-      properties:
-        configuration_id:
-          format: uuid
-          type: string
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        created_object_id:
-          nullable: true
-          readOnly: true
-          type: integer
-        document_type:
-          $ref: '#/components/schemas/DocumentType'
-        file_name:
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        integrator_transfer_rounds:
-          items:
-            additionalProperties: {}
-            type: object
-          readOnly: true
-          type: array
-        is_sent:
-          type: boolean
-        is_signed:
-          type: boolean
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type: string
-        link_id:
-          nullable: true
-          readOnly: true
-          type: integer
-        mime_type:
-          readOnly: true
-          type: string
-        object_file_name:
-          maxLength: 256
-          type: string
-        object_id:
-          format: uuid
-          type: string
-        oper_reference:
-          format: uuid
-          readOnly: true
-          type: string
-        sha256_hash:
-          maxLength: 64
-          type: string
-        signed_date:
-          format: date-time
-          nullable: true
-          type: string
-        status:
-          allOf:
-          - $ref: '#/components/schemas/DocumentStatus'
-          readOnly: true
-        url:
-          readOnly: true
-          type: string
-        version:
-          readOnly: true
-          type: string
-      required:
-      - created
-      - created_object_id
-      - document_type
-      - file_name
-      - id
-      - integrator_transfer_rounds
-      - last_modified
-      - link_id
-      - mime_type
-      - oper_reference
-      - status
-      - url
-      - version
-      type: object
     PaginatedAgentDocumentList:
       properties:
         count:
@@ -225,13 +112,15 @@ components:
         next:
           example: http://api.example.org/accounts/?page=4
           format: uri
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         previous:
           example: http://api.example.org/accounts/?page=2
           format: uri
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         results:
           items:
             $ref: '#/components/schemas/AgentDocument'
@@ -260,6 +149,125 @@ components:
           type: boolean
         is_proof_to_sign:
           type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    AgentDocumentSignedUrl:
+      properties:
+        configuration_id:
+          format: uuid
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        created_object_id:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        document_type:
+          $ref: '#/components/schemas/DocumentType'
+        file_name:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        integrator_transfer_rounds:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        is_sent:
+          type: boolean
+        is_signed:
+          type: boolean
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        link_id:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        mime_type:
+          readOnly: true
+          type: string
+        object_file_name:
+          maxLength: 256
+          type: string
+        object_id:
+          format: uuid
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        sha256_hash:
+          maxLength: 64
+          type: string
+        signed_date:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        status:
+          allOf:
+          - $ref: '#/components/schemas/DocumentStatus'
+          readOnly: true
+        url:
+          readOnly: true
+          type: string
+        version:
+          readOnly: true
+          type: string
+      required:
+      - created
+      - created_object_id
+      - document_type
+      - file_name
+      - id
+      - integrator_transfer_rounds
+      - last_modified
+      - link_id
+      - mime_type
+      - oper_reference
+      - status
+      - url
+      - version
+      type: object
+    AgentDocument:
+      properties:
+        document:
+          $ref: '#/components/schemas/AgentDocumentSignedUrl'
+        id:
+          readOnly: true
+          type: integer
+        uploaded_by:
+          format: email
+          readOnly: true
+          title: Email address
+          type: string
+      required:
+      - id
+      - uploaded_by
+      type: object
+    DocumentStatus:
+      description: Can be managed at /resources/document-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
         order:
           readOnly: true
           type: integer

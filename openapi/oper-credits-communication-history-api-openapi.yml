@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Oper Credits Agent Documents Communication History API
-  version: "1.0"
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Communication History
 paths:
@@ -51,6 +54,31 @@ paths:
       - Communication History
 components:
   schemas:
+    PaginatedBaseLoanRequestCommunicationHistoryList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
+          items:
+            $ref: '#/components/schemas/BaseLoanRequestCommunicationHistory'
+          type: array
+      required:
+      - count
+      - results
+      type: object
     BaseLoanRequestCommunicationHistory:
       properties:
         history_type:
@@ -64,29 +92,6 @@ components:
       - history_type
       - id
       - log_level
-      type: object
-    PaginatedBaseLoanRequestCommunicationHistoryList:
-      properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          nullable: true
-          type: string
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          nullable: true
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/BaseLoanRequestCommunicationHistory'
-          type: array
-      required:
-      - count
-      - results
       type: object
   securitySchemes:
     jwtAuth:

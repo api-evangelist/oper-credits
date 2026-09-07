@@ -671,3 +671,5 @@ x-enrichment:
   status: enriched
   artifacts_added: 20
   pass: local-v1
+x-parent: oper
+x-relationship: product

@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Oper Credits Agent Documents Tasks API
-  version: "1.0"
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Tasks
 paths:
@@ -188,6 +191,153 @@ paths:
       - Tasks
 components:
   schemas:
+    ReducedLoanRequest:
+      description: Loan request reduced representation
+      properties:
+        borrower_reference:
+          readOnly: true
+          type: string
+        external_reference:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        internal_reference:
+          readOnly: true
+          type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/Status'
+          readOnly: true
+      required:
+      - borrower_reference
+      - external_reference
+      - id
+      - internal_reference
+      - status
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PaginatedTaskList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
+          items:
+            $ref: '#/components/schemas/Task'
+          type: array
+      required:
+      - count
+      - results
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
+      type: object
+    PatchedTask:
+      properties:
+        assigned_to:
+          $ref: '#/components/schemas/ReducedBaseUser'
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          readOnly: true
+        description:
+          type: string
+        due_date:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        id:
+          readOnly: true
+          type: integer
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        loan_request:
+          $ref: '#/components/schemas/ReducedLoanRequest'
+        status:
+          $ref: '#/components/schemas/TaskStatus'
+        task_category:
+          $ref: '#/components/schemas/TaskCategory'
+        task_type:
+          $ref: '#/components/schemas/TaskType'
+      type: object
+    TaskType:
+      description: Can be managed at /resources/task-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        navigation_path:
+          maxLength: 256
+          type: string
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     Status:
       description: Can be managed at /resources/status
       properties:
@@ -240,54 +390,6 @@ components:
       - id
       - order
       type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    TaskStatus:
-      description: Can be managed at /resources/task-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    TaskType:
-      description: Can be managed at /resources/task-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        navigation_path:
-          maxLength: 256
-          type: string
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
     Task:
       properties:
         assigned_to:
@@ -300,14 +402,14 @@ components:
         created_by:
           allOf:
           - $ref: '#/components/schemas/ReducedBaseUser'
-          nullable: true
           readOnly: true
         description:
           type: string
         due_date:
           format: date-time
-          nullable: true
-          type: string
+          type:
+          - string
+          - 'null'
         id:
           readOnly: true
           type: integer
@@ -334,117 +436,20 @@ components:
       - task_category
       - task_type
       type: object
-    PaginatedTaskList:
+    TaskStatus:
+      description: Can be managed at /resources/task-status
       properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          nullable: true
-          type: string
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          nullable: true
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/Task'
-          type: array
-      required:
-      - count
-      - results
-      type: object
-    ReducedLoanRequest:
-      description: Loan request reduced representation
-      properties:
-        borrower_reference:
-          readOnly: true
-          type: string
-        external_reference:
-          readOnly: true
+        definition:
           type: string
         id:
           type: integer
-        internal_reference:
+        order:
           readOnly: true
-          type: string
-        status:
-          allOf:
-          - $ref: '#/components/schemas/Status'
-          readOnly: true
+          type: integer
       required:
-      - borrower_reference
-      - external_reference
+      - definition
       - id
-      - internal_reference
-      - status
-      type: object
-    ReducedBaseUser:
-      description: User reduced representation
-      properties:
-        first_name:
-          default: ''
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        last_name:
-          default: ''
-          readOnly: true
-          type: string
-        role:
-          allOf:
-          - $ref: '#/components/schemas/UserRole'
-          readOnly: true
-        verified:
-          readOnly: true
-          type: boolean
-      required:
-      - first_name
-      - id
-      - last_name
-      - role
-      - verified
-      type: object
-    PatchedTask:
-      properties:
-        assigned_to:
-          $ref: '#/components/schemas/ReducedBaseUser'
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        created_by:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBaseUser'
-          nullable: true
-          readOnly: true
-        description:
-          type: string
-        due_date:
-          format: date-time
-          nullable: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type: string
-        loan_request:
-          $ref: '#/components/schemas/ReducedLoanRequest'
-        status:
-          $ref: '#/components/schemas/TaskStatus'
-        task_category:
-          $ref: '#/components/schemas/TaskCategory'
-        task_type:
-          $ref: '#/components/schemas/TaskType'
+      - order
       type: object
   securitySchemes:
     jwtAuth:

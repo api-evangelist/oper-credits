@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Jwt API
-  version: "1.0"
+  title: Oper Credits Agent Documents JWT API
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Jwt
 paths:

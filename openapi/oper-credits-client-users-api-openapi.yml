@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Oper Credits Agent Documents Client Users API
-  version: "1.0"
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Client Users
 paths:
@@ -100,8 +103,8 @@ paths:
       - Client Users
 components:
   schemas:
-    ContactType:
-      description: Can be managed at /resources/contact-type
+    Language:
+      description: Can be managed at /resources/language
       properties:
         definition:
           type: string
@@ -115,24 +118,28 @@ components:
       - id
       - order
       type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
+    ClientUser:
       properties:
-        country:
-          readOnly: true
+        email:
           type: string
-        definition:
+        first_name:
+          default: ''
           type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
+          writeOnly: true
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        last_name:
+          default: ''
+          type: string
+          writeOnly: true
+        phone_number:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Phone'
+          writeOnly: true
       required:
-      - country
-      - definition
-      - id
-      - order
+      - email
+      - phone_number
       type: object
     UserRole:
       description: Can be managed at /resources/user-role
@@ -149,31 +156,8 @@ components:
       - id
       - order
       type: object
-    PaginatedReducedBaseUserList:
-      properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          nullable: true
-          type: string
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          nullable: true
-          type: string
-        results:
-          items:
-            $ref: '#/components/schemas/ReducedBaseUser'
-          type: array
-      required:
-      - count
-      - results
-      type: object
-    Language:
-      description: Can be managed at /resources/language
+    ContactType:
+      description: Can be managed at /resources/contact-type
       properties:
         definition:
           type: string
@@ -186,6 +170,22 @@ components:
       - definition
       - id
       - order
+      type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
       type: object
     ReducedBaseUser:
       description: User reduced representation
@@ -214,45 +214,49 @@ components:
       - role
       - verified
       type: object
-    ClientUser:
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
       properties:
-        email:
+        country:
+          readOnly: true
           type: string
-        first_name:
-          default: ''
+        definition:
           type: string
-          writeOnly: true
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-          nullable: true
-        last_name:
-          default: ''
-          type: string
-          writeOnly: true
-        phone_number:
-          allOf:
-          - $ref: '#/components/schemas/Profile2Phone'
-          writeOnly: true
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
       required:
-      - email
-      - phone_number
+      - country
+      - definition
+      - id
+      - order
       type: object
-    Profile2Phone:
+    PaginatedReducedBaseUserList:
       properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        is_secret:
-          default: false
-          type: boolean
-        phone_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          maxLength: 32
-          minLength: 4
-          type: string
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
+          items:
+            $ref: '#/components/schemas/ReducedBaseUser'
+          type: array
       required:
-      - value
+      - count
+      - results
       type: object
   securitySchemes:
     jwtAuth:

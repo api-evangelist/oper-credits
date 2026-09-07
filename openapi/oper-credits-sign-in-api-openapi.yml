@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Oper Credits Agent Documents Sign In API
-  version: "1.0"
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Sign In
 paths:
@@ -123,18 +126,6 @@ paths:
       - Sign In
 components:
   schemas:
-    RoleTokenObtainPairOtp:
-      properties:
-        code:
-          type: string
-          writeOnly: true
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - code
-      - token
-      type: object
     SignInResetPassword:
       description: 'This serializer will update the password to a new password if:
 
@@ -180,21 +171,6 @@ components:
       - new_password_two
       - token
       type: object
-    SignInActivate:
-      description: 'Serializer to create a verified user.
-
-        This will return a request for a OTP'
-      properties:
-        cell_phone:
-          readOnly: true
-          type: string
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - cell_phone
-      - token
-      type: object
     SignInOtp:
       properties:
         access:
@@ -214,6 +190,33 @@ components:
       - password
       - refresh
       - username
+      type: object
+    SignInActivate:
+      description: 'Serializer to create a verified user.
+
+        This will return a request for a OTP'
+      properties:
+        cell_phone:
+          readOnly: true
+          type: string
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - cell_phone
+      - token
+      type: object
+    RoleTokenObtainPairOtp:
+      properties:
+        code:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - code
+      - token
       type: object
   securitySchemes:
     jwtAuth:

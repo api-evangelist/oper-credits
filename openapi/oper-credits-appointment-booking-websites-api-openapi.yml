@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Oper Credits Agent Documents Appointment Booking Websites API
-  version: "1.0"
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Appointment Booking Websites
 paths:
@@ -43,6 +46,21 @@ paths:
       - Appointment Booking Websites
 components:
   schemas:
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     AppointmentBookingWebsite:
       properties:
         id:
@@ -58,21 +76,6 @@ components:
       - id
       - language
       - value
-      type: object
-    Language:
-      description: Can be managed at /resources/language
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
   securitySchemes:
     jwtAuth:

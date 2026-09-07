@@ -1,7 +1,10 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Oper Credits Agent Documents Contact API
-  version: "1.0"
+  version: '1.0'
+servers:
+- url: https://developers.opercredits.com/
+  description: Base URL declared by the provider in apis.yml (roadmap#122).
 tags:
 - name: Contact
 paths:
@@ -21,19 +24,50 @@ paths:
       - Contact
 components:
   schemas:
-    Email:
-      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
+    Country:
+      description: Can be managed at /resources/country
       properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
         id:
           readOnly: true
           type: integer
         value:
-          format: email
-          maxLength: 254
+          maxLength: 32
           type: string
       required:
+      - country_code
       - id
       - value
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
       type: object
     ContactDetail:
       properties:
@@ -71,25 +105,6 @@ components:
       - office_phone
       - tenant
       type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - country
-      - definition
-      - id
-      - order
-      type: object
     StreetType:
       description: Can be managed at /resources/street-type
       properties:
@@ -104,36 +119,6 @@ components:
       - definition
       - id
       - order
-      type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        id:
-          readOnly: true
-          type: integer
-        value:
-          maxLength: 32
-          type: string
-      required:
-      - country_code
-      - id
-      - value
       type: object
     Address:
       properties:
@@ -151,13 +136,12 @@ components:
           maxLength: 64
           type: string
         heading:
-          exclusiveMaximum: true
-          exclusiveMinimum: true
           format: double
-          maximum: 100000
-          minimum: -100000
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
         house_number:
           maxLength: 64
           type: string
@@ -165,29 +149,26 @@ components:
           readOnly: true
           type: integer
         latitude:
-          exclusiveMaximum: true
-          exclusiveMinimum: true
           format: double
-          maximum: 100000
-          minimum: -100000
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
         longitude:
-          exclusiveMaximum: true
-          exclusiveMinimum: true
           format: double
-          maximum: 100000
-          minimum: -100000
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
         pitch:
-          exclusiveMaximum: true
-          exclusiveMinimum: true
           format: double
-          maximum: 100000
-          minimum: -100000
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
         staircase:
           type: string
         street:
@@ -196,18 +177,16 @@ components:
         street_type:
           allOf:
           - $ref: '#/components/schemas/StreetType'
-          nullable: true
         zip_code:
           maxLength: 8
           type: string
         zoom:
-          exclusiveMaximum: true
-          exclusiveMinimum: true
           format: double
-          maximum: 100000
-          minimum: -100000
-          nullable: true
-          type: number
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
       required:
       - box
       - city
@@ -260,9 +239,12 @@ components:
       - role
       - verified
       type: object
-    Country:
-      description: Can be managed at /resources/country
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
       properties:
+        country:
+          readOnly: true
+          type: string
         definition:
           type: string
         id:
@@ -271,6 +253,7 @@ components:
           readOnly: true
           type: integer
       required:
+      - country
       - definition
       - id
       - order
@@ -281,7 +264,6 @@ components:
         account_manager:
           allOf:
           - $ref: '#/components/schemas/ReducedBaseUser'
-          nullable: true
           readOnly: true
         bank_account:
           readOnly: true
@@ -289,12 +271,12 @@ components:
         company_type:
           allOf:
           - $ref: '#/components/schemas/CompanyType'
-          nullable: true
           readOnly: true
         fsma_reference:
-          nullable: true
           readOnly: true
-          type: string
+          type:
+          - string
+          - 'null'
         id:
           type: integer
         name:
@@ -316,6 +298,20 @@ components:
       - name
       - outstanding_debt
       - vat_number
+      type: object
+    Email:
+      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        value:
+          format: email
+          maxLength: 254
+          type: string
+      required:
+      - id
+      - value
       type: object
   securitySchemes:
     jwtAuth:

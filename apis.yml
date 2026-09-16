@@ -1,14 +1,12 @@
 aid: oper-credits
 name: Oper Credits
-description: >-
-  Oper Credits is a Belgian digital mortgage origination platform (Brussels, founded
-  2019) that lets banks, lenders, insurers, and brokers offer and process end-to-end
-  digital mortgages. Its white-labelled, multi-tenant Oper Connect platform exposes a
-  JWT-authenticated REST API organized around the loan request as the central object,
-  under which borrowers, properties, offers, documents, guarantees, and decisions are
-  nested, plus a versioned loan-request webhook surface and an AI underwriting agent
-  ("Herman") that automates document collection, extraction, verification, and
-  policy analysis. The platform is ISO/IEC 27001 certified and GDPR compliant.
+description: Oper Credits is a Belgian digital mortgage origination platform (Brussels, founded 2019)
+  that lets banks, lenders, insurers, and brokers offer and process end-to-end digital mortgages. Its
+  white-labelled, multi-tenant Oper Connect platform exposes a JWT-authenticated REST API organized around
+  the loan request as the central object, under which borrowers, properties, offers, documents, guarantees,
+  and decisions are nested, plus a versioned loan-request webhook surface and an AI underwriting agent
+  ("Herman") that automates document collection, extraction, verification, and policy analysis. The platform
+  is ISO/IEC 27001 certified and GDPR compliant.
 url: https://raw.githubusercontent.com/api-evangelist/oper-credits/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -43,7 +41,7 @@ accessModel:
   method: derived
 specificationVersion: '0.23'
 created: '2026-07-17'
-modified: '2026-07-20'
+modified: '2026-09-16'
 image: https://cdn.prod.website-files.com/64f9bcce0d3210a55e4458ee/6530e0daf5885d89e8bf233f_Screenshot%202023-10-19%20at%2009.54.44.png
 tags:
 - Company
@@ -78,8 +76,8 @@ apis:
     url: openapi/oper-credits-agent-documents-api-openapi.yml
 - aid: oper-credits:oper-credits-appointment-booking-websites-api
   name: Oper Credits Appointment Booking Websites API
-  description: >-
-    The Appointment Booking Websites API from Oper Credits — 2 operation(s) for appointment booking websites.
+  description: The Appointment Booking Websites API from Oper Credits — 2 operation(s) for appointment
+    booking websites.
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
@@ -139,8 +137,7 @@ apis:
     url: openapi/oper-credits-check-invite-token-api-openapi.yml
 - aid: oper-credits:oper-credits-check-reset-password-api
   name: Oper Credits Check Reset Password API
-  description: >-
-    The Check Reset Password API from Oper Credits — 1 operation(s) for check reset password.
+  description: The Check Reset Password API from Oper Credits — 1 operation(s) for check reset password.
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
@@ -180,8 +177,7 @@ apis:
     url: openapi/oper-credits-commissions-api-openapi.yml
 - aid: oper-credits:oper-credits-communication-history-api
   name: Oper Credits Communication History API
-  description: >-
-    The Communication History API from Oper Credits — 2 operation(s) for communication history.
+  description: The Communication History API from Oper Credits — 2 operation(s) for communication history.
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
@@ -241,8 +237,7 @@ apis:
     url: openapi/oper-credits-credit-providers-api-openapi.yml
 - aid: oper-credits:oper-credits-documentation-library-api
   name: Oper Credits Documentation Library API
-  description: >-
-    The Documentation Library API from Oper Credits — 4 operation(s) for documentation library.
+  description: The Documentation Library API from Oper Credits — 4 operation(s) for documentation library.
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
@@ -366,8 +361,8 @@ apis:
     url: openapi/oper-credits-loan-requests-api-openapi.yml
 - aid: oper-credits:oper-credits-loan-requests-client-info-api
   name: Oper Credits Loan Requests Client Info API
-  description: >-
-    The Loan Requests Client Info API from Oper Credits — 1 operation(s) for loan requests client info.
+  description: The Loan Requests Client Info API from Oper Credits — 1 operation(s) for loan requests
+    client info.
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
@@ -533,8 +528,7 @@ apis:
     url: openapi/oper-credits-tasks-api-openapi.yml
 - aid: oper-credits:oper-credits-terms-and-conditions-api
   name: Oper Credits Terms And Conditions API
-  description: >-
-    The Terms And Conditions API from Oper Credits — 1 operation(s) for terms and conditions.
+  description: The Terms And Conditions API from Oper Credits — 1 operation(s) for terms and conditions.
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
@@ -553,7 +547,7 @@ apis:
   - type: OpenAPI
     url: openapi/oper-credits-third-parties-api-openapi.yml
 - aid: oper-credits:oper-credits-third-party-api-api
-  name: Oper Credits Third Party Api API
+  name: Oper Credits Third Party Api
   description: The Third Party Api API from Oper Credits — 1 operation(s) for third party api.
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
@@ -659,7 +653,10 @@ common:
   url: asyncapi/oper-credits-webhooks.yml
 - type: X-MCPServerCandidate
   url: mcp/oper-credits-mcp.yml
-  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate — a tool list derived from the published API contracts, not an existing server. The scorer already read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type surfaces with a server that does not exist.'
+  note: 'Renamed from MCPServer 2026-09-03 (roadmap#247): the manifest self-describes as status: candidate
+    — a tool list derived from the published API contracts, not an existing server. The scorer already
+    read the manifest and reported mcp_server correctly; the MCPServer type was crediting the artifact-type
+    surfaces with a server that does not exist.'
 - type: AgentSkill
   url: skills/_index.yml
 - type: LLMsTxt

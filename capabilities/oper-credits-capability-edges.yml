@@ -1,0 +1,81 @@
+slug: oper-credits
+provider: Oper Credits
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Banking & Capital Markets
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 6
+edges:
+- tag: Loan Requests
+  spec_file: oper-credits-loan-requests-api-openapi.yml
+  capability_id: BC-1320.10
+  capability_id_l1: BC-1320
+  capability_name: Credit Origination Management
+  confidence: 0.92
+  evidence: POST /api/loan-requests/ , GET /api/loan-requests/{loan_request_id}/additional-financing-needs/
+    , schemas PaginatedLoanRequestList, PatchedGuarantee, FinancialPlanLoanAmountItem, LoanRequestType
+  reason: 'The core surface of a digital mortgage origination platform: creating and maintaining loan
+    requests with financing needs, guarantees, financial plan amounts and borrower/client documents —
+    i.e. credit application intake and origination workflows.'
+- tag: Base Products
+  spec_file: oper-credits-base-products-api-openapi.yml
+  capability_id: BC-1310
+  capability_id_l1: BC-1310
+  capability_name: Banking Product Management
+  confidence: 0.85
+  evidence: GET /api/base-products/ ; POST /api/base-products/{base_product_id}/pricing-sheets/ ; schemas
+    BaseProduct, PricingSheet, BaseRate, AllowedProductVariability, AdminDiscount
+  reason: Defines and maintains the lender's mortgage product master together with pricing sheets, base
+    rates, discounts and allowed variabilities — banking product factory; evidence spans catalogue, parameters
+    and pricing so L1 only.
+- tag: Clients
+  spec_file: oper-credits-clients-api-openapi.yml
+  capability_id: BC-1300.40
+  capability_id_l1: BC-1300
+  capability_name: Customer Information Management
+  confidence: 0.8
+  evidence: schemas NestedClientProfile, CivilStatus, PoliticallyExposedPersonType, LegitimisationType,
+    CustomerSegment, LenderOnboardingStatus
+  reason: CRUD over borrower/client profile master data including identification and PEP attributes on
+    a lending platform — banking customer information management (KYC attributes present, hence some ambiguity).
+- tag: Loan Requests Client Info
+  spec_file: oper-credits-loan-requests-client-info-api-openapi.yml
+  capability_id: BC-1320.10
+  capability_id_l1: BC-1320
+  capability_name: Credit Origination Management
+  confidence: 0.78
+  evidence: 'POST /api/loan-requests-client-info/ ... schemas: LoanRequestType, FinancialPlanOwnFundField,
+    IncomeType, Broker'
+  reason: Creates client information attached to a mortgage loan request, with income, financial plan
+    and loan-request-type schemas — this is credit application intake on a mortgage origination platform,
+    i.e. credit origination. Sub-capability is intake rather than underwriting since the single operation
+    only captures client info.
+- tag: Calculate
+  spec_file: oper-credits-calculate-api-openapi.yml
+  capability_id: BC-1320.10
+  capability_id_l1: BC-1320
+  capability_name: Credit Origination Management
+  confidence: 0.75
+  evidence: POST /api/calculate/credit-theoretical-amortization/, schemas CalculateBabyLoan, CalculateCsokMortgage,
+    CalculateMaxAmountInputAbstract
+  reason: Mortgage/loan amount and amortization calculators used in pre-screening a credit application
+    on a mortgage origination platform; sits in credit origination (could touch underwriting, hence 0.75).
+- tag: Simulators
+  spec_file: oper-credits-simulators-api-openapi.yml
+  capability_id: BC-1320.10
+  capability_id_l1: BC-1320
+  capability_name: Credit Origination Management
+  confidence: 0.75
+  evidence: POST /api/simulators/calculate/, POST /api/simulators/mortgage/advisor/convert/, schemas MortgageSimulatorBorrowerInfo,
+    MortgageSimulatorMonthlyPaymentEstimationFinancialPlanLoanAmountField
+  reason: 'Pre-application mortgage simulation: borrower income/asset input, product and discount selection,
+    monthly payment estimation, and conversion of a simulation into a loan request. This is credit application
+    intake and pre-screening in the origination funnel. Some ambiguity with product pricing (discounts/products),
+    hence not higher.'

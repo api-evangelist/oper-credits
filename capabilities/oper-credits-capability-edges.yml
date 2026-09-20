@@ -11,7 +11,7 @@ capability_model:
   attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
     CC BY 4.0
   notice: NOTICE
-edge_count: 6
+edge_count: 7
 edges:
 - tag: Loan Requests
   spec_file: oper-credits-loan-requests-api-openapi.yml
@@ -79,3 +79,14 @@ edges:
     monthly payment estimation, and conversion of a simulation into a loan request. This is credit application
     intake and pre-screening in the origination funnel. Some ambiguity with product pricing (discounts/products),
     hence not higher.'
+- tag: Third Party Api
+  spec_file: oper-credits-third-party-api-api-openapi.yml
+  capability_id: BC-4970
+  capability_id_l1: BC-4970
+  capability_name: Real Estate Valuation & Appraisal Management
+  confidence: 0.7
+  evidence: 'PATCH /api/third-party-api/realty-valuations/{id}/ ... schemas: RealtyValuation, RealtyValuationDocument,
+    RealtyValuationType, RealtyValuationStatus'
+  reason: Endpoint through which third-party valuers submit/update property valuations with documents
+    and status — real-estate valuation management; evidence does not identify which valuation sub-stage.
+  recovered_from: vertical-real-estate-edges.json

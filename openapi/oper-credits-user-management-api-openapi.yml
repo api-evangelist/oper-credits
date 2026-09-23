@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents User Management API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits User Management API
+  version: ''
 tags:
 - name: User Management
 paths:
@@ -48,6 +45,8 @@ paths:
       - jwtAuth: []
       tags:
       - User Management
+      summary: Api user management application users list
+      x-summary-source: derived
     post:
       description: Manage Application User by API
       operationId: api_user_management_application_users_create
@@ -74,6 +73,8 @@ paths:
       - jwtAuth: []
       tags:
       - User Management
+      summary: Api user management application users create
+      x-summary-source: derived
   /api/user-management/application-users/{id}/:
     delete:
       description: Manage Application User by API
@@ -92,6 +93,8 @@ paths:
       - jwtAuth: []
       tags:
       - User Management
+      summary: Api user management application users destroy
+      x-summary-source: derived
     get:
       description: Manage Application User by API
       operationId: api_user_management_application_users_retrieve
@@ -113,6 +116,8 @@ paths:
       - jwtAuth: []
       tags:
       - User Management
+      summary: Api user management application users retrieve
+      x-summary-source: derived
     patch:
       description: Manage Application User by API
       operationId: api_user_management_application_users_partial_update
@@ -145,6 +150,8 @@ paths:
       - jwtAuth: []
       tags:
       - User Management
+      summary: Api user management application users partial update
+      x-summary-source: derived
     put:
       description: Manage Application User by API
       operationId: api_user_management_application_users_update
@@ -178,6 +185,8 @@ paths:
       - jwtAuth: []
       tags:
       - User Management
+      summary: Api user management application users update
+      x-summary-source: derived
   /api/user-management/application-users/{id}/activate-super-admin/:
     patch:
       description: Manage Application User by API
@@ -211,6 +220,8 @@ paths:
       - jwtAuth: []
       tags:
       - User Management
+      summary: Api user management application users activate super admin partial update
+      x-summary-source: derived
   /api/user-management/application-users/{id}/deactivate-super-admin/:
     patch:
       description: Manage Application User by API
@@ -244,25 +255,10 @@ paths:
       - jwtAuth: []
       tags:
       - User Management
+      summary: Api user management application users deactivate super admin partial update
+      x-summary-source: derived
 components:
   schemas:
-    PatchedApplicationUser:
-      properties:
-        email:
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        is_staff:
-          type: boolean
-          writeOnly: true
-        is_superuser:
-          type: boolean
-          writeOnly: true
-        password:
-          type: string
-          writeOnly: true
-      type: object
     ApplicationUser:
       properties:
         email:
@@ -285,6 +281,23 @@ components:
       - is_staff
       - is_superuser
       - password
+      type: object
+    PatchedApplicationUser:
+      properties:
+        email:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        is_staff:
+          type: boolean
+          writeOnly: true
+        is_superuser:
+          type: boolean
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
       type: object
   securitySchemes:
     jwtAuth:

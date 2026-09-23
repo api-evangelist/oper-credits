@@ -1,12 +1,9 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Sign Up API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Sign Up API
+  version: ''
 tags:
-- name: Sign Up
+- name: Signup
 paths:
   /api/sign-up/:
     post:
@@ -34,7 +31,9 @@ paths:
       - jwtAuth: []
       - {}
       tags:
-      - Sign Up
+      - Signup
+      summary: Api sign up create
+      x-summary-source: derived
   /api/sign-up/create/:
     post:
       operationId: api_sign_up_create_create
@@ -61,7 +60,9 @@ paths:
       - jwtAuth: []
       - {}
       tags:
-      - Sign Up
+      - Signup
+      summary: Api sign up create create
+      x-summary-source: derived
   /api/sign-up/profile/:
     patch:
       operationId: api_sign_up_profile_partial_update
@@ -86,7 +87,9 @@ paths:
       security:
       - jwtAuth: []
       tags:
-      - Sign Up
+      - Signup
+      summary: Api sign up profile partial update
+      x-summary-source: derived
     put:
       operationId: api_sign_up_profile_update
       requestBody:
@@ -111,7 +114,9 @@ paths:
       security:
       - jwtAuth: []
       tags:
-      - Sign Up
+      - Signup
+      summary: Api sign up profile update
+      x-summary-source: derived
   /api/sign-up/reset-password/:
     post:
       description: 'API view to actually change the password of the user.
@@ -140,9 +145,30 @@ paths:
                 $ref: '#/components/schemas/SignUpResetPassword'
           description: ''
       tags:
-      - Sign Up
+      - Signup
+      summary: Api sign up reset password create
+      x-summary-source: derived
 components:
   schemas:
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
     Language:
       description: Can be managed at /resources/language
       properties:
@@ -158,77 +184,6 @@ components:
       - id
       - order
       type: object
-    SignUpProfile:
-      properties:
-        broker:
-          allOf:
-          - $ref: '#/components/schemas/MinimalBroker'
-          readOnly: true
-        first_name:
-          default: ''
-          type: string
-        last_name:
-          default: ''
-          type: string
-        phone_number:
-          $ref: '#/components/schemas/Profile2Phone'
-        token:
-          readOnly: true
-          type: string
-      required:
-      - broker
-      - phone_number
-      - token
-      type: object
-    PatchedSignUpProfile:
-      properties:
-        broker:
-          allOf:
-          - $ref: '#/components/schemas/MinimalBroker'
-          readOnly: true
-        first_name:
-          default: ''
-          type: string
-        last_name:
-          default: ''
-          type: string
-        phone_number:
-          $ref: '#/components/schemas/Profile2Phone'
-        token:
-          readOnly: true
-          type: string
-      type: object
-    ContactType:
-      description: Can be managed at /resources/contact-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Profile2Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        is_secret:
-          default: false
-          type: boolean
-        phone_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          maxLength: 32
-          minLength: 4
-          type: string
-      required:
-      - value
-      type: object
     CompanyType:
       description: Can be managed at /resources/company-types
       properties:
@@ -243,74 +198,6 @@ components:
       - definition
       - id
       - order
-      type: object
-    SignUp:
-      properties:
-        email:
-          type: string
-        first_name:
-          default: ''
-          type: string
-          writeOnly: true
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-          writeOnly: true
-        last_name:
-          default: ''
-          type: string
-          writeOnly: true
-        phone_number:
-          allOf:
-          - $ref: '#/components/schemas/Profile2Phone'
-          writeOnly: true
-        token:
-          readOnly: true
-          type: string
-      required:
-      - email
-      - phone_number
-      - token
-      type: object
-    SignUpResetPassword:
-      description: 'This serializer will update the password to a new password if:
-
-        * They match
-
-        * The token is verified in regards to expiration date, signing code and user id
-
-        * The password is strong enough'
-      properties:
-        bank_release_policy_accepted:
-          default: false
-          type: boolean
-          writeOnly: true
-        contact_policy_accepted:
-          default: false
-          type: boolean
-          writeOnly: true
-        gdpr_policy_accepted:
-          default: false
-          type: boolean
-          writeOnly: true
-        password:
-          maxLength: 128
-          type: string
-          writeOnly: true
-        privacy_policy_accepted:
-          default: false
-          type: boolean
-          writeOnly: true
-        terms_and_conditions_accepted:
-          default: false
-          type: boolean
-          writeOnly: true
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - password
-      - token
       type: object
     SignUpCreate:
       properties:
@@ -353,12 +240,31 @@ components:
       - email
       - password
       type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
+    SignUpProfile:
       properties:
-        country:
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/MinimalBroker'
+          readOnly: true
+        first_name:
+          default: ''
+          type: string
+        last_name:
+          default: ''
+          type: string
+        phone_number:
+          $ref: '#/components/schemas/Profile2Phone'
+        token:
           readOnly: true
           type: string
+      required:
+      - broker
+      - phone_number
+      - token
+      type: object
+    ContactType:
+      description: Can be managed at /resources/contact-type
+      properties:
         definition:
           type: string
         id:
@@ -367,7 +273,6 @@ components:
           readOnly: true
           type: integer
       required:
-      - country
       - definition
       - id
       - order
@@ -402,6 +307,108 @@ components:
       - id
       - name
       - vat_number
+      type: object
+    PatchedSignUpProfile:
+      properties:
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/MinimalBroker'
+          readOnly: true
+        first_name:
+          default: ''
+          type: string
+        last_name:
+          default: ''
+          type: string
+        phone_number:
+          $ref: '#/components/schemas/Profile2Phone'
+        token:
+          readOnly: true
+          type: string
+      type: object
+    SignUpResetPassword:
+      description: 'This serializer will update the password to a new password if:
+
+        * They match
+
+        * The token is verified in regards to expiration date, signing code and user id
+
+        * The password is strong enough'
+      properties:
+        bank_release_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        contact_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        gdpr_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        password:
+          maxLength: 128
+          type: string
+          writeOnly: true
+        privacy_policy_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        terms_and_conditions_accepted:
+          default: false
+          type: boolean
+          writeOnly: true
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - password
+      - token
+      type: object
+    SignUp:
+      properties:
+        email:
+          type: string
+        first_name:
+          default: ''
+          type: string
+          writeOnly: true
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+          writeOnly: true
+        last_name:
+          default: ''
+          type: string
+          writeOnly: true
+        phone_number:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Phone'
+          writeOnly: true
+        token:
+          readOnly: true
+          type: string
+      required:
+      - email
+      - phone_number
+      - token
+      type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
       type: object
   securitySchemes:
     jwtAuth:

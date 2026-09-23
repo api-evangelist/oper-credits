@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Privacy Policy API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Privacy Policy API
+  version: ''
 tags:
 - name: Privacy Policy
 paths:
@@ -22,6 +19,8 @@ paths:
       - jwtAuth: []
       tags:
       - Privacy Policy
+      summary: Api privacy policy retrieve
+      x-summary-source: derived
 components:
   schemas:
     Language:

@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Client Users API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Client Users API
+  version: ''
 tags:
 - name: Client Users
 paths:
@@ -36,6 +33,8 @@ paths:
       - jwtAuth: []
       tags:
       - Client Users
+      summary: Api client users list
+      x-summary-source: derived
     post:
       description: A ViewSet mixin that parametrizes DRF methods over roles
       operationId: api_client_users_create
@@ -62,6 +61,8 @@ paths:
       - jwtAuth: []
       tags:
       - Client Users
+      summary: Api client users create
+      x-summary-source: derived
   /api/client-users/{id}/:
     delete:
       description: A ViewSet mixin that parametrizes DRF methods over roles
@@ -80,6 +81,8 @@ paths:
       - jwtAuth: []
       tags:
       - Client Users
+      summary: Api client users destroy
+      x-summary-source: derived
     get:
       description: A ViewSet mixin that parametrizes DRF methods over roles
       operationId: api_client_users_retrieve
@@ -101,8 +104,29 @@ paths:
       - jwtAuth: []
       tags:
       - Client Users
+      summary: Api client users retrieve
+      x-summary-source: derived
 components:
   schemas:
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
     Language:
       description: Can be managed at /resources/language
       properties:
@@ -118,28 +142,30 @@ components:
       - id
       - order
       type: object
-    ClientUser:
+    PaginatedReducedBaseUserList:
       properties:
-        email:
-          type: string
-        first_name:
-          default: ''
-          type: string
-          writeOnly: true
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        last_name:
-          default: ''
-          type: string
-          writeOnly: true
-        phone_number:
-          allOf:
-          - $ref: '#/components/schemas/Profile2Phone'
-          writeOnly: true
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
+          items:
+            $ref: '#/components/schemas/ReducedBaseUser'
+          type: array
       required:
-      - email
-      - phone_number
+      - count
+      - results
       type: object
     UserRole:
       description: Can be managed at /resources/user-role
@@ -155,6 +181,33 @@ components:
       - definition
       - id
       - order
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
       type: object
     ContactType:
       description: Can be managed at /resources/contact-type
@@ -187,76 +240,28 @@ components:
       required:
       - value
       type: object
-    ReducedBaseUser:
-      description: User reduced representation
+    ClientUser:
       properties:
+        email:
+          type: string
         first_name:
           default: ''
-          readOnly: true
           type: string
-        id:
-          type: integer
+          writeOnly: true
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
         last_name:
           default: ''
-          readOnly: true
           type: string
-        role:
+          writeOnly: true
+        phone_number:
           allOf:
-          - $ref: '#/components/schemas/UserRole'
-          readOnly: true
-        verified:
-          readOnly: true
-          type: boolean
+          - $ref: '#/components/schemas/Profile2Phone'
+          writeOnly: true
       required:
-      - first_name
-      - id
-      - last_name
-      - role
-      - verified
-      type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - country
-      - definition
-      - id
-      - order
-      type: object
-    PaginatedReducedBaseUserList:
-      properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          type:
-          - string
-          - 'null'
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          type:
-          - string
-          - 'null'
-        results:
-          items:
-            $ref: '#/components/schemas/ReducedBaseUser'
-          type: array
-      required:
-      - count
-      - results
+      - email
+      - phone_number
       type: object
   securitySchemes:
     jwtAuth:

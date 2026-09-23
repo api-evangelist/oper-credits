@@ -1,12 +1,9 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents JWT API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits JWT API
+  version: ''
 tags:
-- name: Jwt
+- name: JWT
 paths:
   /api/jwt/:
     post:
@@ -36,7 +33,9 @@ paths:
       security:
       - {}
       tags:
-      - Jwt
+      - JWT
+      summary: Api jwt create
+      x-summary-source: derived
   /api/jwt/refresh/:
     post:
       description: 'Takes a refresh type JSON web token and returns an access type JSON web
@@ -65,21 +64,11 @@ paths:
       security:
       - {}
       tags:
-      - Jwt
+      - JWT
+      summary: Api jwt refresh create
+      x-summary-source: derived
 components:
   schemas:
-    TokenRefresh:
-      properties:
-        access:
-          readOnly: true
-          type: string
-        refresh:
-          type: string
-          writeOnly: true
-      required:
-      - access
-      - refresh
-      type: object
     RoleTokenObtainPair:
       properties:
         access:
@@ -99,6 +88,18 @@ components:
       - password
       - refresh
       - username
+      type: object
+    TokenRefresh:
+      properties:
+        access:
+          readOnly: true
+          type: string
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - refresh
       type: object
   securitySchemes:
     jwtAuth:

@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Third Party API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Third Party API
+  version: ''
 tags:
 - name: Third Party Api
 paths:
@@ -40,6 +37,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Party Api
+      summary: Api third party api realty valuations partial update
+      x-summary-source: derived
     put:
       operationId: api_third_party_api_realty_valuations_update
       parameters:
@@ -72,95 +71,11 @@ paths:
       - jwtAuth: []
       tags:
       - Third Party Api
+      summary: Api third party api realty valuations update
+      x-summary-source: derived
 components:
   schemas:
-    Country:
-      description: Can be managed at /resources/country
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RealtyValuationDocument:
-      properties:
-        document_type:
-          type: string
-        document_url:
-          format: uri
-          type: string
-      required:
-      - document_type
-      - document_url
-      type: object
-    RealtyValuationType:
-      description: Can be managed at /resources/realty-valuation-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    StreetType:
-      description: Can be managed at /resources/street-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    FloodRiskType:
-      description: Can be managed at /resources/flood-risk-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RealtyType:
-      description: Can be managed at /resources/realty-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RealtyValuation:
+    PatchedRealtyValuation:
       properties:
         created:
           format: date-time
@@ -215,14 +130,99 @@ components:
         valuation_type:
           allOf:
           - $ref: '#/components/schemas/RealtyValuationType'
+      type: object
+    FloodRiskType:
+      description: Can be managed at /resources/flood-risk-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
       required:
-      - created
-      - external_service
+      - definition
       - id
-      - last_modified
-      - oper_reference
-      - realty
-      - valuation_reference
+      - order
+      type: object
+    NonRequiredAddress:
+      description: 'Inheriting from base address serializer and set with a few optional
+
+        fields. Use this serializer to add any future non required fields.'
+      properties:
+        box:
+          maxLength: 64
+          type: string
+        building:
+          type: string
+        city:
+          maxLength: 64
+          type: string
+        country:
+          allOf:
+          - $ref: '#/components/schemas/Country'
+        floor:
+          maxLength: 64
+          type: string
+        heading:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        house_number:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        latitude:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        longitude:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        pitch:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        staircase:
+          type: string
+        street:
+          maxLength: 64
+          type: string
+        street_type:
+          allOf:
+          - $ref: '#/components/schemas/StreetType'
+        zip_code:
+          maxLength: 8
+          type: string
+        zoom:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+      required:
+      - city
+      - house_number
+      - id
+      - street
+      - zip_code
       type: object
     RealtySourceDataCreate:
       properties:
@@ -350,83 +350,55 @@ components:
           - integer
           - 'null'
       type: object
-    NonRequiredAddress:
-      description: 'Inheriting from base address serializer and set with a few optional
-
-        fields. Use this serializer to add any future non required fields.'
+    RealtyType:
+      description: Can be managed at /resources/realty-type
       properties:
-        box:
-          maxLength: 64
-          type: string
-        building:
-          type: string
-        city:
-          maxLength: 64
-          type: string
-        country:
-          allOf:
-          - $ref: '#/components/schemas/Country'
-        floor:
-          maxLength: 64
-          type: string
-        heading:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        house_number:
-          maxLength: 64
+        definition:
           type: string
         id:
+          type: integer
+        order:
           readOnly: true
           type: integer
-        latitude:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        longitude:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        pitch:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        staircase:
-          type: string
-        street:
-          maxLength: 64
-          type: string
-        street_type:
-          allOf:
-          - $ref: '#/components/schemas/StreetType'
-        zip_code:
-          maxLength: 8
-          type: string
-        zoom:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
       required:
-      - city
-      - house_number
+      - definition
       - id
-      - street
-      - zip_code
+      - order
+      type: object
+    StreetType:
+      description: Can be managed at /resources/street-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RealtyValuationDocument:
+      properties:
+        document_type:
+          type: string
+        document_url:
+          format: uri
+          type: string
+      required:
+      - document_type
+      - document_url
+      type: object
+    RealtyValuationAndSourceData:
+      properties:
+        data:
+          $ref: '#/components/schemas/RealtySourceDataCreate'
+        valuation:
+          $ref: '#/components/schemas/RealtyValuation'
+      required:
+      - valuation
       type: object
     RealtyValuationStatus:
       description: Can be managed at /resources/realty-valuation-status
@@ -443,16 +415,22 @@ components:
       - id
       - order
       type: object
-    RealtyValuationAndSourceData:
+    RealtyValuationType:
+      description: Can be managed at /resources/realty-valuation-type
       properties:
-        data:
-          $ref: '#/components/schemas/RealtySourceDataCreate'
-        valuation:
-          $ref: '#/components/schemas/RealtyValuation'
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
       required:
-      - valuation
+      - definition
+      - id
+      - order
       type: object
-    PatchedRealtyValuation:
+    RealtyValuation:
       properties:
         created:
           format: date-time
@@ -507,6 +485,29 @@ components:
         valuation_type:
           allOf:
           - $ref: '#/components/schemas/RealtyValuationType'
+      required:
+      - created
+      - external_service
+      - id
+      - last_modified
+      - oper_reference
+      - realty
+      - valuation_reference
+      type: object
+    Country:
+      description: Can be managed at /resources/country
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
       type: object
   securitySchemes:
     jwtAuth:

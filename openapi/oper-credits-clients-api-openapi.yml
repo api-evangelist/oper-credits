@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Clients API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Clients API
+  version: ''
 tags:
 - name: Clients
 paths:
@@ -44,6 +41,8 @@ paths:
       - jwtAuth: []
       tags:
       - Clients
+      summary: Api clients list
+      x-summary-source: derived
     post:
       description: 'Mixin that routes to the loan request and verifies if the requestor has access to the requested resource
 
@@ -71,6 +70,8 @@ paths:
       - jwtAuth: []
       tags:
       - Clients
+      summary: Api clients create
+      x-summary-source: derived
   /api/clients/{id}/:
     delete:
       description: 'Mixin that routes to the loan request and verifies if the requestor has access to the requested resource
@@ -91,6 +92,8 @@ paths:
       - jwtAuth: []
       tags:
       - Clients
+      summary: Api clients destroy
+      x-summary-source: derived
     get:
       description: 'Mixin that routes to the loan request and verifies if the requestor has access to the requested resource
 
@@ -114,6 +117,8 @@ paths:
       - jwtAuth: []
       tags:
       - Clients
+      summary: Api clients retrieve
+      x-summary-source: derived
     patch:
       description: 'Mixin that routes to the loan request and verifies if the requestor has access to the requested resource
 
@@ -148,6 +153,8 @@ paths:
       - jwtAuth: []
       tags:
       - Clients
+      summary: Api clients partial update
+      x-summary-source: derived
     put:
       description: 'Mixin that routes to the loan request and verifies if the requestor has access to the requested resource
 
@@ -182,454 +189,12 @@ paths:
       - jwtAuth: []
       tags:
       - Clients
+      summary: Api clients update
+      x-summary-source: derived
 components:
   schemas:
-    CustomerSegment:
-      description: Can be managed at /resources/customer-segment
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    PatchedClientRegistryProfile:
-      properties:
-        a_card_details:
-          allOf:
-          - $ref: '#/components/schemas/ACardDetails'
-        address_card_id:
-          maxLength: 64
-          type: string
-        addresses:
-          items:
-            $ref: '#/components/schemas/Profile2Address'
-          type: array
-        bic:
-          maxLength: 11
-          type: string
-        birth_city:
-          type:
-          - string
-          - 'null'
-        birth_country:
-          allOf:
-          - $ref: '#/components/schemas/Country'
-        birth_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        birth_first_name:
-          maxLength: 64
-          type: string
-        birth_last_name:
-          maxLength: 128
-          type: string
-        broker:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBroker'
-        civil_status:
-          allOf:
-          - $ref: '#/components/schemas/CivilStatus'
-        client:
-          $ref: '#/components/schemas/Client'
-        company_name:
-          maxLength: 255
-          type: string
-        company_tax_number:
-          maxLength: 32
-          type: string
-        compliance_bank:
-          type:
-          - boolean
-          - 'null'
-        compliance_fraud:
-          type:
-          - boolean
-          - 'null'
-        compliance_office_presentation:
-          default: false
-          type: boolean
-        compliance_personalized_information:
-          allOf:
-          - $ref: '#/components/schemas/PersonalizedInformation'
-        compliance_privacy_policy:
-          default: false
-          type: boolean
-        compliance_terror:
-          type:
-          - boolean
-          - 'null'
-        consent_bank_retrieve_positive_data:
-          type:
-          - string
-          - 'null'
-        consent_khr_post_contract_processing:
-          type:
-          - boolean
-          - 'null'
-        consent_other_lenders_khr_access:
-          type:
-          - boolean
-          - 'null'
-        country_arrival_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        created_by:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBaseUser'
-          readOnly: true
-        credit_provider:
-          allOf:
-          - $ref: '#/components/schemas/ReducedCreditProvider'
-        dependent_children:
-          maximum: 2147483647
-          minimum: -2147483648
-          type:
-          - integer
-          - 'null'
-        education:
-          allOf:
-          - $ref: '#/components/schemas/EducationType'
-        emails:
-          items:
-            $ref: '#/components/schemas/Profile2Email'
-          type: array
-        employment_status:
-          allOf:
-          - $ref: '#/components/schemas/EmploymentType'
-        expected_fetuses_birth_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        external_reference:
-          type: string
-        first_name:
-          maxLength: 64
-          type: string
-        fiscal_residence:
-          allOf:
-          - $ref: '#/components/schemas/Country'
-        future_living_status:
-          allOf:
-          - $ref: '#/components/schemas/LivingStatus'
-        has_politically_exposed_person_status:
-          default: false
-          type: boolean
-        has_vehicle:
-          type: boolean
-        health_insurance_certificate_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        iban:
-          maxLength: 34
-          type: string
-        id:
-          type: integer
-        id_card_number:
-          maxLength: 32
-          type: string
-        id_document_type:
-          allOf:
-          - $ref: '#/components/schemas/IdDocumentType'
-        id_expiration_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        id_issuance_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        id_issuing_authority:
-          maxLength: 128
-          type: string
-        invite_client:
-          default: false
-          type: boolean
-        is_36_month_moratorium_on_repayments_required:
-          type: boolean
-        is_active:
-          type: boolean
-        is_bank_account_opt_in:
-          type: boolean
-        is_bank_employee:
-          type: boolean
-        is_claiming_tax_refund:
-          type: boolean
-        is_debt_collection:
-          type: boolean
-        is_essential_communications_only_receiver:
-          default: false
-          type: boolean
-        is_first_time_buyer:
-          default: false
-          type: boolean
-        is_insider:
-          type:
-          - boolean
-          - 'null'
-        is_self_employed_or_partner:
-          type: boolean
-        is_tax_residence_in_swiss:
-          type: boolean
-        is_tax_residence_in_usa:
-          type: boolean
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        last_active:
-          format: date-time
-          readOnly: true
-          type: string
-        last_name:
-          maxLength: 128
-          type: string
-        legal_status_type:
-          allOf:
-          - $ref: '#/components/schemas/LegalStatusType'
-        legitimisation_type:
-          allOf:
-          - $ref: '#/components/schemas/LegitimisationType'
-        lender_onboarding_status:
-          allOf:
-          - $ref: '#/components/schemas/LenderOnboardingStatus'
-        living_status:
-          allOf:
-          - $ref: '#/components/schemas/LivingStatus'
-        loan_requests:
-          readOnly: true
-          type: string
-        local_bank_account:
-          maxLength: 64
-          type: string
-        maiden_name:
-          maxLength: 128
-          type: string
-        middle_name:
-          maxLength: 64
-          type: string
-        mother_maiden_name:
-          maxLength: 128
-          type: string
-        national_number:
-          maxLength: 32
-          type: string
-        nationality:
-          allOf:
-          - $ref: '#/components/schemas/Country'
-        neak_oep_certificate_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        number_of_dependent_persons_with_income:
-          maximum: 2147483647
-          minimum: -2147483648
-          type:
-          - integer
-          - 'null'
-        number_of_dependent_persons_with_no_income:
-          maximum: 2147483647
-          minimum: -2147483648
-          type:
-          - integer
-          - 'null'
-        number_of_dependents:
-          maximum: 2147483647
-          minimum: -2147483648
-          type:
-          - integer
-          - 'null'
-        number_of_fetuses_gte_twelve_weeks:
-          maximum: 2147483647
-          minimum: -2147483648
-          type:
-          - integer
-          - 'null'
-        number_of_income_earners_in_the_household:
-          maximum: 2147483647
-          minimum: -2147483648
-          type:
-          - integer
-          - 'null'
-        onboarding_redirection_url:
-          format: uri
-          maxLength: 200
-          type: string
-        people_in_household:
-          maximum: 2147483647
-          minimum: -2147483648
-          type:
-          - integer
-          - 'null'
-        phone_numbers:
-          items:
-            $ref: '#/components/schemas/Profile2Phone'
-          type: array
-        planned_children:
-          maximum: 2147483647
-          minimum: -2147483648
-          type:
-          - integer
-          - 'null'
-        politically_exposed_person_country:
-          allOf:
-          - $ref: '#/components/schemas/Country'
-        politically_exposed_person_declaration_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        politically_exposed_person_type:
-          allOf:
-          - $ref: '#/components/schemas/PoliticallyExposedPersonType'
-        position:
-          type: string
-        recent_bankruptcy:
-          type: boolean
-        recent_collections:
-          type: boolean
-        reference_number:
-          readOnly: true
-          type: string
-        relationships:
-          items:
-            $ref: '#/components/schemas/Client2Client'
-          type: array
-        residence_permit:
-          allOf:
-          - $ref: '#/components/schemas/ResidencePermit'
-        residence_start_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        sector:
-          allOf:
-          - $ref: '#/components/schemas/Sector'
-        segment:
-          allOf:
-          - $ref: '#/components/schemas/CustomerSegment'
-        sex:
-          allOf:
-          - $ref: '#/components/schemas/Sex'
-        simulations:
-          readOnly: true
-          type: string
-        social_insurance_start_date:
-          allOf:
-          - $ref: '#/components/schemas/SocialInsuranceStartDate'
-        tax_id:
-          maxLength: 32
-          type: string
-        tax_type:
-          allOf:
-          - $ref: '#/components/schemas/TaxType'
-        title:
-          allOf:
-          - $ref: '#/components/schemas/ClientTitle'
-        title_2:
-          allOf:
-          - $ref: '#/components/schemas/ClientTitle'
-        verified:
-          readOnly: true
-          type: boolean
-        version:
-          maximum: 2147483647
-          minimum: 0
-          type: integer
-      type: object
-    CivilStatus:
-      description: Can be managed at /resources/civil-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LenderOnboardingStatus:
-      description: Can be managed at /resources/lender-onboarding-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    StreetType:
-      description: Can be managed at /resources/street-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LegitimisationType:
-      description: Can be managed at /resources/legitimisation-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ClientTitle:
-      description: Can be managed at /resources/client-title
+    Relationship:
+      description: Can be managed at /resources/relationship
       properties:
         definition:
           type: string
@@ -658,8 +223,8 @@ components:
       - id
       - order
       type: object
-    PersonalizedInformation:
-      description: Can be managed at /resources/personalized-information
+    TaxType:
+      description: Can be managed at /resources/tax-type
       properties:
         definition:
           type: string
@@ -672,178 +237,6 @@ components:
       - definition
       - id
       - order
-      type: object
-    ReducedCreditProvider:
-      description: To be used for a short summary of the CreditProvider
-      properties:
-        active:
-          readOnly: true
-          type: boolean
-        fsma_reference:
-          maxLength: 128
-          readOnly: true
-          type: string
-        full_name:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        is_liability_provider:
-          readOnly: true
-          type: boolean
-        loan_request_form_documents:
-          readOnly: true
-          type: string
-        logo_url:
-          format: uri
-          readOnly: true
-          type: string
-        name:
-          readOnly: true
-          type: string
-        order:
-          maximum: 2147483647
-          minimum: 0
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-      required:
-      - active
-      - fsma_reference
-      - full_name
-      - id
-      - is_liability_provider
-      - loan_request_form_documents
-      - logo_url
-      - name
-      - order
-      type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - country
-      - definition
-      - id
-      - order
-      type: object
-    PoliticallyExposedPersonType:
-      description: Can be managed at /resources/politically-exposed-person-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Profile2Address:
-      properties:
-        address_type:
-          allOf:
-          - $ref: '#/components/schemas/ContactType'
-        box:
-          type: string
-        building:
-          type: string
-        city:
-          type: string
-        country:
-          $ref: '#/components/schemas/Country'
-        floor:
-          type: string
-        heading:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        house_number:
-          type: string
-        latitude:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        longitude:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        pitch:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        staircase:
-          type: string
-        street:
-          type: string
-        street_type:
-          allOf:
-          - $ref: '#/components/schemas/StreetType'
-        zip_code:
-          type: string
-        zoom:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-      required:
-      - city
-      - country
-      - street
-      - zip_code
-      type: object
-    Language:
-      description: Can be managed at /resources/language
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Profile2Email:
-      properties:
-        email_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          format: email
-          type: string
-      required:
-      - value
       type: object
     Sector:
       description: Can be managed at /resources/sector
@@ -860,78 +253,8 @@ components:
       - id
       - order
       type: object
-    PaginatedNestedClientProfileList:
-      properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          type:
-          - string
-          - 'null'
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          type:
-          - string
-          - 'null'
-        results:
-          items:
-            $ref: '#/components/schemas/NestedClientProfile'
-          type: array
-      required:
-      - count
-      - results
-      type: object
-    NestedClientProfile:
-      properties:
-        birth_date:
-          format: date
-          readOnly: true
-          type: string
-        emails:
-          items:
-            $ref: '#/components/schemas/Profile2Email'
-          type: array
-        first_name:
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        last_name:
-          readOnly: true
-          type: string
-        middle_name:
-          readOnly: true
-          type: string
-        national_number:
-          readOnly: true
-          type: string
-        phone_numbers:
-          items:
-            $ref: '#/components/schemas/Profile2Phone'
-          type: array
-        reference_number:
-          readOnly: true
-          type: string
-        verified:
-          readOnly: true
-          type: boolean
-      required:
-      - birth_date
-      - first_name
-      - id
-      - last_name
-      - middle_name
-      - national_number
-      - reference_number
-      - verified
-      type: object
-    Country:
-      description: Can be managed at /resources/country
+    UserRole:
+      description: Can be managed at /resources/user-role
       properties:
         definition:
           type: string
@@ -945,8 +268,8 @@ components:
       - id
       - order
       type: object
-    ContactType:
-      description: Can be managed at /resources/contact-type
+    LegitimisationType:
+      description: Can be managed at /resources/legitimisation-type
       properties:
         definition:
           type: string
@@ -960,21 +283,38 @@ components:
       - id
       - order
       type: object
-    Client:
+    EmploymentType:
+      description: Can be managed at /resources/employment-type
       properties:
-        email:
-          format: email
-          type:
-          - string
-          - 'null'
+        definition:
+          type: string
         id:
           type: integer
-        user:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBaseUser'
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
       type: object
-    Sex:
-      description: Can be managed at /resources/sex
+    CivilStatus:
+      description: Can be managed at /resources/civil-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Language:
+      description: Can be managed at /resources/language
       properties:
         definition:
           type: string
@@ -1349,136 +689,6 @@ components:
       - simulations
       - verified
       type: object
-    ReducedBaseUser:
-      description: User reduced representation
-      properties:
-        first_name:
-          default: ''
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        last_name:
-          default: ''
-          readOnly: true
-          type: string
-        role:
-          allOf:
-          - $ref: '#/components/schemas/UserRole'
-          readOnly: true
-        verified:
-          readOnly: true
-          type: boolean
-      required:
-      - first_name
-      - id
-      - last_name
-      - role
-      - verified
-      type: object
-    Client2Client:
-      properties:
-        client_from:
-          allOf:
-          - $ref: '#/components/schemas/ReducedClientProfile'
-          writeOnly: true
-        client_to:
-          $ref: '#/components/schemas/ReducedClientProfile'
-        id:
-          readOnly: true
-          type: integer
-        live_in_the_same_household:
-          type:
-          - boolean
-          - 'null'
-        oper_reference:
-          format: uuid
-          readOnly: true
-          type: string
-        relationship:
-          allOf:
-          - $ref: '#/components/schemas/Relationship'
-      required:
-      - client_from
-      - client_to
-      - id
-      - oper_reference
-      type: object
-    TaxType:
-      description: Can be managed at /resources/tax-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    EducationType:
-      description: Can be managed at /resources/education
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Relationship:
-      description: Can be managed at /resources/relationship
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LivingStatus:
-      description: Can be managed at /resources/living-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    EmploymentType:
-      description: Can be managed at /resources/employment-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
     IdDocumentType:
       description: Can be managed at /resources/id-document-type
       properties:
@@ -1494,24 +704,8 @@ components:
       - id
       - order
       type: object
-    Profile2Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        is_secret:
-          default: false
-          type: boolean
-        phone_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          maxLength: 32
-          minLength: 4
-          type: string
-      required:
-      - value
-      type: object
-    ResidencePermit:
-      description: Can be managed at /resources/residence-permit
+    PersonalizedInformation:
+      description: Can be managed at /resources/personalized-information
       properties:
         definition:
           type: string
@@ -1540,8 +734,8 @@ components:
       - id
       - order
       type: object
-    LegalStatusType:
-      description: Can be managed at /resources/legal-status-type
+    EducationType:
+      description: Can be managed at /resources/education
       properties:
         definition:
           type: string
@@ -1554,6 +748,421 @@ components:
       - definition
       - id
       - order
+      type: object
+    ReducedCreditProvider:
+      description: To be used for a short summary of the CreditProvider
+      properties:
+        active:
+          readOnly: true
+          type: boolean
+        fsma_reference:
+          maxLength: 128
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_liability_provider:
+          readOnly: true
+          type: boolean
+        loan_request_form_documents:
+          readOnly: true
+          type: string
+        logo_url:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        order:
+          maximum: 2147483647
+          minimum: 0
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+      required:
+      - active
+      - fsma_reference
+      - full_name
+      - id
+      - is_liability_provider
+      - loan_request_form_documents
+      - logo_url
+      - name
+      - order
+      type: object
+    Country:
+      description: Can be managed at /resources/country
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PatchedClientRegistryProfile:
+      properties:
+        a_card_details:
+          allOf:
+          - $ref: '#/components/schemas/ACardDetails'
+        address_card_id:
+          maxLength: 64
+          type: string
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
+        bic:
+          maxLength: 11
+          type: string
+        birth_city:
+          type:
+          - string
+          - 'null'
+        birth_country:
+          allOf:
+          - $ref: '#/components/schemas/Country'
+        birth_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        birth_first_name:
+          maxLength: 64
+          type: string
+        birth_last_name:
+          maxLength: 128
+          type: string
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBroker'
+        civil_status:
+          allOf:
+          - $ref: '#/components/schemas/CivilStatus'
+        client:
+          $ref: '#/components/schemas/Client'
+        company_name:
+          maxLength: 255
+          type: string
+        company_tax_number:
+          maxLength: 32
+          type: string
+        compliance_bank:
+          type:
+          - boolean
+          - 'null'
+        compliance_fraud:
+          type:
+          - boolean
+          - 'null'
+        compliance_office_presentation:
+          default: false
+          type: boolean
+        compliance_personalized_information:
+          allOf:
+          - $ref: '#/components/schemas/PersonalizedInformation'
+        compliance_privacy_policy:
+          default: false
+          type: boolean
+        compliance_terror:
+          type:
+          - boolean
+          - 'null'
+        consent_bank_retrieve_positive_data:
+          type:
+          - string
+          - 'null'
+        consent_khr_post_contract_processing:
+          type:
+          - boolean
+          - 'null'
+        consent_other_lenders_khr_access:
+          type:
+          - boolean
+          - 'null'
+        country_arrival_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          readOnly: true
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+        dependent_children:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+          - integer
+          - 'null'
+        education:
+          allOf:
+          - $ref: '#/components/schemas/EducationType'
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
+        employment_status:
+          allOf:
+          - $ref: '#/components/schemas/EmploymentType'
+        expected_fetuses_birth_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        external_reference:
+          type: string
+        first_name:
+          maxLength: 64
+          type: string
+        fiscal_residence:
+          allOf:
+          - $ref: '#/components/schemas/Country'
+        future_living_status:
+          allOf:
+          - $ref: '#/components/schemas/LivingStatus'
+        has_politically_exposed_person_status:
+          default: false
+          type: boolean
+        has_vehicle:
+          type: boolean
+        health_insurance_certificate_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        iban:
+          maxLength: 34
+          type: string
+        id:
+          type: integer
+        id_card_number:
+          maxLength: 32
+          type: string
+        id_document_type:
+          allOf:
+          - $ref: '#/components/schemas/IdDocumentType'
+        id_expiration_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        id_issuance_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        id_issuing_authority:
+          maxLength: 128
+          type: string
+        invite_client:
+          default: false
+          type: boolean
+        is_36_month_moratorium_on_repayments_required:
+          type: boolean
+        is_active:
+          type: boolean
+        is_bank_account_opt_in:
+          type: boolean
+        is_bank_employee:
+          type: boolean
+        is_claiming_tax_refund:
+          type: boolean
+        is_debt_collection:
+          type: boolean
+        is_essential_communications_only_receiver:
+          default: false
+          type: boolean
+        is_first_time_buyer:
+          default: false
+          type: boolean
+        is_insider:
+          type:
+          - boolean
+          - 'null'
+        is_self_employed_or_partner:
+          type: boolean
+        is_tax_residence_in_swiss:
+          type: boolean
+        is_tax_residence_in_usa:
+          type: boolean
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        last_active:
+          format: date-time
+          readOnly: true
+          type: string
+        last_name:
+          maxLength: 128
+          type: string
+        legal_status_type:
+          allOf:
+          - $ref: '#/components/schemas/LegalStatusType'
+        legitimisation_type:
+          allOf:
+          - $ref: '#/components/schemas/LegitimisationType'
+        lender_onboarding_status:
+          allOf:
+          - $ref: '#/components/schemas/LenderOnboardingStatus'
+        living_status:
+          allOf:
+          - $ref: '#/components/schemas/LivingStatus'
+        loan_requests:
+          readOnly: true
+          type: string
+        local_bank_account:
+          maxLength: 64
+          type: string
+        maiden_name:
+          maxLength: 128
+          type: string
+        middle_name:
+          maxLength: 64
+          type: string
+        mother_maiden_name:
+          maxLength: 128
+          type: string
+        national_number:
+          maxLength: 32
+          type: string
+        nationality:
+          allOf:
+          - $ref: '#/components/schemas/Country'
+        neak_oep_certificate_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        number_of_dependent_persons_with_income:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+          - integer
+          - 'null'
+        number_of_dependent_persons_with_no_income:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+          - integer
+          - 'null'
+        number_of_dependents:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+          - integer
+          - 'null'
+        number_of_fetuses_gte_twelve_weeks:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+          - integer
+          - 'null'
+        number_of_income_earners_in_the_household:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+          - integer
+          - 'null'
+        onboarding_redirection_url:
+          format: uri
+          maxLength: 200
+          type: string
+        people_in_household:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+          - integer
+          - 'null'
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        planned_children:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+          - integer
+          - 'null'
+        politically_exposed_person_country:
+          allOf:
+          - $ref: '#/components/schemas/Country'
+        politically_exposed_person_declaration_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        politically_exposed_person_type:
+          allOf:
+          - $ref: '#/components/schemas/PoliticallyExposedPersonType'
+        position:
+          type: string
+        recent_bankruptcy:
+          type: boolean
+        recent_collections:
+          type: boolean
+        reference_number:
+          readOnly: true
+          type: string
+        relationships:
+          items:
+            $ref: '#/components/schemas/Client2Client'
+          type: array
+        residence_permit:
+          allOf:
+          - $ref: '#/components/schemas/ResidencePermit'
+        residence_start_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        sector:
+          allOf:
+          - $ref: '#/components/schemas/Sector'
+        segment:
+          allOf:
+          - $ref: '#/components/schemas/CustomerSegment'
+        sex:
+          allOf:
+          - $ref: '#/components/schemas/Sex'
+        simulations:
+          readOnly: true
+          type: string
+        social_insurance_start_date:
+          allOf:
+          - $ref: '#/components/schemas/SocialInsuranceStartDate'
+        tax_id:
+          maxLength: 32
+          type: string
+        tax_type:
+          allOf:
+          - $ref: '#/components/schemas/TaxType'
+        title:
+          allOf:
+          - $ref: '#/components/schemas/ClientTitle'
+        title_2:
+          allOf:
+          - $ref: '#/components/schemas/ClientTitle'
+        verified:
+          readOnly: true
+          type: boolean
+        version:
+          maximum: 2147483647
+          minimum: 0
+          type: integer
       type: object
     ReducedClientProfile:
       description: Client profile reduced representation
@@ -1572,6 +1181,280 @@ components:
       - first_name
       - id
       - last_name
+      type: object
+    StreetType:
+      description: Can be managed at /resources/street-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    NestedClientProfile:
+      properties:
+        birth_date:
+          format: date
+          readOnly: true
+          type: string
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
+        first_name:
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_name:
+          readOnly: true
+          type: string
+        middle_name:
+          readOnly: true
+          type: string
+        national_number:
+          readOnly: true
+          type: string
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        reference_number:
+          readOnly: true
+          type: string
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - birth_date
+      - first_name
+      - id
+      - last_name
+      - middle_name
+      - national_number
+      - reference_number
+      - verified
+      type: object
+    ResidencePermit:
+      description: Can be managed at /resources/residence-permit
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CustomerSegment:
+      description: Can be managed at /resources/customer-segment
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Profile2Address:
+      properties:
+        address_type:
+          allOf:
+          - $ref: '#/components/schemas/ContactType'
+        box:
+          type: string
+        building:
+          type: string
+        city:
+          type: string
+        country:
+          $ref: '#/components/schemas/Country'
+        floor:
+          type: string
+        heading:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        house_number:
+          type: string
+        latitude:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        longitude:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        pitch:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        staircase:
+          type: string
+        street:
+          type: string
+        street_type:
+          allOf:
+          - $ref: '#/components/schemas/StreetType'
+        zip_code:
+          type: string
+        zoom:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+      required:
+      - city
+      - country
+      - street
+      - zip_code
+      type: object
+    ContactType:
+      description: Can be managed at /resources/contact-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Sex:
+      description: Can be managed at /resources/sex
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Client:
+      properties:
+        email:
+          format: email
+          type:
+          - string
+          - 'null'
+        id:
+          type: integer
+        user:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+      type: object
+    ClientTitle:
+      description: Can be managed at /resources/client-title
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PoliticallyExposedPersonType:
+      description: Can be managed at /resources/politically-exposed-person-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PaginatedNestedClientProfileList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
+          items:
+            $ref: '#/components/schemas/NestedClientProfile'
+          type: array
+      required:
+      - count
+      - results
+      type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
       type: object
     ReducedBroker:
       description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
@@ -1614,8 +1497,134 @@ components:
       - outstanding_debt
       - vat_number
       type: object
+    Client2Client:
+      properties:
+        client_from:
+          allOf:
+          - $ref: '#/components/schemas/ReducedClientProfile'
+          writeOnly: true
+        client_to:
+          $ref: '#/components/schemas/ReducedClientProfile'
+        id:
+          readOnly: true
+          type: integer
+        live_in_the_same_household:
+          type:
+          - boolean
+          - 'null'
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        relationship:
+          allOf:
+          - $ref: '#/components/schemas/Relationship'
+      required:
+      - client_from
+      - client_to
+      - id
+      - oper_reference
+      type: object
+    Profile2Email:
+      properties:
+        email_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          format: email
+          type: string
+      required:
+      - value
+      type: object
+    LivingStatus:
+      description: Can be managed at /resources/living-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
+      type: object
+    LenderOnboardingStatus:
+      description: Can be managed at /resources/lender-onboarding-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
+      type: object
     ACardDetails:
       description: Can be managed at /resources/a-card-details
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LegalStatusType:
+      description: Can be managed at /resources/legal-status-type
       properties:
         definition:
           type: string

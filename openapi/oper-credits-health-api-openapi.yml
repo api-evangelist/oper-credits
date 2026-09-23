@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Health API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Health API
+  version: ''
 tags:
 - name: Health
 paths:
@@ -19,6 +16,8 @@ paths:
       - jwtAuth: []
       tags:
       - Health
+      summary: Api health retrieve
+      x-summary-source: derived
 components:
   securitySchemes:
     jwtAuth:

@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Commissions API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Commissions API
+  version: ''
 tags:
 - name: Commissions
 paths:
@@ -34,6 +31,8 @@ paths:
       - jwtAuth: []
       tags:
       - Commissions
+      summary: Api commissions documents retrieve
+      x-summary-source: derived
   /api/commissions/files/:
     get:
       description: A ViewSet mixin that parametrizes DRF methods over roles
@@ -51,6 +50,8 @@ paths:
       - jwtAuth: []
       tags:
       - Commissions
+      summary: Api commissions files list
+      x-summary-source: derived
     post:
       description: A ViewSet mixin that parametrizes DRF methods over roles
       operationId: api_commissions_files_create
@@ -77,6 +78,8 @@ paths:
       - jwtAuth: []
       tags:
       - Commissions
+      summary: Api commissions files create
+      x-summary-source: derived
   /api/commissions/files/{commission_file_id}/recoveries/:
     post:
       description: A ViewSet mixin that parametrizes DRF methods over roles
@@ -111,6 +114,8 @@ paths:
       - jwtAuth: []
       tags:
       - Commissions
+      summary: Api commissions files recoveries create
+      x-summary-source: derived
   /api/commissions/objects/{year}/{month}/:
     get:
       description: A ViewSet mixin that parametrizes DRF methods over roles
@@ -139,6 +144,8 @@ paths:
       - jwtAuth: []
       tags:
       - Commissions
+      summary: Api commissions objects list
+      x-summary-source: derived
   /api/commissions/payment-files/:
     get:
       description: A ViewSet mixin that parametrizes DRF methods over roles
@@ -156,6 +163,8 @@ paths:
       - jwtAuth: []
       tags:
       - Commissions
+      summary: Api commissions payment files list
+      x-summary-source: derived
   /api/commissions/payment-files/{id}/:
     patch:
       description: A ViewSet mixin that parametrizes DRF methods over roles
@@ -189,6 +198,8 @@ paths:
       - jwtAuth: []
       tags:
       - Commissions
+      summary: Api commissions payment files partial update
+      x-summary-source: derived
     put:
       description: A ViewSet mixin that parametrizes DRF methods over roles
       operationId: api_commissions_payment_files_update
@@ -221,6 +232,8 @@ paths:
       - jwtAuth: []
       tags:
       - Commissions
+      summary: Api commissions payment files update
+      x-summary-source: derived
   /api/commissions/payment-files/{id}/download/:
     get:
       description: A ViewSet mixin that parametrizes DRF methods over roles
@@ -243,6 +256,8 @@ paths:
       - jwtAuth: []
       tags:
       - Commissions
+      summary: Api commissions payment files download retrieve
+      x-summary-source: derived
   /api/commissions/payment-files/{id}/regenerate/:
     patch:
       description: A ViewSet mixin that parametrizes DRF methods over roles
@@ -276,8 +291,32 @@ paths:
       - jwtAuth: []
       tags:
       - Commissions
+      summary: Api commissions payment files regenerate partial update
+      x-summary-source: derived
 components:
   schemas:
+    Recovery:
+      properties:
+        amount:
+          format: double
+          readOnly: true
+          type: number
+        file:
+          $ref: '#/components/schemas/ReducedCommissionFile'
+        outstanding_amount:
+          format: double
+          type: number
+        prepayment_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/RecoveryStatus'
+      required:
+      - amount
+      - file
+      type: object
     PatchedPaymentFile:
       properties:
         created:
@@ -299,21 +338,6 @@ components:
           type: string
         processed:
           type: boolean
-      type: object
-    CommissionType:
-      description: Can be managed at /resources/commission-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
     DocumentType:
       description: Can be managed at /resources/document-type
@@ -343,72 +367,6 @@ components:
       - id
       - order
       type: object
-    RecoveryStatus:
-      description: Can be managed at /resources/recovery-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ReducedCommissionFile:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
-      properties:
-        id:
-          type: integer
-      required:
-      - id
-      type: object
-    DocumentStatus:
-      description: Can be managed at /resources/document-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    PaymentFile:
-      properties:
-        created:
-          format: date-time
-          readOnly: true
-          type: string
-        downloaded:
-          readOnly: true
-          type: boolean
-        id:
-          readOnly: true
-          type: integer
-        internal_reference:
-          readOnly: true
-          type: string
-        last_modified:
-          format: date-time
-          readOnly: true
-          type: string
-        processed:
-          type: boolean
-      required:
-      - created
-      - downloaded
-      - id
-      - internal_reference
-      - last_modified
-      type: object
     Commission:
       properties:
         amount:
@@ -434,81 +392,6 @@ components:
       - external_reference
       - id
       - loan_request
-      type: object
-    CommissionFile:
-      properties:
-        amount:
-          format: double
-          minimum: 0.01
-          type: number
-          exclusiveMaximum: 100000000000000
-        borrower_reference:
-          readOnly: true
-          type: string
-        broker:
-          readOnly: true
-          type: string
-        credit_provider:
-          readOnly: true
-          type: string
-        external_reference:
-          maxLength: 64
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        incoming_date:
-          format: date
-          type: string
-        outstanding_amount:
-          readOnly: true
-          type: string
-        product_item:
-          $ref: '#/components/schemas/ReducedProductItem'
-        status:
-          $ref: '#/components/schemas/CommissionFileStatus'
-      required:
-      - amount
-      - borrower_reference
-      - broker
-      - credit_provider
-      - external_reference
-      - id
-      - incoming_date
-      - outstanding_amount
-      - product_item
-      type: object
-    ReducedProductItem:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
-      properties:
-        id:
-          type: integer
-        internal_reference:
-          maxLength: 64
-          readOnly: true
-          type: string
-        name:
-          readOnly: true
-          type: string
-      required:
-      - id
-      - internal_reference
-      - name
-      type: object
-    CommissionFileStatus:
-      description: Can be managed at /resources/commission-file-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
     CommissionStatementDocument:
       properties:
@@ -583,27 +466,161 @@ components:
       - url
       - version
       type: object
-    Recovery:
+    CommissionFileStatus:
+      description: Can be managed at /resources/commission-file-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RecoveryStatus:
+      description: Can be managed at /resources/recovery-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CommissionFile:
       properties:
         amount:
           format: double
+          minimum: 0.01
+          type: number
+          exclusiveMaximum: 100000000000000
+        borrower_reference:
           readOnly: true
-          type: number
-        file:
-          $ref: '#/components/schemas/ReducedCommissionFile'
-        outstanding_amount:
-          format: double
-          type: number
-        prepayment_date:
+          type: string
+        broker:
+          readOnly: true
+          type: string
+        credit_provider:
+          readOnly: true
+          type: string
+        external_reference:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        incoming_date:
           format: date
-          type:
-          - string
-          - 'null'
+          type: string
+        outstanding_amount:
+          readOnly: true
+          type: string
+        product_item:
+          $ref: '#/components/schemas/ReducedProductItem'
         status:
-          $ref: '#/components/schemas/RecoveryStatus'
+          $ref: '#/components/schemas/CommissionFileStatus'
       required:
       - amount
-      - file
+      - borrower_reference
+      - broker
+      - credit_provider
+      - external_reference
+      - id
+      - incoming_date
+      - outstanding_amount
+      - product_item
+      type: object
+    ReducedProductItem:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        id:
+          type: integer
+        internal_reference:
+          maxLength: 64
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+      required:
+      - id
+      - internal_reference
+      - name
+      type: object
+    PaymentFile:
+      properties:
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        downloaded:
+          readOnly: true
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        internal_reference:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        processed:
+          type: boolean
+      required:
+      - created
+      - downloaded
+      - id
+      - internal_reference
+      - last_modified
+      type: object
+    DocumentStatus:
+      description: Can be managed at /resources/document-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedCommissionFile:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        id:
+          type: integer
+      required:
+      - id
+      type: object
+    CommissionType:
+      description: Can be managed at /resources/commission-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
       type: object
   securitySchemes:
     jwtAuth:

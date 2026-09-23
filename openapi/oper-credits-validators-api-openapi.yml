@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Validators API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Validators API
+  version: ''
 tags:
 - name: Validators
 paths:
@@ -35,6 +32,8 @@ paths:
       - {}
       tags:
       - Validators
+      summary: Api validators belgian national number create
+      x-summary-source: derived
 components:
   schemas:
     NationalNumber:

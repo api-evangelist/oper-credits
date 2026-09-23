@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Library API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Library API
+  version: ''
 tags:
 - name: Library
 paths:
@@ -24,6 +21,8 @@ paths:
       - jwtAuth: []
       tags:
       - Library
+      summary: Api library documents list
+      x-summary-source: derived
   /api/library/documents/{id}/:
     get:
       operationId: api_library_documents_retrieve
@@ -44,6 +43,8 @@ paths:
       - jwtAuth: []
       tags:
       - Library
+      summary: Api library documents retrieve
+      x-summary-source: derived
 components:
   schemas:
     Language:
@@ -77,20 +78,22 @@ components:
       - document
       - language
       type: object
-    LibraryCategory:
-      description: Can be managed at /resources/library-category
+    NestedSignedDocument:
       properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
+        document_type:
+          allOf:
+          - $ref: '#/components/schemas/DocumentType'
           readOnly: true
-          type: integer
+        mime_type:
+          readOnly: true
+          type: string
+        url:
+          readOnly: true
+          type: string
       required:
-      - definition
-      - id
-      - order
+      - document_type
+      - mime_type
+      - url
       type: object
     DocumentType:
       description: Can be managed at /resources/document-type
@@ -120,22 +123,20 @@ components:
       - id
       - order
       type: object
-    NestedSignedDocument:
+    LibraryCategory:
+      description: Can be managed at /resources/library-category
       properties:
-        document_type:
-          allOf:
-          - $ref: '#/components/schemas/DocumentType'
-          readOnly: true
-        mime_type:
-          readOnly: true
+        definition:
           type: string
-        url:
+        id:
+          type: integer
+        order:
           readOnly: true
-          type: string
+          type: integer
       required:
-      - document_type
-      - mime_type
-      - url
+      - definition
+      - id
+      - order
       type: object
   securitySchemes:
     jwtAuth:

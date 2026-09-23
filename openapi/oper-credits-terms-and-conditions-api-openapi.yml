@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Terms And Conditions API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Terms And Conditions API
+  version: ''
 tags:
 - name: Terms And Conditions
 paths:
@@ -22,6 +19,8 @@ paths:
       - jwtAuth: []
       tags:
       - Terms And Conditions
+      summary: Api terms and conditions retrieve
+      x-summary-source: derived
 components:
   schemas:
     Language:

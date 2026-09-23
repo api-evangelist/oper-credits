@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Documents API
+  version: ''
 tags:
 - name: Documents
 paths:
@@ -35,6 +32,8 @@ paths:
       - jwtAuth: []
       tags:
       - Documents
+      summary: Api documents list
+      x-summary-source: derived
   /api/documents/{id}/:
     delete:
       operationId: api_documents_destroy
@@ -52,8 +51,31 @@ paths:
       - jwtAuth: []
       tags:
       - Documents
+      summary: Api documents destroy
+      x-summary-source: derived
 components:
   schemas:
+    BaseDocument:
+      properties:
+        external_id:
+          format: uuid
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        object_id:
+          format: uuid
+          readOnly: true
+          type: string
+        status:
+          type: integer
+      required:
+      - external_id
+      - id
+      - object_id
+      - status
+      type: object
     PaginatedBaseDocumentList:
       properties:
         count:
@@ -78,27 +100,6 @@ components:
       required:
       - count
       - results
-      type: object
-    BaseDocument:
-      properties:
-        external_id:
-          format: uuid
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        object_id:
-          format: uuid
-          readOnly: true
-          type: string
-        status:
-          type: integer
-      required:
-      - external_id
-      - id
-      - object_id
-      - status
       type: object
   securitySchemes:
     jwtAuth:

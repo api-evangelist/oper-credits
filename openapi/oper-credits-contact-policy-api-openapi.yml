@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Contact Policy API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Contact Policy API
+  version: ''
 tags:
 - name: Contact Policy
 paths:
@@ -22,8 +19,25 @@ paths:
       - jwtAuth: []
       tags:
       - Contact Policy
+      summary: Api contact policy retrieve
+      x-summary-source: derived
 components:
   schemas:
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     ContactPolicy:
       properties:
         configuration_id:
@@ -44,21 +58,6 @@ components:
       - content
       - language
       - title
-      type: object
-    Language:
-      description: Can be managed at /resources/language
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
   securitySchemes:
     jwtAuth:

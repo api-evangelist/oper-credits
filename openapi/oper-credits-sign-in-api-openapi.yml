@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Sign In API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Sign In API
+  version: ''
 tags:
 - name: Sign In
 paths:
@@ -37,6 +34,8 @@ paths:
       - jwtAuth: []
       tags:
       - Sign In
+      summary: Api sign in activate create
+      x-summary-source: derived
   /api/sign-in/otp/:
     post:
       description: 'Takes a set of user credentials and returns an access and refresh JSON web
@@ -66,6 +65,8 @@ paths:
       - {}
       tags:
       - Sign In
+      summary: Api sign in otp create
+      x-summary-source: derived
   /api/sign-in/reset-password/:
     post:
       description: 'API view to actually change the password of the user.
@@ -95,6 +96,8 @@ paths:
           description: ''
       tags:
       - Sign In
+      summary: Api sign in reset password create
+      x-summary-source: derived
   /api/sign-in/verify/:
     post:
       description: 'This View will request a OTP for a user.
@@ -124,8 +127,25 @@ paths:
       - jwtAuth: []
       tags:
       - Sign In
+      summary: Api sign in verify create
+      x-summary-source: derived
 components:
   schemas:
+    SignInActivate:
+      description: 'Serializer to create a verified user.
+
+        This will return a request for a OTP'
+      properties:
+        cell_phone:
+          readOnly: true
+          type: string
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - cell_phone
+      - token
+      type: object
     SignInResetPassword:
       description: 'This serializer will update the password to a new password if:
 
@@ -190,21 +210,6 @@ components:
       - password
       - refresh
       - username
-      type: object
-    SignInActivate:
-      description: 'Serializer to create a verified user.
-
-        This will return a request for a OTP'
-      properties:
-        cell_phone:
-          readOnly: true
-          type: string
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - cell_phone
-      - token
       type: object
     RoleTokenObtainPairOtp:
       properties:

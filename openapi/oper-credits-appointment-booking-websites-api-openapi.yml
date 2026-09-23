@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Appointment Booking Websites API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Appointment Booking Websites API
+  version: ''
 tags:
 - name: Appointment Booking Websites
 paths:
@@ -24,6 +21,8 @@ paths:
       - jwtAuth: []
       tags:
       - Appointment Booking Websites
+      summary: Api appointment booking websites list
+      x-summary-source: derived
   /api/appointment-booking-websites/{language__definition}/:
     get:
       operationId: api_appointment_booking_websites_retrieve
@@ -44,6 +43,8 @@ paths:
       - jwtAuth: []
       tags:
       - Appointment Booking Websites
+      summary: Api appointment booking websites retrieve
+      x-summary-source: derived
 components:
   schemas:
     Language:

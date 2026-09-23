@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Contact Advisor API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Contact Advisor API
+  version: ''
 tags:
 - name: Contact Advisor
 paths:
@@ -35,45 +32,10 @@ paths:
       - {}
       tags:
       - Contact Advisor
+      summary: Api contact advisor create
+      x-summary-source: derived
 components:
   schemas:
-    Calculation:
-      description: Serializer for the calculation of the mortgage
-      properties:
-        additional_costs:
-          format: double
-          minimum: 0
-          type: number
-        ammortisation_per_year:
-          format: double
-          minimum: 0
-          type: number
-        interest_per_year:
-          format: double
-          minimum: 0
-          type: number
-        interest_rate:
-          format: double
-          minimum: 0
-          type: number
-        monthly_amount:
-          format: double
-          type: number
-        portability:
-          format: double
-          type: number
-        yearly_amount:
-          format: double
-          type: number
-      required:
-      - additional_costs
-      - ammortisation_per_year
-      - interest_per_year
-      - interest_rate
-      - monthly_amount
-      - portability
-      - yearly_amount
-      type: object
     ContactAdvisor:
       properties:
         availability:
@@ -128,6 +90,43 @@ components:
       required:
       - first_name
       - last_name
+      type: object
+    Calculation:
+      description: Serializer for the calculation of the mortgage
+      properties:
+        additional_costs:
+          format: double
+          minimum: 0
+          type: number
+        ammortisation_per_year:
+          format: double
+          minimum: 0
+          type: number
+        interest_per_year:
+          format: double
+          minimum: 0
+          type: number
+        interest_rate:
+          format: double
+          minimum: 0
+          type: number
+        monthly_amount:
+          format: double
+          type: number
+        portability:
+          format: double
+          type: number
+        yearly_amount:
+          format: double
+          type: number
+      required:
+      - additional_costs
+      - ammortisation_per_year
+      - interest_per_year
+      - interest_rate
+      - monthly_amount
+      - portability
+      - yearly_amount
       type: object
   securitySchemes:
     jwtAuth:

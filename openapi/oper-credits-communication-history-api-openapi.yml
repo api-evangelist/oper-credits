@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Communication History API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Communication History API
+  version: ''
 tags:
 - name: Communication History
 paths:
@@ -35,6 +32,8 @@ paths:
       - jwtAuth: []
       tags:
       - Communication History
+      summary: Api communication history list
+      x-summary-source: derived
   /api/communication-history/{id}/:
     delete:
       operationId: api_communication_history_destroy
@@ -52,6 +51,8 @@ paths:
       - jwtAuth: []
       tags:
       - Communication History
+      summary: Api communication history destroy
+      x-summary-source: derived
 components:
   schemas:
     PaginatedBaseLoanRequestCommunicationHistoryList:

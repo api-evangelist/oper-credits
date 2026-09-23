@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Tasks API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Tasks API
+  version: ''
 tags:
 - name: Tasks
 paths:
@@ -76,6 +73,8 @@ paths:
       - jwtAuth: []
       tags:
       - Tasks
+      summary: Api tasks list
+      x-summary-source: derived
     post:
       description: A ViewSet mixin that parametrizes DRF methods over roles
       operationId: api_tasks_create
@@ -102,6 +101,8 @@ paths:
       - jwtAuth: []
       tags:
       - Tasks
+      summary: Api tasks create
+      x-summary-source: derived
   /api/tasks/{id}/:
     get:
       description: A ViewSet mixin that parametrizes DRF methods over roles
@@ -124,6 +125,8 @@ paths:
       - jwtAuth: []
       tags:
       - Tasks
+      summary: Api tasks retrieve
+      x-summary-source: derived
     patch:
       description: A ViewSet mixin that parametrizes DRF methods over roles
       operationId: api_tasks_partial_update
@@ -156,6 +159,8 @@ paths:
       - jwtAuth: []
       tags:
       - Tasks
+      summary: Api tasks partial update
+      x-summary-source: derived
     put:
       description: A ViewSet mixin that parametrizes DRF methods over roles
       operationId: api_tasks_update
@@ -189,40 +194,57 @@ paths:
       - jwtAuth: []
       tags:
       - Tasks
+      summary: Api tasks update
+      x-summary-source: derived
 components:
   schemas:
-    ReducedLoanRequest:
-      description: Loan request reduced representation
+    Status:
+      description: Can be managed at /resources/status
       properties:
-        borrower_reference:
+        borrower_facing_status:
           readOnly: true
           type: string
-        external_reference:
+        check_if_selected_offer_is_still_valid_when_data_is_changed:
+          type: boolean
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        icon:
           readOnly: true
           type: string
         id:
           type: integer
-        internal_reference:
+        is_active:
+          type: boolean
+        is_terminal:
+          type: boolean
+        notify_analyst_on_draft_offer_rate_change:
+          type: boolean
+        order:
           readOnly: true
-          type: string
-        status:
-          allOf:
-          - $ref: '#/components/schemas/Status'
-          readOnly: true
+          type: integer
+        recalculate_selected_offer_when_data_is_changed:
+          type: boolean
       required:
-      - borrower_reference
-      - external_reference
+      - borrower_facing_status
+      - color
+      - definition
+      - icon
       - id
-      - internal_reference
-      - status
+      - order
       type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
+    TaskType:
+      description: Can be managed at /resources/task-type
       properties:
         definition:
           type: string
         id:
           type: integer
+        navigation_path:
+          maxLength: 256
+          type: string
         order:
           readOnly: true
           type: integer
@@ -255,33 +277,6 @@ components:
       required:
       - count
       - results
-      type: object
-    ReducedBaseUser:
-      description: User reduced representation
-      properties:
-        first_name:
-          default: ''
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        last_name:
-          default: ''
-          readOnly: true
-          type: string
-        role:
-          allOf:
-          - $ref: '#/components/schemas/UserRole'
-          readOnly: true
-        verified:
-          readOnly: true
-          type: boolean
-      required:
-      - first_name
-      - id
-      - last_name
-      - role
-      - verified
       type: object
     PatchedTask:
       properties:
@@ -320,60 +315,30 @@ components:
         task_type:
           $ref: '#/components/schemas/TaskType'
       type: object
-    TaskType:
-      description: Can be managed at /resources/task-type
+    ReducedLoanRequest:
+      description: Loan request reduced representation
       properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        navigation_path:
-          maxLength: 256
-          type: string
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Status:
-      description: Can be managed at /resources/status
-      properties:
-        borrower_facing_status:
+        borrower_reference:
           readOnly: true
           type: string
-        check_if_selected_offer_is_still_valid_when_data_is_changed:
-          type: boolean
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        icon:
+        external_reference:
           readOnly: true
           type: string
         id:
           type: integer
-        is_active:
-          type: boolean
-        is_terminal:
-          type: boolean
-        notify_analyst_on_draft_offer_rate_change:
-          type: boolean
-        order:
+        internal_reference:
           readOnly: true
-          type: integer
-        recalculate_selected_offer_when_data_is_changed:
-          type: boolean
+          type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/Status'
+          readOnly: true
       required:
-      - borrower_facing_status
-      - color
-      - definition
-      - icon
+      - borrower_reference
+      - external_reference
       - id
-      - order
+      - internal_reference
+      - status
       type: object
     TaskCategory:
       description: Can be managed at /resources/task-category
@@ -389,6 +354,48 @@ components:
       - definition
       - id
       - order
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
       type: object
     Task:
       properties:

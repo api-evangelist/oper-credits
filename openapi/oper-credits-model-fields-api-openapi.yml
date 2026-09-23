@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Model Fields API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Model Fields API
+  version: ''
 tags:
 - name: Model Fields
 paths:
@@ -18,6 +15,8 @@ paths:
       - jwtAuth: []
       tags:
       - Model Fields
+      summary: Api model fields retrieve
+      x-summary-source: derived
 components:
   securitySchemes:
     jwtAuth:

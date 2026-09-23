@@ -1,12 +1,9 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents SSO API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits SSO API
+  version: ''
 tags:
-- name: Sso
+- name: SSO
 paths:
   /api/sso/mock/profiles/:
     get:
@@ -18,7 +15,9 @@ paths:
       security:
       - {}
       tags:
-      - Sso
+      - SSO
+      summary: Api sso mock profiles retrieve
+      x-summary-source: derived
   /api/sso/mock/token/:
     post:
       description: 'Mint a mock SSO token signed with the dev RSA keypair.
@@ -40,7 +39,9 @@ paths:
       security:
       - {}
       tags:
-      - Sso
+      - SSO
+      summary: Api sso mock token create
+      x-summary-source: derived
 components:
   securitySchemes:
     jwtAuth:

@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Approvals API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Approvals API
+  version: ''
 tags:
 - name: Approvals
 paths:
@@ -18,6 +15,8 @@ paths:
       - jwtAuth: []
       tags:
       - Approvals
+      summary: Api approvals action availability create
+      x-summary-source: derived
   /api/approvals/audit/bundles/:
     get:
       operationId: api_approvals_audit_bundles_list
@@ -61,6 +60,8 @@ paths:
       - jwtAuth: []
       tags:
       - Approvals
+      summary: Api approvals audit bundles list
+      x-summary-source: derived
   /api/approvals/audit/configurations/:
     get:
       operationId: api_approvals_audit_configurations_list
@@ -104,6 +105,8 @@ paths:
       - jwtAuth: []
       tags:
       - Approvals
+      summary: Api approvals audit configurations list
+      x-summary-source: derived
   /api/approvals/audit/configurations/{version_id}/:
     get:
       operationId: api_approvals_audit_configurations_retrieve
@@ -124,6 +127,8 @@ paths:
       - jwtAuth: []
       tags:
       - Approvals
+      summary: Api approvals audit configurations retrieve
+      x-summary-source: derived
   /api/approvals/audit/requests/:
     get:
       operationId: api_approvals_audit_requests_list
@@ -175,9 +180,11 @@ paths:
       - jwtAuth: []
       tags:
       - Approvals
+      summary: Api approvals audit requests list
+      x-summary-source: derived
   /api/approvals/audit/requests/{request_id}/actions/:
     get:
-      description: '`GET /approvals/audit/requests/<request_id>/actions/` (Notion E5).
+      description: '`GET /approvals/audit/requests//actions/` (Notion E5).
 
 
         Compact per-request action history used by the FE''s §1.4 side-by-side
@@ -220,23 +227,10 @@ paths:
       - jwtAuth: []
       tags:
       - Approvals
+      summary: Api approvals audit requests actions list
+      x-summary-source: derived
 components:
   schemas:
-    ApprovalRequestActionType:
-      description: Can be managed at /resources/approval-request-action-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
     ApprovalConfigurationVersion:
       properties:
         configuration_id:
@@ -286,67 +280,87 @@ components:
       - tenant_id
       - version_id
       type: object
-    ApprovalBundleActionAudit:
+    ApprovalBundleActionType:
+      description: Can be managed at /resources/approval-bundle-action-type
       properties:
-        action_type:
-          allOf:
-          - $ref: '#/components/schemas/ApprovalBundleActionType'
-          readOnly: true
-        bundle_id:
-          readOnly: true
-          type: integer
-        bundle_status:
-          allOf:
-          - $ref: '#/components/schemas/ApprovalBundleLifecycle'
-          readOnly: true
-        client_idempotency_key:
-          readOnly: true
+        definition:
           type: string
-        comment:
-          readOnly: true
-          type: string
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        credit_provider_id:
-          readOnly: true
-          type: integer
-        host_id:
-          readOnly: true
-          type: integer
-        host_kind:
-          allOf:
-          - $ref: '#/components/schemas/ApprovalHostKind'
-          readOnly: true
         id:
+          type: integer
+        order:
           readOnly: true
           type: integer
-        performed_by_id:
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalRequestActionType:
+      description: Can be managed at /resources/approval-request-action-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
           readOnly: true
           type: integer
-        step_index:
-          readOnly: true
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalSubjectKind:
+      description: Can be managed at /resources/approval-subject-kind
+      properties:
+        definition:
+          type: string
+        host_kind:
           type:
           - integer
           - 'null'
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
       required:
-      - action_type
-      - bundle_id
-      - bundle_status
-      - client_idempotency_key
-      - comment
-      - created
-      - credit_provider_id
-      - host_id
-      - host_kind
+      - definition
       - id
-      - performed_by_id
-      - step_index
+      - order
+      type: object
+    ApprovalHostKind:
+      description: Can be managed at /resources/approval-host-kind
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
       type: object
     ApprovalBundleLifecycle:
       description: Can be managed at /resources/approval-bundle-lifecycle
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalRequestStatus:
+      description: Can be managed at /resources/approval-request-status
       properties:
         definition:
           type: string
@@ -454,39 +468,64 @@ components:
       - step_index
       - subject_kind
       type: object
-    ApprovalBundleActionType:
-      description: Can be managed at /resources/approval-bundle-action-type
+    ApprovalBundleActionAudit:
       properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
+        action_type:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalBundleActionType'
+          readOnly: true
+        bundle_id:
           readOnly: true
           type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ApprovalSubjectKind:
-      description: Can be managed at /resources/approval-subject-kind
-      properties:
-        definition:
+        bundle_status:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalBundleLifecycle'
+          readOnly: true
+        client_idempotency_key:
+          readOnly: true
           type: string
+        comment:
+          readOnly: true
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        credit_provider_id:
+          readOnly: true
+          type: integer
+        host_id:
+          readOnly: true
+          type: integer
         host_kind:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalHostKind'
+          readOnly: true
+        id:
+          readOnly: true
+          type: integer
+        performed_by_id:
+          readOnly: true
+          type: integer
+        step_index:
+          readOnly: true
           type:
           - integer
           - 'null'
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
       required:
-      - definition
+      - action_type
+      - bundle_id
+      - bundle_status
+      - client_idempotency_key
+      - comment
+      - created
+      - credit_provider_id
+      - host_id
+      - host_kind
       - id
-      - order
+      - performed_by_id
+      - step_index
       type: object
     RequestActionTimeline:
       description: 'Compact per-request action shape consumed by the FE''s §1.4
@@ -530,36 +569,6 @@ components:
       - created_at
       - id
       - level
-      type: object
-    ApprovalHostKind:
-      description: Can be managed at /resources/approval-host-kind
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ApprovalRequestStatus:
-      description: Can be managed at /resources/approval-request-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
   securitySchemes:
     jwtAuth:

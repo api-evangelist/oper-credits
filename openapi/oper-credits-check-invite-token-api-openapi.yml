@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Check Invite Token API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Check Invite Token API
+  version: ''
 tags:
 - name: Check Invite Token
 paths:
@@ -33,6 +30,8 @@ paths:
           description: ''
       tags:
       - Check Invite Token
+      summary: Api check invite token create
+      x-summary-source: derived
 components:
   schemas:
     CheckInviteToken:

@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Contact API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Contact API
+  version: ''
 tags:
 - name: Contact
 paths:
@@ -22,10 +19,72 @@ paths:
       - jwtAuth: []
       tags:
       - Contact
+      summary: Api contact retrieve
+      x-summary-source: derived
 components:
   schemas:
-    Country:
-      description: Can be managed at /resources/country
+    ReducedBroker:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        account_manager:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          readOnly: true
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          readOnly: true
+        fsma_reference:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        outstanding_debt:
+          format: double
+          readOnly: true
+          type: number
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - account_manager
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - outstanding_debt
+      - vat_number
+      type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    StreetType:
+      description: Can be managed at /resources/street-type
       properties:
         definition:
           type: string
@@ -39,23 +98,8 @@ components:
       - id
       - order
       type: object
-    Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        id:
-          readOnly: true
-          type: integer
-        value:
-          maxLength: 32
-          type: string
-      required:
-      - country_code
-      - id
-      - value
-      type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
+    CompanyType:
+      description: Can be managed at /resources/company-types
       properties:
         definition:
           type: string
@@ -105,8 +149,23 @@ components:
       - office_phone
       - tenant
       type: object
-    StreetType:
-      description: Can be managed at /resources/street-type
+    Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        id:
+          readOnly: true
+          type: integer
+        value:
+          maxLength: 32
+          type: string
+      required:
+      - country_code
+      - id
+      - value
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
       properties:
         definition:
           type: string
@@ -119,6 +178,33 @@ components:
       - definition
       - id
       - order
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
       type: object
     Address:
       properties:
@@ -197,8 +283,8 @@ components:
       - street
       - zip_code
       type: object
-    CompanyType:
-      description: Can be managed at /resources/company-types
+    Country:
+      description: Can be managed at /resources/country
       properties:
         definition:
           type: string
@@ -211,93 +297,6 @@ components:
       - definition
       - id
       - order
-      type: object
-    ReducedBaseUser:
-      description: User reduced representation
-      properties:
-        first_name:
-          default: ''
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        last_name:
-          default: ''
-          readOnly: true
-          type: string
-        role:
-          allOf:
-          - $ref: '#/components/schemas/UserRole'
-          readOnly: true
-        verified:
-          readOnly: true
-          type: boolean
-      required:
-      - first_name
-      - id
-      - last_name
-      - role
-      - verified
-      type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - country
-      - definition
-      - id
-      - order
-      type: object
-    ReducedBroker:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
-      properties:
-        account_manager:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBaseUser'
-          readOnly: true
-        bank_account:
-          readOnly: true
-          type: string
-        company_type:
-          allOf:
-          - $ref: '#/components/schemas/CompanyType'
-          readOnly: true
-        fsma_reference:
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        id:
-          type: integer
-        name:
-          readOnly: true
-          type: string
-        outstanding_debt:
-          format: double
-          readOnly: true
-          type: number
-        vat_number:
-          readOnly: true
-          type: string
-      required:
-      - account_manager
-      - bank_account
-      - company_type
-      - fsma_reference
-      - id
-      - name
-      - outstanding_debt
-      - vat_number
       type: object
     Email:
       description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."

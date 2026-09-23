@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Internaldocuments API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Internaldocuments API
+  version: ''
 tags:
 - name: Internaldocuments
 paths:
@@ -35,6 +32,8 @@ paths:
       - jwtAuth: []
       tags:
       - Internaldocuments
+      summary: Api internaldocuments documents list
+      x-summary-source: derived
   /api/internaldocuments/documents/{configuration_id}/:
     get:
       operationId: api_internaldocuments_documents_retrieve
@@ -56,6 +55,8 @@ paths:
       - jwtAuth: []
       tags:
       - Internaldocuments
+      summary: Api internaldocuments documents retrieve
+      x-summary-source: derived
   /api/internaldocuments/upload/:
     post:
       description: Override to add query params to the data, serialize the full payload and return an empty response
@@ -71,252 +72,10 @@ paths:
       - jwtAuth: []
       tags:
       - Internaldocuments
+      summary: Api internaldocuments upload create
+      x-summary-source: derived
 components:
   schemas:
-    DocumentType:
-      description: Can be managed at /resources/document-type
-      properties:
-        add_to_handover_letter:
-          type: boolean
-        allows_generation:
-          type: boolean
-        append_file_version:
-          type: boolean
-        can_be_added_manually_as_informative_document:
-          type: boolean
-        definition:
-          type: string
-        document_generation_configuration: {}
-        id:
-          type: integer
-        is_informative:
-          type: boolean
-        is_proof_to_sign:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    DocumentDownload:
-      properties:
-        configuration_id:
-          format: uuid
-          type: string
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        created_object_id:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-        document_type:
-          allOf:
-          - $ref: '#/components/schemas/DocumentType'
-          readOnly: true
-        file_name:
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        integrator_transfer_rounds:
-          items:
-            additionalProperties: {}
-            type: object
-          readOnly: true
-          type: array
-        is_sent:
-          type: boolean
-        is_signed:
-          type: boolean
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type: string
-        link_id:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-        mime_type:
-          readOnly: true
-          type: string
-        object_file_name:
-          maxLength: 256
-          type: string
-        object_id:
-          format: uuid
-          readOnly: true
-          type: string
-        oper_reference:
-          format: uuid
-          readOnly: true
-          type: string
-        sha256_hash:
-          maxLength: 64
-          type: string
-        signed_date:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        status:
-          allOf:
-          - $ref: '#/components/schemas/DocumentStatus'
-          readOnly: true
-        url:
-          readOnly: true
-          type: string
-        version:
-          readOnly: true
-          type: string
-      required:
-      - created
-      - created_object_id
-      - document_type
-      - file_name
-      - id
-      - integrator_transfer_rounds
-      - last_modified
-      - link_id
-      - mime_type
-      - object_id
-      - oper_reference
-      - status
-      - url
-      - version
-      type: object
-    DocumentListDownload:
-      properties:
-        configuration_id:
-          format: uuid
-          type: string
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        created_object_id:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-        document_type:
-          allOf:
-          - $ref: '#/components/schemas/DocumentType'
-          readOnly: true
-        file_name:
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        integrator_transfer_rounds:
-          items:
-            additionalProperties: {}
-            type: object
-          readOnly: true
-          type: array
-        is_sent:
-          type: boolean
-        is_signed:
-          type: boolean
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type: string
-        link_id:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-        object_file_name:
-          maxLength: 256
-          type: string
-        object_id:
-          format: uuid
-          readOnly: true
-          type: string
-        oper_reference:
-          format: uuid
-          readOnly: true
-          type: string
-        sha256_hash:
-          maxLength: 64
-          type: string
-        signed_date:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        status:
-          allOf:
-          - $ref: '#/components/schemas/DocumentStatus'
-          readOnly: true
-        version:
-          readOnly: true
-          type: string
-      required:
-      - created
-      - created_object_id
-      - document_type
-      - file_name
-      - id
-      - integrator_transfer_rounds
-      - last_modified
-      - link_id
-      - object_id
-      - oper_reference
-      - status
-      - version
-      type: object
-    DocumentStatus:
-      description: Can be managed at /resources/document-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    PaginatedDocumentListDownloadList:
-      properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          type:
-          - string
-          - 'null'
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          type:
-          - string
-          - 'null'
-        results:
-          items:
-            $ref: '#/components/schemas/DocumentListDownload'
-          type: array
-      required:
-      - count
-      - results
-      type: object
     DocumentUpload:
       properties:
         configuration_id:
@@ -411,6 +170,250 @@ components:
       - oper_reference
       - status
       - url
+      - version
+      type: object
+    DocumentDownload:
+      properties:
+        configuration_id:
+          format: uuid
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        created_object_id:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        document_type:
+          allOf:
+          - $ref: '#/components/schemas/DocumentType'
+          readOnly: true
+        file_name:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        integrator_transfer_rounds:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        is_sent:
+          type: boolean
+        is_signed:
+          type: boolean
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        link_id:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        mime_type:
+          readOnly: true
+          type: string
+        object_file_name:
+          maxLength: 256
+          type: string
+        object_id:
+          format: uuid
+          readOnly: true
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        sha256_hash:
+          maxLength: 64
+          type: string
+        signed_date:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        status:
+          allOf:
+          - $ref: '#/components/schemas/DocumentStatus'
+          readOnly: true
+        url:
+          readOnly: true
+          type: string
+        version:
+          readOnly: true
+          type: string
+      required:
+      - created
+      - created_object_id
+      - document_type
+      - file_name
+      - id
+      - integrator_transfer_rounds
+      - last_modified
+      - link_id
+      - mime_type
+      - object_id
+      - oper_reference
+      - status
+      - url
+      - version
+      type: object
+    PaginatedDocumentListDownloadList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
+          items:
+            $ref: '#/components/schemas/DocumentListDownload'
+          type: array
+      required:
+      - count
+      - results
+      type: object
+    DocumentStatus:
+      description: Can be managed at /resources/document-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DocumentType:
+      description: Can be managed at /resources/document-type
+      properties:
+        add_to_handover_letter:
+          type: boolean
+        allows_generation:
+          type: boolean
+        append_file_version:
+          type: boolean
+        can_be_added_manually_as_informative_document:
+          type: boolean
+        definition:
+          type: string
+        document_generation_configuration: {}
+        id:
+          type: integer
+        is_informative:
+          type: boolean
+        is_proof_to_sign:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DocumentListDownload:
+      properties:
+        configuration_id:
+          format: uuid
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        created_object_id:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        document_type:
+          allOf:
+          - $ref: '#/components/schemas/DocumentType'
+          readOnly: true
+        file_name:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        integrator_transfer_rounds:
+          items:
+            additionalProperties: {}
+            type: object
+          readOnly: true
+          type: array
+        is_sent:
+          type: boolean
+        is_signed:
+          type: boolean
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        link_id:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        object_file_name:
+          maxLength: 256
+          type: string
+        object_id:
+          format: uuid
+          readOnly: true
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        sha256_hash:
+          maxLength: 64
+          type: string
+        signed_date:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        status:
+          allOf:
+          - $ref: '#/components/schemas/DocumentStatus'
+          readOnly: true
+        version:
+          readOnly: true
+          type: string
+      required:
+      - created
+      - created_object_id
+      - document_type
+      - file_name
+      - id
+      - integrator_transfer_rounds
+      - last_modified
+      - link_id
+      - object_id
+      - oper_reference
+      - status
       - version
       type: object
   securitySchemes:

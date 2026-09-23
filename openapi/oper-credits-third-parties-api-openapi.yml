@@ -1,10 +1,7 @@
 openapi: 3.2.0
 info:
-  title: Oper Credits Agent Documents Third Parties API
-  version: '1.0'
-servers:
-- url: https://developers.opercredits.com/
-  description: Base URL declared by the provider in apis.yml (roadmap#122).
+  title: Oper Credits Third Parties API
+  version: ''
 tags:
 - name: Third Parties
 paths:
@@ -24,6 +21,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker relationships list
+      x-summary-source: derived
     post:
       operationId: api_third_parties_broker_relationships_create
       requestBody:
@@ -49,6 +48,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker relationships create
+      x-summary-source: derived
   /api/third-parties/broker-relationships/{id}/:
     delete:
       operationId: api_third_parties_broker_relationships_destroy
@@ -66,6 +67,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker relationships destroy
+      x-summary-source: derived
     get:
       operationId: api_third_parties_broker_relationships_retrieve
       parameters:
@@ -86,6 +89,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker relationships retrieve
+      x-summary-source: derived
     patch:
       operationId: api_third_parties_broker_relationships_partial_update
       parameters:
@@ -117,6 +122,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker relationships partial update
+      x-summary-source: derived
     put:
       operationId: api_third_parties_broker_relationships_update
       parameters:
@@ -149,6 +156,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker relationships update
+      x-summary-source: derived
   /api/third-parties/broker-territories/:
     get:
       operationId: api_third_parties_broker_territories_list
@@ -165,6 +174,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker territories list
+      x-summary-source: derived
     post:
       operationId: api_third_parties_broker_territories_create
       requestBody:
@@ -190,6 +201,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker territories create
+      x-summary-source: derived
   /api/third-parties/broker-territories/{id}/:
     delete:
       operationId: api_third_parties_broker_territories_destroy
@@ -207,6 +220,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker territories destroy
+      x-summary-source: derived
     get:
       operationId: api_third_parties_broker_territories_retrieve
       parameters:
@@ -227,6 +242,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker territories retrieve
+      x-summary-source: derived
     patch:
       operationId: api_third_parties_broker_territories_partial_update
       parameters:
@@ -258,6 +275,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker territories partial update
+      x-summary-source: derived
     put:
       operationId: api_third_parties_broker_territories_update
       parameters:
@@ -290,6 +309,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker territories update
+      x-summary-source: derived
   /api/third-parties/broker-users/:
     get:
       operationId: api_third_parties_broker_users_list
@@ -306,6 +327,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker users list
+      x-summary-source: derived
     post:
       operationId: api_third_parties_broker_users_create
       requestBody:
@@ -331,6 +354,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker users create
+      x-summary-source: derived
   /api/third-parties/broker-users/{id}/:
     delete:
       operationId: api_third_parties_broker_users_destroy
@@ -348,6 +373,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker users destroy
+      x-summary-source: derived
     get:
       operationId: api_third_parties_broker_users_retrieve
       parameters:
@@ -368,6 +395,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker users retrieve
+      x-summary-source: derived
     patch:
       operationId: api_third_parties_broker_users_partial_update
       parameters:
@@ -399,6 +428,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker users partial update
+      x-summary-source: derived
     put:
       operationId: api_third_parties_broker_users_update
       parameters:
@@ -431,6 +462,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties broker users update
+      x-summary-source: derived
   /api/third-parties/brokers-imports/:
     get:
       operationId: api_third_parties_brokers_imports_list
@@ -470,6 +503,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties brokers imports list
+      x-summary-source: derived
     post:
       operationId: api_third_parties_brokers_imports_create
       requestBody:
@@ -494,6 +529,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties brokers imports create
+      x-summary-source: derived
   /api/third-parties/brokers-imports/{id}/:
     get:
       operationId: api_third_parties_brokers_imports_retrieve
@@ -515,6 +552,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties brokers imports retrieve
+      x-summary-source: derived
   /api/third-parties/brokers/:
     get:
       description: 'Returns the list of brokers.
@@ -543,6 +582,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties brokers list
+      x-summary-source: derived
     post:
       description: 'Returns the list of brokers.
 
@@ -573,6 +614,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties brokers create
+      x-summary-source: derived
   /api/third-parties/brokers/direct-broker/:
     get:
       operationId: api_third_parties_brokers_direct_broker_retrieve
@@ -587,6 +630,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties brokers direct broker retrieve
+      x-summary-source: derived
   /api/third-parties/brokers/user-profiles/import:
     post:
       operationId: api_third_parties_brokers_user_profiles_import_create
@@ -613,6 +658,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties brokers user profiles import create
+      x-summary-source: derived
   /api/third-parties/brokers/{id}/:
     get:
       description: 'Returns the list of brokers.
@@ -639,6 +686,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties brokers retrieve
+      x-summary-source: derived
     patch:
       description: 'Returns the list of brokers.
 
@@ -675,6 +724,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties brokers partial update
+      x-summary-source: derived
     put:
       description: 'Returns the list of brokers.
 
@@ -712,6 +763,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties brokers update
+      x-summary-source: derived
   /api/third-parties/estimators/:
     get:
       description: Returns the list of estimators.
@@ -729,6 +782,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties estimators list
+      x-summary-source: derived
   /api/third-parties/estimators/{id}/:
     get:
       description: Returns the list of estimators.
@@ -751,6 +806,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties estimators retrieve
+      x-summary-source: derived
   /api/third-parties/insurance-providers/:
     get:
       description: Returns the list of insurance providers.
@@ -768,6 +825,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties insurance providers list
+      x-summary-source: derived
   /api/third-parties/insurance-providers/{id}/:
     get:
       description: Returns the list of insurance providers.
@@ -790,6 +849,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties insurance providers retrieve
+      x-summary-source: derived
   /api/third-parties/lead-generators/:
     get:
       description: Returns the list of lead generators.
@@ -807,6 +868,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties lead generators list
+      x-summary-source: derived
   /api/third-parties/lead-generators/{id}/:
     get:
       description: Returns the list of lead generators.
@@ -829,6 +892,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties lead generators retrieve
+      x-summary-source: derived
   /api/third-parties/notaries/:
     get:
       description: Returns the list of notaries.
@@ -853,6 +918,8 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties notaries list
+      x-summary-source: derived
   /api/third-parties/notaries/{id}/:
     get:
       description: Returns the list of notaries.
@@ -875,10 +942,457 @@ paths:
       - jwtAuth: []
       tags:
       - Third Parties
+      summary: Api third parties notaries retrieve
+      x-summary-source: derived
 components:
   schemas:
+    BulkNestedBroker:
+      properties:
+        external_id:
+          type: string
+      required:
+      - external_id
+      type: object
+    BulkUser:
+      properties:
+        external_id:
+          type: string
+        profile:
+          $ref: '#/components/schemas/BulkUserProfile'
+      required:
+      - external_id
+      - profile
+      type: object
+    ThirdParty2BaseUserAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        main_contact:
+          type: boolean
+        third_party:
+          type: integer
+        user:
+          type: integer
+      required:
+      - id
+      - third_party
+      - user
+      type: object
+    DirectBroker:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        bank_account:
+          readOnly: true
+          type: string
+        company_registration_number:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          readOnly: true
+        fsma_reference:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        id:
+          type: integer
+        main_address:
+          additionalProperties: {}
+          readOnly: true
+          type:
+          - object
+          - 'null'
+        name:
+          readOnly: true
+          type: string
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - bank_account
+      - company_registration_number
+      - company_type
+      - fsma_reference
+      - id
+      - main_address
+      - name
+      - vat_number
+      type: object
+    CompanyType:
+      description: Can be managed at /resources/company-types
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Sector:
+      description: Can be managed at /resources/sector
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    BrokerUserProfileBulkImport:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/BulkBrokerUserProfile'
+          maxItems: 100000
+          minItems: 1
+          type: array
+      required:
+      - items
+      type: object
     UserRole:
       description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    BulkUserProfile:
+      properties:
+        birth_city:
+          maxLength: 128
+          type: string
+        birth_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        first_name:
+          maxLength: 64
+          type: string
+        last_name:
+          maxLength: 128
+          type: string
+        mother_maiden_name:
+          maxLength: 128
+          type: string
+      type: object
+    BaseUserProfileWithContacts:
+      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
+        first_name:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_name:
+          type: string
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        profile:
+          allOf:
+          - $ref: '#/components/schemas/BaseUserProfile'
+          writeOnly: true
+      required:
+      - addresses
+      - emails
+      - first_name
+      - id
+      - last_name
+      - phone_numbers
+      type: object
+    CompanyProfile2Website:
+      properties:
+        value:
+          type: string
+        website_type:
+          $ref: '#/components/schemas/ContactType'
+      required:
+      - value
+      type: object
+    BulkBrokerUserProfile:
+      properties:
+        broker:
+          $ref: '#/components/schemas/BulkNestedBroker'
+        user:
+          $ref: '#/components/schemas/BulkUser'
+      required:
+      - broker
+      - user
+      type: object
+    ReducedLeadGenerator:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          readOnly: true
+        fsma_reference:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - vat_number
+      type: object
+    BaseUserProfile:
+      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
+      properties:
+        birth_city:
+          maxLength: 128
+          type: string
+        birth_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        first_name:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_name:
+          maxLength: 128
+          type: string
+        middle_name:
+          maxLength: 64
+          type: string
+        mother_maiden_name:
+          maxLength: 128
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        title:
+          type:
+          - integer
+          - 'null'
+        title2:
+          type:
+          - integer
+          - 'null'
+        user:
+          type: integer
+      required:
+      - id
+      - oper_reference
+      - user
+      type: object
+    ListBroker:
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
+        id:
+          readOnly: true
+          type: integer
+        name:
+          type: string
+      required:
+      - addresses
+      - id
+      - name
+      type: object
+    Country:
+      description: Can be managed at /resources/country
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    BrokerRelationshipAuto:
+      properties:
+        broker_from:
+          type: integer
+        broker_to:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+      required:
+      - broker_from
+      - broker_to
+      - id
+      type: object
+    PatchedThirdParty2BaseUserAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        main_contact:
+          type: boolean
+        third_party:
+          type: integer
+        user:
+          type: integer
+      type: object
+    BrokerBulkImportLog:
+      properties:
+        celery_task_id:
+          format: uuid
+          readOnly: true
+          type: string
+        exception:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        finished_at:
+          format: date-time
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        id:
+          readOnly: true
+          type: integer
+        payload:
+          readOnly: true
+        running_at:
+          format: date-time
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        status:
+          allOf:
+          - $ref: '#/components/schemas/BrokerBulkImportLogStatusEnum'
+          readOnly: true
+      required:
+      - celery_task_id
+      - exception
+      - finished_at
+      - id
+      - payload
+      - running_at
+      - status
+      type: object
+    PatchedBrokerTerritoryAuto:
+      properties:
+        broker:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        location:
+          maxLength: 256
+          type: string
+      type: object
+    InsuranceProvider:
+      properties:
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
+        bank_account:
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+        default_for_active_directory:
+          type: boolean
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
+        external_reference:
+          type: string
+        fsma_reference:
+          type: string
+        id:
+          type: integer
+        is_active:
+          type: boolean
+        name:
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        profile:
+          type: integer
+        sector:
+          allOf:
+          - $ref: '#/components/schemas/Sector'
+        vat_number:
+          type: string
+      required:
+      - addresses
+      - emails
+      - external_reference
+      - fsma_reference
+      - id
+      - name
+      - oper_reference
+      - phone_numbers
+      - profile
+      - vat_number
+      type: object
+    StreetType:
+      description: Can be managed at /resources/street-type
       properties:
         definition:
           type: string
@@ -950,54 +1464,104 @@ components:
         vat_number:
           type: string
       type: object
-    StreetType:
-      description: Can be managed at /resources/street-type
+    LeadGenerator:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
       properties:
-        definition:
+        account_manager:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        broker_type:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        brokers:
+          items:
+            type: integer
+          readOnly: true
+          type: array
+        commission_fee:
+          format: double
+          readOnly: true
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -10
+          exclusiveMaximum: 10
+        default_for_active_directory:
+          readOnly: true
+          type: boolean
+        external_id:
+          maxLength: 64
+          readOnly: true
           type: string
+        fsma_reference:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        fsma_status:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
         id:
           type: integer
-        order:
+        is_active:
+          readOnly: true
+          type: boolean
+        name:
+          readOnly: true
+          type: string
+        profile:
           readOnly: true
           type: integer
       required:
-      - definition
+      - account_manager
+      - broker_type
+      - brokers
+      - commission_fee
+      - default_for_active_directory
+      - external_id
+      - fsma_reference
+      - fsma_status
       - id
-      - order
+      - is_active
+      - name
+      - profile
       type: object
-    CompanyType:
-      description: Can be managed at /resources/company-types
+    ReducedEstimator:
+      description: Estimator reduced representation
       properties:
-        definition:
+        bank_account:
+          readOnly: true
           type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          readOnly: true
+        fsma_reference:
+          readOnly: true
+          type:
+          - string
+          - 'null'
         id:
           type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
+        name:
           readOnly: true
           type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
+        vat_number:
           readOnly: true
-          type: integer
+          type: string
       required:
-      - country
-      - definition
+      - bank_account
+      - company_type
+      - fsma_reference
       - id
-      - order
+      - name
+      - vat_number
       type: object
     Profile2Address:
       properties:
@@ -1066,225 +1630,8 @@ components:
       - street
       - zip_code
       type: object
-    InsuranceProvider:
-      properties:
-        addresses:
-          items:
-            $ref: '#/components/schemas/Profile2Address'
-          type: array
-        bank_account:
-          type: string
-        company_type:
-          allOf:
-          - $ref: '#/components/schemas/CompanyType'
-        default_for_active_directory:
-          type: boolean
-        emails:
-          items:
-            $ref: '#/components/schemas/Profile2Email'
-          type: array
-        external_reference:
-          type: string
-        fsma_reference:
-          type: string
-        id:
-          type: integer
-        is_active:
-          type: boolean
-        name:
-          type: string
-        oper_reference:
-          format: uuid
-          readOnly: true
-          type: string
-        phone_numbers:
-          items:
-            $ref: '#/components/schemas/Profile2Phone'
-          type: array
-        profile:
-          type: integer
-        sector:
-          allOf:
-          - $ref: '#/components/schemas/Sector'
-        vat_number:
-          type: string
-      required:
-      - addresses
-      - emails
-      - external_reference
-      - fsma_reference
-      - id
-      - name
-      - oper_reference
-      - phone_numbers
-      - profile
-      - vat_number
-      type: object
-    ThirdParty2BaseUserAuto:
-      properties:
-        id:
-          readOnly: true
-          type: integer
-        main_contact:
-          type: boolean
-        third_party:
-          type: integer
-        user:
-          type: integer
-      required:
-      - id
-      - third_party
-      - user
-      type: object
-    Profile2Email:
-      properties:
-        email_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          format: email
-          type: string
-      required:
-      - value
-      type: object
-    BaseUserProfileWithContacts:
-      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
-      properties:
-        addresses:
-          items:
-            $ref: '#/components/schemas/Profile2Address'
-          type: array
-        emails:
-          items:
-            $ref: '#/components/schemas/Profile2Email'
-          type: array
-        first_name:
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        last_name:
-          type: string
-        phone_numbers:
-          items:
-            $ref: '#/components/schemas/Profile2Phone'
-          type: array
-        profile:
-          allOf:
-          - $ref: '#/components/schemas/BaseUserProfile'
-          writeOnly: true
-      required:
-      - addresses
-      - emails
-      - first_name
-      - id
-      - last_name
-      - phone_numbers
-      type: object
-    BrokerUserProfileBulkImport:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/BulkBrokerUserProfile'
-          maxItems: 100000
-          minItems: 1
-          type: array
-      required:
-      - items
-      type: object
-    Broker:
-      properties:
-        account_manager:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBaseUser'
-        addresses:
-          items:
-            $ref: '#/components/schemas/Profile2Address'
-          type: array
-        bank_account:
-          type: string
-        commission_email:
-          allOf:
-          - $ref: '#/components/schemas/Profile2Email'
-          readOnly: true
-        company_type:
-          allOf:
-          - $ref: '#/components/schemas/CompanyType'
-        confiscate_commission:
-          type: boolean
-        emails:
-          items:
-            $ref: '#/components/schemas/Profile2Email'
-          type: array
-        fsma_reference:
-          type:
-          - string
-          - 'null'
-        fsma_status:
-          allOf:
-          - $ref: '#/components/schemas/FsmaStatus'
-        id:
-          readOnly: true
-          type: integer
-        legal_address:
-          allOf:
-          - $ref: '#/components/schemas/Profile2Address'
-          readOnly: true
-        main_contact:
-          allOf:
-          - $ref: '#/components/schemas/BaseUserProfileWithContacts'
-          readOnly: true
-        name:
-          type: string
-        outstanding_debt:
-          format: double
-          readOnly: true
-          type: number
-        phone_numbers:
-          items:
-            $ref: '#/components/schemas/Profile2Phone'
-          type: array
-        sector:
-          allOf:
-          - $ref: '#/components/schemas/Sector'
-        vat_number:
-          type: string
-      required:
-      - addresses
-      - commission_email
-      - emails
-      - id
-      - legal_address
-      - main_contact
-      - name
-      - outstanding_debt
-      - phone_numbers
-      - vat_number
-      type: object
-    CompanyProfile2Website:
-      properties:
-        value:
-          type: string
-        website_type:
-          $ref: '#/components/schemas/ContactType'
-      required:
-      - value
-      type: object
-    BrokerBulkImportLogStatusEnum:
-      description: '* `initialized` - Initialized
-
-        * `running` - Running
-
-        * `error` - Error
-
-        * `finished` - Finished'
-      enum:
-      - initialized
-      - running
-      - error
-      - finished
-      type: string
-    Sector:
-      description: Can be managed at /resources/sector
+    ContactType:
+      description: Can be managed at /resources/contact-type
       properties:
         definition:
           type: string
@@ -1298,105 +1645,37 @@ components:
       - id
       - order
       type: object
-    ReducedEstimator:
-      description: Estimator reduced representation
+    BrokerTerritoryAuto:
       properties:
-        bank_account:
-          readOnly: true
-          type: string
-        company_type:
-          allOf:
-          - $ref: '#/components/schemas/CompanyType'
-          readOnly: true
-        fsma_reference:
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        id:
+        broker:
           type: integer
-        name:
-          readOnly: true
-          type: string
-        vat_number:
-          readOnly: true
-          type: string
-      required:
-      - bank_account
-      - company_type
-      - fsma_reference
-      - id
-      - name
-      - vat_number
-      type: object
-    BulkUserProfile:
-      properties:
-        birth_city:
-          maxLength: 128
-          type: string
-        birth_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        first_name:
-          maxLength: 64
-          type: string
-        last_name:
-          maxLength: 128
-          type: string
-        mother_maiden_name:
-          maxLength: 128
-          type: string
-      type: object
-    BaseUserProfile:
-      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
-      properties:
-        birth_city:
-          maxLength: 128
-          type: string
-        birth_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        first_name:
-          maxLength: 64
-          type: string
         id:
           readOnly: true
           type: integer
-        last_name:
-          maxLength: 128
+        location:
+          maxLength: 256
           type: string
-        middle_name:
-          maxLength: 64
-          type: string
-        mother_maiden_name:
-          maxLength: 128
-          type: string
-        oper_reference:
-          format: uuid
+      required:
+      - broker
+      - id
+      - location
+      type: object
+    PatchedBrokerRelationshipAuto:
+      properties:
+        broker_from:
+          type: integer
+        broker_to:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+      type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
           readOnly: true
           type: string
-        title:
-          type:
-          - integer
-          - 'null'
-        title2:
-          type:
-          - integer
-          - 'null'
-        user:
-          type: integer
-      required:
-      - id
-      - oper_reference
-      - user
-      type: object
-    Country:
-      description: Can be managed at /resources/country
-      properties:
         definition:
           type: string
         id:
@@ -1405,6 +1684,7 @@ components:
           readOnly: true
           type: integer
       required:
+      - country
       - definition
       - id
       - order
@@ -1424,20 +1704,49 @@ components:
       - id
       - order
       type: object
-    ContactType:
-      description: Can be managed at /resources/contact-type
+    BrokerBulkImportLogStatusEnum:
+      description: '* `initialized` - Initialized
+
+        * `running` - Running
+
+        * `error` - Error
+
+        * `finished` - Finished'
+      enum:
+      - initialized
+      - running
+      - error
+      - finished
+      type: string
+    ReducedInsuranceProvider:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
       properties:
-        definition:
+        external_reference:
+          readOnly: true
+          type: string
+        fsma_reference:
+          readOnly: true
           type: string
         id:
           type: integer
-        order:
+        name:
           readOnly: true
-          type: integer
+          type: string
       required:
-      - definition
+      - external_reference
+      - fsma_reference
       - id
-      - order
+      - name
+      type: object
+    Profile2Email:
+      properties:
+        email_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          format: email
+          type: string
+      required:
+      - value
       type: object
     Estimator:
       description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
@@ -1515,185 +1824,6 @@ components:
       - sector
       - vat_number
       type: object
-    ListBroker:
-      properties:
-        addresses:
-          items:
-            $ref: '#/components/schemas/Profile2Address'
-          type: array
-        id:
-          readOnly: true
-          type: integer
-        name:
-          type: string
-      required:
-      - addresses
-      - id
-      - name
-      type: object
-    BrokerBulkImportLog:
-      properties:
-        celery_task_id:
-          format: uuid
-          readOnly: true
-          type: string
-        exception:
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        finished_at:
-          format: date-time
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        id:
-          readOnly: true
-          type: integer
-        payload:
-          readOnly: true
-        running_at:
-          format: date-time
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        status:
-          allOf:
-          - $ref: '#/components/schemas/BrokerBulkImportLogStatusEnum'
-          readOnly: true
-      required:
-      - celery_task_id
-      - exception
-      - finished_at
-      - id
-      - payload
-      - running_at
-      - status
-      type: object
-    BulkNestedBroker:
-      properties:
-        external_id:
-          type: string
-      required:
-      - external_id
-      type: object
-    ReducedBaseUser:
-      description: User reduced representation
-      properties:
-        first_name:
-          default: ''
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        last_name:
-          default: ''
-          readOnly: true
-          type: string
-        role:
-          allOf:
-          - $ref: '#/components/schemas/UserRole'
-          readOnly: true
-        verified:
-          readOnly: true
-          type: boolean
-      required:
-      - first_name
-      - id
-      - last_name
-      - role
-      - verified
-      type: object
-    BulkBrokerUserProfile:
-      properties:
-        broker:
-          $ref: '#/components/schemas/BulkNestedBroker'
-        user:
-          $ref: '#/components/schemas/BulkUser'
-      required:
-      - broker
-      - user
-      type: object
-    PatchedBrokerRelationshipAuto:
-      properties:
-        broker_from:
-          type: integer
-        broker_to:
-          type: integer
-        id:
-          readOnly: true
-          type: integer
-      type: object
-    LeadGenerator:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
-      properties:
-        account_manager:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-        broker_type:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-        brokers:
-          items:
-            type: integer
-          readOnly: true
-          type: array
-        commission_fee:
-          format: double
-          readOnly: true
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -10
-          exclusiveMaximum: 10
-        default_for_active_directory:
-          readOnly: true
-          type: boolean
-        external_id:
-          maxLength: 64
-          readOnly: true
-          type: string
-        fsma_reference:
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        fsma_status:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-        id:
-          type: integer
-        is_active:
-          readOnly: true
-          type: boolean
-        name:
-          readOnly: true
-          type: string
-        profile:
-          readOnly: true
-          type: integer
-      required:
-      - account_manager
-      - broker_type
-      - brokers
-      - commission_fee
-      - default_for_active_directory
-      - external_id
-      - fsma_reference
-      - fsma_status
-      - id
-      - is_active
-      - name
-      - profile
-      type: object
     Notary:
       description: The same as ThirdPartySerializer but specifically for a Notary, without VAT, with bank account
       properties:
@@ -1747,63 +1877,32 @@ components:
       - profileName
       - websites
       type: object
-    DirectBroker:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+    ReducedBaseUser:
+      description: User reduced representation
       properties:
-        bank_account:
+        first_name:
+          default: ''
           readOnly: true
           type: string
-        company_registration_number:
+        id:
+          type: integer
+        last_name:
+          default: ''
           readOnly: true
-          type:
-          - string
-          - 'null'
-        company_type:
+          type: string
+        role:
           allOf:
-          - $ref: '#/components/schemas/CompanyType'
+          - $ref: '#/components/schemas/UserRole'
           readOnly: true
-        fsma_reference:
+        verified:
           readOnly: true
-          type:
-          - string
-          - 'null'
-        id:
-          type: integer
-        main_address:
-          additionalProperties: {}
-          readOnly: true
-          type:
-          - object
-          - 'null'
-        name:
-          readOnly: true
-          type: string
-        vat_number:
-          readOnly: true
-          type: string
+          type: boolean
       required:
-      - bank_account
-      - company_registration_number
-      - company_type
-      - fsma_reference
+      - first_name
       - id
-      - main_address
-      - name
-      - vat_number
-      type: object
-    BrokerRelationshipAuto:
-      properties:
-        broker_from:
-          type: integer
-        broker_to:
-          type: integer
-        id:
-          readOnly: true
-          type: integer
-      required:
-      - broker_from
-      - broker_to
-      - id
+      - last_name
+      - role
+      - verified
       type: object
     Profile2Phone:
       properties:
@@ -1821,104 +1920,74 @@ components:
       required:
       - value
       type: object
-    ReducedInsuranceProvider:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+    Broker:
       properties:
-        external_reference:
-          readOnly: true
-          type: string
-        fsma_reference:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        name:
-          readOnly: true
-          type: string
-      required:
-      - external_reference
-      - fsma_reference
-      - id
-      - name
-      type: object
-    ReducedLeadGenerator:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
-      properties:
+        account_manager:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          type: array
         bank_account:
-          readOnly: true
           type: string
+        commission_email:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Email'
+          readOnly: true
         company_type:
           allOf:
           - $ref: '#/components/schemas/CompanyType'
-          readOnly: true
+        confiscate_commission:
+          type: boolean
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
         fsma_reference:
-          readOnly: true
           type:
           - string
           - 'null'
-        id:
-          type: integer
-        name:
-          readOnly: true
-          type: string
-        vat_number:
-          readOnly: true
-          type: string
-      required:
-      - bank_account
-      - company_type
-      - fsma_reference
-      - id
-      - name
-      - vat_number
-      type: object
-    BrokerTerritoryAuto:
-      properties:
-        broker:
-          type: integer
+        fsma_status:
+          allOf:
+          - $ref: '#/components/schemas/FsmaStatus'
         id:
           readOnly: true
           type: integer
-        location:
-          maxLength: 256
-          type: string
-      required:
-      - broker
-      - id
-      - location
-      type: object
-    PatchedBrokerTerritoryAuto:
-      properties:
-        broker:
-          type: integer
-        id:
+        legal_address:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Address'
           readOnly: true
-          type: integer
-        location:
-          maxLength: 256
-          type: string
-      type: object
-    BulkUser:
-      properties:
-        external_id:
-          type: string
-        profile:
-          $ref: '#/components/schemas/BulkUserProfile'
-      required:
-      - external_id
-      - profile
-      type: object
-    PatchedThirdParty2BaseUserAuto:
-      properties:
-        id:
-          readOnly: true
-          type: integer
         main_contact:
-          type: boolean
-        third_party:
-          type: integer
-        user:
-          type: integer
+          allOf:
+          - $ref: '#/components/schemas/BaseUserProfileWithContacts'
+          readOnly: true
+        name:
+          type: string
+        outstanding_debt:
+          format: double
+          readOnly: true
+          type: number
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        sector:
+          allOf:
+          - $ref: '#/components/schemas/Sector'
+        vat_number:
+          type: string
+      required:
+      - addresses
+      - commission_email
+      - emails
+      - id
+      - legal_address
+      - main_contact
+      - name
+      - outstanding_debt
+      - phone_numbers
+      - vat_number
       type: object
   securitySchemes:
     jwtAuth:

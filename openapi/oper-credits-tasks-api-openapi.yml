@@ -198,43 +198,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Status:
-      description: Can be managed at /resources/status
-      properties:
-        borrower_facing_status:
-          readOnly: true
-          type: string
-        check_if_selected_offer_is_still_valid_when_data_is_changed:
-          type: boolean
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        icon:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        is_active:
-          type: boolean
-        is_terminal:
-          type: boolean
-        notify_analyst_on_draft_offer_rate_change:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-        recalculate_selected_offer_when_data_is_changed:
-          type: boolean
-      required:
-      - borrower_facing_status
-      - color
-      - definition
-      - icon
-      - id
-      - order
-      type: object
     TaskType:
       description: Can be managed at /resources/task-type
       properties:
@@ -252,68 +215,6 @@ components:
       - definition
       - id
       - order
-      type: object
-    PaginatedTaskList:
-      properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          type:
-          - string
-          - 'null'
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          type:
-          - string
-          - 'null'
-        results:
-          items:
-            $ref: '#/components/schemas/Task'
-          type: array
-      required:
-      - count
-      - results
-      type: object
-    PatchedTask:
-      properties:
-        assigned_to:
-          $ref: '#/components/schemas/ReducedBaseUser'
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        created_by:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBaseUser'
-          readOnly: true
-        description:
-          type: string
-        due_date:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        id:
-          readOnly: true
-          type: integer
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type: string
-        loan_request:
-          $ref: '#/components/schemas/ReducedLoanRequest'
-        status:
-          $ref: '#/components/schemas/TaskStatus'
-        task_category:
-          $ref: '#/components/schemas/TaskCategory'
-        task_type:
-          $ref: '#/components/schemas/TaskType'
       type: object
     ReducedLoanRequest:
       description: Loan request reduced representation
@@ -339,21 +240,6 @@ components:
       - id
       - internal_reference
       - status
-      type: object
-    TaskCategory:
-      description: Can be managed at /resources/task-category
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
     UserRole:
       description: Can be managed at /resources/user-role
@@ -396,6 +282,31 @@ components:
       - last_name
       - role
       - verified
+      type: object
+    PaginatedTaskList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
+          items:
+            $ref: '#/components/schemas/Task'
+          type: array
+      required:
+      - count
+      - results
       type: object
     Task:
       properties:
@@ -443,8 +354,97 @@ components:
       - task_category
       - task_type
       type: object
+    Status:
+      description: Can be managed at /resources/status
+      properties:
+        borrower_facing_status:
+          readOnly: true
+          type: string
+        check_if_selected_offer_is_still_valid_when_data_is_changed:
+          type: boolean
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        icon:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_active:
+          type: boolean
+        is_terminal:
+          type: boolean
+        notify_analyst_on_draft_offer_rate_change:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+        recalculate_selected_offer_when_data_is_changed:
+          type: boolean
+      required:
+      - borrower_facing_status
+      - color
+      - definition
+      - icon
+      - id
+      - order
+      type: object
     TaskStatus:
       description: Can be managed at /resources/task-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PatchedTask:
+      properties:
+        assigned_to:
+          $ref: '#/components/schemas/ReducedBaseUser'
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          readOnly: true
+        description:
+          type: string
+        due_date:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        id:
+          readOnly: true
+          type: integer
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        loan_request:
+          $ref: '#/components/schemas/ReducedLoanRequest'
+        status:
+          $ref: '#/components/schemas/TaskStatus'
+        task_category:
+          $ref: '#/components/schemas/TaskCategory'
+        task_type:
+          $ref: '#/components/schemas/TaskType'
+      type: object
+    TaskCategory:
+      description: Can be managed at /resources/task-category
       properties:
         definition:
           type: string

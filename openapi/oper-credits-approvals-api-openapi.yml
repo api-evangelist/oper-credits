@@ -231,121 +231,8 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ApprovalConfigurationVersion:
-      properties:
-        configuration_id:
-          readOnly: true
-          type: integer
-        credit_provider_id:
-          readOnly: true
-          type: integer
-        default:
-          readOnly: true
-          type: boolean
-        id:
-          readOnly: true
-          type: integer
-        json_diff:
-          readOnly: true
-        name:
-          readOnly: true
-          type: string
-        saved_at:
-          format: date-time
-          readOnly: true
-          type: string
-        saved_by_id:
-          readOnly: true
-          type: integer
-        subject_kind:
-          allOf:
-          - $ref: '#/components/schemas/ApprovalSubjectKind'
-          readOnly: true
-        tenant_id:
-          readOnly: true
-          type: integer
-        version_id:
-          readOnly: true
-          type: string
-      required:
-      - configuration_id
-      - credit_provider_id
-      - default
-      - id
-      - json_diff
-      - name
-      - saved_at
-      - saved_by_id
-      - subject_kind
-      - tenant_id
-      - version_id
-      type: object
-    ApprovalBundleActionType:
-      description: Can be managed at /resources/approval-bundle-action-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ApprovalRequestActionType:
-      description: Can be managed at /resources/approval-request-action-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ApprovalSubjectKind:
-      description: Can be managed at /resources/approval-subject-kind
-      properties:
-        definition:
-          type: string
-        host_kind:
-          type:
-          - integer
-          - 'null'
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
     ApprovalHostKind:
       description: Can be managed at /resources/approval-host-kind
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ApprovalBundleLifecycle:
-      description: Can be managed at /resources/approval-bundle-lifecycle
       properties:
         definition:
           type: string
@@ -468,6 +355,21 @@ components:
       - step_index
       - subject_kind
       type: object
+    ApprovalBundleLifecycle:
+      description: Can be managed at /resources/approval-bundle-lifecycle
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     ApprovalBundleActionAudit:
       properties:
         action_type:
@@ -527,6 +429,55 @@ components:
       - performed_by_id
       - step_index
       type: object
+    ApprovalRequestActionType:
+      description: Can be managed at /resources/approval-request-action-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalBundleActionType:
+      description: Can be managed at /resources/approval-bundle-action-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalSubjectKind:
+      description: Can be managed at /resources/approval-subject-kind
+      properties:
+        definition:
+          type: string
+        host_kind:
+          type:
+          - integer
+          - 'null'
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     RequestActionTimeline:
       description: 'Compact per-request action shape consumed by the FE''s §1.4
 
@@ -569,6 +520,55 @@ components:
       - created_at
       - id
       - level
+      type: object
+    ApprovalConfigurationVersion:
+      properties:
+        configuration_id:
+          readOnly: true
+          type: integer
+        credit_provider_id:
+          readOnly: true
+          type: integer
+        default:
+          readOnly: true
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        json_diff:
+          readOnly: true
+        name:
+          readOnly: true
+          type: string
+        saved_at:
+          format: date-time
+          readOnly: true
+          type: string
+        saved_by_id:
+          readOnly: true
+          type: integer
+        subject_kind:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalSubjectKind'
+          readOnly: true
+        tenant_id:
+          readOnly: true
+          type: integer
+        version_id:
+          readOnly: true
+          type: string
+      required:
+      - configuration_id
+      - credit_provider_id
+      - default
+      - id
+      - json_diff
+      - name
+      - saved_at
+      - saved_by_id
+      - subject_kind
+      - tenant_id
+      - version_id
       type: object
   securitySchemes:
     jwtAuth:

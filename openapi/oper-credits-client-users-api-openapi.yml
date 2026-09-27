@@ -127,21 +127,6 @@ components:
       - id
       - order
       type: object
-    Language:
-      description: Can be managed at /resources/language
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
     PaginatedReducedBaseUserList:
       properties:
         count:
@@ -182,6 +167,22 @@ components:
       - id
       - order
       type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
+      type: object
     ReducedBaseUser:
       description: User reduced representation
       properties:
@@ -209,37 +210,6 @@ components:
       - role
       - verified
       type: object
-    ContactType:
-      description: Can be managed at /resources/contact-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Profile2Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        is_secret:
-          default: false
-          type: boolean
-        phone_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          maxLength: 32
-          minLength: 4
-          type: string
-      required:
-      - value
-      type: object
     ClientUser:
       properties:
         email:
@@ -262,6 +232,36 @@ components:
       required:
       - email
       - phone_number
+      type: object
+    Language:
+      description: Can be managed at /resources/language
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ContactType:
+      description: Can be managed at /resources/contact-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
       type: object
   securitySchemes:
     jwtAuth:

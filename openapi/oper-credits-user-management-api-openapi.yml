@@ -259,6 +259,23 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    PatchedApplicationUser:
+      properties:
+        email:
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        is_staff:
+          type: boolean
+          writeOnly: true
+        is_superuser:
+          type: boolean
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+      type: object
     ApplicationUser:
       properties:
         email:
@@ -281,23 +298,6 @@ components:
       - is_staff
       - is_superuser
       - password
-      type: object
-    PatchedApplicationUser:
-      properties:
-        email:
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        is_staff:
-          type: boolean
-          writeOnly: true
-        is_superuser:
-          type: boolean
-          writeOnly: true
-        password:
-          type: string
-          writeOnly: true
       type: object
   securitySchemes:
     jwtAuth:

@@ -202,23 +202,64 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Language:
-      description: Can be managed at /resources/language
+    DocumentationLibrary.LibraryDocument:
       properties:
-        definition:
+        active:
+          type: boolean
+        base_products:
+          items:
+            type: integer
+          readOnly: true
+          type: array
+        check_function_configuration: {}
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+        custom_font_name:
+          maxLength: 128
+          type:
+          - string
+          - 'null'
+        data_merge_strategy:
+          type: string
+        data_override_template:
+          type: string
+        document_generation_configuration: {}
+        document_type:
+          $ref: '#/components/schemas/LibraryDocumentType'
+        file:
+          format: uri
+          type: string
+          writeOnly: true
+        file_name:
+          type: string
+        file_path:
           type: string
         id:
-          type: integer
-        order:
           readOnly: true
           type: integer
+        language:
+          $ref: '#/components/schemas/Language'
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
       required:
-      - definition
+      - base_products
+      - created
+      - document_type
       - id
-      - order
+      - language
+      - last_modified
       type: object
-    LibraryDocumentType:
-      description: Can be managed at /resources/library-document-type
+    Language:
+      description: Can be managed at /resources/language
       properties:
         definition:
           type: string
@@ -281,61 +322,20 @@ components:
           title: Modification date and time
           type: string
       type: object
-    DocumentationLibrary.LibraryDocument:
+    LibraryDocumentType:
+      description: Can be managed at /resources/library-document-type
       properties:
-        active:
-          type: boolean
-        base_products:
-          items:
-            type: integer
-          readOnly: true
-          type: array
-        check_function_configuration: {}
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        credit_provider:
-          allOf:
-          - $ref: '#/components/schemas/ReducedCreditProvider'
-        custom_font_name:
-          maxLength: 128
-          type:
-          - string
-          - 'null'
-        data_merge_strategy:
-          type: string
-        data_override_template:
-          type: string
-        document_generation_configuration: {}
-        document_type:
-          $ref: '#/components/schemas/LibraryDocumentType'
-        file:
-          format: uri
-          type: string
-          writeOnly: true
-        file_name:
-          type: string
-        file_path:
+        definition:
           type: string
         id:
+          type: integer
+        order:
           readOnly: true
           type: integer
-        language:
-          $ref: '#/components/schemas/Language'
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type: string
       required:
-      - base_products
-      - created
-      - document_type
+      - definition
       - id
-      - language
-      - last_modified
+      - order
       type: object
     ReducedCreditProvider:
       description: To be used for a short summary of the CreditProvider

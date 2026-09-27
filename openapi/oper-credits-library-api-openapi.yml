@@ -47,6 +47,38 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    LibraryCategory:
+      description: Can be managed at /resources/library-category
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    NestedSignedDocument:
+      properties:
+        document_type:
+          allOf:
+          - $ref: '#/components/schemas/DocumentType'
+          readOnly: true
+        mime_type:
+          readOnly: true
+          type: string
+        url:
+          readOnly: true
+          type: string
+      required:
+      - document_type
+      - mime_type
+      - url
+      type: object
     Language:
       description: Can be managed at /resources/language
       properties:
@@ -78,23 +110,6 @@ components:
       - document
       - language
       type: object
-    NestedSignedDocument:
-      properties:
-        document_type:
-          allOf:
-          - $ref: '#/components/schemas/DocumentType'
-          readOnly: true
-        mime_type:
-          readOnly: true
-          type: string
-        url:
-          readOnly: true
-          type: string
-      required:
-      - document_type
-      - mime_type
-      - url
-      type: object
     DocumentType:
       description: Can be managed at /resources/document-type
       properties:
@@ -115,21 +130,6 @@ components:
           type: boolean
         is_proof_to_sign:
           type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LibraryCategory:
-      description: Can be managed at /resources/library-category
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
         order:
           readOnly: true
           type: integer

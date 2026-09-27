@@ -75,6 +75,156 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    Country:
+      description: Can be managed at /resources/country
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    StreetType:
+      description: Can be managed at /resources/street-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FloodRiskType:
+      description: Can be managed at /resources/flood-risk-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RealtyType:
+      description: Can be managed at /resources/realty-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RealtyValuationStatus:
+      description: Can be managed at /resources/realty-valuation-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RealtyValuation:
+      properties:
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        documents:
+          items:
+            $ref: '#/components/schemas/RealtyValuationDocument'
+          type: array
+        external_generation_uuid:
+          format: uuid
+          type: string
+        external_service:
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        realty:
+          readOnly: true
+          type: integer
+        status:
+          allOf:
+          - $ref: '#/components/schemas/RealtyValuationStatus'
+        valuation_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        valuation_expiration_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        valuation_redirection_url:
+          format: uri
+          maxLength: 200
+          type: string
+        valuation_reference:
+          maxLength: 255
+          type: string
+        valuation_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyValuationType'
+      required:
+      - created
+      - external_service
+      - id
+      - last_modified
+      - oper_reference
+      - realty
+      - valuation_reference
+      type: object
+    RealtyValuationDocument:
+      properties:
+        document_type:
+          type: string
+        document_url:
+          format: uri
+          type: string
+      required:
+      - document_type
+      - document_url
+      type: object
     PatchedRealtyValuation:
       properties:
         created:
@@ -131,8 +281,8 @@ components:
           allOf:
           - $ref: '#/components/schemas/RealtyValuationType'
       type: object
-    FloodRiskType:
-      description: Can be managed at /resources/flood-risk-type
+    RealtyValuationType:
+      description: Can be managed at /resources/realty-valuation-type
       properties:
         definition:
           type: string
@@ -350,47 +500,6 @@ components:
           - integer
           - 'null'
       type: object
-    RealtyType:
-      description: Can be managed at /resources/realty-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    StreetType:
-      description: Can be managed at /resources/street-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RealtyValuationDocument:
-      properties:
-        document_type:
-          type: string
-        document_url:
-          format: uri
-          type: string
-      required:
-      - document_type
-      - document_url
-      type: object
     RealtyValuationAndSourceData:
       properties:
         data:
@@ -399,115 +508,6 @@ components:
           $ref: '#/components/schemas/RealtyValuation'
       required:
       - valuation
-      type: object
-    RealtyValuationStatus:
-      description: Can be managed at /resources/realty-valuation-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RealtyValuationType:
-      description: Can be managed at /resources/realty-valuation-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RealtyValuation:
-      properties:
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        documents:
-          items:
-            $ref: '#/components/schemas/RealtyValuationDocument'
-          type: array
-        external_generation_uuid:
-          format: uuid
-          type: string
-        external_service:
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type: string
-        oper_reference:
-          format: uuid
-          readOnly: true
-          type: string
-        realty:
-          readOnly: true
-          type: integer
-        status:
-          allOf:
-          - $ref: '#/components/schemas/RealtyValuationStatus'
-        valuation_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        valuation_expiration_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        valuation_redirection_url:
-          format: uri
-          maxLength: 200
-          type: string
-        valuation_reference:
-          maxLength: 255
-          type: string
-        valuation_type:
-          allOf:
-          - $ref: '#/components/schemas/RealtyValuationType'
-      required:
-      - created
-      - external_service
-      - id
-      - last_modified
-      - oper_reference
-      - realty
-      - valuation_reference
-      type: object
-    Country:
-      description: Can be managed at /resources/country
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
   securitySchemes:
     jwtAuth:

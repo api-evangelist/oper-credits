@@ -23,6 +23,111 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    StreetType:
+      description: Can be managed at /resources/street-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Country:
+      description: Can be managed at /resources/country
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Email:
+      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        value:
+          format: email
+          maxLength: 254
+          type: string
+      required:
+      - id
+      - value
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
+      type: object
     ReducedBroker:
       description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
       properties:
@@ -64,91 +169,6 @@ components:
       - outstanding_debt
       - vat_number
       type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - country
-      - definition
-      - id
-      - order
-      type: object
-    StreetType:
-      description: Can be managed at /resources/street-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CompanyType:
-      description: Can be managed at /resources/company-types
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ContactDetail:
-      properties:
-        broker:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBroker'
-          readOnly: true
-        office_address:
-          allOf:
-          - $ref: '#/components/schemas/Address'
-          readOnly: true
-        office_email:
-          allOf:
-          - $ref: '#/components/schemas/Email'
-          readOnly: true
-        office_name:
-          readOnly: true
-          type: string
-        office_opening_hours:
-          readOnly: true
-          type: string
-        office_phone:
-          allOf:
-          - $ref: '#/components/schemas/Phone'
-          readOnly: true
-        tenant:
-          readOnly: true
-          type: string
-      required:
-      - broker
-      - office_address
-      - office_email
-      - office_name
-      - office_opening_hours
-      - office_phone
-      - tenant
-      type: object
     Phone:
       properties:
         country_code:
@@ -163,48 +183,6 @@ components:
       - country_code
       - id
       - value
-      type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ReducedBaseUser:
-      description: User reduced representation
-      properties:
-        first_name:
-          default: ''
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        last_name:
-          default: ''
-          readOnly: true
-          type: string
-        role:
-          allOf:
-          - $ref: '#/components/schemas/UserRole'
-          readOnly: true
-        verified:
-          readOnly: true
-          type: boolean
-      required:
-      - first_name
-      - id
-      - last_name
-      - role
-      - verified
       type: object
     Address:
       properties:
@@ -283,8 +261,44 @@ components:
       - street
       - zip_code
       type: object
-    Country:
-      description: Can be managed at /resources/country
+    ContactDetail:
+      properties:
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBroker'
+          readOnly: true
+        office_address:
+          allOf:
+          - $ref: '#/components/schemas/Address'
+          readOnly: true
+        office_email:
+          allOf:
+          - $ref: '#/components/schemas/Email'
+          readOnly: true
+        office_name:
+          readOnly: true
+          type: string
+        office_opening_hours:
+          readOnly: true
+          type: string
+        office_phone:
+          allOf:
+          - $ref: '#/components/schemas/Phone'
+          readOnly: true
+        tenant:
+          readOnly: true
+          type: string
+      required:
+      - broker
+      - office_address
+      - office_email
+      - office_name
+      - office_opening_hours
+      - office_phone
+      - tenant
+      type: object
+    CompanyType:
+      description: Can be managed at /resources/company-types
       properties:
         definition:
           type: string
@@ -297,20 +311,6 @@ components:
       - definition
       - id
       - order
-      type: object
-    Email:
-      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
-      properties:
-        id:
-          readOnly: true
-          type: integer
-        value:
-          format: email
-          maxLength: 254
-          type: string
-      required:
-      - id
-      - value
       type: object
   securitySchemes:
     jwtAuth:

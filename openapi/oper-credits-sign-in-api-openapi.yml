@@ -131,6 +131,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    RoleTokenObtainPairOtp:
+      properties:
+        code:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - code
+      - token
+      type: object
     SignInActivate:
       description: 'Serializer to create a verified user.
 
@@ -210,18 +222,6 @@ components:
       - password
       - refresh
       - username
-      type: object
-    RoleTokenObtainPairOtp:
-      properties:
-        code:
-          type: string
-          writeOnly: true
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - code
-      - token
       type: object
   securitySchemes:
     jwtAuth:

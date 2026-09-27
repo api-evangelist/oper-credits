@@ -51,8 +51,9 @@ tags:
 - Fintech
 - Banking
 - Loan Origination
-- Real-Estate
-- Financial-Services
+- Real Estate
+- Financial Services
+- Underwriting
 tags_raw:
 - Company
 - Mortgages
@@ -63,6 +64,9 @@ tags_raw:
 - Loan Origination
 - Real Estate
 - Financial Services
+- Real-Estate
+- Financial-Services
+- Underwriting
 apis:
 - aid: oper-credits:oper-credits-agent-documents-api
   name: Oper Credits Agent Documents API
@@ -604,8 +608,6 @@ apis:
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
-  - Sign Up
-  tags_raw:
   - Signup
   properties:
   - type: OpenAPI
@@ -678,5 +680,3 @@ x-enrichment:
   status: enriched
   artifacts_added: 20
   pass: local-v1
-x-parent: oper
-x-relationship: product

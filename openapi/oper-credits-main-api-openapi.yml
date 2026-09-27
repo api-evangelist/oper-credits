@@ -2138,43 +2138,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PatchedUserProfileAuto:
+    PatchedProfile2PhoneAuto:
       properties:
-        birth_city:
-          maxLength: 128
-          type: string
-        birth_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        first_name:
-          maxLength: 64
-          type: string
         id:
           readOnly: true
           type: integer
-        last_name:
-          maxLength: 128
-          type: string
-        middle_name:
-          maxLength: 64
-          type: string
-        mother_maiden_name:
-          maxLength: 128
-          type: string
-        oper_reference:
-          format: uuid
-          type: string
-        title:
-          type:
-          - integer
-          - 'null'
-        title2:
-          type:
-          - integer
-          - 'null'
-        user:
+        is_secret:
+          type: boolean
+        phone_number:
+          type: integer
+        phone_type:
+          type: integer
+        profile:
           type: integer
       type: object
     PermissionAuto:
@@ -2238,318 +2213,6 @@ components:
       - id
       - user
       type: object
-    PatchedBaseUserCrud:
-      properties:
-        away_until:
-          format: date
-          type:
-          - string
-          - 'null'
-        date_joined:
-          format: date-time
-          type: string
-        email:
-          format: email
-          maxLength: 254
-          title: Email address
-          type: string
-        enrichment_status:
-          type:
-          - integer
-          - 'null'
-        enrichment_status_updated_at:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        external_id:
-          maxLength: 64
-          type: string
-        groups:
-          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
-          items:
-            type: integer
-          type: array
-        id:
-          readOnly: true
-          type: integer
-        is_active:
-          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-          title: Active
-          type: boolean
-        is_available:
-          type: boolean
-        is_staff:
-          description: Designates whether the user can log into this admin site.
-          title: Staff status
-          type: boolean
-        is_superuser:
-          description: Designates that this user has all permissions without explicitly assigning them.
-          title: Superuser status
-          type: boolean
-        last_language:
-          type: integer
-        last_login:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        oper_reference:
-          format: uuid
-          type: string
-        password:
-          type: string
-          writeOnly: true
-        preferred_language:
-          type: integer
-        role:
-          type: integer
-        updated_password_at:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        user_permissions:
-          description: Specific permissions for this user.
-          items:
-            type: integer
-          type: array
-        verified:
-          type: boolean
-      type: object
-    PatchedPhoneAuto:
-      properties:
-        country_code:
-          type: integer
-        id:
-          readOnly: true
-          type: integer
-        value:
-          maxLength: 32
-          type: string
-      type: object
-    User2CreditProviderAuto:
-      properties:
-        bank_id:
-          maxLength: 64
-          type: string
-        credit_provider:
-          type:
-          - integer
-          - 'null'
-        id:
-          readOnly: true
-          type: integer
-        user:
-          type: integer
-      required:
-      - bank_id
-      - id
-      - user
-      type: object
-    Profile2EmailAuto:
-      properties:
-        email:
-          type: integer
-        email_type:
-          type: integer
-        id:
-          readOnly: true
-          type: integer
-        profile:
-          type: integer
-      required:
-      - email
-      - email_type
-      - id
-      - profile
-      type: object
-    PatchedEmailAuto:
-      properties:
-        id:
-          readOnly: true
-          type: integer
-        value:
-          format: email
-          maxLength: 254
-          type: string
-      type: object
-    PatchedAddressAuto:
-      properties:
-        box:
-          maxLength: 64
-          type: string
-        building:
-          default: ''
-          maxLength: 64
-          type: string
-        city:
-          maxLength: 64
-          type: string
-        country:
-          type:
-          - integer
-          - 'null'
-        floor:
-          maxLength: 64
-          type: string
-        heading:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        house_number:
-          maxLength: 64
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        latitude:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        longitude:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        pitch:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        staircase:
-          default: ''
-          maxLength: 64
-          type: string
-        street:
-          maxLength: 64
-          type: string
-        street_type:
-          type:
-          - integer
-          - 'null'
-        zip_code:
-          maxLength: 8
-          type: string
-        zoom:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-      type: object
-    PatchedProfile2EmailAuto:
-      properties:
-        email:
-          type: integer
-        email_type:
-          type: integer
-        id:
-          readOnly: true
-          type: integer
-        profile:
-          type: integer
-      type: object
-    Profile2PhoneAuto:
-      properties:
-        id:
-          readOnly: true
-          type: integer
-        is_secret:
-          type: boolean
-        phone_number:
-          type: integer
-        phone_type:
-          type: integer
-        profile:
-          type: integer
-      required:
-      - id
-      - phone_number
-      - phone_type
-      - profile
-      type: object
-    PatchedProfile2PhoneAuto:
-      properties:
-        id:
-          readOnly: true
-          type: integer
-        is_secret:
-          type: boolean
-        phone_number:
-          type: integer
-        phone_type:
-          type: integer
-        profile:
-          type: integer
-      type: object
-    BankBranchAuto:
-      properties:
-        configuration_id:
-          format: uuid
-          type: string
-        definition:
-          maxLength: 128
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        order:
-          maximum: 2147483647
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-      required:
-      - definition
-      - id
-      type: object
-    ContentTypeAuto:
-      properties:
-        app_label:
-          maxLength: 100
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        model:
-          maxLength: 100
-          title: Python model class name
-          type: string
-      required:
-      - app_label
-      - id
-      - model
-      type: object
-    PatchedBankBranchAuto:
-      properties:
-        configuration_id:
-          format: uuid
-          type: string
-        definition:
-          maxLength: 128
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        order:
-          maximum: 2147483647
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-      type: object
     Profile2AddressAuto:
       properties:
         address:
@@ -2567,191 +2230,22 @@ components:
       - id
       - profile
       type: object
-    PatchedClientUserCrud:
+    ContentTypeAuto:
       properties:
-        away_until:
-          format: date
-          type:
-          - string
-          - 'null'
-        date_joined:
-          format: date-time
-          type: string
-        email:
-          format: email
-          maxLength: 254
-          title: Email address
-          type: string
-        enrichment_status:
-          type:
-          - integer
-          - 'null'
-        enrichment_status_updated_at:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        external_id:
-          maxLength: 64
-          type: string
-        groups:
-          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
-          items:
-            type: integer
-          type: array
-        id:
-          readOnly: true
-          type: integer
-        is_active:
-          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-          title: Active
-          type: boolean
-        is_available:
-          type: boolean
-        is_staff:
-          description: Designates whether the user can log into this admin site.
-          title: Staff status
-          type: boolean
-        is_superuser:
-          description: Designates that this user has all permissions without explicitly assigning them.
-          title: Superuser status
-          type: boolean
-        last_language:
-          type: integer
-        last_login:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        oper_reference:
-          format: uuid
-          type: string
-        password:
-          type: string
-          writeOnly: true
-        preferred_language:
-          type: integer
-        role:
-          type: integer
-        updated_password_at:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        user_permissions:
-          description: Specific permissions for this user.
-          items:
-            type: integer
-          type: array
-        verified:
-          type: boolean
-      type: object
-    PatchedApplicationUserCrud:
-      properties:
-        away_until:
-          format: date
-          type:
-          - string
-          - 'null'
-        date_joined:
-          format: date-time
-          type: string
-        email:
-          format: email
-          maxLength: 254
-          title: Email address
-          type: string
-        email_task_subscription:
-          type: boolean
-        enrichment_status:
-          type:
-          - integer
-          - 'null'
-        enrichment_status_updated_at:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        external_id:
-          maxLength: 64
-          type: string
-        groups:
-          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
-          items:
-            type: integer
-          type: array
-        id:
-          readOnly: true
-          type: integer
-        is_active:
-          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
-          title: Active
-          type: boolean
-        is_available:
-          type: boolean
-        is_staff:
-          description: Designates whether the user can log into this admin site.
-          title: Staff status
-          type: boolean
-        is_superuser:
-          description: Designates that this user has all permissions without explicitly assigning them.
-          title: Superuser status
-          type: boolean
-        last_language:
-          type: integer
-        last_login:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        oper_reference:
-          format: uuid
-          type: string
-        password:
-          type: string
-          writeOnly: true
-        preferred_language:
-          type: integer
-        role:
-          type: integer
-        updated_password_at:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        user_permissions:
-          description: Specific permissions for this user.
-          items:
-            type: integer
-          type: array
-        verified:
-          type: boolean
-      type: object
-    PatchedProfile2AddressAuto:
-      properties:
-        address:
-          type: integer
-        address_type:
-          type: integer
-        id:
-          readOnly: true
-          type: integer
-        profile:
-          type: integer
-      type: object
-    PatchedPermissionAuto:
-      properties:
-        codename:
+        app_label:
           maxLength: 100
           type: string
-        content_type:
-          type: integer
         id:
           readOnly: true
           type: integer
-        name:
-          maxLength: 255
+        model:
+          maxLength: 100
+          title: Python model class name
           type: string
+      required:
+      - app_label
+      - id
+      - model
       type: object
     BaseUserCrud:
       properties:
@@ -2838,6 +2332,42 @@ components:
       - preferred_language
       - role
       type: object
+    PatchedPhoneAuto:
+      properties:
+        country_code:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        value:
+          maxLength: 32
+          type: string
+      type: object
+    PatchedGroupAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 150
+          type: string
+        permissions:
+          items:
+            type: integer
+          type: array
+      type: object
+    PatchedProfile2AddressAuto:
+      properties:
+        address:
+          type: integer
+        address_type:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        profile:
+          type: integer
+      type: object
     AddressAuto:
       properties:
         box:
@@ -2920,6 +2450,109 @@ components:
       - id
       - street
       - zip_code
+      type: object
+    Profile2PhoneAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        is_secret:
+          type: boolean
+        phone_number:
+          type: integer
+        phone_type:
+          type: integer
+        profile:
+          type: integer
+      required:
+      - id
+      - phone_number
+      - phone_type
+      - profile
+      type: object
+    User2CreditProviderAuto:
+      properties:
+        bank_id:
+          maxLength: 64
+          type: string
+        credit_provider:
+          type:
+          - integer
+          - 'null'
+        id:
+          readOnly: true
+          type: integer
+        user:
+          type: integer
+      required:
+      - bank_id
+      - id
+      - user
+      type: object
+    PatchedUserProfileAuto:
+      properties:
+        birth_city:
+          maxLength: 128
+          type: string
+        birth_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        first_name:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_name:
+          maxLength: 128
+          type: string
+        middle_name:
+          maxLength: 64
+          type: string
+        mother_maiden_name:
+          maxLength: 128
+          type: string
+        oper_reference:
+          format: uuid
+          type: string
+        title:
+          type:
+          - integer
+          - 'null'
+        title2:
+          type:
+          - integer
+          - 'null'
+        user:
+          type: integer
+      type: object
+    PatchedPermissionAuto:
+      properties:
+        codename:
+          maxLength: 100
+          type: string
+        content_type:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 255
+          type: string
+      type: object
+    PatchedProfile2EmailAuto:
+      properties:
+        email:
+          type: integer
+        email_type:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        profile:
+          type: integer
       type: object
     ClientUserCrud:
       properties:
@@ -3005,6 +2638,117 @@ components:
       - last_language
       - preferred_language
       - role
+      type: object
+    PatchedUser2CreditProviderAuto:
+      properties:
+        bank_id:
+          maxLength: 64
+          type: string
+        credit_provider:
+          type:
+          - integer
+          - 'null'
+        id:
+          readOnly: true
+          type: integer
+        user:
+          type: integer
+      type: object
+    Profile2EmailAuto:
+      properties:
+        email:
+          type: integer
+        email_type:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        profile:
+          type: integer
+      required:
+      - email
+      - email_type
+      - id
+      - profile
+      type: object
+    PatchedClientUserCrud:
+      properties:
+        away_until:
+          format: date
+          type:
+          - string
+          - 'null'
+        date_joined:
+          format: date-time
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        enrichment_status:
+          type:
+          - integer
+          - 'null'
+        enrichment_status_updated_at:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        external_id:
+          maxLength: 64
+          type: string
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          items:
+            type: integer
+          type: array
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        is_available:
+          type: boolean
+        is_staff:
+          description: Designates whether the user can log into this admin site.
+          title: Staff status
+          type: boolean
+        is_superuser:
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser status
+          type: boolean
+        last_language:
+          type: integer
+        last_login:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        oper_reference:
+          format: uuid
+          type: string
+        password:
+          type: string
+          writeOnly: true
+        preferred_language:
+          type: integer
+        role:
+          type: integer
+        updated_password_at:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        user_permissions:
+          description: Specific permissions for this user.
+          items:
+            type: integer
+          type: array
+        verified:
+          type: boolean
       type: object
     ApplicationUserCrud:
       properties:
@@ -3093,47 +2837,6 @@ components:
       - preferred_language
       - role
       type: object
-    PatchedGroupAuto:
-      properties:
-        id:
-          readOnly: true
-          type: integer
-        name:
-          maxLength: 150
-          type: string
-        permissions:
-          items:
-            type: integer
-          type: array
-      type: object
-    EmailAuto:
-      properties:
-        id:
-          readOnly: true
-          type: integer
-        value:
-          format: email
-          maxLength: 254
-          type: string
-      required:
-      - id
-      - value
-      type: object
-    PhoneAuto:
-      properties:
-        country_code:
-          type: integer
-        id:
-          readOnly: true
-          type: integer
-        value:
-          maxLength: 32
-          type: string
-      required:
-      - country_code
-      - id
-      - value
-      type: object
     GroupAuto:
       properties:
         id:
@@ -3150,20 +2853,317 @@ components:
       - id
       - name
       type: object
-    PatchedUser2CreditProviderAuto:
+    PatchedAddressAuto:
       properties:
-        bank_id:
+        box:
           maxLength: 64
           type: string
-        credit_provider:
+        building:
+          default: ''
+          maxLength: 64
+          type: string
+        city:
+          maxLength: 64
+          type: string
+        country:
           type:
           - integer
           - 'null'
+        floor:
+          maxLength: 64
+          type: string
+        heading:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        house_number:
+          maxLength: 64
+          type: string
         id:
           readOnly: true
           type: integer
-        user:
+        latitude:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        longitude:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        pitch:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        staircase:
+          default: ''
+          maxLength: 64
+          type: string
+        street:
+          maxLength: 64
+          type: string
+        street_type:
+          type:
+          - integer
+          - 'null'
+        zip_code:
+          maxLength: 8
+          type: string
+        zoom:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+      type: object
+    PhoneAuto:
+      properties:
+        country_code:
           type: integer
+        id:
+          readOnly: true
+          type: integer
+        value:
+          maxLength: 32
+          type: string
+      required:
+      - country_code
+      - id
+      - value
+      type: object
+    PatchedApplicationUserCrud:
+      properties:
+        away_until:
+          format: date
+          type:
+          - string
+          - 'null'
+        date_joined:
+          format: date-time
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        email_task_subscription:
+          type: boolean
+        enrichment_status:
+          type:
+          - integer
+          - 'null'
+        enrichment_status_updated_at:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        external_id:
+          maxLength: 64
+          type: string
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          items:
+            type: integer
+          type: array
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        is_available:
+          type: boolean
+        is_staff:
+          description: Designates whether the user can log into this admin site.
+          title: Staff status
+          type: boolean
+        is_superuser:
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser status
+          type: boolean
+        last_language:
+          type: integer
+        last_login:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        oper_reference:
+          format: uuid
+          type: string
+        password:
+          type: string
+          writeOnly: true
+        preferred_language:
+          type: integer
+        role:
+          type: integer
+        updated_password_at:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        user_permissions:
+          description: Specific permissions for this user.
+          items:
+            type: integer
+          type: array
+        verified:
+          type: boolean
+      type: object
+    BankBranchAuto:
+      properties:
+        configuration_id:
+          format: uuid
+          type: string
+        definition:
+          maxLength: 128
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        order:
+          maximum: 2147483647
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+      required:
+      - definition
+      - id
+      type: object
+    PatchedEmailAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        value:
+          format: email
+          maxLength: 254
+          type: string
+      type: object
+    EmailAuto:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        value:
+          format: email
+          maxLength: 254
+          type: string
+      required:
+      - id
+      - value
+      type: object
+    PatchedBankBranchAuto:
+      properties:
+        configuration_id:
+          format: uuid
+          type: string
+        definition:
+          maxLength: 128
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        order:
+          maximum: 2147483647
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+      type: object
+    PatchedBaseUserCrud:
+      properties:
+        away_until:
+          format: date
+          type:
+          - string
+          - 'null'
+        date_joined:
+          format: date-time
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        enrichment_status:
+          type:
+          - integer
+          - 'null'
+        enrichment_status_updated_at:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        external_id:
+          maxLength: 64
+          type: string
+        groups:
+          description: The groups this user belongs to. A user will get all permissions granted to each of their groups.
+          items:
+            type: integer
+          type: array
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          description: Designates whether this user should be treated as active. Unselect this instead of deleting accounts.
+          title: Active
+          type: boolean
+        is_available:
+          type: boolean
+        is_staff:
+          description: Designates whether the user can log into this admin site.
+          title: Staff status
+          type: boolean
+        is_superuser:
+          description: Designates that this user has all permissions without explicitly assigning them.
+          title: Superuser status
+          type: boolean
+        last_language:
+          type: integer
+        last_login:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        oper_reference:
+          format: uuid
+          type: string
+        password:
+          type: string
+          writeOnly: true
+        preferred_language:
+          type: integer
+        role:
+          type: integer
+        updated_password_at:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        user_permissions:
+          description: Specific permissions for this user.
+          items:
+            type: integer
+          type: array
+        verified:
+          type: boolean
       type: object
   securitySchemes:
     jwtAuth:

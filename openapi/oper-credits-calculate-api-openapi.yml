@@ -203,23 +203,101 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CalculateCreditTheoreticalAmortization:
+    CalculateVillageCsokMortgage:
       properties:
         input:
-          $ref: '#/components/schemas/CalculateCreditTheoreticalAmortizationSerializerInput'
+          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
         output:
-          properties:
-            amortization:
-              format: double
-              type: number
-            theoretical_interest_rate:
-              format: double
-              type: number
+          additionalProperties:
+            format: double
+            type: number
           readOnly: true
-          required:
-          - amortization
-          - theoretical_interest_rate
           type: object
+      required:
+      - input
+      - output
+      type: object
+    ReducedRealty:
+      properties:
+        purposes:
+          items:
+            $ref: '#/components/schemas/RealtyPurpose'
+          type: array
+        realty_type:
+          $ref: '#/components/schemas/RealtyType'
+        surface:
+          format: double
+          type: number
+      type: object
+    ReducedClient:
+      properties:
+        dependent_children:
+          type: integer
+        planned_children:
+          type: integer
+      type: object
+    LoanType:
+      description: Can be managed at /resources/loan-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        is_grace_period_supported:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LiabilityType:
+      description: Can be managed at /resources/liability-type
+      properties:
+        category:
+          readOnly: true
+          type: string
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        is_mandatory:
+          type: boolean
+        is_mandatory_in_simulation:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - category
+      - color
+      - definition
+      - id
+      - order
+      type: object
+    CalculateBabyLoan:
+      properties:
+        input:
+          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
+        output:
+          readOnly: true
+          type: string
+      required:
+      - input
+      - output
+      type: object
+    CalculateCsokCash:
+      properties:
+        input:
+          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
+        output:
+          readOnly: true
+          type: string
       required:
       - input
       - output
@@ -230,6 +308,20 @@ components:
           $ref: '#/components/schemas/ReducedClient'
         realty:
           $ref: '#/components/schemas/ReducedRealty'
+      type: object
+    CalculateVillageCsokCash:
+      properties:
+        input:
+          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
+        output:
+          additionalProperties:
+            format: double
+            type: number
+          readOnly: true
+          type: object
+      required:
+      - input
+      - output
       type: object
     RealtyType:
       description: Can be managed at /resources/realty-type
@@ -245,20 +337,6 @@ components:
       - definition
       - id
       - order
-      type: object
-    CalculateVillageCsokMortgage:
-      properties:
-        input:
-          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
-        output:
-          additionalProperties:
-            format: double
-            type: number
-          readOnly: true
-          type: object
-      required:
-      - input
-      - output
       type: object
     SharedCalculateAmortization:
       description: Serializer for the general calculate amortization API
@@ -316,58 +394,6 @@ components:
       - liability_type
       - loan_type
       type: object
-    LiabilityType:
-      description: Can be managed at /resources/liability-type
-      properties:
-        category:
-          readOnly: true
-          type: string
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        is_mandatory:
-          type: boolean
-        is_mandatory_in_simulation:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - category
-      - color
-      - definition
-      - id
-      - order
-      type: object
-    CalculateCreditTheoreticalAmortizationSerializerInput:
-      properties:
-        initial_amount:
-          format: double
-          type: number
-        liability_type:
-          $ref: '#/components/schemas/LiabilityType'
-      required:
-      - initial_amount
-      - liability_type
-      type: object
-    CalculateVillageCsokCash:
-      properties:
-        input:
-          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
-        output:
-          additionalProperties:
-            format: double
-            type: number
-          readOnly: true
-          type: object
-      required:
-      - input
-      - output
-      type: object
     RealtyPurpose:
       description: Can be managed at /resources/realty-purpose
       properties:
@@ -383,65 +409,39 @@ components:
       - id
       - order
       type: object
-    LoanType:
-      description: Can be managed at /resources/loan-type
+    CalculateCreditTheoreticalAmortizationSerializerInput:
       properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        is_grace_period_supported:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CalculateBabyLoan:
-      properties:
-        input:
-          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
-        output:
-          readOnly: true
-          type: string
-      required:
-      - input
-      - output
-      type: object
-    ReducedRealty:
-      properties:
-        purposes:
-          items:
-            $ref: '#/components/schemas/RealtyPurpose'
-          type: array
-        realty_type:
-          $ref: '#/components/schemas/RealtyType'
-        surface:
+        initial_amount:
           format: double
           type: number
+        liability_type:
+          $ref: '#/components/schemas/LiabilityType'
+      required:
+      - initial_amount
+      - liability_type
       type: object
-    ReducedClient:
-      properties:
-        dependent_children:
-          type: integer
-        planned_children:
-          type: integer
-      type: object
-    CalculateCsokMortgage:
+    CalculateCreditTheoreticalAmortization:
       properties:
         input:
-          $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'
+          $ref: '#/components/schemas/CalculateCreditTheoreticalAmortizationSerializerInput'
         output:
+          properties:
+            amortization:
+              format: double
+              type: number
+            theoretical_interest_rate:
+              format: double
+              type: number
           readOnly: true
-          type: string
+          required:
+          - amortization
+          - theoretical_interest_rate
+          type: object
       required:
       - input
       - output
       type: object
-    CalculateCsokCash:
+    CalculateCsokMortgage:
       properties:
         input:
           $ref: '#/components/schemas/CalculateMaxAmountInputAbstract'

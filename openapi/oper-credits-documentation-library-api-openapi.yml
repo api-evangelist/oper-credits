@@ -258,21 +258,6 @@ components:
       - language
       - last_modified
       type: object
-    Language:
-      description: Can be managed at /resources/language
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
     PatchedDocumentationLibrary.LibraryDocument:
       properties:
         active:
@@ -322,8 +307,8 @@ components:
           title: Modification date and time
           type: string
       type: object
-    LibraryDocumentType:
-      description: Can be managed at /resources/library-document-type
+    Language:
+      description: Can be managed at /resources/language
       properties:
         definition:
           type: string
@@ -381,6 +366,21 @@ components:
       - loan_request_form_documents
       - logo_url
       - name
+      - order
+      type: object
+    LibraryDocumentType:
+      description: Can be managed at /resources/library-document-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
       - order
       type: object
   securitySchemes:

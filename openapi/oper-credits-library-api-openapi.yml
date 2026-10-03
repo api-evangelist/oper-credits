@@ -47,13 +47,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    LibraryCategory:
-      description: Can be managed at /resources/library-category
+    DocumentType:
+      description: Can be managed at /resources/document-type
       properties:
+        add_to_handover_letter:
+          type: boolean
+        allows_generation:
+          type: boolean
+        append_file_version:
+          type: boolean
+        can_be_added_manually_as_informative_document:
+          type: boolean
         definition:
           type: string
+        document_generation_configuration: {}
         id:
           type: integer
+        is_informative:
+          type: boolean
+        is_proof_to_sign:
+          type: boolean
         order:
           readOnly: true
           type: integer
@@ -78,6 +91,21 @@ components:
       - document_type
       - mime_type
       - url
+      type: object
+    LibraryCategory:
+      description: Can be managed at /resources/library-category
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
       type: object
     Language:
       description: Can be managed at /resources/language
@@ -109,34 +137,6 @@ components:
       - context
       - document
       - language
-      type: object
-    DocumentType:
-      description: Can be managed at /resources/document-type
-      properties:
-        add_to_handover_letter:
-          type: boolean
-        allows_generation:
-          type: boolean
-        append_file_version:
-          type: boolean
-        can_be_added_manually_as_informative_document:
-          type: boolean
-        definition:
-          type: string
-        document_generation_configuration: {}
-        id:
-          type: integer
-        is_informative:
-          type: boolean
-        is_proof_to_sign:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
   securitySchemes:
     jwtAuth:

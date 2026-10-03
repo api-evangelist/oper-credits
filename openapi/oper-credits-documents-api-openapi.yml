@@ -55,27 +55,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    BaseDocument:
-      properties:
-        external_id:
-          format: uuid
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        object_id:
-          format: uuid
-          readOnly: true
-          type: string
-        status:
-          type: integer
-      required:
-      - external_id
-      - id
-      - object_id
-      - status
-      type: object
     PaginatedBaseDocumentList:
       properties:
         count:
@@ -100,6 +79,27 @@ components:
       required:
       - count
       - results
+      type: object
+    BaseDocument:
+      properties:
+        external_id:
+          format: uuid
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        object_id:
+          format: uuid
+          readOnly: true
+          type: string
+        status:
+          type: integer
+      required:
+      - external_id
+      - id
+      - object_id
+      - status
       type: object
   securitySchemes:
     jwtAuth:

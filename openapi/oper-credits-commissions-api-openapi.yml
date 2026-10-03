@@ -295,13 +295,158 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ReducedCommissionFile:
+    DocumentStatus:
+      description: Can be managed at /resources/document-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedProductItem:
       description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
       properties:
         id:
           type: integer
+        internal_reference:
+          maxLength: 64
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
       required:
       - id
+      - internal_reference
+      - name
+      type: object
+    DocumentType:
+      description: Can be managed at /resources/document-type
+      properties:
+        add_to_handover_letter:
+          type: boolean
+        allows_generation:
+          type: boolean
+        append_file_version:
+          type: boolean
+        can_be_added_manually_as_informative_document:
+          type: boolean
+        definition:
+          type: string
+        document_generation_configuration: {}
+        id:
+          type: integer
+        is_informative:
+          type: boolean
+        is_proof_to_sign:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PaymentFile:
+      properties:
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        downloaded:
+          readOnly: true
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        internal_reference:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        processed:
+          type: boolean
+      required:
+      - created
+      - downloaded
+      - id
+      - internal_reference
+      - last_modified
+      type: object
+    CommissionFile:
+      properties:
+        amount:
+          format: double
+          minimum: 0.01
+          type: number
+          exclusiveMaximum: 100000000000000
+        borrower_reference:
+          readOnly: true
+          type: string
+        broker:
+          readOnly: true
+          type: string
+        credit_provider:
+          readOnly: true
+          type: string
+        external_reference:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        incoming_date:
+          format: date
+          type: string
+        outstanding_amount:
+          readOnly: true
+          type: string
+        product_item:
+          $ref: '#/components/schemas/ReducedProductItem'
+        status:
+          $ref: '#/components/schemas/CommissionFileStatus'
+      required:
+      - amount
+      - borrower_reference
+      - broker
+      - credit_provider
+      - external_reference
+      - id
+      - incoming_date
+      - outstanding_amount
+      - product_item
+      type: object
+    Recovery:
+      properties:
+        amount:
+          format: double
+          readOnly: true
+          type: number
+        file:
+          $ref: '#/components/schemas/ReducedCommissionFile'
+        outstanding_amount:
+          format: double
+          type: number
+        prepayment_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        status:
+          $ref: '#/components/schemas/RecoveryStatus'
+      required:
+      - amount
+      - file
       type: object
     Commission:
       properties:
@@ -328,6 +473,81 @@ components:
       - external_reference
       - id
       - loan_request
+      type: object
+    PatchedPaymentFile:
+      properties:
+        created:
+          format: date-time
+          readOnly: true
+          type: string
+        downloaded:
+          readOnly: true
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        internal_reference:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          type: string
+        processed:
+          type: boolean
+      type: object
+    CommissionType:
+      description: Can be managed at /resources/commission-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CommissionFileStatus:
+      description: Can be managed at /resources/commission-file-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedCommissionFile:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        id:
+          type: integer
+      required:
+      - id
+      type: object
+    RecoveryStatus:
+      description: Can be managed at /resources/recovery-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
       type: object
     CommissionStatementDocument:
       properties:
@@ -401,226 +621,6 @@ components:
       - status
       - url
       - version
-      type: object
-    CommissionType:
-      description: Can be managed at /resources/commission-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ReducedProductItem:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
-      properties:
-        id:
-          type: integer
-        internal_reference:
-          maxLength: 64
-          readOnly: true
-          type: string
-        name:
-          readOnly: true
-          type: string
-      required:
-      - id
-      - internal_reference
-      - name
-      type: object
-    Recovery:
-      properties:
-        amount:
-          format: double
-          readOnly: true
-          type: number
-        file:
-          $ref: '#/components/schemas/ReducedCommissionFile'
-        outstanding_amount:
-          format: double
-          type: number
-        prepayment_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        status:
-          $ref: '#/components/schemas/RecoveryStatus'
-      required:
-      - amount
-      - file
-      type: object
-    CommissionFileStatus:
-      description: Can be managed at /resources/commission-file-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RecoveryStatus:
-      description: Can be managed at /resources/recovery-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    PatchedPaymentFile:
-      properties:
-        created:
-          format: date-time
-          readOnly: true
-          type: string
-        downloaded:
-          readOnly: true
-          type: boolean
-        id:
-          readOnly: true
-          type: integer
-        internal_reference:
-          readOnly: true
-          type: string
-        last_modified:
-          format: date-time
-          readOnly: true
-          type: string
-        processed:
-          type: boolean
-      type: object
-    CommissionFile:
-      properties:
-        amount:
-          format: double
-          minimum: 0.01
-          type: number
-          exclusiveMaximum: 100000000000000
-        borrower_reference:
-          readOnly: true
-          type: string
-        broker:
-          readOnly: true
-          type: string
-        credit_provider:
-          readOnly: true
-          type: string
-        external_reference:
-          maxLength: 64
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        incoming_date:
-          format: date
-          type: string
-        outstanding_amount:
-          readOnly: true
-          type: string
-        product_item:
-          $ref: '#/components/schemas/ReducedProductItem'
-        status:
-          $ref: '#/components/schemas/CommissionFileStatus'
-      required:
-      - amount
-      - borrower_reference
-      - broker
-      - credit_provider
-      - external_reference
-      - id
-      - incoming_date
-      - outstanding_amount
-      - product_item
-      type: object
-    DocumentStatus:
-      description: Can be managed at /resources/document-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    PaymentFile:
-      properties:
-        created:
-          format: date-time
-          readOnly: true
-          type: string
-        downloaded:
-          readOnly: true
-          type: boolean
-        id:
-          readOnly: true
-          type: integer
-        internal_reference:
-          readOnly: true
-          type: string
-        last_modified:
-          format: date-time
-          readOnly: true
-          type: string
-        processed:
-          type: boolean
-      required:
-      - created
-      - downloaded
-      - id
-      - internal_reference
-      - last_modified
-      type: object
-    DocumentType:
-      description: Can be managed at /resources/document-type
-      properties:
-        add_to_handover_letter:
-          type: boolean
-        allows_generation:
-          type: boolean
-        append_file_version:
-          type: boolean
-        can_be_added_manually_as_informative_document:
-          type: boolean
-        definition:
-          type: string
-        document_generation_configuration: {}
-        id:
-          type: integer
-        is_informative:
-          type: boolean
-        is_proof_to_sign:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
   securitySchemes:
     jwtAuth:

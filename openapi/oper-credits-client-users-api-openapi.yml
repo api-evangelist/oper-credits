@@ -108,25 +108,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - country
-      - definition
-      - id
-      - order
-      type: object
     PaginatedReducedBaseUserList:
       properties:
         count:
@@ -152,8 +133,8 @@ components:
       - count
       - results
       type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
+    ContactType:
+      description: Can be managed at /resources/contact-type
       properties:
         definition:
           type: string
@@ -167,21 +148,47 @@ components:
       - id
       - order
       type: object
-    Profile2Phone:
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
       properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        is_secret:
-          default: false
-          type: boolean
-        phone_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          maxLength: 32
-          minLength: 4
+        country:
+          readOnly: true
           type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
       required:
-      - value
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    ClientUser:
+      properties:
+        email:
+          type: string
+        first_name:
+          default: ''
+          type: string
+          writeOnly: true
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        last_name:
+          default: ''
+          type: string
+          writeOnly: true
+        phone_number:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Phone'
+          writeOnly: true
+      required:
+      - email
+      - phone_number
       type: object
     ReducedBaseUser:
       description: User reduced representation
@@ -210,28 +217,21 @@ components:
       - role
       - verified
       type: object
-    ClientUser:
+    Profile2Phone:
       properties:
-        email:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
           type: string
-        first_name:
-          default: ''
-          type: string
-          writeOnly: true
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        last_name:
-          default: ''
-          type: string
-          writeOnly: true
-        phone_number:
-          allOf:
-          - $ref: '#/components/schemas/Profile2Phone'
-          writeOnly: true
       required:
-      - email
-      - phone_number
+      - value
       type: object
     Language:
       description: Can be managed at /resources/language
@@ -248,8 +248,8 @@ components:
       - id
       - order
       type: object
-    ContactType:
-      description: Can be managed at /resources/contact-type
+    UserRole:
+      description: Can be managed at /resources/user-role
       properties:
         definition:
           type: string

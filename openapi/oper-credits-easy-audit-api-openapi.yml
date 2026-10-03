@@ -36,41 +36,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    EventTypeEnum:
-      description: '* `1` - Create
-
-        * `2` - Update
-
-        * `3` - Delete
-
-        * `4` - Many-to-Many Change
-
-        * `5` - Reverse Many-to-Many Change
-
-        * `6` - Many-to-Many Add
-
-        * `7` - Reverse Many-to-Many Add
-
-        * `8` - Many-to-Many Remove
-
-        * `9` - Reverse Many-to-Many Remove
-
-        * `10` - Many-to-Many Clear
-
-        * `11` - Reverse Many-to-Many Clear'
-      enum:
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-      - 10
-      - 11
-      type: integer
     EasyAuditCRUDEvent:
       properties:
         changed_fields:
@@ -114,6 +79,41 @@ components:
       - id
       - object_id
       type: object
+    EventTypeEnum:
+      description: '* `1` - Create
+
+        * `2` - Update
+
+        * `3` - Delete
+
+        * `4` - Many-to-Many Change
+
+        * `5` - Reverse Many-to-Many Change
+
+        * `6` - Many-to-Many Add
+
+        * `7` - Reverse Many-to-Many Add
+
+        * `8` - Many-to-Many Remove
+
+        * `9` - Reverse Many-to-Many Remove
+
+        * `10` - Many-to-Many Clear
+
+        * `11` - Reverse Many-to-Many Clear'
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+      - 10
+      - 11
+      type: integer
     PaginatedEasyAuditCRUDEventList:
       properties:
         count:

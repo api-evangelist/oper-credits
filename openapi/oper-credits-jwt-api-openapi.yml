@@ -69,6 +69,18 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    TokenRefresh:
+      properties:
+        access:
+          readOnly: true
+          type: string
+        refresh:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - refresh
+      type: object
     RoleTokenObtainPair:
       properties:
         access:
@@ -88,18 +100,6 @@ components:
       - password
       - refresh
       - username
-      type: object
-    TokenRefresh:
-      properties:
-        access:
-          readOnly: true
-          type: string
-        refresh:
-          type: string
-          writeOnly: true
-      required:
-      - access
-      - refresh
       type: object
   securitySchemes:
     jwtAuth:

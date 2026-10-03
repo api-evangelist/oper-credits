@@ -650,408 +650,12 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    MortgageSimulationFinancialPlan:
-      properties:
-        business_capital:
-          format: double
-          type: number
-        cost_additional_financing_need:
-          format: double
-          type: number
-        cost_administration:
-          format: double
-          type: number
-        cost_architect_fees:
-          format: double
-          type: number
-        cost_archiving:
-          format: double
-          type: number
-        cost_bank_account:
-          format: double
-          type: number
-        cost_bank_disbursements:
-          format: double
-          type: number
-        cost_building:
-          format: double
-          type: number
-        cost_buyout:
-          format: double
-          type: number
-        cost_closing_certificate_replacement:
-          format: double
-          type: number
-        cost_contract_drafting_fee:
-          format: double
-          type: number
-        cost_credit_notary:
-          format: double
-          type: number
-        cost_credit_notary_act:
-          format: double
-          type: number
-        cost_credit_notary_administration:
-          format: double
-          type: number
-        cost_credit_notary_annexes:
-          format: double
-          type: number
-        cost_credit_notary_disbursements:
-          format: double
-          type: number
-        cost_credit_notary_fees:
-          format: double
-          type: number
-        cost_credit_notary_mortgage_guarantee_fee:
-          format: double
-          type: number
-        cost_credit_notary_mortgage_registration_fee:
-          format: double
-          type: number
-        cost_credit_notary_vat:
-          format: double
-          type: number
-        cost_credit_registration:
-          format: double
-          type: number
-        cost_credit_registry_check:
-          format: double
-          type: number
-        cost_credit_takeover:
-          format: double
-          type: number
-        cost_distribution_notary:
-          format: double
-          type: number
-        cost_distribution_registration:
-          format: double
-          type: number
-        cost_estimation:
-          format: double
-          type: number
-        cost_file:
-          format: double
-          type: number
-        cost_framework_commission:
-          format: double
-          type: number
-        cost_insurance:
-          format: double
-          type: number
-        cost_land_purchase:
-          format: double
-          type: number
-        cost_land_query_fees:
-          format: double
-          type: number
-        cost_land_registry:
-          format: double
-          type: number
-        cost_land_registry_application:
-          format: double
-          type: number
-        cost_land_registry_application_preparation:
-          format: double
-          type: number
-        cost_land_registry_mortgage:
-          format: double
-          type: number
-        cost_land_registry_verification:
-          format: double
-          type: number
-        cost_lead_commission:
-          format: double
-          type: number
-        cost_liquidities:
-          format: double
-          type: number
-        cost_notary_fees:
-          format: double
-          type: number
-        cost_other_fee:
-          format: double
-          type: number
-        cost_purchase:
-          format: double
-          type: number
-        cost_purchase_notary:
-          format: double
-          type: number
-        cost_purchase_notary_act:
-          format: double
-          type: number
-        cost_purchase_notary_administration:
-          format: double
-          type: number
-        cost_purchase_notary_annexes:
-          format: double
-          type: number
-        cost_purchase_notary_disbursements:
-          format: double
-          type: number
-        cost_purchase_notary_fees:
-          format: double
-          type: number
-        cost_purchase_notary_mortgage_transcript:
-          format: double
-          type: number
-        cost_purchase_notary_vat:
-          format: double
-          type: number
-        cost_purchase_registration:
-          format: double
-          type: number
-        cost_realtor:
-          format: double
-          type: number
-        cost_refinance_additional_costs:
-          format: double
-          type: number
-        cost_refinance_early_repayment_fee:
-          format: double
-          type: number
-        cost_refinance_release_fee:
-          format: double
-          type: number
-        cost_renovation:
-          format: double
-          type: number
-        cost_stamp_duty_fees:
-          format: double
-          type: number
-        cost_vat:
-          format: double
-          type: number
-      type: object
-    MortgageSimulationStatus:
-      description: Can be managed at /resources/mortgage-simulation-status
+    AdditionalFinancingNeedType:
+      description: Can be managed at /resources/additional-financing-need-type
       properties:
         definition:
           type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ReducedProductVersion:
-      description: Used as a serializer mixin for filtering library documents
-      properties:
-        allowed_due_days:
-          items:
-            type: integer
-          readOnly: true
-          type: array
-        allowed_product_variabilities:
-          items:
-            $ref: '#/components/schemas/AllowedProductVariability'
-          readOnly: true
-          type: array
-        allowed_variabilities:
-          readOnly: true
-          type: string
-        base_product_id:
-          readOnly: true
-          type: integer
-        credit_provider:
-          allOf:
-          - $ref: '#/components/schemas/ReducedCreditProvider'
-          readOnly: true
-        custom_translations:
-          readOnly: true
-        due_day:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-        funder:
-          allOf:
-          - $ref: '#/components/schemas/Funder'
-          readOnly: true
-        grace_period:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-        id:
-          type: integer
-        is_interest_paid_in_grace_period:
-          readOnly: true
-          type: boolean
-        loan_request_form_documents:
-          readOnly: true
-          type: string
-        loan_type:
-          allOf:
-          - $ref: '#/components/schemas/LoanType'
-          readOnly: true
-        logo_url:
-          format: uri
-          readOnly: true
-          type: string
-        max_grace_period:
-          readOnly: true
-          type: integer
-        min_grace_period:
-          readOnly: true
-          type: integer
-        name:
-          readOnly: true
-          type: string
-        product_type:
-          allOf:
-          - $ref: '#/components/schemas/LoanType'
-          readOnly: true
-      required:
-      - allowed_due_days
-      - allowed_product_variabilities
-      - allowed_variabilities
-      - base_product_id
-      - credit_provider
-      - custom_translations
-      - due_day
-      - funder
-      - grace_period
-      - id
-      - is_interest_paid_in_grace_period
-      - loan_request_form_documents
-      - loan_type
-      - logo_url
-      - max_grace_period
-      - min_grace_period
-      - name
-      - product_type
-      type: object
-    BaseProductDiscountsSimulator:
-      description: To be used in the ProductItemSerializer
-      properties:
-        active:
-          readOnly: true
-          type: boolean
-        credit_provider:
-          allOf:
-          - $ref: '#/components/schemas/ReducedCreditProvider'
-          readOnly: true
-        discounts:
-          items:
-            properties:
-              discounts:
-                items:
-                  properties:
-                    ignore_childs:
-                      type: boolean
-                    interest_rate:
-                      format: double
-                      type: number
-                    is_corrected:
-                      type: boolean
-                    is_outdated:
-                      type: boolean
-                    is_selected:
-                      type: boolean
-                    is_selected_by_default:
-                      type: boolean
-                    is_valid:
-                      type: boolean
-                    max_discounts_allowed:
-                      type: integer
-                    name:
-                      type: string
-                  required:
-                  - name
-                  type: object
-                type: array
-              ignore_childs:
-                type: boolean
-              interest_rate:
-                format: double
-                type: number
-              is_corrected:
-                type: boolean
-              is_outdated:
-                type: boolean
-              is_selected:
-                type: boolean
-              is_selected_by_default:
-                type: boolean
-              is_valid:
-                type: boolean
-              max_discounts_allowed:
-                type: integer
-              name:
-                type: string
-            required:
-            - name
-            type: object
-          readOnly: true
-          type: array
-        funder:
-          allOf:
-          - $ref: '#/components/schemas/Funder'
-          readOnly: true
-        id:
-          type: integer
-        is_simulator_reference_product:
-          readOnly: true
-          type: boolean
-        loan_type:
-          allOf:
-          - $ref: '#/components/schemas/LoanType'
-          readOnly: true
-        logo_url:
-          format: uri
-          maxLength: 200
-          readOnly: true
-          type: string
-        name:
-          maxLength: 64
-          readOnly: true
-          type: string
-      required:
-      - active
-      - credit_provider
-      - discounts
-      - funder
-      - id
-      - is_simulator_reference_product
-      - loan_type
-      - logo_url
-      - name
-      type: object
-    IncomeType:
-      description: Can be managed at /resources/income-type
-      properties:
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        form_template:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - color
-      - definition
-      - form_template
-      - id
-      - order
-      type: object
-    Variability:
-      description: Can be managed at /resources/variability
-      properties:
-        definition:
-          type: string
-        group_type:
+        financial_plan_loan_amount_field:
           type:
           - integer
           - 'null'
@@ -1065,96 +669,50 @@ components:
       - id
       - order
       type: object
-    MortgageSimulationSource:
-      description: Can be managed at /resources/mortgage-simulation-source
+    Discount3rdLevel:
       properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LandPurchaseType:
-      description: Can be managed at /resources/land-purchase-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RenovationType:
-      description: Can be managed at /resources/renovation-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    MortgageSimulatorFinancialPlanLoanAmountField:
-      properties:
-        default_duration:
-          maximum: 2147483647
-          minimum: -2147483648
-          type:
-          - integer
-          - 'null'
-        default_rate:
+        interest_rate:
           format: double
-          type:
-          - number
-          - 'null'
-        external_calculator_type:
-          allOf:
-          - $ref: '#/components/schemas/ExternalCalculatorType'
-        id:
-          type:
-          - integer
-          - 'null'
-        is_calculated:
+          type: number
+        is_corrected:
+          default: false
+          readOnly: true
           type: boolean
         is_default:
-          type: boolean
-        is_loan_needed:
-          type: boolean
-        is_main:
-          type: boolean
-        is_overridable:
-          type: boolean
-        is_rounding_cash_out:
-          type:
-          - boolean
-          - 'null'
-        is_visible:
-          type: boolean
-        loan_amount_type:
-          $ref: '#/components/schemas/FinancialPlanLoanAmountType'
-        simulator_base_product:
-          allOf:
-          - $ref: '#/components/schemas/MortgageSimulatorBaseProduct'
           readOnly: true
+          type: boolean
+        is_outdated:
+          default: false
+          readOnly: true
+          type: boolean
+        is_selected:
+          default: false
+          readOnly: true
+          type: boolean
+        is_selected_by_default:
+          default: false
+          type: boolean
+        is_valid:
+          default: true
+          readOnly: true
+          type: boolean
+        name:
+          type: string
+        parameters:
+          default: []
+          items:
+            $ref: '#/components/schemas/Parameter'
+          readOnly: true
+          type: array
       required:
-      - loan_amount_type
-      - simulator_base_product
+      - interest_rate
+      - is_corrected
+      - is_default
+      - is_outdated
+      - is_selected
+      - is_valid
+      - name
+      - parameters
       type: object
     RealtyUsageType:
       description: Can be managed at /resources/realty-usage-type
@@ -1171,115 +729,8 @@ components:
       - id
       - order
       type: object
-    MortgageSimulatorLiability:
-      properties:
-        amount:
-          format: double
-          type:
-          - number
-          - 'null'
-        id:
-          type:
-          - integer
-          - 'null'
-        liability_type:
-          $ref: '#/components/schemas/LiabilityType'
-        monthly_amount:
-          format: double
-          type:
-          - number
-          - 'null'
-      required:
-      - liability_type
-      type: object
-    ReducedBroker:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
-      properties:
-        account_manager:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBaseUser'
-          readOnly: true
-        bank_account:
-          readOnly: true
-          type: string
-        company_type:
-          allOf:
-          - $ref: '#/components/schemas/CompanyType'
-          readOnly: true
-        fsma_reference:
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        id:
-          type: integer
-        name:
-          readOnly: true
-          type: string
-        outstanding_debt:
-          format: double
-          readOnly: true
-          type: number
-        vat_number:
-          readOnly: true
-          type: string
-      required:
-      - account_manager
-      - bank_account
-      - company_type
-      - fsma_reference
-      - id
-      - name
-      - outstanding_debt
-      - vat_number
-      type: object
-    PricingSheet:
-      properties:
-        base_rates:
-          items:
-            $ref: '#/components/schemas/NestedBaseRate'
-          type: array
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type:
-          - string
-          - 'null'
-        id:
-          readOnly: true
-          type: integer
-        is_active:
-          readOnly: true
-          type: string
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type:
-          - string
-          - 'null'
-        pricing_configuration: {}
-        product:
-          $ref: '#/components/schemas/MinimalBaseProduct'
-        valid_from:
-          format: date
-          type: string
-        version:
-          maxLength: 32
-          type: string
-      required:
-      - base_rates
-      - created
-      - id
-      - is_active
-      - last_modified
-      - product
-      - valid_from
-      - version
-      type: object
-    PurchaseSaleType:
-      description: Can be managed at /resources/purchase-sale-type
+    CompanyType:
+      description: Can be managed at /resources/company-types
       properties:
         definition:
           type: string
@@ -1292,6 +743,363 @@ components:
       - definition
       - id
       - order
+      type: object
+    ReducedMortgageSimulationResult:
+      properties:
+        analyst:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBroker'
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          readOnly: true
+        expiration_date:
+          readOnly: true
+          type: string
+        fiduciary:
+          allOf:
+          - $ref: '#/components/schemas/Fiduciary'
+        id:
+          type: integer
+        internal_reference:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        lead_generator:
+          allOf:
+          - $ref: '#/components/schemas/ReducedLeadGenerator'
+        loan_amount:
+          readOnly: true
+          type: string
+        loan_purposes:
+          items:
+            $ref: '#/components/schemas/LoanRequestPurpose'
+          type: array
+        loan_request:
+          allOf:
+          - $ref: '#/components/schemas/ReducedLoanRequest'
+          readOnly: true
+        main_borrower:
+          $ref: '#/components/schemas/ReducedClientProfileWithContactInformation'
+        name:
+          type:
+          - string
+          - 'null'
+        notary:
+          allOf:
+          - $ref: '#/components/schemas/Notary'
+        preapproval_status:
+          readOnly: true
+          type: string
+        region:
+          allOf:
+          - $ref: '#/components/schemas/Region'
+        source:
+          allOf:
+          - $ref: '#/components/schemas/MortgageSimulationSource'
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/MortgageSimulationStatus'
+      required:
+      - created
+      - created_by
+      - expiration_date
+      - id
+      - internal_reference
+      - last_modified
+      - loan_amount
+      - loan_request
+      - main_borrower
+      - preapproval_status
+      - source
+      type: object
+    MortgageSimulatorFinancialPlanLoanAmountItem:
+      properties:
+        amount:
+          format: double
+          type: number
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        financial_plan_loan_amount_field:
+          $ref: '#/components/schemas/MortgageSimulatorFinancialPlanLoanAmountField'
+        id:
+          type:
+          - integer
+          - 'null'
+        is_overridden:
+          type: boolean
+        loan_request:
+          readOnly: true
+          type: integer
+      required:
+      - created
+      - financial_plan_loan_amount_field
+      - loan_request
+      type: object
+    MortgageSimulatorCollateral:
+      properties:
+        collateral_amount:
+          format: double
+          type:
+          - number
+          - 'null'
+        collateral_purpose:
+          allOf:
+          - $ref: '#/components/schemas/RealtyPurpose'
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+        has_existing_loan:
+          default: false
+          type: boolean
+        mortgage_inscription_start_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        mortgage_security_type:
+          allOf:
+          - $ref: '#/components/schemas/MortgageSecurityType'
+        original_loan_amount:
+          format: double
+          type:
+          - number
+          - 'null'
+        realty_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyType'
+        realty_usage_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyUsageType'
+      type: object
+    CoLivingGroupType:
+      description: Can be managed at /resources/co-living-group-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FinancialAssetType:
+      description: Can be managed at /resources/financial-asset-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LiabilityType:
+      description: Can be managed at /resources/liability-type
+      properties:
+        category:
+          readOnly: true
+          type: string
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        is_mandatory:
+          type: boolean
+        is_mandatory_in_simulation:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - category
+      - color
+      - definition
+      - id
+      - order
+      type: object
+    ProductCostPromotionType:
+      description: Can be managed at /resources/product-cost-promotion-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ParameterType:
+      description: Can be managed at /resources/parameter-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ProductCostType:
+      description: Can be managed at /resources/product-cost-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedClientProfileWithContactInformation:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          readOnly: true
+          type: array
+        first_name:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          readOnly: true
+          type: string
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          readOnly: true
+          type: array
+      required:
+      - emails
+      - first_name
+      - id
+      - last_name
+      - phone_numbers
+      type: object
+    MortgageSimulatorBorrowerInfo:
+      properties:
+        birth_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        emails:
+          items:
+            $ref: '#/components/schemas/Email'
+          type:
+          - array
+          - 'null'
+        first_name:
+          type:
+          - string
+          - 'null'
+        has_vehicle:
+          default: true
+          type:
+          - boolean
+          - 'null'
+        id:
+          type:
+          - integer
+          - 'null'
+        incomes:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorIncome'
+          type: array
+        is_living_in_same_household:
+          default: false
+          type:
+          - boolean
+          - 'null'
+        is_main_borrower:
+          type:
+          - boolean
+          - 'null'
+        language:
+          allOf:
+          - $ref: '#/components/schemas/Language'
+        last_name:
+          type:
+          - string
+          - 'null'
+        liabilities:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorLiability'
+          type: array
+        number_of_dependents:
+          type:
+          - integer
+          - 'null'
+        people_in_household:
+          type:
+          - integer
+          - 'null'
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Phone'
+          type:
+          - array
+          - 'null'
+      type: object
+    NestedBaseRate:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        percentage:
+          readOnly: true
+          type: string
+        rate:
+          format: double
+          type: number
+        variability:
+          $ref: '#/components/schemas/Variability'
+      required:
+      - id
+      - percentage
+      - rate
+      - variability
       type: object
     ReducedLoanRequest:
       description: Loan request reduced representation
@@ -1318,110 +1126,6 @@ components:
       - internal_reference
       - status
       type: object
-    Parameter:
-      properties:
-        name:
-          type: string
-        type:
-          $ref: '#/components/schemas/ParameterType'
-        value:
-          type: string
-      required:
-      - name
-      - type
-      - value
-      type: object
-    CompanyProfile2Website:
-      properties:
-        value:
-          type: string
-        website_type:
-          $ref: '#/components/schemas/ContactType'
-      required:
-      - value
-      type: object
-    MortgageSimulatorMonthlyPaymentEstimation:
-      properties:
-        duration:
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-        item:
-          allOf:
-          - $ref: '#/components/schemas/MortgageSimulatorMonthlyPaymentEstimationFinancialPlanLoanAmountItem'
-        monthly_installment:
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-        rate:
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-      type: object
-    PaginatedReducedMortgageSimulationResultList:
-      properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          type:
-          - string
-          - 'null'
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          type:
-          - string
-          - 'null'
-        results:
-          items:
-            $ref: '#/components/schemas/ReducedMortgageSimulationResult'
-          type: array
-      required:
-      - count
-      - results
-      type: object
-    MortgageSimulatorRefinanceTranche:
-      properties:
-        interest_rate:
-          format: double
-          type:
-          - number
-          - 'null'
-        original_loan_amount:
-          format: double
-          type:
-          - number
-          - 'null'
-        outstanding_balance:
-          format: double
-          type: number
-        related_realties:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorRelatedRealties'
-          type: array
-      required:
-      - outstanding_balance
-      type: object
-    Funder:
-      properties:
-        id:
-          readOnly: true
-          type: integer
-        name:
-          maxLength: 256
-          type: string
-      required:
-      - id
-      - name
-      type: object
     ExternalCalculatorType:
       description: Can be managed at /resources/external-calculator-type
       properties:
@@ -1437,58 +1141,20 @@ components:
       - id
       - order
       type: object
-    Notary:
-      description: The same as ThirdPartySerializer but specifically for a Notary, without VAT, with bank account
+    Country:
+      description: Can be managed at /resources/country
       properties:
-        VAT:
-          readOnly: true
+        definition:
           type: string
-        addresses:
-          items:
-            $ref: '#/components/schemas/Profile2Address'
+        id:
+          type: integer
+        order:
           readOnly: true
-          type: array
-        bankAccount:
-          readOnly: true
-          type: string
-        emails:
-          items:
-            $ref: '#/components/schemas/Profile2Email'
-          readOnly: true
-          type: array
-        fsmaReference:
-          readOnly: true
-          type: string
-        logo:
-          readOnly: true
-          type: string
-        name:
-          readOnly: true
-          type: string
-        phones:
-          items:
-            $ref: '#/components/schemas/Profile2Phone'
-          readOnly: true
-          type: array
-        profileName:
-          readOnly: true
-          type: string
-        websites:
-          items:
-            $ref: '#/components/schemas/CompanyProfile2Website'
-          readOnly: true
-          type: array
+          type: integer
       required:
-      - VAT
-      - addresses
-      - bankAccount
-      - emails
-      - fsmaReference
-      - logo
-      - name
-      - phones
-      - profileName
-      - websites
+      - definition
+      - id
+      - order
       type: object
     Fiduciary:
       properties:
@@ -1505,13 +1171,38 @@ components:
       - id
       - name
       type: object
-    AmountType:
-      description: Can be managed at /resources/amount-type
+    FinancialPlanLoanAmountType:
+      description: Can be managed at /resources/financial-plan-loan-amount-type
+      properties:
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - color
+      - definition
+      - id
+      - order
+      type: object
+    LoanRequestSubPurpose:
+      description: Can be managed at /resources/loan-request-sub-purpose
       properties:
         definition:
           type: string
         id:
           type: integer
+        is_mortgage:
+          type: boolean
+        is_refinance:
+          type:
+          - boolean
+          - 'null'
         order:
           readOnly: true
           type: integer
@@ -1520,20 +1211,33 @@ components:
       - id
       - order
       type: object
-    RealtyPurpose:
-      description: Can be managed at /resources/realty-purpose
+    MortgageSimulatorIncome:
       properties:
-        definition:
-          type: string
+        amount:
+          format: double
+          type:
+          - number
+          - 'null'
+        annualization_method:
+          allOf:
+          - $ref: '#/components/schemas/AnnualizationMethod'
+        applies_during_retirement:
+          default: false
+          type:
+          - boolean
+          - 'null'
         id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
+          type:
+          - integer
+          - 'null'
+        income_type:
+          $ref: '#/components/schemas/IncomeType'
+        monthly_amount:
+          format: double
+          type: number
       required:
-      - definition
-      - id
-      - order
+      - income_type
+      - monthly_amount
       type: object
     UpdateSimulatorOffer:
       properties:
@@ -1708,670 +1412,116 @@ components:
       - products
       - selected_products
       type: object
-    AdvisorMortgageSimulatorConvertOffer:
+    Parameter:
       properties:
-        items:
-          items:
-            $ref: '#/components/schemas/AdvisorMortgageSimulatorConvertProductItem'
-          type: array
-      required:
-      - items
-      type: object
-    FinancialAssetType:
-      description: Can be managed at /resources/financial-asset-type
-      properties:
-        definition:
+        name:
           type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        id:
-          readOnly: true
-          type: integer
+        type:
+          $ref: '#/components/schemas/ParameterType'
         value:
-          maxLength: 32
           type: string
       required:
-      - country_code
-      - id
+      - name
+      - type
       - value
       type: object
-    MortgageSimulatorProductsSearchFilters:
+    BaseProductDiscountsSimulator:
+      description: To be used in the ProductItemSerializer
       properties:
+        active:
+          readOnly: true
+          type: boolean
         credit_provider:
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-        loan_type:
-          maxLength: 128
-          type:
-          - string
-          - 'null'
-        max_duration:
-          maximum: 320
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-        min_duration:
-          maximum: 320
-          minimum: 1
-          type:
-          - integer
-          - 'null'
-        product_type:
-          maxLength: 128
-          type:
-          - string
-          - 'null'
-        variability:
-          maxLength: 128
-          type:
-          - string
-          - 'null'
-      type: object
-    MortgageSimulatorRefinance:
-      properties:
-        borrower_index:
-          type:
-          - integer
-          - 'null'
-        collateral_purpose:
           allOf:
-          - $ref: '#/components/schemas/RealtyPurpose'
-        has_existing_loan:
-          default: false
-          type: boolean
-        is_collateral:
-          type:
-          - boolean
-          - 'null'
-        is_main:
-          type:
-          - boolean
-          - 'null'
-        liability_type:
-          allOf:
-          - $ref: '#/components/schemas/LiabilityType'
-        original_purpose:
-          allOf:
-          - $ref: '#/components/schemas/LoanRequestSubPurpose'
-        realty_type:
-          allOf:
-          - $ref: '#/components/schemas/RealtyType'
-        related_realties:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorRelatedRealties'
-          type: array
-        tranches:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorRefinanceTranche'
-          type: array
-        value_of_the_realty:
-          format: double
-          type:
-          - number
-          - 'null'
-      required:
-      - tranches
-      type: object
-    GenerateSimulatorOffers:
-      properties:
-        architect_fees:
-          format: double
-          type:
-          - number
-          - 'null'
-        borrowers_info:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorBorrowerInfo'
-          type: array
-          writeOnly: true
-        building_costs:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        buy_out_amount:
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        collaterals:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorCollateral'
-          type: array
-        epc_after_renovations:
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-          writeOnly: true
-        epc_before_renovations:
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-          writeOnly: true
-        fair_market_value:
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        financial_plan:
-          allOf:
-          - $ref: '#/components/schemas/MortgageSimulationFinancialPlan'
-          writeOnly: true
-        financial_plan_loan_amount_items:
-          description: Financial plan items funded by loans
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorFinancialPlanLoanAmountItem'
-          type: array
-        financial_plan_overridden_fields:
-          allOf:
-          - $ref: '#/components/schemas/MortgageSimulationFinancialPlan'
-          writeOnly: true
-        financial_plan_own_fund_items:
-          description: Financial plan items funded by own funds
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorFinancialPlanOwnFundItem'
-          type: array
-        is_main_first_residence:
-          default: false
-          type:
-          - boolean
-          - 'null'
-          writeOnly: true
-        is_realtor_excluded:
-          default: false
-          type:
-          - boolean
-          - 'null'
-          writeOnly: true
-        land_purchase_type:
-          allOf:
-          - $ref: '#/components/schemas/LandPurchaseType'
-        land_value:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        loan_purposes:
-          items:
-            $ref: '#/components/schemas/LoanRequestPurpose'
-          type:
-          - array
-          - 'null'
-          writeOnly: true
-        price_of_land:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        pro_fisco_value:
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        products:
-          items:
-            $ref: '#/components/schemas/NestedProduct'
+          - $ref: '#/components/schemas/ReducedCreditProvider'
           readOnly: true
-          type: array
-        purchase_sale_type:
-          allOf:
-          - $ref: '#/components/schemas/PurchaseSaleType'
-        realty_price:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        realty_usage_type:
-          allOf:
-          - $ref: '#/components/schemas/RealtyUsageType'
-          writeOnly: true
-        refinances:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorRefinance'
-          type: array
-        region:
-          allOf:
-          - $ref: '#/components/schemas/Region'
-          writeOnly: true
-        renovation_costs:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorRenovationCost'
-          type: array
-        selected_discounts:
-          writeOnly: true
-        selected_products:
-          items:
-            items:
-              $ref: '#/components/schemas/NestedProduct'
-            type: array
-            writeOnly: true
-          type: array
-          writeOnly: true
-        venal_value_after:
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        venal_value_before:
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-      required:
-      - products
-      - selected_products
-      type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - country
-      - definition
-      - id
-      - order
-      type: object
-    LoanRequestPurpose:
-      description: Can be managed at /resources/loan-request-purpose
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        is_simulator_enabled:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    AnnualizationMethod:
-      description: Can be managed at /resources/annualization-method
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Profile2Address:
-      properties:
-        address_type:
-          allOf:
-          - $ref: '#/components/schemas/ContactType'
-        box:
-          type: string
-        building:
-          type: string
-        city:
-          type: string
-        country:
-          $ref: '#/components/schemas/Country'
-        floor:
-          type: string
-        heading:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        house_number:
-          type: string
-        latitude:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        longitude:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        pitch:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        staircase:
-          type: string
-        street:
-          type: string
-        street_type:
-          allOf:
-          - $ref: '#/components/schemas/StreetType'
-        zip_code:
-          type: string
-        zoom:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-      required:
-      - city
-      - country
-      - street
-      - zip_code
-      type: object
-    LiabilityType:
-      description: Can be managed at /resources/liability-type
-      properties:
-        category:
-          readOnly: true
-          type: string
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        is_mandatory:
-          type: boolean
-        is_mandatory_in_simulation:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - category
-      - color
-      - definition
-      - id
-      - order
-      type: object
-    MortgageSimulatorIncome:
-      properties:
-        amount:
-          format: double
-          type:
-          - number
-          - 'null'
-        annualization_method:
-          allOf:
-          - $ref: '#/components/schemas/AnnualizationMethod'
-        applies_during_retirement:
-          default: false
-          type:
-          - boolean
-          - 'null'
-        id:
-          type:
-          - integer
-          - 'null'
-        income_type:
-          $ref: '#/components/schemas/IncomeType'
-        monthly_amount:
-          format: double
-          type: number
-      required:
-      - income_type
-      - monthly_amount
-      type: object
-    MinimalBaseProduct:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
-      properties:
-        id:
-          type: integer
-      required:
-      - id
-      type: object
-    ReducedLeadGenerator:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
-      properties:
-        bank_account:
-          readOnly: true
-          type: string
-        company_type:
-          allOf:
-          - $ref: '#/components/schemas/CompanyType'
-          readOnly: true
-        fsma_reference:
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        id:
-          type: integer
-        name:
-          readOnly: true
-          type: string
-        vat_number:
-          readOnly: true
-          type: string
-      required:
-      - bank_account
-      - company_type
-      - fsma_reference
-      - id
-      - name
-      - vat_number
-      type: object
-    NestedProduct:
-      properties:
-        acceptance_rules: {}
-        amount:
-          format: double
-          type:
-          - number
-          - 'null'
-        aprc:
-          format: double
-          type:
-          - number
-          - 'null'
-        base_product_id:
-          type: integer
-        base_rate:
-          format: double
-          type: number
-        credit_provider:
-          $ref: '#/components/schemas/ReducedCreditProvider'
-        custom_translations: {}
-        default_variability:
-          $ref: '#/components/schemas/Variability'
         discounts:
           items:
-            $ref: '#/components/schemas/DiscountSimulator'
-          type:
-          - array
-          - 'null'
-        discounts_rate:
-          format: double
-          type: number
-        duration:
-          type: integer
-        funder:
-          $ref: '#/components/schemas/Funder'
-        id:
-          type: integer
-        interest_rate:
-          default: 0.0
-          format: double
-          type: number
-        interest_rate_overridden:
-          default: false
-          type: boolean
-        is_amount_overridden:
-          default: false
-          type: boolean
-        is_fallback_rate:
-          default: false
-          type: boolean
-        loan_type:
-          $ref: '#/components/schemas/LoanType'
-        logo_url:
-          format: uri
-          type: string
-        monthly_amount:
-          format: double
-          type:
-          - number
-          - 'null'
-        name:
-          type: string
-        pricing_sheet:
-          allOf:
-          - $ref: '#/components/schemas/PricingSheet'
-        product_type:
-          $ref: '#/components/schemas/ProductType'
-        product_version_id:
-          type: integer
-        quality_adjustments: {}
-        rate:
-          format: double
-          type: number
-        scoring_rate:
-          format: double
-          type: number
-        variability:
-          $ref: '#/components/schemas/Variability'
-      required:
-      - amount
-      - aprc
-      - base_product_id
-      - base_rate
-      - credit_provider
-      - discounts_rate
-      - duration
-      - funder
-      - id
-      - loan_type
-      - logo_url
-      - monthly_amount
-      - name
-      - product_type
-      - product_version_id
-      - rate
-      - scoring_rate
-      - variability
-      type: object
-    ProductType:
-      description: Can be managed at /resources/product-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Discount3rdLevel:
-      properties:
-        interest_rate:
-          format: double
-          type: number
-        is_corrected:
-          default: false
-          readOnly: true
-          type: boolean
-        is_default:
-          readOnly: true
-          type: boolean
-        is_outdated:
-          default: false
-          readOnly: true
-          type: boolean
-        is_selected:
-          default: false
-          readOnly: true
-          type: boolean
-        is_selected_by_default:
-          default: false
-          type: boolean
-        is_valid:
-          default: true
-          readOnly: true
-          type: boolean
-        name:
-          type: string
-        parameters:
-          default: []
-          items:
-            $ref: '#/components/schemas/Parameter'
+            properties:
+              discounts:
+                items:
+                  properties:
+                    ignore_childs:
+                      type: boolean
+                    interest_rate:
+                      format: double
+                      type: number
+                    is_corrected:
+                      type: boolean
+                    is_outdated:
+                      type: boolean
+                    is_selected:
+                      type: boolean
+                    is_selected_by_default:
+                      type: boolean
+                    is_valid:
+                      type: boolean
+                    max_discounts_allowed:
+                      type: integer
+                    name:
+                      type: string
+                  required:
+                  - name
+                  type: object
+                type: array
+              ignore_childs:
+                type: boolean
+              interest_rate:
+                format: double
+                type: number
+              is_corrected:
+                type: boolean
+              is_outdated:
+                type: boolean
+              is_selected:
+                type: boolean
+              is_selected_by_default:
+                type: boolean
+              is_valid:
+                type: boolean
+              max_discounts_allowed:
+                type: integer
+              name:
+                type: string
+            required:
+            - name
+            type: object
           readOnly: true
           type: array
+        funder:
+          allOf:
+          - $ref: '#/components/schemas/Funder'
+          readOnly: true
+        id:
+          type: integer
+        is_simulator_reference_product:
+          readOnly: true
+          type: boolean
+        loan_type:
+          allOf:
+          - $ref: '#/components/schemas/LoanType'
+          readOnly: true
+        logo_url:
+          format: uri
+          maxLength: 200
+          readOnly: true
+          type: string
+        name:
+          maxLength: 64
+          readOnly: true
+          type: string
       required:
-      - interest_rate
-      - is_corrected
-      - is_default
-      - is_outdated
-      - is_selected
-      - is_valid
+      - active
+      - credit_provider
+      - discounts
+      - funder
+      - id
+      - is_simulator_reference_product
+      - loan_type
+      - logo_url
       - name
-      - parameters
       type: object
-    MortgageSimulatorMonthlyPaymentEstimationFinancialPlanLoanAmountField:
+    MortgageSimulatorFinancialPlanLoanAmountField:
       properties:
         default_duration:
           maximum: 2147483647
@@ -2417,24 +1567,20 @@ components:
       - loan_amount_type
       - simulator_base_product
       type: object
-    NestedBaseRate:
+    AnnualizationMethod:
+      description: Can be managed at /resources/annualization-method
       properties:
+        definition:
+          type: string
         id:
+          type: integer
+        order:
           readOnly: true
           type: integer
-        percentage:
-          readOnly: true
-          type: string
-        rate:
-          format: double
-          type: number
-        variability:
-          $ref: '#/components/schemas/Variability'
       required:
+      - definition
       - id
-      - percentage
-      - rate
-      - variability
+      - order
       type: object
     NestedClientProfile:
       properties:
@@ -2481,370 +1627,202 @@ components:
       - reference_number
       - verified
       type: object
-    CompanyType:
-      description: Can be managed at /resources/company-types
+    Explanation:
       properties:
-        definition:
+        explanation:
           type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
+        language:
+          $ref: '#/components/schemas/Language'
       required:
-      - definition
-      - id
-      - order
+      - explanation
+      - language
       type: object
-    ContactType:
-      description: Can be managed at /resources/contact-type
+    MortgageSimulatorRefinanceTranche:
       properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    AdvisorMortgageSimulator:
-      properties:
-        additional_needs:
-          items:
-            $ref: '#/components/schemas/MortgageSimulationAdditionalFinancingNeeds'
-          type:
-          - array
-          - 'null'
-        akr_expenses:
-          readOnly: true
-          type: string
-        architect_fees:
-          default: 0.0
+        interest_rate:
           format: double
-          minimum: 0
           type:
           - number
           - 'null'
-          writeOnly: true
-        borrowers_info:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorBorrowerInfo'
-          type: array
-        building_costs:
-          default: 0.0
+        original_loan_amount:
           format: double
-          minimum: 0
           type:
           - number
           - 'null'
-          writeOnly: true
-        buy_out_amount:
-          default: 0.0
+        outstanding_balance:
           format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        calculated_financial_plan:
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        collaterals:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorCollateral'
-          type: array
-        dscr:
-          readOnly: true
-          type: string
-        dsti:
-          readOnly: true
-          type: string
-        epc_after_renovations:
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-          writeOnly: true
-        epc_before_renovations:
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-          writeOnly: true
-        fair_market_value:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        fiduciary:
-          allOf:
-          - $ref: '#/components/schemas/Fiduciary'
-        financial_assets:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorFinancialAsset'
-          type: array
-        financial_plan:
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        financial_plan_loan_amount_items:
-          description: Financial plan items funded by loans
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorFinancialPlanLoanAmountItem'
-          type: array
-        financial_plan_overridden_fields:
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        financial_plan_own_fund_items:
-          description: Financial plan items funded by own funds
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorFinancialPlanOwnFundItem'
-          type: array
-        free_use_mortgage:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        is_main_first_residence:
-          default: false
-          type: boolean
-        is_realtor_excluded:
-          default: false
-          type: boolean
-        land_purchase_type:
-          allOf:
-          - $ref: '#/components/schemas/LandPurchaseType'
-          writeOnly: true
-        land_value:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        loan_purposes:
-          items:
-            $ref: '#/components/schemas/LoanRequestPurpose'
-          type: array
-        ltv:
-          readOnly: true
-          type: string
-        monthly_payment_estimations:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorMonthlyPaymentEstimation'
-          type: array
-        notary:
-          allOf:
-          - $ref: '#/components/schemas/Notary'
-        price_of_land:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        pro_fisco_value:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        purchase_sale_type:
-          allOf:
-          - $ref: '#/components/schemas/PurchaseSaleType'
-          writeOnly: true
-        realty_price:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        realty_type:
-          allOf:
-          - $ref: '#/components/schemas/RealtyType'
-          writeOnly: true
-        realty_usage_type:
-          allOf:
-          - $ref: '#/components/schemas/RealtyUsageType'
-          writeOnly: true
-        refinances:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorRefinance'
-          type: array
-        region:
-          allOf:
-          - $ref: '#/components/schemas/Region'
-        renovation_costs:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorRenovationCost'
-          type: array
-        short_term_dsti:
-          readOnly: true
-          type: string
-        short_term_ltv:
-          readOnly: true
-          type: string
-        short_term_surplus:
-          readOnly: true
-          type: string
-        surplus:
-          readOnly: true
-          type: string
-        total_additional_needs:
-          readOnly: true
-          type: string
-        total_build_costs:
-          readOnly: true
-          type: string
-        total_costs:
-          readOnly: true
-          type: string
-        total_credit_costs:
-          readOnly: true
-          type: string
-        total_distribution_costs:
-          readOnly: true
-          type: string
-        total_financial_assets:
-          readOnly: true
-          type: string
-        total_financing:
-          readOnly: true
-          type: string
-        total_monthly_amount:
-          readOnly: true
-          type: string
-        total_other_costs:
-          readOnly: true
-          type: string
-        total_purchase_cost:
-          readOnly: true
-          type: string
-        total_purchase_price:
-          readOnly: true
-          type: string
-        total_refinancing_costs:
-          readOnly: true
-          type: string
-        total_renovation_costs:
-          readOnly: true
-          type: string
-        unsecured_lending_amount:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        venal_value_after:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-        venal_value_before:
-          default: 0.0
-          format: double
-          minimum: 0
-          type:
-          - number
-          - 'null'
-          writeOnly: true
-      required:
-      - akr_expenses
-      - calculated_financial_plan
-      - dscr
-      - dsti
-      - financial_plan
-      - financial_plan_overridden_fields
-      - ltv
-      - short_term_dsti
-      - short_term_ltv
-      - short_term_surplus
-      - surplus
-      - total_additional_needs
-      - total_build_costs
-      - total_costs
-      - total_credit_costs
-      - total_distribution_costs
-      - total_financial_assets
-      - total_financing
-      - total_monthly_amount
-      - total_other_costs
-      - total_purchase_cost
-      - total_purchase_price
-      - total_refinancing_costs
-      - total_renovation_costs
-      type: object
-    MortgageSimulatorRenovationCost:
-      properties:
-        amount:
-          format: double
-          minimum: 0
           type: number
+        related_realties:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorRelatedRealties'
+          type: array
+      required:
+      - outstanding_balance
+      type: object
+    Region:
+      description: Can be managed at /resources/region
+      properties:
+        definition:
+          type: string
         id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedLeadGenerator:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          readOnly: true
+        fsma_reference:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - vat_number
+      type: object
+    Funder:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        name:
+          maxLength: 256
+          type: string
+      required:
+      - id
+      - name
+      type: object
+    StreetType:
+      description: Can be managed at /resources/street-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Email:
+      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        value:
+          format: email
+          maxLength: 254
+          type: string
+      required:
+      - id
+      - value
+      type: object
+    LoanType:
+      description: Can be managed at /resources/loan-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        is_grace_period_supported:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    MortgageSimulatorRefinance:
+      properties:
+        borrower_index:
           type:
           - integer
           - 'null'
-        is_green_renovations:
+        collateral_purpose:
+          allOf:
+          - $ref: '#/components/schemas/RealtyPurpose'
+        has_existing_loan:
+          default: false
+          type: boolean
+        is_collateral:
           type:
           - boolean
           - 'null'
-        type:
-          $ref: '#/components/schemas/RenovationType'
-      required:
-      - amount
-      - type
-      type: object
-    MortgageSimulatorFinancialPlanLoanAmountItem:
-      properties:
-        amount:
-          format: double
-          type: number
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        financial_plan_loan_amount_field:
-          $ref: '#/components/schemas/MortgageSimulatorFinancialPlanLoanAmountField'
-        id:
+        is_main:
           type:
-          - integer
+          - boolean
           - 'null'
-        is_overridden:
-          type: boolean
-        loan_request:
-          readOnly: true
-          type: integer
+        liability_type:
+          allOf:
+          - $ref: '#/components/schemas/LiabilityType'
+        original_purpose:
+          allOf:
+          - $ref: '#/components/schemas/LoanRequestSubPurpose'
+        realty_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyType'
+        related_realties:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorRelatedRealties'
+          type: array
+        tranches:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorRefinanceTranche'
+          type: array
+        value_of_the_realty:
+          format: double
+          type:
+          - number
+          - 'null'
       required:
-      - created
-      - financial_plan_loan_amount_field
-      - loan_request
+      - tranches
+      type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
       type: object
     AdvisorMortgageSimulatorConvertProductItem:
       properties:
@@ -3004,85 +1982,6 @@ components:
       - total_interest_mensuality
       - total_payback_amount
       - variability
-      type: object
-    SeverityType:
-      description: Can be managed at /resources/severity-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    MortgageSimulatorFinancialAsset:
-      properties:
-        amount:
-          format: double
-          minimum: 0
-          type: number
-        type:
-          $ref: '#/components/schemas/FinancialAssetType'
-      required:
-      - amount
-      - type
-      type: object
-    MortgageSimulatorCollateral:
-      properties:
-        collateral_amount:
-          format: double
-          type:
-          - number
-          - 'null'
-        collateral_purpose:
-          allOf:
-          - $ref: '#/components/schemas/RealtyPurpose'
-        credit_provider:
-          allOf:
-          - $ref: '#/components/schemas/ReducedCreditProvider'
-        has_existing_loan:
-          default: false
-          type: boolean
-        mortgage_inscription_start_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        mortgage_security_type:
-          allOf:
-          - $ref: '#/components/schemas/MortgageSecurityType'
-        original_loan_amount:
-          format: double
-          type:
-          - number
-          - 'null'
-        realty_type:
-          allOf:
-          - $ref: '#/components/schemas/RealtyType'
-        realty_usage_type:
-          allOf:
-          - $ref: '#/components/schemas/RealtyUsageType'
-      type: object
-    Profile2Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        is_secret:
-          default: false
-          type: boolean
-        phone_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          maxLength: 32
-          minLength: 4
-          type: string
-      required:
-      - value
       type: object
     ConvertSimulationToLoanRequest:
       properties:
@@ -3407,8 +2306,8 @@ components:
       - main_borrower
       - source
       type: object
-    MortgageSecurityType:
-      description: Can be managed at /resources/mortgage-security-type
+    MortgageSimulationSource:
+      description: Can be managed at /resources/mortgage-simulation-source
       properties:
         definition:
           type: string
@@ -3422,8 +2321,8 @@ components:
       - id
       - order
       type: object
-    Region:
-      description: Can be managed at /resources/region
+    ContactType:
+      description: Can be managed at /resources/contact-type
       properties:
         definition:
           type: string
@@ -3437,132 +2336,41 @@ components:
       - id
       - order
       type: object
-    ParameterType:
-      description: Can be managed at /resources/parameter-type
+    PaginatedReducedMortgageSimulationResultList:
       properties:
-        definition:
-          type: string
-        id:
+        count:
+          example: 123
           type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Discount2ndLevel:
-      properties:
-        discounts:
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
           items:
-            $ref: '#/components/schemas/Discount3rdLevel'
-          type: array
-        explanations:
-          items:
-            $ref: '#/components/schemas/Explanation'
-          type: array
-        ignore_childs:
-          default: false
-          readOnly: true
-          type: boolean
-        interest_rate:
-          format: double
-          type: number
-        is_corrected:
-          default: false
-          readOnly: true
-          type: boolean
-        is_default:
-          readOnly: true
-          type: boolean
-        is_outdated:
-          default: false
-          readOnly: true
-          type: boolean
-        is_selected:
-          default: false
-          readOnly: true
-          type: boolean
-        is_selected_by_default:
-          default: false
-          type: boolean
-        is_valid:
-          default: true
-          readOnly: true
-          type: boolean
-        max_discounts_allowed:
-          default: 0
-          readOnly: true
-          type: integer
-        name:
-          type: string
-        parameters:
-          default: []
-          items:
-            $ref: '#/components/schemas/Parameter'
-          readOnly: true
+            $ref: '#/components/schemas/ReducedMortgageSimulationResult'
           type: array
       required:
-      - ignore_childs
-      - is_corrected
-      - is_default
-      - is_outdated
-      - is_selected
-      - is_valid
-      - max_discounts_allowed
-      - name
-      - parameters
+      - count
+      - results
       type: object
-    ReducedClientProfileWithContactInformation:
+    MinimalBaseProduct:
       description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
       properties:
-        emails:
-          items:
-            $ref: '#/components/schemas/Profile2Email'
-          readOnly: true
-          type: array
-        first_name:
-          readOnly: true
-          type: string
         id:
           type: integer
-        last_name:
-          readOnly: true
-          type: string
-        phone_numbers:
-          items:
-            $ref: '#/components/schemas/Profile2Phone'
-          readOnly: true
-          type: array
       required:
-      - emails
-      - first_name
       - id
-      - last_name
-      - phone_numbers
       type: object
-    FinancialPlanOwnFundType:
-      description: Can be managed at /resources/financial-plant-own-fund-type
-      properties:
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - color
-      - definition
-      - id
-      - order
-      type: object
-    ProductCostPromotionType:
-      description: Can be managed at /resources/product-cost-promotion-type
+    PurchaseSaleType:
+      description: Can be managed at /resources/purchase-sale-type
       properties:
         definition:
           type: string
@@ -3576,246 +2384,29 @@ components:
       - id
       - order
       type: object
-    ReducedBaseUser:
-      description: User reduced representation
+    AdvisorMortgageSimulatorConvertOffer:
       properties:
-        first_name:
-          default: ''
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        last_name:
-          default: ''
-          readOnly: true
-          type: string
-        role:
-          allOf:
-          - $ref: '#/components/schemas/UserRole'
-          readOnly: true
-        verified:
-          readOnly: true
-          type: boolean
-      required:
-      - first_name
-      - id
-      - last_name
-      - role
-      - verified
-      type: object
-    MortgageSimulatorRelatedRealties:
-      properties:
-        address:
-          allOf:
-          - $ref: '#/components/schemas/NonRequiredAddress'
-        epc_before_renovations:
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-        is_collateral:
-          type:
-          - boolean
-          - 'null'
-        realty_type:
-          allOf:
-          - $ref: '#/components/schemas/RealtyType'
-        value_of_the_realty:
-          format: double
-          type:
-          - number
-          - 'null'
-      type: object
-    ProductItemCost:
-      properties:
-        amount_type:
-          $ref: '#/components/schemas/AmountType'
-        cost_type:
-          $ref: '#/components/schemas/ProductCostType'
-        duration:
-          maximum: 2147483647
-          minimum: -2147483648
-          type: integer
-        final_amount:
-          format: double
-          type: number
-        final_first_month_amount:
-          format: double
-          type:
-          - number
-          - 'null'
-        impacts_financial_plan:
-          readOnly: true
-          type: boolean
-        is_included_in_allocation:
-          type:
-          - boolean
-          - 'null'
-        is_included_in_amortization:
-          readOnly: true
-          type: boolean
-        is_overridable:
-          readOnly: true
-          type: boolean
-        original_amount:
-          format: double
-          type: number
-        original_first_month_amount:
-          format: double
-          type:
-          - number
-          - 'null'
-        periodicity:
-          $ref: '#/components/schemas/Periodicity'
-        promotion:
-          allOf:
-          - $ref: '#/components/schemas/ProductItemCostPromotion'
-        start_period:
-          maximum: 2147483647
-          minimum: -2147483648
-          type: integer
-      required:
-      - amount_type
-      - cost_type
-      - final_amount
-      - final_first_month_amount
-      - impacts_financial_plan
-      - is_included_in_amortization
-      - is_overridable
-      - original_amount
-      - original_first_month_amount
-      - periodicity
-      type: object
-    StreetType:
-      description: Can be managed at /resources/street-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Email:
-      description: "Moves `UniqueValidator`'s from the validation stage to the save stage.\nIt solves the problem with nested validation for unique fields on update.\nIf you want more details, you can read related issues and articles:\nhttps://github.com/beda-software/drf-writable-nested/issues/1\nhttp://www.django-rest-framework.org/api-guide/validators/#updating-nested-serializers\nExample of usage:\n```\nclass Child(models.Model):\n    field = models.CharField(unique=True)\nclass Parent(models.Model):\n    child = models.ForeignKey('Child')\nclass ChildSerializer(UniqueFieldsMixin, serializers.ModelSerializer):\n    class Meta:\n        model = Child\nclass ParentSerializer(NestedUpdateMixin, serializers.ModelSerializer):\n    child = ChildSerializer()\n    class Meta:\n        model = Parent\n```\nNote: `UniqueFieldsMixin` must be applied only on the serializer\nwhich has unique fields.\nNote: When you are using both mixins\n(`UniqueFieldsMixin` and `NestedCreateMixin` or `NestedUpdateMixin`)\nyou should put `UniqueFieldsMixin` ahead."
-      properties:
-        id:
-          readOnly: true
-          type: integer
-        value:
-          format: email
-          maxLength: 254
-          type: string
-      required:
-      - id
-      - value
-      type: object
-    MortgageSimulatorBaseProduct:
-      properties:
-        default_duration:
-          type:
-          - integer
-          - 'null'
-        default_rate:
-          format: double
-          type:
-          - number
-          - 'null'
-        product_type:
-          $ref: '#/components/schemas/ProductType'
-      required:
-      - default_duration
-      - default_rate
-      - product_type
-      type: object
-    MortgageSimulatorBorrowerInfo:
-      properties:
-        birth_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        emails:
+        items:
           items:
-            $ref: '#/components/schemas/Email'
-          type:
-          - array
-          - 'null'
-        first_name:
-          type:
-          - string
-          - 'null'
-        has_vehicle:
-          default: true
-          type:
-          - boolean
-          - 'null'
-        id:
-          type:
-          - integer
-          - 'null'
-        incomes:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorIncome'
+            $ref: '#/components/schemas/AdvisorMortgageSimulatorConvertProductItem'
           type: array
-        is_living_in_same_household:
-          default: false
-          type:
-          - boolean
-          - 'null'
-        is_main_borrower:
-          type:
-          - boolean
-          - 'null'
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-        last_name:
-          type:
-          - string
-          - 'null'
-        liabilities:
-          items:
-            $ref: '#/components/schemas/MortgageSimulatorLiability'
-          type: array
-        number_of_dependents:
-          type:
-          - integer
-          - 'null'
-        people_in_household:
-          type:
-          - integer
-          - 'null'
-        phone_numbers:
-          items:
-            $ref: '#/components/schemas/Phone'
-          type:
-          - array
-          - 'null'
+      required:
+      - items
       type: object
-    NonRequiredAddress:
-      description: 'Inheriting from base address serializer and set with a few optional
-
-        fields. Use this serializer to add any future non required fields.'
+    Profile2Address:
       properties:
+        address_type:
+          allOf:
+          - $ref: '#/components/schemas/ContactType'
         box:
-          maxLength: 64
           type: string
         building:
           type: string
         city:
-          maxLength: 64
           type: string
         country:
-          allOf:
-          - $ref: '#/components/schemas/Country'
+          $ref: '#/components/schemas/Country'
         floor:
-          maxLength: 64
           type: string
         heading:
           format: double
@@ -3825,11 +2416,7 @@ components:
           exclusiveMinimum: -100000
           exclusiveMaximum: 100000
         house_number:
-          maxLength: 64
           type: string
-        id:
-          readOnly: true
-          type: integer
         latitude:
           format: double
           type:
@@ -3854,13 +2441,11 @@ components:
         staircase:
           type: string
         street:
-          maxLength: 64
           type: string
         street_type:
           allOf:
           - $ref: '#/components/schemas/StreetType'
         zip_code:
-          maxLength: 8
           type: string
         zoom:
           format: double
@@ -3871,280 +2456,238 @@ components:
           exclusiveMaximum: 100000
       required:
       - city
-      - house_number
-      - id
+      - country
       - street
       - zip_code
       type: object
-    DiscountSimulator:
+    Notary:
+      description: The same as ThirdPartySerializer but specifically for a Notary, without VAT, with bank account
       properties:
-        discounts:
-          items:
-            $ref: '#/components/schemas/Discount2ndLevel'
-          type: array
-        ignore_childs:
-          default: false
-          type: boolean
-        is_corrected:
-          default: false
-          type: boolean
-        is_outdated:
-          default: false
-          type: boolean
-        is_selected:
-          default: false
-          type: boolean
-        is_valid:
-          default: true
-          type: boolean
-        max_discounts_allowed:
-          type: integer
-        name:
+        VAT:
+          readOnly: true
           type: string
+        addresses:
+          items:
+            $ref: '#/components/schemas/Profile2Address'
+          readOnly: true
+          type: array
+        bankAccount:
+          readOnly: true
+          type: string
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          readOnly: true
+          type: array
+        fsmaReference:
+          readOnly: true
+          type: string
+        logo:
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        phones:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          readOnly: true
+          type: array
+        profileName:
+          readOnly: true
+          type: string
+        websites:
+          items:
+            $ref: '#/components/schemas/CompanyProfile2Website'
+          readOnly: true
+          type: array
       required:
-      - discounts
+      - VAT
+      - addresses
+      - bankAccount
+      - emails
+      - fsmaReference
+      - logo
       - name
+      - phones
+      - profileName
+      - websites
       type: object
-    ConvertLoanRequestSummary:
+    GenerateSimulatorOffers:
       properties:
-        loan_request_id:
-          readOnly: true
-          type: integer
-        main_borrower_id:
-          readOnly: true
-          type: integer
-        total_requests_created:
-          readOnly: true
-          type: integer
-        total_requests_created_this_month:
-          readOnly: true
-          type: integer
-      required:
-      - loan_request_id
-      - main_borrower_id
-      - total_requests_created
-      - total_requests_created_this_month
-      type: object
-    AllowedProductVariability:
-      properties:
-        active:
-          type: boolean
-        default_duration:
-          maximum: 999
-          minimum: 1
-          type: integer
-        id:
-          readOnly: true
-          type: integer
-        is_simulator_reference_variability:
-          type: boolean
-        max_duration:
-          maximum: 999
-          minimum: 1
-          type: integer
-        min_duration:
-          maximum: 999
-          minimum: 1
-          type: integer
-        variability:
-          $ref: '#/components/schemas/Variability'
-      required:
-      - id
-      - variability
-      type: object
-    ProductItemCostPromotion:
-      properties:
-        amount:
+        architect_fees:
           format: double
-          type: number
-        amount_type:
-          $ref: '#/components/schemas/AmountType'
-        promotion_type:
-          $ref: '#/components/schemas/ProductCostPromotionType'
-      required:
-      - amount
-      - amount_type
-      - promotion_type
-      type: object
-    FinancialPlanLoanAmountType:
-      description: Can be managed at /resources/financial-plan-loan-amount-type
-      properties:
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - color
-      - definition
-      - id
-      - order
-      type: object
-    LoanType:
-      description: Can be managed at /resources/loan-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        is_grace_period_supported:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ReducedMortgageSimulationResult:
-      properties:
-        analyst:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBaseUser'
-        broker:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBroker'
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        created_by:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBaseUser'
-          readOnly: true
-        expiration_date:
-          readOnly: true
-          type: string
-        fiduciary:
-          allOf:
-          - $ref: '#/components/schemas/Fiduciary'
-        id:
-          type: integer
-        internal_reference:
-          readOnly: true
-          type: string
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type: string
-        lead_generator:
-          allOf:
-          - $ref: '#/components/schemas/ReducedLeadGenerator'
-        loan_amount:
-          readOnly: true
-          type: string
-        loan_purposes:
+          type:
+          - number
+          - 'null'
+        borrowers_info:
           items:
-            $ref: '#/components/schemas/LoanRequestPurpose'
+            $ref: '#/components/schemas/MortgageSimulatorBorrowerInfo'
           type: array
-        loan_request:
-          allOf:
-          - $ref: '#/components/schemas/ReducedLoanRequest'
-          readOnly: true
-        main_borrower:
-          $ref: '#/components/schemas/ReducedClientProfileWithContactInformation'
-        name:
-          type:
-          - string
-          - 'null'
-        notary:
-          allOf:
-          - $ref: '#/components/schemas/Notary'
-        preapproval_status:
-          readOnly: true
-          type: string
-        region:
-          allOf:
-          - $ref: '#/components/schemas/Region'
-        source:
-          allOf:
-          - $ref: '#/components/schemas/MortgageSimulationSource'
-          readOnly: true
-        status:
-          $ref: '#/components/schemas/MortgageSimulationStatus'
-      required:
-      - created
-      - created_by
-      - expiration_date
-      - id
-      - internal_reference
-      - last_modified
-      - loan_amount
-      - loan_request
-      - main_borrower
-      - preapproval_status
-      - source
-      type: object
-    ReducedCreditProvider:
-      description: To be used for a short summary of the CreditProvider
-      properties:
-        active:
-          readOnly: true
-          type: boolean
-        fsma_reference:
-          maxLength: 128
-          readOnly: true
-          type: string
-        full_name:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        is_liability_provider:
-          readOnly: true
-          type: boolean
-        loan_request_form_documents:
-          readOnly: true
-          type: string
-        logo_url:
-          format: uri
-          readOnly: true
-          type: string
-        name:
-          readOnly: true
-          type: string
-        order:
-          maximum: 2147483647
-          minimum: 0
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-      required:
-      - active
-      - fsma_reference
-      - full_name
-      - id
-      - is_liability_provider
-      - loan_request_form_documents
-      - logo_url
-      - name
-      - order
-      type: object
-    MortgageSimulationAdditionalFinancingNeeds:
-      properties:
-        amount:
+          writeOnly: true
+        building_costs:
+          default: 0.0
           format: double
           minimum: 0
           type:
           - number
           - 'null'
-        type:
-          $ref: '#/components/schemas/AdditionalFinancingNeedType'
+          writeOnly: true
+        buy_out_amount:
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        collaterals:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorCollateral'
+          type: array
+        epc_after_renovations:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+          writeOnly: true
+        epc_before_renovations:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+          writeOnly: true
+        fair_market_value:
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        financial_plan:
+          allOf:
+          - $ref: '#/components/schemas/MortgageSimulationFinancialPlan'
+          writeOnly: true
+        financial_plan_loan_amount_items:
+          description: Financial plan items funded by loans
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorFinancialPlanLoanAmountItem'
+          type: array
+        financial_plan_overridden_fields:
+          allOf:
+          - $ref: '#/components/schemas/MortgageSimulationFinancialPlan'
+          writeOnly: true
+        financial_plan_own_fund_items:
+          description: Financial plan items funded by own funds
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorFinancialPlanOwnFundItem'
+          type: array
+        is_main_first_residence:
+          default: false
+          type:
+          - boolean
+          - 'null'
+          writeOnly: true
+        is_realtor_excluded:
+          default: false
+          type:
+          - boolean
+          - 'null'
+          writeOnly: true
+        land_purchase_type:
+          allOf:
+          - $ref: '#/components/schemas/LandPurchaseType'
+        land_value:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        loan_purposes:
+          items:
+            $ref: '#/components/schemas/LoanRequestPurpose'
+          type:
+          - array
+          - 'null'
+          writeOnly: true
+        price_of_land:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        pro_fisco_value:
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        products:
+          items:
+            $ref: '#/components/schemas/NestedProduct'
+          readOnly: true
+          type: array
+        purchase_sale_type:
+          allOf:
+          - $ref: '#/components/schemas/PurchaseSaleType'
+        realty_price:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        realty_usage_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyUsageType'
+          writeOnly: true
+        refinances:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorRefinance'
+          type: array
+        region:
+          allOf:
+          - $ref: '#/components/schemas/Region'
+          writeOnly: true
+        renovation_costs:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorRenovationCost'
+          type: array
+        selected_discounts:
+          writeOnly: true
+        selected_products:
+          items:
+            items:
+              $ref: '#/components/schemas/NestedProduct'
+            type: array
+            writeOnly: true
+          type: array
+          writeOnly: true
+        venal_value_after:
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        venal_value_before:
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
       required:
-      - amount
-      - type
+      - products
+      - selected_products
       type: object
-    Country:
-      description: Can be managed at /resources/country
+    Language:
+      description: Can be managed at /resources/language
       properties:
         definition:
           type: string
@@ -4183,222 +2726,6 @@ components:
       - created
       - financial_plan_loan_amount_field
       - loan_request
-      type: object
-    Status:
-      description: Can be managed at /resources/status
-      properties:
-        borrower_facing_status:
-          readOnly: true
-          type: string
-        check_if_selected_offer_is_still_valid_when_data_is_changed:
-          type: boolean
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        icon:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        is_active:
-          type: boolean
-        is_terminal:
-          type: boolean
-        notify_analyst_on_draft_offer_rate_change:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-        recalculate_selected_offer_when_data_is_changed:
-          type: boolean
-      required:
-      - borrower_facing_status
-      - color
-      - definition
-      - icon
-      - id
-      - order
-      type: object
-    MortgageSimulatorFinancialPlanOwnFundField:
-      properties:
-        external_calculator_type:
-          allOf:
-          - $ref: '#/components/schemas/ExternalCalculatorType'
-        id:
-          type:
-          - integer
-          - 'null'
-        is_calculated:
-          type: boolean
-        is_default:
-          type: boolean
-        is_loan_needed:
-          type: boolean
-        is_main:
-          type: boolean
-        is_overridable:
-          type: boolean
-        is_visible:
-          type: boolean
-        own_fund_type:
-          $ref: '#/components/schemas/FinancialPlanOwnFundType'
-      required:
-      - own_fund_type
-      type: object
-    CoLivingGroupType:
-      description: Can be managed at /resources/co-living-group-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    DocumentType:
-      description: Can be managed at /resources/document-type
-      properties:
-        add_to_handover_letter:
-          type: boolean
-        allows_generation:
-          type: boolean
-        append_file_version:
-          type: boolean
-        can_be_added_manually_as_informative_document:
-          type: boolean
-        definition:
-          type: string
-        document_generation_configuration: {}
-        id:
-          type: integer
-        is_informative:
-          type: boolean
-        is_proof_to_sign:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RealtyType:
-      description: Can be managed at /resources/realty-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Language:
-      description: Can be managed at /resources/language
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ProductCostType:
-      description: Can be managed at /resources/product-cost-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LoanRequestSubPurpose:
-      description: Can be managed at /resources/loan-request-sub-purpose
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        is_mortgage:
-          type: boolean
-        is_refinance:
-          type:
-          - boolean
-          - 'null'
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    AdditionalFinancingNeedType:
-      description: Can be managed at /resources/additional-financing-need-type
-      properties:
-        definition:
-          type: string
-        financial_plan_loan_amount_field:
-          type:
-          - integer
-          - 'null'
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Profile2Email:
-      properties:
-        email_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          format: email
-          type: string
-      required:
-      - value
       type: object
     DynamicProductLite:
       properties:
@@ -4564,6 +2891,961 @@ components:
       required:
       - products
       type: object
+    MortgageSimulatorFinancialPlanOwnFundField:
+      properties:
+        external_calculator_type:
+          allOf:
+          - $ref: '#/components/schemas/ExternalCalculatorType'
+        id:
+          type:
+          - integer
+          - 'null'
+        is_calculated:
+          type: boolean
+        is_default:
+          type: boolean
+        is_loan_needed:
+          type: boolean
+        is_main:
+          type: boolean
+        is_overridable:
+          type: boolean
+        is_visible:
+          type: boolean
+        own_fund_type:
+          $ref: '#/components/schemas/FinancialPlanOwnFundType'
+      required:
+      - own_fund_type
+      type: object
+    ReducedBroker:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        account_manager:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          readOnly: true
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          readOnly: true
+        fsma_reference:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        outstanding_debt:
+          format: double
+          readOnly: true
+          type: number
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - account_manager
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - outstanding_debt
+      - vat_number
+      type: object
+    ReducedCreditProvider:
+      description: To be used for a short summary of the CreditProvider
+      properties:
+        active:
+          readOnly: true
+          type: boolean
+        fsma_reference:
+          maxLength: 128
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_liability_provider:
+          readOnly: true
+          type: boolean
+        loan_request_form_documents:
+          readOnly: true
+          type: string
+        logo_url:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        order:
+          maximum: 2147483647
+          minimum: 0
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+      required:
+      - active
+      - fsma_reference
+      - full_name
+      - id
+      - is_liability_provider
+      - loan_request_form_documents
+      - logo_url
+      - name
+      - order
+      type: object
+    AllowedProductVariability:
+      properties:
+        active:
+          type: boolean
+        default_duration:
+          maximum: 999
+          minimum: 1
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        is_simulator_reference_variability:
+          type: boolean
+        max_duration:
+          maximum: 999
+          minimum: 1
+          type: integer
+        min_duration:
+          maximum: 999
+          minimum: 1
+          type: integer
+        variability:
+          $ref: '#/components/schemas/Variability'
+      required:
+      - id
+      - variability
+      type: object
+    ProductItemCostPromotion:
+      properties:
+        amount:
+          format: double
+          type: number
+        amount_type:
+          $ref: '#/components/schemas/AmountType'
+        promotion_type:
+          $ref: '#/components/schemas/ProductCostPromotionType'
+      required:
+      - amount
+      - amount_type
+      - promotion_type
+      type: object
+    MortgageSimulatorRelatedRealties:
+      properties:
+        address:
+          allOf:
+          - $ref: '#/components/schemas/NonRequiredAddress'
+        epc_before_renovations:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        is_collateral:
+          type:
+          - boolean
+          - 'null'
+        realty_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyType'
+        value_of_the_realty:
+          format: double
+          type:
+          - number
+          - 'null'
+      type: object
+    MortgageSimulatorLiability:
+      properties:
+        amount:
+          format: double
+          type:
+          - number
+          - 'null'
+        id:
+          type:
+          - integer
+          - 'null'
+        liability_type:
+          $ref: '#/components/schemas/LiabilityType'
+        monthly_amount:
+          format: double
+          type:
+          - number
+          - 'null'
+      required:
+      - liability_type
+      type: object
+    MortgageSimulationStatus:
+      description: Can be managed at /resources/mortgage-simulation-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Status:
+      description: Can be managed at /resources/status
+      properties:
+        borrower_facing_status:
+          readOnly: true
+          type: string
+        check_if_selected_offer_is_still_valid_when_data_is_changed:
+          type: boolean
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        icon:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_active:
+          type: boolean
+        is_terminal:
+          type: boolean
+        notify_analyst_on_draft_offer_rate_change:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+        recalculate_selected_offer_when_data_is_changed:
+          type: boolean
+      required:
+      - borrower_facing_status
+      - color
+      - definition
+      - icon
+      - id
+      - order
+      type: object
+    NonRequiredAddress:
+      description: 'Inheriting from base address serializer and set with a few optional
+
+        fields. Use this serializer to add any future non required fields.'
+      properties:
+        box:
+          maxLength: 64
+          type: string
+        building:
+          type: string
+        city:
+          maxLength: 64
+          type: string
+        country:
+          allOf:
+          - $ref: '#/components/schemas/Country'
+        floor:
+          maxLength: 64
+          type: string
+        heading:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        house_number:
+          maxLength: 64
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        latitude:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        longitude:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        pitch:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        staircase:
+          type: string
+        street:
+          maxLength: 64
+          type: string
+        street_type:
+          allOf:
+          - $ref: '#/components/schemas/StreetType'
+        zip_code:
+          maxLength: 8
+          type: string
+        zoom:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+      required:
+      - city
+      - house_number
+      - id
+      - street
+      - zip_code
+      type: object
+    RealtyType:
+      description: Can be managed at /resources/realty-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ConvertLoanRequestSummary:
+      properties:
+        loan_request_id:
+          readOnly: true
+          type: integer
+        main_borrower_id:
+          readOnly: true
+          type: integer
+        total_requests_created:
+          readOnly: true
+          type: integer
+        total_requests_created_this_month:
+          readOnly: true
+          type: integer
+      required:
+      - loan_request_id
+      - main_borrower_id
+      - total_requests_created
+      - total_requests_created_this_month
+      type: object
+    MortgageSimulatorProductsSearchFilters:
+      properties:
+        credit_provider:
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+        loan_type:
+          maxLength: 128
+          type:
+          - string
+          - 'null'
+        max_duration:
+          maximum: 320
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+        min_duration:
+          maximum: 320
+          minimum: 1
+          type:
+          - integer
+          - 'null'
+        product_type:
+          maxLength: 128
+          type:
+          - string
+          - 'null'
+        variability:
+          maxLength: 128
+          type:
+          - string
+          - 'null'
+      type: object
+    MortgageSecurityType:
+      description: Can be managed at /resources/mortgage-security-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LoanRequestPurpose:
+      description: Can be managed at /resources/loan-request-purpose
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        is_simulator_enabled:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CompanyProfile2Website:
+      properties:
+        value:
+          type: string
+        website_type:
+          $ref: '#/components/schemas/ContactType'
+      required:
+      - value
+      type: object
+    Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        id:
+          readOnly: true
+          type: integer
+        value:
+          maxLength: 32
+          type: string
+      required:
+      - country_code
+      - id
+      - value
+      type: object
+    RenovationType:
+      description: Can be managed at /resources/renovation-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedProductVersion:
+      description: Used as a serializer mixin for filtering library documents
+      properties:
+        allowed_due_days:
+          items:
+            type: integer
+          readOnly: true
+          type: array
+        allowed_product_variabilities:
+          items:
+            $ref: '#/components/schemas/AllowedProductVariability'
+          readOnly: true
+          type: array
+        allowed_variabilities:
+          readOnly: true
+          type: string
+        base_product_id:
+          readOnly: true
+          type: integer
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+          readOnly: true
+        custom_translations:
+          readOnly: true
+        due_day:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        funder:
+          allOf:
+          - $ref: '#/components/schemas/Funder'
+          readOnly: true
+        grace_period:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+        id:
+          type: integer
+        is_interest_paid_in_grace_period:
+          readOnly: true
+          type: boolean
+        loan_request_form_documents:
+          readOnly: true
+          type: string
+        loan_type:
+          allOf:
+          - $ref: '#/components/schemas/LoanType'
+          readOnly: true
+        logo_url:
+          format: uri
+          readOnly: true
+          type: string
+        max_grace_period:
+          readOnly: true
+          type: integer
+        min_grace_period:
+          readOnly: true
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        product_type:
+          allOf:
+          - $ref: '#/components/schemas/LoanType'
+          readOnly: true
+      required:
+      - allowed_due_days
+      - allowed_product_variabilities
+      - allowed_variabilities
+      - base_product_id
+      - credit_provider
+      - custom_translations
+      - due_day
+      - funder
+      - grace_period
+      - id
+      - is_interest_paid_in_grace_period
+      - loan_request_form_documents
+      - loan_type
+      - logo_url
+      - max_grace_period
+      - min_grace_period
+      - name
+      - product_type
+      type: object
+    MortgageSimulationFinancialPlan:
+      properties:
+        business_capital:
+          format: double
+          type: number
+        cost_additional_financing_need:
+          format: double
+          type: number
+        cost_administration:
+          format: double
+          type: number
+        cost_architect_fees:
+          format: double
+          type: number
+        cost_archiving:
+          format: double
+          type: number
+        cost_bank_account:
+          format: double
+          type: number
+        cost_bank_disbursements:
+          format: double
+          type: number
+        cost_building:
+          format: double
+          type: number
+        cost_buyout:
+          format: double
+          type: number
+        cost_closing_certificate_replacement:
+          format: double
+          type: number
+        cost_contract_drafting_fee:
+          format: double
+          type: number
+        cost_credit_notary:
+          format: double
+          type: number
+        cost_credit_notary_act:
+          format: double
+          type: number
+        cost_credit_notary_administration:
+          format: double
+          type: number
+        cost_credit_notary_annexes:
+          format: double
+          type: number
+        cost_credit_notary_disbursements:
+          format: double
+          type: number
+        cost_credit_notary_fees:
+          format: double
+          type: number
+        cost_credit_notary_mortgage_guarantee_fee:
+          format: double
+          type: number
+        cost_credit_notary_mortgage_registration_fee:
+          format: double
+          type: number
+        cost_credit_notary_vat:
+          format: double
+          type: number
+        cost_credit_registration:
+          format: double
+          type: number
+        cost_credit_registry_check:
+          format: double
+          type: number
+        cost_credit_takeover:
+          format: double
+          type: number
+        cost_distribution_notary:
+          format: double
+          type: number
+        cost_distribution_registration:
+          format: double
+          type: number
+        cost_estimation:
+          format: double
+          type: number
+        cost_file:
+          format: double
+          type: number
+        cost_framework_commission:
+          format: double
+          type: number
+        cost_insurance:
+          format: double
+          type: number
+        cost_land_purchase:
+          format: double
+          type: number
+        cost_land_query_fees:
+          format: double
+          type: number
+        cost_land_registry:
+          format: double
+          type: number
+        cost_land_registry_application:
+          format: double
+          type: number
+        cost_land_registry_application_preparation:
+          format: double
+          type: number
+        cost_land_registry_mortgage:
+          format: double
+          type: number
+        cost_land_registry_verification:
+          format: double
+          type: number
+        cost_lead_commission:
+          format: double
+          type: number
+        cost_liquidities:
+          format: double
+          type: number
+        cost_notary_fees:
+          format: double
+          type: number
+        cost_other_fee:
+          format: double
+          type: number
+        cost_purchase:
+          format: double
+          type: number
+        cost_purchase_notary:
+          format: double
+          type: number
+        cost_purchase_notary_act:
+          format: double
+          type: number
+        cost_purchase_notary_administration:
+          format: double
+          type: number
+        cost_purchase_notary_annexes:
+          format: double
+          type: number
+        cost_purchase_notary_disbursements:
+          format: double
+          type: number
+        cost_purchase_notary_fees:
+          format: double
+          type: number
+        cost_purchase_notary_mortgage_transcript:
+          format: double
+          type: number
+        cost_purchase_notary_vat:
+          format: double
+          type: number
+        cost_purchase_registration:
+          format: double
+          type: number
+        cost_realtor:
+          format: double
+          type: number
+        cost_refinance_additional_costs:
+          format: double
+          type: number
+        cost_refinance_early_repayment_fee:
+          format: double
+          type: number
+        cost_refinance_release_fee:
+          format: double
+          type: number
+        cost_renovation:
+          format: double
+          type: number
+        cost_stamp_duty_fees:
+          format: double
+          type: number
+        cost_vat:
+          format: double
+          type: number
+      type: object
+    ProductItemCost:
+      properties:
+        amount_type:
+          $ref: '#/components/schemas/AmountType'
+        cost_type:
+          $ref: '#/components/schemas/ProductCostType'
+        duration:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+        final_amount:
+          format: double
+          type: number
+        final_first_month_amount:
+          format: double
+          type:
+          - number
+          - 'null'
+        impacts_financial_plan:
+          readOnly: true
+          type: boolean
+        is_included_in_allocation:
+          type:
+          - boolean
+          - 'null'
+        is_included_in_amortization:
+          readOnly: true
+          type: boolean
+        is_overridable:
+          readOnly: true
+          type: boolean
+        original_amount:
+          format: double
+          type: number
+        original_first_month_amount:
+          format: double
+          type:
+          - number
+          - 'null'
+        periodicity:
+          $ref: '#/components/schemas/Periodicity'
+        promotion:
+          allOf:
+          - $ref: '#/components/schemas/ProductItemCostPromotion'
+        start_period:
+          maximum: 2147483647
+          minimum: -2147483648
+          type: integer
+      required:
+      - amount_type
+      - cost_type
+      - final_amount
+      - final_first_month_amount
+      - impacts_financial_plan
+      - is_included_in_amortization
+      - is_overridable
+      - original_amount
+      - original_first_month_amount
+      - periodicity
+      type: object
+    AmountType:
+      description: Can be managed at /resources/amount-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    MortgageSimulatorFinancialAsset:
+      properties:
+        amount:
+          format: double
+          minimum: 0
+          type: number
+        type:
+          $ref: '#/components/schemas/FinancialAssetType'
+      required:
+      - amount
+      - type
+      type: object
+    MortgageSimulatorMonthlyPaymentEstimation:
+      properties:
+        duration:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+        item:
+          allOf:
+          - $ref: '#/components/schemas/MortgageSimulatorMonthlyPaymentEstimationFinancialPlanLoanAmountItem'
+        monthly_installment:
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+        rate:
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+      type: object
+    NestedProduct:
+      properties:
+        acceptance_rules: {}
+        amount:
+          format: double
+          type:
+          - number
+          - 'null'
+        aprc:
+          format: double
+          type:
+          - number
+          - 'null'
+        base_product_id:
+          type: integer
+        base_rate:
+          format: double
+          type: number
+        credit_provider:
+          $ref: '#/components/schemas/ReducedCreditProvider'
+        custom_translations: {}
+        default_variability:
+          $ref: '#/components/schemas/Variability'
+        discounts:
+          items:
+            $ref: '#/components/schemas/DiscountSimulator'
+          type:
+          - array
+          - 'null'
+        discounts_rate:
+          format: double
+          type: number
+        duration:
+          type: integer
+        funder:
+          $ref: '#/components/schemas/Funder'
+        id:
+          type: integer
+        interest_rate:
+          default: 0.0
+          format: double
+          type: number
+        interest_rate_overridden:
+          default: false
+          type: boolean
+        is_amount_overridden:
+          default: false
+          type: boolean
+        is_fallback_rate:
+          default: false
+          type: boolean
+        loan_type:
+          $ref: '#/components/schemas/LoanType'
+        logo_url:
+          format: uri
+          type: string
+        monthly_amount:
+          format: double
+          type:
+          - number
+          - 'null'
+        name:
+          type: string
+        pricing_sheet:
+          allOf:
+          - $ref: '#/components/schemas/PricingSheet'
+        product_type:
+          $ref: '#/components/schemas/ProductType'
+        product_version_id:
+          type: integer
+        quality_adjustments: {}
+        rate:
+          format: double
+          type: number
+        scoring_rate:
+          format: double
+          type: number
+        variability:
+          $ref: '#/components/schemas/Variability'
+      required:
+      - amount
+      - aprc
+      - base_product_id
+      - base_rate
+      - credit_provider
+      - discounts_rate
+      - duration
+      - funder
+      - id
+      - loan_type
+      - logo_url
+      - monthly_amount
+      - name
+      - product_type
+      - product_version_id
+      - rate
+      - scoring_rate
+      - variability
+      type: object
+    RealtyPurpose:
+      description: Can be managed at /resources/realty-purpose
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     MortgageSimulatorFinancialPlanOwnFundItem:
       properties:
         amount:
@@ -4590,6 +3872,206 @@ components:
       - financial_plan_own_fund_field
       - loan_request
       type: object
+    MortgageSimulatorRenovationCost:
+      properties:
+        amount:
+          format: double
+          minimum: 0
+          type: number
+        id:
+          type:
+          - integer
+          - 'null'
+        is_green_renovations:
+          type:
+          - boolean
+          - 'null'
+        type:
+          $ref: '#/components/schemas/RenovationType'
+      required:
+      - amount
+      - type
+      type: object
+    MortgageSimulatorBaseProduct:
+      properties:
+        default_duration:
+          type:
+          - integer
+          - 'null'
+        default_rate:
+          format: double
+          type:
+          - number
+          - 'null'
+        product_type:
+          $ref: '#/components/schemas/ProductType'
+      required:
+      - default_duration
+      - default_rate
+      - product_type
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Profile2Email:
+      properties:
+        email_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          format: email
+          type: string
+      required:
+      - value
+      type: object
+    SeverityType:
+      description: Can be managed at /resources/severity-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DiscountSimulator:
+      properties:
+        discounts:
+          items:
+            $ref: '#/components/schemas/Discount2ndLevel'
+          type: array
+        ignore_childs:
+          default: false
+          type: boolean
+        is_corrected:
+          default: false
+          type: boolean
+        is_outdated:
+          default: false
+          type: boolean
+        is_selected:
+          default: false
+          type: boolean
+        is_valid:
+          default: true
+          type: boolean
+        max_discounts_allowed:
+          type: integer
+        name:
+          type: string
+      required:
+      - discounts
+      - name
+      type: object
+    DocumentType:
+      description: Can be managed at /resources/document-type
+      properties:
+        add_to_handover_letter:
+          type: boolean
+        allows_generation:
+          type: boolean
+        append_file_version:
+          type: boolean
+        can_be_added_manually_as_informative_document:
+          type: boolean
+        definition:
+          type: string
+        document_generation_configuration: {}
+        id:
+          type: integer
+        is_informative:
+          type: boolean
+        is_proof_to_sign:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FinancialPlanOwnFundType:
+      description: Can be managed at /resources/financial-plant-own-fund-type
+      properties:
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - color
+      - definition
+      - id
+      - order
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
+      type: object
+    Variability:
+      description: Can be managed at /resources/variability
+      properties:
+        definition:
+          type: string
+        group_type:
+          type:
+          - integer
+          - 'null'
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     Periodicity:
       description: Can be managed at /resources/periodicity
       properties:
@@ -4605,15 +4087,533 @@ components:
       - id
       - order
       type: object
-    Explanation:
+    ProductType:
+      description: Can be managed at /resources/product-type
       properties:
-        explanation:
+        definition:
           type: string
-        language:
-          $ref: '#/components/schemas/Language'
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
       required:
-      - explanation
-      - language
+      - definition
+      - id
+      - order
+      type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    MortgageSimulatorMonthlyPaymentEstimationFinancialPlanLoanAmountField:
+      properties:
+        default_duration:
+          maximum: 2147483647
+          minimum: -2147483648
+          type:
+          - integer
+          - 'null'
+        default_rate:
+          format: double
+          type:
+          - number
+          - 'null'
+        external_calculator_type:
+          allOf:
+          - $ref: '#/components/schemas/ExternalCalculatorType'
+        id:
+          type:
+          - integer
+          - 'null'
+        is_calculated:
+          type: boolean
+        is_default:
+          type: boolean
+        is_loan_needed:
+          type: boolean
+        is_main:
+          type: boolean
+        is_overridable:
+          type: boolean
+        is_rounding_cash_out:
+          type:
+          - boolean
+          - 'null'
+        is_visible:
+          type: boolean
+        loan_amount_type:
+          $ref: '#/components/schemas/FinancialPlanLoanAmountType'
+        simulator_base_product:
+          allOf:
+          - $ref: '#/components/schemas/MortgageSimulatorBaseProduct'
+          readOnly: true
+      required:
+      - loan_amount_type
+      - simulator_base_product
+      type: object
+    MortgageSimulationAdditionalFinancingNeeds:
+      properties:
+        amount:
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+        type:
+          $ref: '#/components/schemas/AdditionalFinancingNeedType'
+      required:
+      - amount
+      - type
+      type: object
+    IncomeType:
+      description: Can be managed at /resources/income-type
+      properties:
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        form_template:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - color
+      - definition
+      - form_template
+      - id
+      - order
+      type: object
+    PricingSheet:
+      properties:
+        base_rates:
+          items:
+            $ref: '#/components/schemas/NestedBaseRate'
+          type: array
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type:
+          - string
+          - 'null'
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type:
+          - string
+          - 'null'
+        pricing_configuration: {}
+        product:
+          $ref: '#/components/schemas/MinimalBaseProduct'
+        valid_from:
+          format: date
+          type: string
+        version:
+          maxLength: 32
+          type: string
+      required:
+      - base_rates
+      - created
+      - id
+      - is_active
+      - last_modified
+      - product
+      - valid_from
+      - version
+      type: object
+    LandPurchaseType:
+      description: Can be managed at /resources/land-purchase-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Discount2ndLevel:
+      properties:
+        discounts:
+          items:
+            $ref: '#/components/schemas/Discount3rdLevel'
+          type: array
+        explanations:
+          items:
+            $ref: '#/components/schemas/Explanation'
+          type: array
+        ignore_childs:
+          default: false
+          readOnly: true
+          type: boolean
+        interest_rate:
+          format: double
+          type: number
+        is_corrected:
+          default: false
+          readOnly: true
+          type: boolean
+        is_default:
+          readOnly: true
+          type: boolean
+        is_outdated:
+          default: false
+          readOnly: true
+          type: boolean
+        is_selected:
+          default: false
+          readOnly: true
+          type: boolean
+        is_selected_by_default:
+          default: false
+          type: boolean
+        is_valid:
+          default: true
+          readOnly: true
+          type: boolean
+        max_discounts_allowed:
+          default: 0
+          readOnly: true
+          type: integer
+        name:
+          type: string
+        parameters:
+          default: []
+          items:
+            $ref: '#/components/schemas/Parameter'
+          readOnly: true
+          type: array
+      required:
+      - ignore_childs
+      - is_corrected
+      - is_default
+      - is_outdated
+      - is_selected
+      - is_valid
+      - max_discounts_allowed
+      - name
+      - parameters
+      type: object
+    AdvisorMortgageSimulator:
+      properties:
+        additional_needs:
+          items:
+            $ref: '#/components/schemas/MortgageSimulationAdditionalFinancingNeeds'
+          type:
+          - array
+          - 'null'
+        akr_expenses:
+          readOnly: true
+          type: string
+        architect_fees:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        borrowers_info:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorBorrowerInfo'
+          type: array
+        building_costs:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        buy_out_amount:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        calculated_financial_plan:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        collaterals:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorCollateral'
+          type: array
+        dscr:
+          readOnly: true
+          type: string
+        dsti:
+          readOnly: true
+          type: string
+        epc_after_renovations:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+          writeOnly: true
+        epc_before_renovations:
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+          writeOnly: true
+        fair_market_value:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        fiduciary:
+          allOf:
+          - $ref: '#/components/schemas/Fiduciary'
+        financial_assets:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorFinancialAsset'
+          type: array
+        financial_plan:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        financial_plan_loan_amount_items:
+          description: Financial plan items funded by loans
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorFinancialPlanLoanAmountItem'
+          type: array
+        financial_plan_overridden_fields:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        financial_plan_own_fund_items:
+          description: Financial plan items funded by own funds
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorFinancialPlanOwnFundItem'
+          type: array
+        free_use_mortgage:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        is_main_first_residence:
+          default: false
+          type: boolean
+        is_realtor_excluded:
+          default: false
+          type: boolean
+        land_purchase_type:
+          allOf:
+          - $ref: '#/components/schemas/LandPurchaseType'
+          writeOnly: true
+        land_value:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        loan_purposes:
+          items:
+            $ref: '#/components/schemas/LoanRequestPurpose'
+          type: array
+        ltv:
+          readOnly: true
+          type: string
+        monthly_payment_estimations:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorMonthlyPaymentEstimation'
+          type: array
+        notary:
+          allOf:
+          - $ref: '#/components/schemas/Notary'
+        price_of_land:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        pro_fisco_value:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        purchase_sale_type:
+          allOf:
+          - $ref: '#/components/schemas/PurchaseSaleType'
+          writeOnly: true
+        realty_price:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        realty_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyType'
+          writeOnly: true
+        realty_usage_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyUsageType'
+          writeOnly: true
+        refinances:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorRefinance'
+          type: array
+        region:
+          allOf:
+          - $ref: '#/components/schemas/Region'
+        renovation_costs:
+          items:
+            $ref: '#/components/schemas/MortgageSimulatorRenovationCost'
+          type: array
+        short_term_dsti:
+          readOnly: true
+          type: string
+        short_term_ltv:
+          readOnly: true
+          type: string
+        short_term_surplus:
+          readOnly: true
+          type: string
+        surplus:
+          readOnly: true
+          type: string
+        total_additional_needs:
+          readOnly: true
+          type: string
+        total_build_costs:
+          readOnly: true
+          type: string
+        total_costs:
+          readOnly: true
+          type: string
+        total_credit_costs:
+          readOnly: true
+          type: string
+        total_distribution_costs:
+          readOnly: true
+          type: string
+        total_financial_assets:
+          readOnly: true
+          type: string
+        total_financing:
+          readOnly: true
+          type: string
+        total_monthly_amount:
+          readOnly: true
+          type: string
+        total_other_costs:
+          readOnly: true
+          type: string
+        total_purchase_cost:
+          readOnly: true
+          type: string
+        total_purchase_price:
+          readOnly: true
+          type: string
+        total_refinancing_costs:
+          readOnly: true
+          type: string
+        total_renovation_costs:
+          readOnly: true
+          type: string
+        unsecured_lending_amount:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        venal_value_after:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+        venal_value_before:
+          default: 0.0
+          format: double
+          minimum: 0
+          type:
+          - number
+          - 'null'
+          writeOnly: true
+      required:
+      - akr_expenses
+      - calculated_financial_plan
+      - dscr
+      - dsti
+      - financial_plan
+      - financial_plan_overridden_fields
+      - ltv
+      - short_term_dsti
+      - short_term_ltv
+      - short_term_surplus
+      - surplus
+      - total_additional_needs
+      - total_build_costs
+      - total_costs
+      - total_credit_costs
+      - total_distribution_costs
+      - total_financial_assets
+      - total_financing
+      - total_monthly_amount
+      - total_other_costs
+      - total_purchase_cost
+      - total_purchase_price
+      - total_refinancing_costs
+      - total_renovation_costs
       type: object
   securitySchemes:
     jwtAuth:

@@ -86,6 +86,67 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    DocumentStatus:
+      description: Can be managed at /resources/document-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PaginatedAgentDocumentList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
+          items:
+            $ref: '#/components/schemas/AgentDocument'
+          type: array
+      required:
+      - count
+      - results
+      type: object
+    AgentDocumentUpload:
+      properties:
+        document:
+          $ref: '#/components/schemas/AgentDocumentSignedUrl'
+        file:
+          format: uri
+          type: string
+          writeOnly: true
+        id:
+          readOnly: true
+          type: integer
+        uploaded_by:
+          format: email
+          readOnly: true
+          title: Email address
+          type: string
+      required:
+      - file
+      - id
+      - uploaded_by
+      type: object
     AgentDocumentSignedUrl:
       properties:
         configuration_id:
@@ -174,52 +235,6 @@ components:
       - url
       - version
       type: object
-    PaginatedAgentDocumentList:
-      properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          type:
-          - string
-          - 'null'
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          type:
-          - string
-          - 'null'
-        results:
-          items:
-            $ref: '#/components/schemas/AgentDocument'
-          type: array
-      required:
-      - count
-      - results
-      type: object
-    AgentDocumentUpload:
-      properties:
-        document:
-          $ref: '#/components/schemas/AgentDocumentSignedUrl'
-        file:
-          format: uri
-          type: string
-          writeOnly: true
-        id:
-          readOnly: true
-          type: integer
-        uploaded_by:
-          format: email
-          readOnly: true
-          title: Email address
-          type: string
-      required:
-      - file
-      - id
-      - uploaded_by
-      type: object
     AgentDocument:
       properties:
         document:
@@ -235,21 +250,6 @@ components:
       required:
       - id
       - uploaded_by
-      type: object
-    DocumentStatus:
-      description: Can be managed at /resources/document-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
     DocumentType:
       description: Can be managed at /resources/document-type

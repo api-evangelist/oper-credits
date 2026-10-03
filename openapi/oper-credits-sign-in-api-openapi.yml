@@ -143,20 +143,25 @@ components:
       - code
       - token
       type: object
-    SignInActivate:
-      description: 'Serializer to create a verified user.
-
-        This will return a request for a OTP'
+    SignInOtp:
       properties:
-        cell_phone:
+        access:
           readOnly: true
           type: string
-        token:
+        password:
+          type: string
+          writeOnly: true
+        refresh:
+          readOnly: true
+          type: string
+        username:
           type: string
           writeOnly: true
       required:
-      - cell_phone
-      - token
+      - access
+      - password
+      - refresh
+      - username
       type: object
     SignInResetPassword:
       description: 'This serializer will update the password to a new password if:
@@ -203,25 +208,20 @@ components:
       - new_password_two
       - token
       type: object
-    SignInOtp:
+    SignInActivate:
+      description: 'Serializer to create a verified user.
+
+        This will return a request for a OTP'
       properties:
-        access:
+        cell_phone:
           readOnly: true
           type: string
-        password:
-          type: string
-          writeOnly: true
-        refresh:
-          readOnly: true
-          type: string
-        username:
+        token:
           type: string
           writeOnly: true
       required:
-      - access
-      - password
-      - refresh
-      - username
+      - cell_phone
+      - token
       type: object
   securitySchemes:
     jwtAuth:

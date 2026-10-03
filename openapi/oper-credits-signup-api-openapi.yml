@@ -150,63 +150,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - country
-      - definition
-      - id
-      - order
-      type: object
-    SignUpProfile:
-      properties:
-        broker:
-          allOf:
-          - $ref: '#/components/schemas/MinimalBroker'
-          readOnly: true
-        first_name:
-          default: ''
-          type: string
-        last_name:
-          default: ''
-          type: string
-        phone_number:
-          $ref: '#/components/schemas/Profile2Phone'
-        token:
-          readOnly: true
-          type: string
-      required:
-      - broker
-      - phone_number
-      - token
-      type: object
-    Profile2Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        is_secret:
-          default: false
-          type: boolean
-        phone_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          maxLength: 32
-          minLength: 4
-          type: string
-      required:
-      - value
-      type: object
     SignUpResetPassword:
       description: 'This serializer will update the password to a new password if:
 
@@ -247,36 +190,8 @@ components:
       - password
       - token
       type: object
-    SignUp:
-      properties:
-        email:
-          type: string
-        first_name:
-          default: ''
-          type: string
-          writeOnly: true
-        language:
-          allOf:
-          - $ref: '#/components/schemas/Language'
-          writeOnly: true
-        last_name:
-          default: ''
-          type: string
-          writeOnly: true
-        phone_number:
-          allOf:
-          - $ref: '#/components/schemas/Profile2Phone'
-          writeOnly: true
-        token:
-          readOnly: true
-          type: string
-      required:
-      - email
-      - phone_number
-      - token
-      type: object
-    Language:
-      description: Can be managed at /resources/language
+    ContactType:
+      description: Can be managed at /resources/contact-type
       properties:
         definition:
           type: string
@@ -289,6 +204,72 @@ components:
       - definition
       - id
       - order
+      type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    MinimalBroker:
+      description: Broker minimal representation
+      properties:
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          readOnly: true
+        fsma_reference:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - vat_number
+      type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
       type: object
     SignUpCreate:
       properties:
@@ -331,6 +312,43 @@ components:
       - email
       - password
       type: object
+    SignUpProfile:
+      properties:
+        broker:
+          allOf:
+          - $ref: '#/components/schemas/MinimalBroker'
+          readOnly: true
+        first_name:
+          default: ''
+          type: string
+        last_name:
+          default: ''
+          type: string
+        phone_number:
+          $ref: '#/components/schemas/Profile2Phone'
+        token:
+          readOnly: true
+          type: string
+      required:
+      - broker
+      - phone_number
+      - token
+      type: object
+    CompanyType:
+      description: Can be managed at /resources/company-types
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     PatchedSignUpProfile:
       properties:
         broker:
@@ -349,66 +367,48 @@ components:
           readOnly: true
           type: string
       type: object
-    MinimalBroker:
-      description: Broker minimal representation
+    Language:
+      description: Can be managed at /resources/language
       properties:
-        bank_account:
-          readOnly: true
+        definition:
           type: string
-        company_type:
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    SignUp:
+      properties:
+        email:
+          type: string
+        first_name:
+          default: ''
+          type: string
+          writeOnly: true
+        language:
           allOf:
-          - $ref: '#/components/schemas/CompanyType'
-          readOnly: true
-        fsma_reference:
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        id:
-          type: integer
-        name:
-          readOnly: true
+          - $ref: '#/components/schemas/Language'
+          writeOnly: true
+        last_name:
+          default: ''
           type: string
-        vat_number:
+          writeOnly: true
+        phone_number:
+          allOf:
+          - $ref: '#/components/schemas/Profile2Phone'
+          writeOnly: true
+        token:
           readOnly: true
           type: string
       required:
-      - bank_account
-      - company_type
-      - fsma_reference
-      - id
-      - name
-      - vat_number
-      type: object
-    CompanyType:
-      description: Can be managed at /resources/company-types
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ContactType:
-      description: Can be managed at /resources/contact-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
+      - email
+      - phone_number
+      - token
       type: object
   securitySchemes:
     jwtAuth:

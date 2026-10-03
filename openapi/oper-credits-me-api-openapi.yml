@@ -333,6 +333,51 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    ContactType:
+      description: Can be managed at /resources/contact-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    User2CreditProvider:
+      properties:
+        bank_id:
+          maxLength: 64
+          type: string
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
+        id:
+          readOnly: true
+          type: integer
+      required:
+      - bank_id
+      - id
+      type: object
+    ActivateUser:
+      description: 'Serializer to create a verified user.
+
+        This will return a request for a OTP'
+      properties:
+        cell_phone:
+          readOnly: true
+          type: string
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - cell_phone
+      - token
+      type: object
     PhoneCountryCode:
       description: Can be managed at /resources/phone-country-code
       properties:
@@ -352,50 +397,19 @@ components:
       - id
       - order
       type: object
-    ReducedCreditProvider:
-      description: To be used for a short summary of the CreditProvider
+    EnrichmentStatus:
+      description: Can be managed at /resources/enrichment-status
       properties:
-        active:
-          readOnly: true
-          type: boolean
-        fsma_reference:
-          maxLength: 128
-          readOnly: true
-          type: string
-        full_name:
-          readOnly: true
+        definition:
           type: string
         id:
           type: integer
-        is_liability_provider:
-          readOnly: true
-          type: boolean
-        loan_request_form_documents:
-          readOnly: true
-          type: string
-        logo_url:
-          format: uri
-          readOnly: true
-          type: string
-        name:
-          readOnly: true
-          type: string
         order:
-          maximum: 2147483647
-          minimum: 0
           readOnly: true
-          type:
-          - integer
-          - 'null'
+          type: integer
       required:
-      - active
-      - fsma_reference
-      - full_name
+      - definition
       - id
-      - is_liability_provider
-      - loan_request_form_documents
-      - logo_url
-      - name
       - order
       type: object
     UserSelf:
@@ -509,107 +523,6 @@ components:
       - role_groups
       - verified
       type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Profile2Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        is_secret:
-          default: false
-          type: boolean
-        phone_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          maxLength: 32
-          minLength: 4
-          type: string
-      required:
-      - value
-      type: object
-    VerifyUser:
-      description: Serializer to verify a user and provide permissions
-      properties:
-        code:
-          type: string
-          writeOnly: true
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - code
-      - token
-      type: object
-    User2CreditProvider:
-      properties:
-        bank_id:
-          maxLength: 64
-          type: string
-        credit_provider:
-          allOf:
-          - $ref: '#/components/schemas/ReducedCreditProvider'
-        id:
-          readOnly: true
-          type: integer
-      required:
-      - bank_id
-      - id
-      type: object
-    Language:
-      description: Can be managed at /resources/language
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    PatchedUser2CreditProvider:
-      properties:
-        bank_id:
-          maxLength: 64
-          type: string
-        credit_provider:
-          allOf:
-          - $ref: '#/components/schemas/ReducedCreditProvider'
-        id:
-          readOnly: true
-          type: integer
-      type: object
-    ContactType:
-      description: Can be managed at /resources/contact-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
     PatchedUserSelf:
       description: Serializer to update the user himself
       properties:
@@ -700,35 +613,17 @@ components:
           readOnly: true
           type: boolean
       type: object
-    ActivateUser:
-      description: 'Serializer to create a verified user.
-
-        This will return a request for a OTP'
+    PatchedUser2CreditProvider:
       properties:
-        cell_phone:
-          readOnly: true
+        bank_id:
+          maxLength: 64
           type: string
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - cell_phone
-      - token
-      type: object
-    EnrichmentStatus:
-      description: Can be managed at /resources/enrichment-status
-      properties:
-        definition:
-          type: string
+        credit_provider:
+          allOf:
+          - $ref: '#/components/schemas/ReducedCreditProvider'
         id:
-          type: integer
-        order:
           readOnly: true
           type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
     MinimalBroker:
       description: Broker minimal representation
@@ -761,6 +656,33 @@ components:
       - name
       - vat_number
       type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
+      type: object
+    Permission:
+      properties:
+        app_label:
+          type: string
+        codename:
+          maxLength: 100
+          type: string
+      required:
+      - app_label
+      - codename
+      type: object
     CompanyType:
       description: Can be managed at /resources/company-types
       properties:
@@ -776,16 +698,94 @@ components:
       - id
       - order
       type: object
-    Permission:
+    Language:
+      description: Can be managed at /resources/language
       properties:
-        app_label:
+        definition:
           type: string
-        codename:
-          maxLength: 100
-          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
       required:
-      - app_label
-      - codename
+      - definition
+      - id
+      - order
+      type: object
+    ReducedCreditProvider:
+      description: To be used for a short summary of the CreditProvider
+      properties:
+        active:
+          readOnly: true
+          type: boolean
+        fsma_reference:
+          maxLength: 128
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_liability_provider:
+          readOnly: true
+          type: boolean
+        loan_request_form_documents:
+          readOnly: true
+          type: string
+        logo_url:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        order:
+          maximum: 2147483647
+          minimum: 0
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+      required:
+      - active
+      - fsma_reference
+      - full_name
+      - id
+      - is_liability_provider
+      - loan_request_form_documents
+      - logo_url
+      - name
+      - order
+      type: object
+    VerifyUser:
+      description: Serializer to verify a user and provide permissions
+      properties:
+        code:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - code
+      - token
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
       type: object
   securitySchemes:
     jwtAuth:

@@ -8344,27 +8344,8 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    AdditionalFinancingNeedType:
-      description: Can be managed at /resources/additional-financing-need-type
-      properties:
-        definition:
-          type: string
-        financial_plan_loan_amount_field:
-          type:
-          - integer
-          - 'null'
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RedirectionPath:
-      description: Can be managed at /resources/redirection-path
+    SourceType:
+      description: Can be managed at /resources/source-type
       properties:
         definition:
           type: string
@@ -8378,53 +8359,8 @@ components:
       - id
       - order
       type: object
-    DurationFormat:
-      description: Can be managed at /resources/duration-format
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RealtyUsageType:
-      description: Can be managed at /resources/realty-usage-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CompanyType:
-      description: Can be managed at /resources/company-types
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ApprovalRequestStatus:
-      description: Can be managed at /resources/approval-request-status
+    FirstInstalmentPaymentDateDeterminationType:
+      description: Can be managed at /resources/first-instalment_payment-date-determination-type
       properties:
         definition:
           type: string
@@ -8453,161 +8389,11 @@ components:
       - id
       - order
       type: object
-    ProofAudience:
-      description: Can be managed at /resources/proof-audience
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    SimulatorFlowType:
-      description: Can be managed at /resources/simulator-flow-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ApprovalHostKind:
-      description: Can be managed at /resources/approval-host-kind
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ProofCategory:
-      description: Can be managed at /resources/proof-category
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ResidencePermit:
-      description: Can be managed at /resources/residence-permit
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LivingStatus:
-      description: Can be managed at /resources/living-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Risk:
-      description: Can be managed at /resources/risk
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RentalType:
-      description: Can be managed at /resources/rental-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    FsmaStatus:
-      description: Can be managed at /resources/fsma-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ParticipantAuthorization:
-      description: Can be managed at /resources/participant-authorization
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LoanOfferStatus:
-      description: Can be managed at /resources/loan-offer-status
+    FinancialPlanLoanAmountType:
+      description: Can be managed at /resources/financial-plan-loan-amount-type
       properties:
         color:
-          maxLength: 7
+          readOnly: true
           type: string
         definition:
           type: string
@@ -8617,69 +8403,13 @@ components:
           readOnly: true
           type: integer
       required:
-      - definition
-      - id
-      - order
-      type: object
-    FinancialAssetType:
-      description: Can be managed at /resources/financial-asset-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CoLivingGroupType:
-      description: Can be managed at /resources/co-living-group-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LiabilityType:
-      description: Can be managed at /resources/liability-type
-      properties:
-        category:
-          readOnly: true
-          type: string
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        is_mandatory:
-          type: boolean
-        is_mandatory_in_simulation:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - category
       - color
       - definition
       - id
       - order
       type: object
-    EnergyRating:
-      description: Can be managed at /resources/energy-rating
+    CreditTakeOver:
+      description: Can be managed at /resources/credit-takeover
       properties:
         definition:
           type: string
@@ -8693,24 +8423,8 @@ components:
       - id
       - order
       type: object
-    DiscountType:
-      description: Can be managed at /resources/discount-type
-      properties:
-        definition:
-          type: string
-        explanations: {}
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ProductCostPromotionType:
-      description: Can be managed at /resources/product-cost-promotion-type
+    ClientTitle:
+      description: Can be managed at /resources/client-title
       properties:
         definition:
           type: string
@@ -8724,8 +8438,46 @@ components:
       - id
       - order
       type: object
-    ParameterType:
-      description: Can be managed at /resources/parameter-type
+    CommentType:
+      description: Can be managed at /resources/comment-type
+      properties:
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        icon:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - color
+      - definition
+      - icon
+      - id
+      - order
+      type: object
+    CompanyTaxType:
+      description: Can be managed at /resources/company-tax-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ProductType:
+      description: Can be managed at /resources/product-type
       properties:
         definition:
           type: string
@@ -8754,8 +8506,31 @@ components:
       - id
       - order
       type: object
-    ComfortType:
-      description: Can be managed at /resources/comfort-type
+    IncomeType:
+      description: Can be managed at /resources/income-type
+      properties:
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        form_template:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - color
+      - definition
+      - form_template
+      - id
+      - order
+      type: object
+    ACardDetails:
+      description: Can be managed at /resources/a-card-details
       properties:
         definition:
           type: string
@@ -8769,8 +8544,8 @@ components:
       - id
       - order
       type: object
-    ProofStatus:
-      description: Can be managed at /resources/proof-status
+    LandPurchaseType:
+      description: Can be managed at /resources/land-purchase-type
       properties:
         definition:
           type: string
@@ -8784,8 +8559,8 @@ components:
       - id
       - order
       type: object
-    HistoryLogLevel:
-      description: Can be managed at /resources/history-log-level
+    IntegrationAction:
+      description: Can be managed at /resources/integration-action
       properties:
         definition:
           type: string
@@ -8794,6 +8569,510 @@ components:
         order:
           readOnly: true
           type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    GuaranteeType:
+      description: Can be managed at /resources/guarantee-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    IdDocumentType:
+      description: Can be managed at /resources/id-document-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    BankBranch:
+      description: Can be managed at /resources/bank-branch
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PersonalizedInformation:
+      description: Can be managed at /resources/personalized-information
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalSubjectKind:
+      description: Can be managed at /resources/approval-subject-kind
+      properties:
+        definition:
+          type: string
+        host_kind:
+          type:
+          - integer
+          - 'null'
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ProofAudience:
+      description: Can be managed at /resources/proof-audience
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    EnergyRating:
+      description: Can be managed at /resources/energy-rating
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    InsuranceType:
+      description: Can be managed at /resources/insurance-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ProofCategory:
+      description: Can be managed at /resources/proof-category
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DataConnectionStatus:
+      description: Can be managed at /resources/data-connection-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalRequestStatus:
+      description: Can be managed at /resources/approval-request-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalBundleLifecycle:
+      description: Can be managed at /resources/approval-bundle-lifecycle
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CompanyType:
+      description: Can be managed at /resources/company-types
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    StatusChangeType:
+      description: Can be managed at /resources/status-change-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    SourceDataFieldStatus:
+      description: Can be managed at /resources/source-data-field-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    AcquisitionSource:
+      description: Can be managed at /resources/acquisition-source
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        online:
+          readOnly: true
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - online
+      - order
+      type: object
+    Region:
+      description: Can be managed at /resources/region
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FinancedItemType:
+      description: Can be managed at /resources/financed-item-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    BrokerType:
+      description: Can be managed at /resources/broker-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RegularityType:
+      description: Can be managed at /resources/regularity-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ContactType:
+      description: Can be managed at /resources/contact-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ConditionOfProperty:
+      description: Can be managed at /resources/condition-of-property
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    TenantScopeEnum:
+      description: '* `generic` - Generic (all tenants)
+
+        * `volksbank` - Volksbank
+
+        * `medirect` - MeDirect
+
+        * `finporta` - Finporta
+
+        * `hypoooe` - Hypo OÖ'
+      enum:
+      - generic
+      - volksbank
+      - medirect
+      - finporta
+      - hypoooe
+      type: string
+    SeverityType:
+      description: Can be managed at /resources/severity-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RejectionReasonType:
+      description: Can be managed at /resources/rejection-reason-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CustomerSegment:
+      description: Can be managed at /resources/customer-segment
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FinancialAssetUsageType:
+      description: Can be managed at /resources/financial-asset-usage-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RentalType:
+      description: Can be managed at /resources/rental-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CoLivingPurpose:
+      description: Can be managed at /resources/co-living-purpose
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    IdentityProvider:
+      description: Can be managed at /resources/identity-provider
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FeatureFlag:
+      description: Can be managed at /resources/features
+      properties:
+        definition:
+          type: string
+        description:
+          type: string
+        id:
+          type: integer
+        impact_disabled:
+          type: string
+        impact_enabled:
+          type: string
+        integration:
+          oneOf:
+          - $ref: '#/components/schemas/IntegrationEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        layer:
+          oneOf:
+          - $ref: '#/components/schemas/LayerEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        order:
+          readOnly: true
+          type: integer
+        product_area:
+          oneOf:
+          - $ref: '#/components/schemas/ProductAreaEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        reference_links: {}
+        related_flags:
+          items:
+            type: integer
+          type: array
+        tenant_scope:
+          oneOf:
+          - $ref: '#/components/schemas/TenantScopeEnum'
+          - $ref: '#/components/schemas/BlankEnum'
+        value:
+          type: boolean
       required:
       - definition
       - id
@@ -8852,29 +9131,16 @@ components:
       - insurance
       - communication
       type: string
-    ApprovalSubjectKind:
-      description: Can be managed at /resources/approval-subject-kind
+    DiscountStatus:
+      description: Can be managed at /resources/discount-status
       properties:
+        color:
+          readOnly: true
+          type: string
         definition:
           type: string
-        host_kind:
-          type:
-          - integer
-          - 'null'
-        id:
-          type: integer
-        order:
+        icon:
           readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CommissionPaymentType:
-      description: Can be managed at /resources/commission-payment-type
-      properties:
-        definition:
           type: string
         id:
           type: integer
@@ -8882,12 +9148,14 @@ components:
           readOnly: true
           type: integer
       required:
+      - color
       - definition
+      - icon
       - id
       - order
       type: object
-    StatusChangeType:
-      description: Can be managed at /resources/status-change-type
+    ProductCostPromotionType:
+      description: Can be managed at /resources/product-cost-promotion-type
       properties:
         definition:
           type: string
@@ -8901,100 +9169,8 @@ components:
       - id
       - order
       type: object
-    TenantScopeEnum:
-      description: '* `generic` - Generic (all tenants)
-
-        * `volksbank` - Volksbank
-
-        * `medirect` - MeDirect
-
-        * `finporta` - Finporta
-
-        * `hypoooe` - Hypo OÖ'
-      enum:
-      - generic
-      - volksbank
-      - medirect
-      - finporta
-      - hypoooe
-      type: string
-    ExternalCalculatorType:
-      description: Can be managed at /resources/external-calculator-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Country:
-      description: Can be managed at /resources/country
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    AIValidator:
-      description: Can be managed at /resources/ai-validator
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    HomeType:
-      description: Can be managed at /resources/home-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    NewRealtyOption:
-      description: Can be managed at /resources/new-realty-option
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ApprovalBundleLifecycle:
-      description: Can be managed at /resources/approval-bundle-lifecycle
+    RealtyEncumbranceType:
+      description: Can be managed at /resources/realty-encumbrance-type
       properties:
         definition:
           type: string
@@ -9029,607 +9205,8 @@ components:
       - id
       - order
       type: object
-    StatementStatus:
-      description: Can be managed at /resources/commission-file-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LegalStatusType:
-      description: Can be managed at /resources/legal-status-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    FiscalPurposeType:
-      description: Can be managed at /resources/fiscal-purpose-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CoLivingPurpose:
-      description: Can be managed at /resources/co-living-purpose
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    FinancialPlanLoanAmountType:
-      description: Can be managed at /resources/financial-plan-loan-amount-type
-      properties:
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - color
-      - definition
-      - id
-      - order
-      type: object
-    PersonalizedInformation:
-      description: Can be managed at /resources/personalized-information
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    FeatureFlag:
-      description: Can be managed at /resources/features
-      properties:
-        definition:
-          type: string
-        description:
-          type: string
-        id:
-          type: integer
-        impact_disabled:
-          type: string
-        impact_enabled:
-          type: string
-        integration:
-          oneOf:
-          - $ref: '#/components/schemas/IntegrationEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-        layer:
-          oneOf:
-          - $ref: '#/components/schemas/LayerEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-        order:
-          readOnly: true
-          type: integer
-        product_area:
-          oneOf:
-          - $ref: '#/components/schemas/ProductAreaEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-        reference_links: {}
-        related_flags:
-          items:
-            type: integer
-          type: array
-        tenant_scope:
-          oneOf:
-          - $ref: '#/components/schemas/TenantScopeEnum'
-          - $ref: '#/components/schemas/BlankEnum'
-        value:
-          type: boolean
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    AnnualizationMethod:
-      description: Can be managed at /resources/annualization-method
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ClientTitle:
-      description: Can be managed at /resources/client-title
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    TaskStatus:
-      description: Can be managed at /resources/task-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    DocumentBundle:
-      properties:
-        definition:
-          maxLength: 128
-          type: string
-        document_types:
-          items:
-            $ref: '#/components/schemas/DocumentType'
-          type: array
-        id:
-          readOnly: true
-          type: integer
-        order:
-          maximum: 2147483647
-          minimum: 0
-          type:
-          - integer
-          - 'null'
-      required:
-      - definition
-      - document_types
-      - id
-      type: object
-    RealtyAcquisitionType:
-      description: Can be managed at /resources/realty-acquisition-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LibraryCategory:
-      description: Can be managed at /resources/library-category
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Region:
-      description: Can be managed at /resources/region
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    StreetType:
-      description: Can be managed at /resources/street-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ProductCostAmountType:
-      description: Can be managed at /resources/product-cost-amount-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    FinancialPlanCostType:
-      description: Can be managed at /resources/financial-plan-cost-type
-      properties:
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - color
-      - definition
-      - id
-      - order
-      type: object
-    LibraryDocumentType:
-      description: Can be managed at /resources/library-document-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    PoliticallyExposedPersonType:
-      description: Can be managed at /resources/politically-exposed-person-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    FirstInstalmentPaymentDateDeterminationType:
-      description: Can be managed at /resources/first-instalment_payment-date-determination-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LegitimisationType:
-      description: Can be managed at /resources/legitimisation-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CommentType:
-      description: Can be managed at /resources/comment-type
-      properties:
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        icon:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - color
-      - definition
-      - icon
-      - id
-      - order
-      type: object
-    LegalLinkType:
-      description: Can be managed at /resources/legal-link-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LoanType:
-      description: Can be managed at /resources/loan-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        is_grace_period_supported:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CivilStatus:
-      description: Can be managed at /resources/civil-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ACardDetails:
-      description: Can be managed at /resources/a-card-details
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Sector:
-      description: Can be managed at /resources/sector
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    IntegratorType:
-      description: Can be managed at /resources/integrator-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    TaxType:
-      description: Can be managed at /resources/tax-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    MortgageSimulationSource:
-      description: Can be managed at /resources/mortgage-simulation-source
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    OwnCompanyOrRelatives:
-      description: Can be managed at /resources/own-company-or-relatives
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RecoveryStatus:
-      description: Can be managed at /resources/recovery-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ContactType:
-      description: Can be managed at /resources/contact-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    PurchaseSaleType:
-      description: Can be managed at /resources/purchase-sale-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    FloodRiskType:
-      description: Can be managed at /resources/flood-risk-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    AcquisitionSource:
-      description: Can be managed at /resources/acquisition-source
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        online:
-          readOnly: true
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - online
-      - order
-      type: object
-    ApprovalBundleActionType:
-      description: Can be managed at /resources/approval-bundle-action-type
+    AmountType:
+      description: Can be managed at /resources/amount-type
       properties:
         definition:
           type: string
@@ -9658,8 +9235,8 @@ components:
       - id
       - order
       type: object
-    BrokerType:
-      description: Can be managed at /resources/broker-type
+    EnrichmentStatus:
+      description: Can be managed at /resources/enrichment-status
       properties:
         definition:
           type: string
@@ -9673,8 +9250,26 @@ components:
       - id
       - order
       type: object
-    HistoryType:
-      description: Can be managed at /resources/history-type
+    LoanOfferStatus:
+      description: Can be managed at /resources/loan-offer-status
+      properties:
+        color:
+          maxLength: 7
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FloodRiskType:
+      description: Can be managed at /resources/flood-risk-type
       properties:
         definition:
           type: string
@@ -9688,8 +9283,8 @@ components:
       - id
       - order
       type: object
-    IdentityProvider:
-      description: Can be managed at /resources/identity-provider
+    Sector:
+      description: Can be managed at /resources/sector
       properties:
         definition:
           type: string
@@ -9703,8 +9298,11 @@ components:
       - id
       - order
       type: object
-    ConfidenceLevel:
-      description: Can be managed at /resources/confidence-level
+    BlankEnum:
+      enum:
+      - ''
+    CommunicationType:
+      description: Can be managed at /resources/communication-type
       properties:
         definition:
           type: string
@@ -9718,8 +9316,8 @@ components:
       - id
       - order
       type: object
-    EmploymentType:
-      description: Can be managed at /resources/employment-type
+    ProofStatus:
+      description: Can be managed at /resources/proof-status
       properties:
         definition:
           type: string
@@ -9733,148 +9331,26 @@ components:
       - id
       - order
       type: object
-    Version:
-      description: Can be managed at /resources/version
+    DocumentType:
+      description: Can be managed at /resources/document-type
       properties:
+        add_to_handover_letter:
+          type: boolean
+        allows_generation:
+          type: boolean
+        append_file_version:
+          type: boolean
+        can_be_added_manually_as_informative_document:
+          type: boolean
         definition:
           type: string
+        document_generation_configuration: {}
         id:
           type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CommissionType:
-      description: Can be managed at /resources/commission-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LenderOnboardingStatus:
-      description: Can be managed at /resources/lender-onboarding-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ConditionFunctionName:
-      description: Can be managed at /resources/condition-function-name
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    GuaranteeType:
-      description: Can be managed at /resources/guarantee-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    InsuranceType:
-      description: Can be managed at /resources/insurance-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RealtyValuationType:
-      description: Can be managed at /resources/realty-valuation-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    MortgageSimulationStatus:
-      description: Can be managed at /resources/mortgage-simulation-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    SignatureType:
-      description: Can be managed at /resources/signature-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    NumberOfClosedFinancialYears:
-      description: Can be managed at /resources/number-of-closed-financial-years
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
+        is_informative:
+          type: boolean
+        is_proof_to_sign:
+          type: boolean
         order:
           readOnly: true
           type: integer
@@ -9920,8 +9396,8 @@ components:
       - id
       - order
       type: object
-    InsurancePackage:
-      description: Can be managed at /resources/insurance-package
+    CommissionFileStatus:
+      description: Can be managed at /resources/commission-file-status
       properties:
         definition:
           type: string
@@ -9935,8 +9411,8 @@ components:
       - id
       - order
       type: object
-    Sex:
-      description: Can be managed at /resources/sex
+    ResidencePermit:
+      description: Can be managed at /resources/residence-permit
       properties:
         definition:
           type: string
@@ -9950,8 +9426,8 @@ components:
       - id
       - order
       type: object
-    RealtyType:
-      description: Can be managed at /resources/realty-type
+    MortgageSimulationStatus:
+      description: Can be managed at /resources/mortgage-simulation-status
       properties:
         definition:
           type: string
@@ -9965,8 +9441,8 @@ components:
       - id
       - order
       type: object
-    BankBranch:
-      description: Can be managed at /resources/bank-branch
+    EmploymentContractType:
+      description: Can be managed at /resources/employment-contract-type
       properties:
         definition:
           type: string
@@ -9980,8 +9456,8 @@ components:
       - id
       - order
       type: object
-    CompanyTaxType:
-      description: Can be managed at /resources/company-tax-type
+    SocialInsuranceStartDate:
+      description: Can be managed at /resources/social-insurance-start-date
       properties:
         definition:
           type: string
@@ -9995,8 +9471,8 @@ components:
       - id
       - order
       type: object
-    MortgageSecurityType:
-      description: Can be managed at /resources/mortgage-security-type
+    LegalLinkType:
+      description: Can be managed at /resources/legal-link-type
       properties:
         definition:
           type: string
@@ -10010,10 +9486,23 @@ components:
       - id
       - order
       type: object
-    LoanRequestMilestoneType:
-      description: 'Serializers for all Enums. Must be subclassed to be used.
-
-        All fields are read_only except for id & definition.'
+    AIValidator:
+      description: Can be managed at /resources/ai-validator
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ConfidenceLevel:
+      description: Can be managed at /resources/confidence-level
       properties:
         definition:
           type: string
@@ -10044,8 +9533,8 @@ components:
       - id
       - order
       type: object
-    InsuranceSimulationStatus:
-      description: Can be managed at /resources/insurance-simulation-status
+    RecoveryStatus:
+      description: Can be managed at /resources/recovery-status
       properties:
         definition:
           type: string
@@ -10059,8 +9548,91 @@ components:
       - id
       - order
       type: object
-    DocumentStatus:
-      description: Can be managed at /resources/document-status
+    LibraryDocumentType:
+      description: Can be managed at /resources/library-document-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FinancialPlanCostType:
+      description: Can be managed at /resources/financial-plan-cost-type
+      properties:
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - color
+      - definition
+      - id
+      - order
+      type: object
+    CommunityPropertyInvolvement:
+      description: Can be managed at /resources/community-property-involvement
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Sex:
+      description: Can be managed at /resources/sex
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    AdditionalFinancingNeedType:
+      description: Can be managed at /resources/additional-financing-need-type
+      properties:
+        definition:
+          type: string
+        financial_plan_loan_amount_field:
+          type:
+          - integer
+          - 'null'
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DurationFormat:
+      description: Can be managed at /resources/duration-format
       properties:
         definition:
           type: string
@@ -10089,8 +9661,8 @@ components:
       - id
       - order
       type: object
-    RenovationType:
-      description: Can be managed at /resources/renovation-type
+    LegitimisationType:
+      description: Can be managed at /resources/legitimisation-type
       properties:
         definition:
           type: string
@@ -10104,8 +9676,8 @@ components:
       - id
       - order
       type: object
-    CustomerSegment:
-      description: Can be managed at /resources/customer-segment
+    InvalidationFunctionName:
+      description: Can be managed at /resources/invalidation-function-name
       properties:
         definition:
           type: string
@@ -10119,8 +9691,8 @@ components:
       - id
       - order
       type: object
-    SourceDataFieldStatus:
-      description: Can be managed at /resources/source-data-field-status
+    OwnCompanyOrRelatives:
+      description: Can be managed at /resources/own-company-or-relatives
       properties:
         definition:
           type: string
@@ -10134,8 +9706,19 @@ components:
       - id
       - order
       type: object
-    CommissionFileStatus:
-      description: Can be managed at /resources/commission-file-status
+    LayerEnum:
+      description: '* `backend` - Backend
+
+        * `frontend` - Frontend
+
+        * `both` - Backend & Frontend'
+      enum:
+      - backend
+      - frontend
+      - both
+      type: string
+    CoLivingGroupType:
+      description: Can be managed at /resources/co-living-group-type
       properties:
         definition:
           type: string
@@ -10149,83 +9732,8 @@ components:
       - id
       - order
       type: object
-    AmountType:
-      description: Can be managed at /resources/amount-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    IntegrationAction:
-      description: Can be managed at /resources/integration-action
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ConstructionType:
-      description: Can be managed at /resources/construction-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CommunityPropertyInvolvement:
-      description: Can be managed at /resources/community-property-involvement
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    TaskCategory:
-      description: Can be managed at /resources/task-category
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    OwnershipType:
-      description: Can be managed at /resources/ownership-type
+    LoanRequestSource:
+      description: Can be managed at /resources/loan-request-source
       properties:
         definition:
           type: string
@@ -10262,21 +9770,8 @@ components:
       - id
       - order
       type: object
-    DeclarationType:
-      description: 'Serializers for all Enums. Must be subclassed to be used.
-
-        All fields are read_only except for id & definition.'
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-      required:
-      - definition
-      - id
-      type: object
-    FinancedItemType:
-      description: Can be managed at /resources/financed-item-type
+    Risk:
+      description: Can be managed at /resources/risk
       properties:
         definition:
           type: string
@@ -10290,8 +9785,8 @@ components:
       - id
       - order
       type: object
-    SocialInsuranceStartDate:
-      description: Can be managed at /resources/social-insurance-start-date
+    AnnualizationMethod:
+      description: Can be managed at /resources/annualization-method
       properties:
         definition:
           type: string
@@ -10305,8 +9800,8 @@ components:
       - id
       - order
       type: object
-    RealtyPurpose:
-      description: Can be managed at /resources/realty-purpose
+    ApprovalRequestActionType:
+      description: Can be managed at /resources/approval-request-action-type
       properties:
         definition:
           type: string
@@ -10320,8 +9815,383 @@ components:
       - id
       - order
       type: object
-    SourceType:
-      description: Can be managed at /resources/source-type
+    RealtyFeature:
+      description: Can be managed at /resources/realty-feature
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DocumentBundle:
+      properties:
+        definition:
+          maxLength: 128
+          type: string
+        document_types:
+          items:
+            $ref: '#/components/schemas/DocumentType'
+          type: array
+        id:
+          readOnly: true
+          type: integer
+        order:
+          maximum: 2147483647
+          minimum: 0
+          type:
+          - integer
+          - 'null'
+      required:
+      - definition
+      - document_types
+      - id
+      type: object
+    TaxType:
+      description: Can be managed at /resources/tax-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Variability:
+      description: Can be managed at /resources/variability
+      properties:
+        definition:
+          type: string
+        group_type:
+          type:
+          - integer
+          - 'null'
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RenovationType:
+      description: Can be managed at /resources/renovation-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ConditionFunctionName:
+      description: Can be managed at /resources/condition-function-name
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ActionFunctionName:
+      description: Can be managed at /resources/action-function-name
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RealtyAcquisitionType:
+      description: Can be managed at /resources/realty-acquisition-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    StatementStatus:
+      description: Can be managed at /resources/commission-file-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    AIVerificationType:
+      description: Can be managed at /resources/ai-verification-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    StreetType:
+      description: Can be managed at /resources/street-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Periodicity:
+      description: Can be managed at /resources/periodicity
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LenderOnboardingStatus:
+      description: Can be managed at /resources/lender-onboarding-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DiscountType:
+      description: Can be managed at /resources/discount-type
+      properties:
+        definition:
+          type: string
+        explanations: {}
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PoliticallyExposedPersonType:
+      description: Can be managed at /resources/politically-exposed-person-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ConstructionType:
+      description: Can be managed at /resources/construction-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    MortgageSecurityType:
+      description: Can be managed at /resources/mortgage-security-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LoanRequestSerializer:
+      description: Can be managed at /resources/loan-request-serializer
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Version:
+      description: Can be managed at /resources/version
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Relationship:
+      description: Can be managed at /resources/relationship
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LoanType:
+      description: Can be managed at /resources/loan-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        is_grace_period_supported:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ParameterType:
+      description: Can be managed at /resources/parameter-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    SignatureType:
+      description: Can be managed at /resources/signature-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DatabaseModelName:
+      description: Can be managed at /resources/database-model-name
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    TaskCategory:
+      description: Can be managed at /resources/task-category
       properties:
         definition:
           type: string
@@ -10352,8 +10222,72 @@ components:
       - id
       - order
       type: object
-    IdDocumentType:
-      description: Can be managed at /resources/id-document-type
+    RealtyValuationStatus:
+      description: Can be managed at /resources/realty-valuation-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    InsurancePackage:
+      description: Can be managed at /resources/insurance-package
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RealtyPurpose:
+      description: Can be managed at /resources/realty-purpose
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FinancialPlanOwnFundType:
+      description: Can be managed at /resources/financial-plant-own-fund-type
+      properties:
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - color
+      - definition
+      - id
+      - order
+      type: object
+    RealtyValuationType:
+      description: Can be managed at /resources/realty-valuation-type
       properties:
         definition:
           type: string
@@ -10382,330 +10316,8 @@ components:
       - id
       - order
       type: object
-    CommunicationType:
-      description: Can be managed at /resources/communication-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ClientRoleType:
-      description: Can be managed at /resources/client-role
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    SourceDataType:
-      description: Can be managed at /resources/source-data-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    SeverityType:
-      description: Can be managed at /resources/severity-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LoanRequestSerializer:
-      description: Can be managed at /resources/loan-request-serializer
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Relationship:
-      description: Can be managed at /resources/relationship
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LayerEnum:
-      description: '* `backend` - Backend
-
-        * `frontend` - Frontend
-
-        * `both` - Backend & Frontend'
-      enum:
-      - backend
-      - frontend
-      - both
-      type: string
-    RealtyValuationStatus:
-      description: Can be managed at /resources/realty-valuation-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RealtyEncumbranceType:
-      description: Can be managed at /resources/realty-encumbrance-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    EnrichmentStatus:
-      description: Can be managed at /resources/enrichment-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    DocumentType:
-      description: Can be managed at /resources/document-type
-      properties:
-        add_to_handover_letter:
-          type: boolean
-        allows_generation:
-          type: boolean
-        append_file_version:
-          type: boolean
-        can_be_added_manually_as_informative_document:
-          type: boolean
-        definition:
-          type: string
-        document_generation_configuration: {}
-        id:
-          type: integer
-        is_informative:
-          type: boolean
-        is_proof_to_sign:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    FinancialPlanOwnFundType:
-      description: Can be managed at /resources/financial-plant-own-fund-type
-      properties:
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - color
-      - definition
-      - id
-      - order
-      type: object
-    City:
-      description: Can be managed at /resources/city
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CommentTarget:
-      description: Can be managed at /resources/comment-target
-      properties:
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        groups:
-          items:
-            type: integer
-          type: array
-        icon:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - color
-      - definition
-      - icon
-      - id
-      - order
-      type: object
-    ApprovalRequestActionType:
-      description: Can be managed at /resources/approval-request-action-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LoanRequestType:
-      description: Can be managed at /resources/loan-request-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    DiscountStatus:
-      description: Can be managed at /resources/discount-status
-      properties:
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        icon:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - color
-      - definition
-      - icon
-      - id
-      - order
-      type: object
-    Variability:
-      description: Can be managed at /resources/variability
-      properties:
-        definition:
-          type: string
-        group_type:
-          type:
-          - integer
-          - 'null'
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Periodicity:
-      description: Can be managed at /resources/periodicity
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    AIVerificationType:
-      description: Can be managed at /resources/ai-verification-type
+    FiscalPurposeType:
+      description: Can be managed at /resources/fiscal-purpose-type
       properties:
         definition:
           type: string
@@ -10734,8 +10346,8 @@ components:
       - id
       - order
       type: object
-    ProductType:
-      description: Can be managed at /resources/product-type
+    FlowStepType:
+      description: Can be managed at /resources/flow-step-type
       properties:
         definition:
           type: string
@@ -10749,27 +10361,8 @@ components:
       - id
       - order
       type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - country
-      - definition
-      - id
-      - order
-      type: object
-    DataConnectionStatus:
-      description: Can be managed at /resources/data-connection-status
+    RealtyUsageType:
+      description: Can be managed at /resources/realty-usage-type
       properties:
         definition:
           type: string
@@ -10783,8 +10376,53 @@ components:
       - id
       - order
       type: object
-    RealtyFeature:
-      description: Can be managed at /resources/realty-feature
+    CivilStatus:
+      description: Can be managed at /resources/civil-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    HistoryLogLevel:
+      description: Can be managed at /resources/history-log-level
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CommissionType:
+      description: Can be managed at /resources/commission-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LegalStatusType:
+      description: Can be managed at /resources/legal-status-type
       properties:
         definition:
           type: string
@@ -10813,8 +10451,8 @@ components:
       - id
       - order
       type: object
-    DecisionType:
-      description: Can be managed at /resources/decision-type
+    HistoryType:
+      description: Can be managed at /resources/history-type
       properties:
         definition:
           type: string
@@ -10828,124 +10466,35 @@ components:
       - id
       - order
       type: object
-    BlankEnum:
-      enum:
-      - ''
-    InvalidationFunctionName:
-      description: Can be managed at /resources/invalidation-function-name
+    LiabilityType:
+      description: Can be managed at /resources/liability-type
       properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
+        category:
           readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    EmploymentContractType:
-      description: Can be managed at /resources/employment-contract-type
-      properties:
-        definition:
           type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    DatabaseModelName:
-      description: Can be managed at /resources/database-model-name
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    FinancialAssetUsageType:
-      description: Can be managed at /resources/financial-asset-usage-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ActionFunctionName:
-      description: Can be managed at /resources/action-function-name
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    RegularityType:
-      description: Can be managed at /resources/regularity-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    IncomeType:
-      description: Can be managed at /resources/income-type
-      properties:
         color:
           readOnly: true
           type: string
         definition:
           type: string
-        form_template:
-          readOnly: true
-          type: string
         id:
           type: integer
+        is_mandatory:
+          type: boolean
+        is_mandatory_in_simulation:
+          type: boolean
         order:
           readOnly: true
           type: integer
       required:
+      - category
       - color
       - definition
-      - form_template
       - id
       - order
       type: object
-    CreditTakeOver:
-      description: Can be managed at /resources/credit-takeover
+    PurchaseSaleType:
+      description: Can be managed at /resources/purchase-sale-type
       properties:
         definition:
           type: string
@@ -10959,8 +10508,248 @@ components:
       - id
       - order
       type: object
-    FlowStepType:
-      description: Can be managed at /resources/flow-step-type
+    LibraryCategory:
+      description: Can be managed at /resources/library-category
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RealtyType:
+      description: Can be managed at /resources/realty-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    City:
+      description: Can be managed at /resources/city
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    SourceDataType:
+      description: Can be managed at /resources/source-data-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Country:
+      description: Can be managed at /resources/country
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ProductCostAmountType:
+      description: Can be managed at /resources/product-cost-amount-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LivingStatus:
+      description: Can be managed at /resources/living-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    FsmaStatus:
+      description: Can be managed at /resources/fsma-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LoanRequestMilestoneType:
+      description: 'Serializers for all Enums. Must be subclassed to be used.
+
+        All fields are read_only except for id & definition.'
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalHostKind:
+      description: Can be managed at /resources/approval-host-kind
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalBundleActionType:
+      description: Can be managed at /resources/approval-bundle-action-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    MortgageSimulationSource:
+      description: Can be managed at /resources/mortgage-simulation-source
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ParticipantAuthorization:
+      description: Can be managed at /resources/participant-authorization
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    CommissionPaymentType:
+      description: Can be managed at /resources/commission-payment-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    InsuranceSimulationStatus:
+      description: Can be managed at /resources/insurance-simulation-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DeclarationType:
+      description: 'Serializers for all Enums. Must be subclassed to be used.
+
+        All fields are read_only except for id & definition.'
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+      required:
+      - definition
+      - id
+      type: object
+    OwnershipType:
+      description: Can be managed at /resources/ownership-type
       properties:
         definition:
           type: string
@@ -10993,26 +10782,8 @@ components:
       - id
       - order
       type: object
-    TaskType:
-      description: Can be managed at /resources/task-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        navigation_path:
-          maxLength: 256
-          type: string
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ConditionOfProperty:
-      description: Can be managed at /resources/condition-of-property
+    FinancialAssetType:
+      description: Can be managed at /resources/financial-asset-type
       properties:
         definition:
           type: string
@@ -11026,8 +10797,53 @@ components:
       - id
       - order
       type: object
-    LandPurchaseType:
-      description: Can be managed at /resources/land-purchase-type
+    NumberOfClosedFinancialYears:
+      description: Can be managed at /resources/number-of-closed-financial-years
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ComplianceAnswerType:
+      description: Can be managed at /resources/compliance-answer-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ExternalCalculatorType:
+      description: Can be managed at /resources/external-calculator-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LoanRequestType:
+      description: Can be managed at /resources/loan-request-type
       properties:
         definition:
           type: string
@@ -11070,8 +10886,8 @@ components:
       - zendesk
       - data_connection
       type: string
-    RejectionReasonType:
-      description: Can be managed at /resources/rejection-reason-type
+    RedirectionPath:
+      description: Can be managed at /resources/redirection-path
       properties:
         definition:
           type: string
@@ -11085,13 +10901,137 @@ components:
       - id
       - order
       type: object
-    LoanRequestSource:
-      description: Can be managed at /resources/loan-request-source
+    CommentTarget:
+      description: Can be managed at /resources/comment-target
+      properties:
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        groups:
+          items:
+            type: integer
+          type: array
+        icon:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - color
+      - definition
+      - icon
+      - id
+      - order
+      type: object
+    HomeType:
+      description: Can be managed at /resources/home-type
       properties:
         definition:
           type: string
         id:
           type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    ClientRoleType:
+      description: Can be managed at /resources/client-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    SimulatorFlowType:
+      description: Can be managed at /resources/simulator-flow-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    NewRealtyOption:
+      description: Can be managed at /resources/new-realty-option
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DecisionType:
+      description: Can be managed at /resources/decision-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    TaskType:
+      description: Can be managed at /resources/task-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        navigation_path:
+          maxLength: 256
+          type: string
         order:
           readOnly: true
           type: integer
@@ -11115,8 +11055,68 @@ components:
       - id
       - order
       type: object
-    ComplianceAnswerType:
-      description: Can be managed at /resources/compliance-answer-type
+    TaskStatus:
+      description: Can be managed at /resources/task-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    EmploymentType:
+      description: Can be managed at /resources/employment-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    DocumentStatus:
+      description: Can be managed at /resources/document-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ComfortType:
+      description: Can be managed at /resources/comfort-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    IntegratorType:
+      description: Can be managed at /resources/integrator-type
       properties:
         definition:
           type: string

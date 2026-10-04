@@ -36,49 +36,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    EasyAuditCRUDEvent:
-      properties:
-        changed_fields:
-          type: string
-        content_type:
-          type: integer
-        datetime:
-          format: date-time
-          readOnly: true
-          title: Date time
-          type: string
-        event_type:
-          allOf:
-          - $ref: '#/components/schemas/EventTypeEnum'
-          maximum: 32767
-          minimum: -32768
-        id:
-          readOnly: true
-          type: integer
-        object_id:
-          maxLength: 255
-          type: string
-        object_json_repr:
-          title: Object JSON representation
-          type: string
-        object_repr:
-          title: Object representation
-          type: string
-        user:
-          type:
-          - integer
-          - 'null'
-        user_pk_as_string:
-          description: String version of the user pk
-          maxLength: 255
-          type: string
-      required:
-      - content_type
-      - datetime
-      - event_type
-      - id
-      - object_id
-      type: object
     EventTypeEnum:
       description: '* `1` - Create
 
@@ -138,6 +95,49 @@ components:
       required:
       - count
       - results
+      type: object
+    EasyAuditCRUDEvent:
+      properties:
+        changed_fields:
+          type: string
+        content_type:
+          type: integer
+        datetime:
+          format: date-time
+          readOnly: true
+          title: Date time
+          type: string
+        event_type:
+          allOf:
+          - $ref: '#/components/schemas/EventTypeEnum'
+          maximum: 32767
+          minimum: -32768
+        id:
+          readOnly: true
+          type: integer
+        object_id:
+          maxLength: 255
+          type: string
+        object_json_repr:
+          title: Object JSON representation
+          type: string
+        object_repr:
+          title: Object representation
+          type: string
+        user:
+          type:
+          - integer
+          - 'null'
+        user_pk_as_string:
+          description: String version of the user pk
+          maxLength: 255
+          type: string
+      required:
+      - content_type
+      - datetime
+      - event_type
+      - id
+      - object_id
       type: object
   securitySchemes:
     jwtAuth:

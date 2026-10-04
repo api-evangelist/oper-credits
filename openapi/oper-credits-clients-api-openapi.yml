@@ -193,8 +193,8 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    EmploymentType:
-      description: Can be managed at /resources/employment-type
+    Language:
+      description: Can be managed at /resources/language
       properties:
         definition:
           type: string
@@ -208,8 +208,8 @@ components:
       - id
       - order
       type: object
-    LegalStatusType:
-      description: Can be managed at /resources/legal-status-type
+    ClientTitle:
+      description: Can be managed at /resources/client-title
       properties:
         definition:
           type: string
@@ -223,94 +223,8 @@ components:
       - id
       - order
       type: object
-    PersonalizedInformation:
-      description: Can be managed at /resources/personalized-information
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    SocialInsuranceStartDate:
-      description: Can be managed at /resources/social-insurance-start-date
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CompanyType:
-      description: Can be managed at /resources/company-types
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ReducedBroker:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
-      properties:
-        account_manager:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBaseUser'
-          readOnly: true
-        bank_account:
-          readOnly: true
-          type: string
-        company_type:
-          allOf:
-          - $ref: '#/components/schemas/CompanyType'
-          readOnly: true
-        fsma_reference:
-          readOnly: true
-          type:
-          - string
-          - 'null'
-        id:
-          type: integer
-        name:
-          readOnly: true
-          type: string
-        outstanding_debt:
-          format: double
-          readOnly: true
-          type: number
-        vat_number:
-          readOnly: true
-          type: string
-      required:
-      - account_manager
-      - bank_account
-      - company_type
-      - fsma_reference
-      - id
-      - name
-      - outstanding_debt
-      - vat_number
-      type: object
-    LenderOnboardingStatus:
-      description: Can be managed at /resources/lender-onboarding-status
+    EducationType:
+      description: Can be managed at /resources/education
       properties:
         definition:
           type: string
@@ -370,8 +284,8 @@ components:
       - name
       - order
       type: object
-    IdDocumentType:
-      description: Can be managed at /resources/id-document-type
+    Sector:
+      description: Can be managed at /resources/sector
       properties:
         definition:
           type: string
@@ -384,209 +298,6 @@ components:
       - definition
       - id
       - order
-      type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    EducationType:
-      description: Can be managed at /resources/education
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Profile2Email:
-      properties:
-        email_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          format: email
-          type: string
-      required:
-      - value
-      type: object
-    ResidencePermit:
-      description: Can be managed at /resources/residence-permit
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Relationship:
-      description: Can be managed at /resources/relationship
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ClientTitle:
-      description: Can be managed at /resources/client-title
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Client:
-      properties:
-        email:
-          format: email
-          type:
-          - string
-          - 'null'
-        id:
-          type: integer
-        user:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBaseUser'
-      type: object
-    LivingStatus:
-      description: Can be managed at /resources/living-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    NestedClientProfile:
-      properties:
-        birth_date:
-          format: date
-          readOnly: true
-          type: string
-        emails:
-          items:
-            $ref: '#/components/schemas/Profile2Email'
-          type: array
-        first_name:
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        last_name:
-          readOnly: true
-          type: string
-        middle_name:
-          readOnly: true
-          type: string
-        national_number:
-          readOnly: true
-          type: string
-        phone_numbers:
-          items:
-            $ref: '#/components/schemas/Profile2Phone'
-          type: array
-        reference_number:
-          readOnly: true
-          type: string
-        verified:
-          readOnly: true
-          type: boolean
-      required:
-      - birth_date
-      - first_name
-      - id
-      - last_name
-      - middle_name
-      - national_number
-      - reference_number
-      - verified
-      type: object
-    ReducedBaseUser:
-      description: User reduced representation
-      properties:
-        first_name:
-          default: ''
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        last_name:
-          default: ''
-          readOnly: true
-          type: string
-        role:
-          allOf:
-          - $ref: '#/components/schemas/UserRole'
-          readOnly: true
-        verified:
-          readOnly: true
-          type: boolean
-      required:
-      - first_name
-      - id
-      - last_name
-      - role
-      - verified
-      type: object
-    ReducedClientProfile:
-      description: Client profile reduced representation
-      properties:
-        first_name:
-          maxLength: 64
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        last_name:
-          maxLength: 128
-          readOnly: true
-          type: string
-      required:
-      - first_name
-      - id
-      - last_name
       type: object
     StreetType:
       description: Can be managed at /resources/street-type
@@ -603,186 +314,8 @@ components:
       - id
       - order
       type: object
-    PaginatedNestedClientProfileList:
-      properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          type:
-          - string
-          - 'null'
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          type:
-          - string
-          - 'null'
-        results:
-          items:
-            $ref: '#/components/schemas/NestedClientProfile'
-          type: array
-      required:
-      - count
-      - results
-      type: object
-    PoliticallyExposedPersonType:
-      description: Can be managed at /resources/politically-exposed-person-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    LegitimisationType:
-      description: Can be managed at /resources/legitimisation-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Sex:
-      description: Can be managed at /resources/sex
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    CivilStatus:
-      description: Can be managed at /resources/civil-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - country
-      - definition
-      - id
-      - order
-      type: object
-    ACardDetails:
-      description: Can be managed at /resources/a-card-details
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Sector:
-      description: Can be managed at /resources/sector
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Client2Client:
-      properties:
-        client_from:
-          allOf:
-          - $ref: '#/components/schemas/ReducedClientProfile'
-          writeOnly: true
-        client_to:
-          $ref: '#/components/schemas/ReducedClientProfile'
-        id:
-          readOnly: true
-          type: integer
-        live_in_the_same_household:
-          type:
-          - boolean
-          - 'null'
-        oper_reference:
-          format: uuid
-          readOnly: true
-          type: string
-        relationship:
-          allOf:
-          - $ref: '#/components/schemas/Relationship'
-      required:
-      - client_from
-      - client_to
-      - id
-      - oper_reference
-      type: object
-    Profile2Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        is_secret:
-          default: false
-          type: boolean
-        phone_type:
-          $ref: '#/components/schemas/ContactType'
-        value:
-          maxLength: 32
-          minLength: 4
-          type: string
-      required:
-      - value
-      type: object
-    TaxType:
-      description: Can be managed at /resources/tax-type
+    Country:
+      description: Can be managed at /resources/country
       properties:
         definition:
           type: string
@@ -1157,8 +690,8 @@ components:
       - simulations
       - verified
       type: object
-    ContactType:
-      description: Can be managed at /resources/contact-type
+    ACardDetails:
+      description: Can be managed at /resources/a-card-details
       properties:
         definition:
           type: string
@@ -1172,72 +705,264 @@ components:
       - id
       - order
       type: object
-    Profile2Address:
+    LivingStatus:
+      description: Can be managed at /resources/living-status
       properties:
-        address_type:
-          allOf:
-          - $ref: '#/components/schemas/ContactType'
-        box:
+        definition:
           type: string
-        building:
-          type: string
-        city:
-          type: string
-        country:
-          $ref: '#/components/schemas/Country'
-        floor:
-          type: string
-        heading:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        house_number:
-          type: string
-        latitude:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        longitude:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        pitch:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
-        staircase:
-          type: string
-        street:
-          type: string
-        street_type:
-          allOf:
-          - $ref: '#/components/schemas/StreetType'
-        zip_code:
-          type: string
-        zoom:
-          format: double
-          type:
-          - number
-          - 'null'
-          exclusiveMinimum: -100000
-          exclusiveMaximum: 100000
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
       required:
-      - city
-      - country
-      - street
-      - zip_code
+      - definition
+      - id
+      - order
+      type: object
+    LenderOnboardingStatus:
+      description: Can be managed at /resources/lender-onboarding-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PoliticallyExposedPersonType:
+      description: Can be managed at /resources/politically-exposed-person-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedClientProfile:
+      description: Client profile reduced representation
+      properties:
+        first_name:
+          maxLength: 64
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          maxLength: 128
+          readOnly: true
+          type: string
+      required:
+      - first_name
+      - id
+      - last_name
+      type: object
+    IdDocumentType:
+      description: Can be managed at /resources/id-document-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ResidencePermit:
+      description: Can be managed at /resources/residence-permit
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Client:
+      properties:
+        email:
+          format: email
+          type:
+          - string
+          - 'null'
+        id:
+          type: integer
+        user:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+      type: object
+    PersonalizedInformation:
+      description: Can be managed at /resources/personalized-information
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    SocialInsuranceStartDate:
+      description: Can be managed at /resources/social-insurance-start-date
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Relationship:
+      description: Can be managed at /resources/relationship
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Profile2Email:
+      properties:
+        email_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          format: email
+          type: string
+      required:
+      - value
+      type: object
+    Sex:
+      description: Can be managed at /resources/sex
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PaginatedNestedClientProfileList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
+          items:
+            $ref: '#/components/schemas/NestedClientProfile'
+          type: array
+      required:
+      - count
+      - results
+      type: object
+    CompanyType:
+      description: Can be managed at /resources/company-types
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LegitimisationType:
+      description: Can be managed at /resources/legitimisation-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Client2Client:
+      properties:
+        client_from:
+          allOf:
+          - $ref: '#/components/schemas/ReducedClientProfile'
+          writeOnly: true
+        client_to:
+          $ref: '#/components/schemas/ReducedClientProfile'
+        id:
+          readOnly: true
+          type: integer
+        live_in_the_same_household:
+          type:
+          - boolean
+          - 'null'
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        relationship:
+          allOf:
+          - $ref: '#/components/schemas/Relationship'
+      required:
+      - client_from
+      - client_to
+      - id
+      - oper_reference
       type: object
     PatchedClientRegistryProfile:
       properties:
@@ -1593,6 +1318,40 @@ components:
           minimum: 0
           type: integer
       type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
+      type: object
+    ContactType:
+      description: Can be managed at /resources/contact-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     CustomerSegment:
       description: Can be managed at /resources/customer-segment
       properties:
@@ -1608,8 +1367,8 @@ components:
       - id
       - order
       type: object
-    Country:
-      description: Can be managed at /resources/country
+    UserRole:
+      description: Can be managed at /resources/user-role
       properties:
         definition:
           type: string
@@ -1623,8 +1382,177 @@ components:
       - id
       - order
       type: object
-    Language:
-      description: Can be managed at /resources/language
+    ReducedBroker:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        account_manager:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          readOnly: true
+        bank_account:
+          readOnly: true
+          type: string
+        company_type:
+          allOf:
+          - $ref: '#/components/schemas/CompanyType'
+          readOnly: true
+        fsma_reference:
+          readOnly: true
+          type:
+          - string
+          - 'null'
+        id:
+          type: integer
+        name:
+          readOnly: true
+          type: string
+        outstanding_debt:
+          format: double
+          readOnly: true
+          type: number
+        vat_number:
+          readOnly: true
+          type: string
+      required:
+      - account_manager
+      - bank_account
+      - company_type
+      - fsma_reference
+      - id
+      - name
+      - outstanding_debt
+      - vat_number
+      type: object
+    Profile2Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        is_secret:
+          default: false
+          type: boolean
+        phone_type:
+          $ref: '#/components/schemas/ContactType'
+        value:
+          maxLength: 32
+          minLength: 4
+          type: string
+      required:
+      - value
+      type: object
+    Profile2Address:
+      properties:
+        address_type:
+          allOf:
+          - $ref: '#/components/schemas/ContactType'
+        box:
+          type: string
+        building:
+          type: string
+        city:
+          type: string
+        country:
+          $ref: '#/components/schemas/Country'
+        floor:
+          type: string
+        heading:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        house_number:
+          type: string
+        latitude:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        longitude:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        pitch:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+        staircase:
+          type: string
+        street:
+          type: string
+        street_type:
+          allOf:
+          - $ref: '#/components/schemas/StreetType'
+        zip_code:
+          type: string
+        zoom:
+          format: double
+          type:
+          - number
+          - 'null'
+          exclusiveMinimum: -100000
+          exclusiveMaximum: 100000
+      required:
+      - city
+      - country
+      - street
+      - zip_code
+      type: object
+    NestedClientProfile:
+      properties:
+        birth_date:
+          format: date
+          readOnly: true
+          type: string
+        emails:
+          items:
+            $ref: '#/components/schemas/Profile2Email'
+          type: array
+        first_name:
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        last_name:
+          readOnly: true
+          type: string
+        middle_name:
+          readOnly: true
+          type: string
+        national_number:
+          readOnly: true
+          type: string
+        phone_numbers:
+          items:
+            $ref: '#/components/schemas/Profile2Phone'
+          type: array
+        reference_number:
+          readOnly: true
+          type: string
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - birth_date
+      - first_name
+      - id
+      - last_name
+      - middle_name
+      - national_number
+      - reference_number
+      - verified
+      type: object
+    CivilStatus:
+      description: Can be managed at /resources/civil-status
       properties:
         definition:
           type: string
@@ -1637,6 +1565,78 @@ components:
       - definition
       - id
       - order
+      type: object
+    EmploymentType:
+      description: Can be managed at /resources/employment-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    LegalStatusType:
+      description: Can be managed at /resources/legal-status-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    TaxType:
+      description: Can be managed at /resources/tax-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedBaseUser:
+      description: User reduced representation
+      properties:
+        first_name:
+          default: ''
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        last_name:
+          default: ''
+          readOnly: true
+          type: string
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
+          readOnly: true
+        verified:
+          readOnly: true
+          type: boolean
+      required:
+      - first_name
+      - id
+      - last_name
+      - role
+      - verified
       type: object
   securitySchemes:
     jwtAuth:

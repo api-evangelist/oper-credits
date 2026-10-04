@@ -198,6 +198,98 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    TaskType:
+      description: Can be managed at /resources/task-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        navigation_path:
+          maxLength: 256
+          type: string
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PatchedTask:
+      properties:
+        assigned_to:
+          $ref: '#/components/schemas/ReducedBaseUser'
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        created_by:
+          allOf:
+          - $ref: '#/components/schemas/ReducedBaseUser'
+          readOnly: true
+        description:
+          type: string
+        due_date:
+          format: date-time
+          type:
+          - string
+          - 'null'
+        id:
+          readOnly: true
+          type: integer
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        loan_request:
+          $ref: '#/components/schemas/ReducedLoanRequest'
+        status:
+          $ref: '#/components/schemas/TaskStatus'
+        task_category:
+          $ref: '#/components/schemas/TaskCategory'
+        task_type:
+          $ref: '#/components/schemas/TaskType'
+      type: object
+    Status:
+      description: Can be managed at /resources/status
+      properties:
+        borrower_facing_status:
+          readOnly: true
+          type: string
+        check_if_selected_offer_is_still_valid_when_data_is_changed:
+          type: boolean
+        color:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        icon:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_active:
+          type: boolean
+        is_terminal:
+          type: boolean
+        notify_analyst_on_draft_offer_rate_change:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+        recalculate_selected_offer_when_data_is_changed:
+          type: boolean
+      required:
+      - borrower_facing_status
+      - color
+      - definition
+      - icon
+      - id
+      - order
+      type: object
     Task:
       properties:
         assigned_to:
@@ -244,6 +336,61 @@ components:
       - task_category
       - task_type
       type: object
+    TaskStatus:
+      description: Can be managed at /resources/task-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ReducedLoanRequest:
+      description: Loan request reduced representation
+      properties:
+        borrower_reference:
+          readOnly: true
+          type: string
+        external_reference:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        internal_reference:
+          readOnly: true
+          type: string
+        status:
+          allOf:
+          - $ref: '#/components/schemas/Status'
+          readOnly: true
+      required:
+      - borrower_reference
+      - external_reference
+      - id
+      - internal_reference
+      - status
+      type: object
     PaginatedTaskList:
       properties:
         count:
@@ -269,31 +416,13 @@ components:
       - count
       - results
       type: object
-    TaskStatus:
-      description: Can be managed at /resources/task-status
+    TaskCategory:
+      description: Can be managed at /resources/task-category
       properties:
         definition:
           type: string
         id:
           type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    TaskType:
-      description: Can be managed at /resources/task-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        navigation_path:
-          maxLength: 256
-          type: string
         order:
           readOnly: true
           type: integer
@@ -328,135 +457,6 @@ components:
       - last_name
       - role
       - verified
-      type: object
-    ReducedLoanRequest:
-      description: Loan request reduced representation
-      properties:
-        borrower_reference:
-          readOnly: true
-          type: string
-        external_reference:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        internal_reference:
-          readOnly: true
-          type: string
-        status:
-          allOf:
-          - $ref: '#/components/schemas/Status'
-          readOnly: true
-      required:
-      - borrower_reference
-      - external_reference
-      - id
-      - internal_reference
-      - status
-      type: object
-    PatchedTask:
-      properties:
-        assigned_to:
-          $ref: '#/components/schemas/ReducedBaseUser'
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        created_by:
-          allOf:
-          - $ref: '#/components/schemas/ReducedBaseUser'
-          readOnly: true
-        description:
-          type: string
-        due_date:
-          format: date-time
-          type:
-          - string
-          - 'null'
-        id:
-          readOnly: true
-          type: integer
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type: string
-        loan_request:
-          $ref: '#/components/schemas/ReducedLoanRequest'
-        status:
-          $ref: '#/components/schemas/TaskStatus'
-        task_category:
-          $ref: '#/components/schemas/TaskCategory'
-        task_type:
-          $ref: '#/components/schemas/TaskType'
-      type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    TaskCategory:
-      description: Can be managed at /resources/task-category
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    Status:
-      description: Can be managed at /resources/status
-      properties:
-        borrower_facing_status:
-          readOnly: true
-          type: string
-        check_if_selected_offer_is_still_valid_when_data_is_changed:
-          type: boolean
-        color:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        icon:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        is_active:
-          type: boolean
-        is_terminal:
-          type: boolean
-        notify_analyst_on_draft_offer_rate_change:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-        recalculate_selected_offer_when_data_is_changed:
-          type: boolean
-      required:
-      - borrower_facing_status
-      - color
-      - definition
-      - icon
-      - id
-      - order
       type: object
   securitySchemes:
     jwtAuth:

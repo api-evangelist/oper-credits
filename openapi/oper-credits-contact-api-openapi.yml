@@ -37,82 +37,6 @@ components:
       - id
       - value
       type: object
-    PhoneCountryCode:
-      description: Can be managed at /resources/phone-country-code
-      properties:
-        country:
-          readOnly: true
-          type: string
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - country
-      - definition
-      - id
-      - order
-      type: object
-    ReducedBaseUser:
-      description: User reduced representation
-      properties:
-        first_name:
-          default: ''
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        last_name:
-          default: ''
-          readOnly: true
-          type: string
-        role:
-          allOf:
-          - $ref: '#/components/schemas/UserRole'
-          readOnly: true
-        verified:
-          readOnly: true
-          type: boolean
-      required:
-      - first_name
-      - id
-      - last_name
-      - role
-      - verified
-      type: object
-    Phone:
-      properties:
-        country_code:
-          $ref: '#/components/schemas/PhoneCountryCode'
-        id:
-          readOnly: true
-          type: integer
-        value:
-          maxLength: 32
-          type: string
-      required:
-      - country_code
-      - id
-      - value
-      type: object
-    Country:
-      description: Can be managed at /resources/country
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
     CompanyType:
       description: Can be managed at /resources/company-types
       properties:
@@ -169,6 +93,21 @@ components:
       - outstanding_debt
       - vat_number
       type: object
+    UserRole:
+      description: Can be managed at /resources/user-role
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     ContactDetail:
       properties:
         broker:
@@ -204,6 +143,70 @@ components:
       - office_opening_hours
       - office_phone
       - tenant
+      type: object
+    Country:
+      description: Can be managed at /resources/country
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Phone:
+      properties:
+        country_code:
+          $ref: '#/components/schemas/PhoneCountryCode'
+        id:
+          readOnly: true
+          type: integer
+        value:
+          maxLength: 32
+          type: string
+      required:
+      - country_code
+      - id
+      - value
+      type: object
+    StreetType:
+      description: Can be managed at /resources/street-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PhoneCountryCode:
+      description: Can be managed at /resources/phone-country-code
+      properties:
+        country:
+          readOnly: true
+          type: string
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - country
+      - definition
+      - id
+      - order
       type: object
     Address:
       properties:
@@ -282,35 +285,32 @@ components:
       - street
       - zip_code
       type: object
-    StreetType:
-      description: Can be managed at /resources/street-type
+    ReducedBaseUser:
+      description: User reduced representation
       properties:
-        definition:
+        first_name:
+          default: ''
+          readOnly: true
           type: string
         id:
           type: integer
-        order:
+        last_name:
+          default: ''
           readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    UserRole:
-      description: Can be managed at /resources/user-role
-      properties:
-        definition:
           type: string
-        id:
-          type: integer
-        order:
+        role:
+          allOf:
+          - $ref: '#/components/schemas/UserRole'
           readOnly: true
-          type: integer
+        verified:
+          readOnly: true
+          type: boolean
       required:
-      - definition
+      - first_name
       - id
-      - order
+      - last_name
+      - role
+      - verified
       type: object
   securitySchemes:
     jwtAuth:

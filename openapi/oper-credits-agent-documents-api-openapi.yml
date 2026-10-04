@@ -86,13 +86,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DocumentStatus:
-      description: Can be managed at /resources/document-status
+    DocumentType:
+      description: Can be managed at /resources/document-type
       properties:
+        add_to_handover_letter:
+          type: boolean
+        allows_generation:
+          type: boolean
+        append_file_version:
+          type: boolean
+        can_be_added_manually_as_informative_document:
+          type: boolean
         definition:
           type: string
+        document_generation_configuration: {}
         id:
           type: integer
+        is_informative:
+          type: boolean
+        is_proof_to_sign:
+          type: boolean
         order:
           readOnly: true
           type: integer
@@ -100,6 +113,22 @@ components:
       - definition
       - id
       - order
+      type: object
+    AgentDocument:
+      properties:
+        document:
+          $ref: '#/components/schemas/AgentDocumentSignedUrl'
+        id:
+          readOnly: true
+          type: integer
+        uploaded_by:
+          format: email
+          readOnly: true
+          title: Email address
+          type: string
+      required:
+      - id
+      - uploaded_by
       type: object
     PaginatedAgentDocumentList:
       properties:
@@ -125,27 +154,6 @@ components:
       required:
       - count
       - results
-      type: object
-    AgentDocumentUpload:
-      properties:
-        document:
-          $ref: '#/components/schemas/AgentDocumentSignedUrl'
-        file:
-          format: uri
-          type: string
-          writeOnly: true
-        id:
-          readOnly: true
-          type: integer
-        uploaded_by:
-          format: email
-          readOnly: true
-          title: Email address
-          type: string
-      required:
-      - file
-      - id
-      - uploaded_by
       type: object
     AgentDocumentSignedUrl:
       properties:
@@ -235,10 +243,14 @@ components:
       - url
       - version
       type: object
-    AgentDocument:
+    AgentDocumentUpload:
       properties:
         document:
           $ref: '#/components/schemas/AgentDocumentSignedUrl'
+        file:
+          format: uri
+          type: string
+          writeOnly: true
         id:
           readOnly: true
           type: integer
@@ -248,29 +260,17 @@ components:
           title: Email address
           type: string
       required:
+      - file
       - id
       - uploaded_by
       type: object
-    DocumentType:
-      description: Can be managed at /resources/document-type
+    DocumentStatus:
+      description: Can be managed at /resources/document-status
       properties:
-        add_to_handover_letter:
-          type: boolean
-        allows_generation:
-          type: boolean
-        append_file_version:
-          type: boolean
-        can_be_added_manually_as_informative_document:
-          type: boolean
         definition:
           type: string
-        document_generation_configuration: {}
         id:
           type: integer
-        is_informative:
-          type: boolean
-        is_proof_to_sign:
-          type: boolean
         order:
           readOnly: true
           type: integer

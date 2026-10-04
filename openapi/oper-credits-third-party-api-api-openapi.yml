@@ -75,6 +75,36 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    RealtyValuationType:
+      description: Can be managed at /resources/realty-valuation-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    RealtyValuationStatus:
+      description: Can be managed at /resources/realty-valuation-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
     NonRequiredAddress:
       description: 'Inheriting from base address serializer and set with a few optional
 
@@ -153,21 +183,6 @@ components:
       - street
       - zip_code
       type: object
-    RealtyValuationType:
-      description: Can be managed at /resources/realty-valuation-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
     FloodRiskType:
       description: Can be managed at /resources/flood-risk-type
       properties:
@@ -183,20 +198,61 @@ components:
       - id
       - order
       type: object
-    RealtyValuationStatus:
-      description: Can be managed at /resources/realty-valuation-status
+    PatchedRealtyValuation:
       properties:
-        definition:
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        documents:
+          items:
+            $ref: '#/components/schemas/RealtyValuationDocument'
+          type: array
+        external_generation_uuid:
+          format: uuid
+          type: string
+        external_service:
+          readOnly: true
           type: string
         id:
-          type: integer
-        order:
           readOnly: true
           type: integer
-      required:
-      - definition
-      - id
-      - order
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type: string
+        oper_reference:
+          format: uuid
+          readOnly: true
+          type: string
+        realty:
+          readOnly: true
+          type: integer
+        status:
+          allOf:
+          - $ref: '#/components/schemas/RealtyValuationStatus'
+        valuation_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        valuation_expiration_date:
+          format: date
+          type:
+          - string
+          - 'null'
+        valuation_redirection_url:
+          format: uri
+          maxLength: 200
+          type: string
+        valuation_reference:
+          maxLength: 255
+          type: string
+        valuation_type:
+          allOf:
+          - $ref: '#/components/schemas/RealtyValuationType'
       type: object
     RealtyValuation:
       properties:
@@ -262,76 +318,14 @@ components:
       - realty
       - valuation_reference
       type: object
-    PatchedRealtyValuation:
+    RealtyValuationAndSourceData:
       properties:
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        documents:
-          items:
-            $ref: '#/components/schemas/RealtyValuationDocument'
-          type: array
-        external_generation_uuid:
-          format: uuid
-          type: string
-        external_service:
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type: string
-        oper_reference:
-          format: uuid
-          readOnly: true
-          type: string
-        realty:
-          readOnly: true
-          type: integer
-        status:
-          allOf:
-          - $ref: '#/components/schemas/RealtyValuationStatus'
-        valuation_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        valuation_expiration_date:
-          format: date
-          type:
-          - string
-          - 'null'
-        valuation_redirection_url:
-          format: uri
-          maxLength: 200
-          type: string
-        valuation_reference:
-          maxLength: 255
-          type: string
-        valuation_type:
-          allOf:
-          - $ref: '#/components/schemas/RealtyValuationType'
-      type: object
-    Country:
-      description: Can be managed at /resources/country
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
+        data:
+          $ref: '#/components/schemas/RealtySourceDataCreate'
+        valuation:
+          $ref: '#/components/schemas/RealtyValuation'
       required:
-      - definition
-      - id
-      - order
+      - valuation
       type: object
     RealtyType:
       description: Can be managed at /resources/realty-type
@@ -347,17 +341,6 @@ components:
       - definition
       - id
       - order
-      type: object
-    RealtyValuationDocument:
-      properties:
-        document_type:
-          type: string
-        document_url:
-          format: uri
-          type: string
-      required:
-      - document_type
-      - document_url
       type: object
     RealtySourceDataCreate:
       properties:
@@ -500,14 +483,31 @@ components:
       - id
       - order
       type: object
-    RealtyValuationAndSourceData:
+    Country:
+      description: Can be managed at /resources/country
       properties:
-        data:
-          $ref: '#/components/schemas/RealtySourceDataCreate'
-        valuation:
-          $ref: '#/components/schemas/RealtyValuation'
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
       required:
-      - valuation
+      - definition
+      - id
+      - order
+      type: object
+    RealtyValuationDocument:
+      properties:
+        document_type:
+          type: string
+        document_url:
+          format: uri
+          type: string
+      required:
+      - document_type
+      - document_url
       type: object
   securitySchemes:
     jwtAuth:

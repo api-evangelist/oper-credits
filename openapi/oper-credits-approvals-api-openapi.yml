@@ -231,55 +231,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    ApprovalConfigurationVersion:
-      properties:
-        configuration_id:
-          readOnly: true
-          type: integer
-        credit_provider_id:
-          readOnly: true
-          type: integer
-        default:
-          readOnly: true
-          type: boolean
-        id:
-          readOnly: true
-          type: integer
-        json_diff:
-          readOnly: true
-        name:
-          readOnly: true
-          type: string
-        saved_at:
-          format: date-time
-          readOnly: true
-          type: string
-        saved_by_id:
-          readOnly: true
-          type: integer
-        subject_kind:
-          allOf:
-          - $ref: '#/components/schemas/ApprovalSubjectKind'
-          readOnly: true
-        tenant_id:
-          readOnly: true
-          type: integer
-        version_id:
-          readOnly: true
-          type: string
-      required:
-      - configuration_id
-      - credit_provider_id
-      - default
-      - id
-      - json_diff
-      - name
-      - saved_at
-      - saved_by_id
-      - subject_kind
-      - tenant_id
-      - version_id
-      type: object
     ApprovalHostKind:
       description: Can be managed at /resources/approval-host-kind
       properties:
@@ -295,51 +246,8 @@ components:
       - id
       - order
       type: object
-    RequestActionTimeline:
-      description: 'Compact per-request action shape consumed by the FE''s §1.4
-
-        side-by-side display ("Head Decider sees advisor''s original `-50bps`
-
-        + Decider''s counter `-30bps`"). Ordered ASC by `created` so
-
-        `results[0]` is the advisor''s submit and the latest `modify` is at
-
-        the tail.'
-      properties:
-        action_type:
-          allOf:
-          - $ref: '#/components/schemas/ApprovalRequestActionType'
-          readOnly: true
-        actor:
-          additionalProperties: {}
-          readOnly: true
-          type:
-          - object
-          - 'null'
-        after_value: {}
-        before_value: {}
-        comment:
-          type: string
-        created_at:
-          format: date-time
-          readOnly: true
-          type: string
-        id:
-          readOnly: true
-          type: integer
-        level:
-          type:
-          - integer
-          - 'null'
-      required:
-      - action_type
-      - actor
-      - created_at
-      - id
-      - level
-      type: object
-    ApprovalBundleLifecycle:
-      description: Can be managed at /resources/approval-bundle-lifecycle
+    ApprovalRequestStatus:
+      description: Can be managed at /resources/approval-request-status
       properties:
         definition:
           type: string
@@ -352,6 +260,65 @@ components:
       - definition
       - id
       - order
+      type: object
+    ApprovalBundleActionAudit:
+      properties:
+        action_type:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalBundleActionType'
+          readOnly: true
+        bundle_id:
+          readOnly: true
+          type: integer
+        bundle_status:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalBundleLifecycle'
+          readOnly: true
+        client_idempotency_key:
+          readOnly: true
+          type: string
+        comment:
+          readOnly: true
+          type: string
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type: string
+        credit_provider_id:
+          readOnly: true
+          type: integer
+        host_id:
+          readOnly: true
+          type: integer
+        host_kind:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalHostKind'
+          readOnly: true
+        id:
+          readOnly: true
+          type: integer
+        performed_by_id:
+          readOnly: true
+          type: integer
+        step_index:
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+      required:
+      - action_type
+      - bundle_id
+      - bundle_status
+      - client_idempotency_key
+      - comment
+      - created
+      - credit_provider_id
+      - host_id
+      - host_kind
+      - id
+      - performed_by_id
+      - step_index
       type: object
     ApprovalActionAudit:
       properties:
@@ -447,80 +414,6 @@ components:
       - step_index
       - subject_kind
       type: object
-    ApprovalBundleActionAudit:
-      properties:
-        action_type:
-          allOf:
-          - $ref: '#/components/schemas/ApprovalBundleActionType'
-          readOnly: true
-        bundle_id:
-          readOnly: true
-          type: integer
-        bundle_status:
-          allOf:
-          - $ref: '#/components/schemas/ApprovalBundleLifecycle'
-          readOnly: true
-        client_idempotency_key:
-          readOnly: true
-          type: string
-        comment:
-          readOnly: true
-          type: string
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type: string
-        credit_provider_id:
-          readOnly: true
-          type: integer
-        host_id:
-          readOnly: true
-          type: integer
-        host_kind:
-          allOf:
-          - $ref: '#/components/schemas/ApprovalHostKind'
-          readOnly: true
-        id:
-          readOnly: true
-          type: integer
-        performed_by_id:
-          readOnly: true
-          type: integer
-        step_index:
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-      required:
-      - action_type
-      - bundle_id
-      - bundle_status
-      - client_idempotency_key
-      - comment
-      - created
-      - credit_provider_id
-      - host_id
-      - host_kind
-      - id
-      - performed_by_id
-      - step_index
-      type: object
-    ApprovalRequestActionType:
-      description: Can be managed at /resources/approval-request-action-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
     ApprovalBundleActionType:
       description: Can be managed at /resources/approval-bundle-action-type
       properties:
@@ -536,8 +429,8 @@ components:
       - id
       - order
       type: object
-    ApprovalRequestStatus:
-      description: Can be managed at /resources/approval-request-status
+    ApprovalBundleLifecycle:
+      description: Can be managed at /resources/approval-bundle-lifecycle
       properties:
         definition:
           type: string
@@ -569,6 +462,113 @@ components:
       - definition
       - id
       - order
+      type: object
+    ApprovalRequestActionType:
+      description: Can be managed at /resources/approval-request-action-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    ApprovalConfigurationVersion:
+      properties:
+        configuration_id:
+          readOnly: true
+          type: integer
+        credit_provider_id:
+          readOnly: true
+          type: integer
+        default:
+          readOnly: true
+          type: boolean
+        id:
+          readOnly: true
+          type: integer
+        json_diff:
+          readOnly: true
+        name:
+          readOnly: true
+          type: string
+        saved_at:
+          format: date-time
+          readOnly: true
+          type: string
+        saved_by_id:
+          readOnly: true
+          type: integer
+        subject_kind:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalSubjectKind'
+          readOnly: true
+        tenant_id:
+          readOnly: true
+          type: integer
+        version_id:
+          readOnly: true
+          type: string
+      required:
+      - configuration_id
+      - credit_provider_id
+      - default
+      - id
+      - json_diff
+      - name
+      - saved_at
+      - saved_by_id
+      - subject_kind
+      - tenant_id
+      - version_id
+      type: object
+    RequestActionTimeline:
+      description: 'Compact per-request action shape consumed by the FE''s §1.4
+
+        side-by-side display ("Head Decider sees advisor''s original `-50bps`
+
+        + Decider''s counter `-30bps`"). Ordered ASC by `created` so
+
+        `results[0]` is the advisor''s submit and the latest `modify` is at
+
+        the tail.'
+      properties:
+        action_type:
+          allOf:
+          - $ref: '#/components/schemas/ApprovalRequestActionType'
+          readOnly: true
+        actor:
+          additionalProperties: {}
+          readOnly: true
+          type:
+          - object
+          - 'null'
+        after_value: {}
+        before_value: {}
+        comment:
+          type: string
+        created_at:
+          format: date-time
+          readOnly: true
+          type: string
+        id:
+          readOnly: true
+          type: integer
+        level:
+          type:
+          - integer
+          - 'null'
+      required:
+      - action_type
+      - actor
+      - created_at
+      - id
+      - level
       type: object
   securitySchemes:
     jwtAuth:

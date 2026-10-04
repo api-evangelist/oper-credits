@@ -55,6 +55,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    BaseLoanRequestCommunicationHistory:
+      properties:
+        history_type:
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        log_level:
+          type: integer
+      required:
+      - history_type
+      - id
+      - log_level
+      type: object
     PaginatedBaseLoanRequestCommunicationHistoryList:
       properties:
         count:
@@ -79,20 +93,6 @@ components:
       required:
       - count
       - results
-      type: object
-    BaseLoanRequestCommunicationHistory:
-      properties:
-        history_type:
-          type: integer
-        id:
-          readOnly: true
-          type: integer
-        log_level:
-          type: integer
-      required:
-      - history_type
-      - id
-      - log_level
       type: object
   securitySchemes:
     jwtAuth:

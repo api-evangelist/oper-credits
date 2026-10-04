@@ -76,22 +76,7 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    DocumentStatus:
-      description: Can be managed at /resources/document-status
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    DocumentDownload:
+    DocumentListDownload:
       properties:
         configuration_id:
           format: uuid
@@ -135,9 +120,6 @@ components:
           type:
           - integer
           - 'null'
-        mime_type:
-          readOnly: true
-          type: string
         object_file_name:
           maxLength: 256
           type: string
@@ -161,9 +143,6 @@ components:
           allOf:
           - $ref: '#/components/schemas/DocumentStatus'
           readOnly: true
-        url:
-          readOnly: true
-          type: string
         version:
           readOnly: true
           type: string
@@ -176,37 +155,10 @@ components:
       - integrator_transfer_rounds
       - last_modified
       - link_id
-      - mime_type
       - object_id
       - oper_reference
       - status
-      - url
       - version
-      type: object
-    PaginatedDocumentListDownloadList:
-      properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          type:
-          - string
-          - 'null'
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          type:
-          - string
-          - 'null'
-        results:
-          items:
-            $ref: '#/components/schemas/DocumentListDownload'
-          type: array
-      required:
-      - count
-      - results
       type: object
     DocumentUpload:
       properties:
@@ -332,7 +284,7 @@ components:
       - id
       - order
       type: object
-    DocumentListDownload:
+    DocumentDownload:
       properties:
         configuration_id:
           format: uuid
@@ -376,6 +328,9 @@ components:
           type:
           - integer
           - 'null'
+        mime_type:
+          readOnly: true
+          type: string
         object_file_name:
           maxLength: 256
           type: string
@@ -399,6 +354,9 @@ components:
           allOf:
           - $ref: '#/components/schemas/DocumentStatus'
           readOnly: true
+        url:
+          readOnly: true
+          type: string
         version:
           readOnly: true
           type: string
@@ -411,10 +369,52 @@ components:
       - integrator_transfer_rounds
       - last_modified
       - link_id
+      - mime_type
       - object_id
       - oper_reference
       - status
+      - url
       - version
+      type: object
+    DocumentStatus:
+      description: Can be managed at /resources/document-status
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PaginatedDocumentListDownloadList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
+          items:
+            $ref: '#/components/schemas/DocumentListDownload'
+          type: array
+      required:
+      - count
+      - results
       type: object
   securitySchemes:
     jwtAuth:

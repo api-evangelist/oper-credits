@@ -7,14 +7,17 @@ front_door_ai:
   probed_at: '2026-09-17'
   host: opercredits.com
   final_host: www.opercredits.com
-  ownership: inherited
+  ownership: own
   owner: oper-credits
   shares_host_with: null
-  inherited_from: www.opercredits.com
+  inherited_from: null
+  alias_of: www.opercredits.com
   verdict: scored
-  score: null
+  score: 17
+  band: 5
+  band_label: prominent
   host_score: 17
-  density: null
+  density: 20.68
   words: 822
   tiers:
     agentic: 3

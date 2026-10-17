@@ -131,53 +131,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RoleTokenObtainPairOtp:
-      properties:
-        code:
-          type: string
-          writeOnly: true
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - code
-      - token
-      type: object
-    SignInActivate:
-      description: 'Serializer to create a verified user.
-
-        This will return a request for a OTP'
-      properties:
-        cell_phone:
-          readOnly: true
-          type: string
-        token:
-          type: string
-          writeOnly: true
-      required:
-      - cell_phone
-      - token
-      type: object
-    SignInOtp:
-      properties:
-        access:
-          readOnly: true
-          type: string
-        password:
-          type: string
-          writeOnly: true
-        refresh:
-          readOnly: true
-          type: string
-        username:
-          type: string
-          writeOnly: true
-      required:
-      - access
-      - password
-      - refresh
-      - username
-      type: object
     SignInResetPassword:
       description: 'This serializer will update the password to a new password if:
 
@@ -221,6 +174,53 @@ components:
       required:
       - new_password_one
       - new_password_two
+      - token
+      type: object
+    RoleTokenObtainPairOtp:
+      properties:
+        code:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - code
+      - token
+      type: object
+    SignInOtp:
+      properties:
+        access:
+          readOnly: true
+          type: string
+        password:
+          type: string
+          writeOnly: true
+        refresh:
+          readOnly: true
+          type: string
+        username:
+          type: string
+          writeOnly: true
+      required:
+      - access
+      - password
+      - refresh
+      - username
+      type: object
+    SignInActivate:
+      description: 'Serializer to create a verified user.
+
+        This will return a request for a OTP'
+      properties:
+        cell_phone:
+          readOnly: true
+          type: string
+        token:
+          type: string
+          writeOnly: true
+      required:
+      - cell_phone
       - token
       type: object
   securitySchemes:

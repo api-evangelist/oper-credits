@@ -114,47 +114,6 @@ components:
       - id
       - order
       type: object
-    AgentDocument:
-      properties:
-        document:
-          $ref: '#/components/schemas/AgentDocumentSignedUrl'
-        id:
-          readOnly: true
-          type: integer
-        uploaded_by:
-          format: email
-          readOnly: true
-          title: Email address
-          type: string
-      required:
-      - id
-      - uploaded_by
-      type: object
-    PaginatedAgentDocumentList:
-      properties:
-        count:
-          example: 123
-          type: integer
-        next:
-          example: http://api.example.org/accounts/?page=4
-          format: uri
-          type:
-          - string
-          - 'null'
-        previous:
-          example: http://api.example.org/accounts/?page=2
-          format: uri
-          type:
-          - string
-          - 'null'
-        results:
-          items:
-            $ref: '#/components/schemas/AgentDocument'
-          type: array
-      required:
-      - count
-      - results
-      type: object
     AgentDocumentSignedUrl:
       properties:
         configuration_id:
@@ -243,6 +202,22 @@ components:
       - url
       - version
       type: object
+    AgentDocument:
+      properties:
+        document:
+          $ref: '#/components/schemas/AgentDocumentSignedUrl'
+        id:
+          readOnly: true
+          type: integer
+        uploaded_by:
+          format: email
+          readOnly: true
+          title: Email address
+          type: string
+      required:
+      - id
+      - uploaded_by
+      type: object
     AgentDocumentUpload:
       properties:
         document:
@@ -263,6 +238,31 @@ components:
       - file
       - id
       - uploaded_by
+      type: object
+    PaginatedAgentDocumentList:
+      properties:
+        count:
+          example: 123
+          type: integer
+        next:
+          example: http://api.example.org/accounts/?page=4
+          format: uri
+          type:
+          - string
+          - 'null'
+        previous:
+          example: http://api.example.org/accounts/?page=2
+          format: uri
+          type:
+          - string
+          - 'null'
+        results:
+          items:
+            $ref: '#/components/schemas/AgentDocument'
+          type: array
+      required:
+      - count
+      - results
       type: object
     DocumentStatus:
       description: Can be managed at /resources/document-status

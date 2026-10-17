@@ -202,19 +202,50 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Language:
-      description: Can be managed at /resources/language
+    ReducedCreditProvider:
+      description: To be used for a short summary of the CreditProvider
       properties:
-        definition:
+        active:
+          readOnly: true
+          type: boolean
+        fsma_reference:
+          maxLength: 128
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
           type: string
         id:
           type: integer
-        order:
+        is_liability_provider:
           readOnly: true
-          type: integer
+          type: boolean
+        loan_request_form_documents:
+          readOnly: true
+          type: string
+        logo_url:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        order:
+          maximum: 2147483647
+          minimum: 0
+          readOnly: true
+          type:
+          - integer
+          - 'null'
       required:
-      - definition
+      - active
+      - fsma_reference
+      - full_name
       - id
+      - is_liability_provider
+      - loan_request_form_documents
+      - logo_url
+      - name
       - order
       type: object
     PatchedDocumentationLibrary.LibraryDocument:
@@ -265,52 +296,6 @@ components:
           readOnly: true
           title: Modification date and time
           type: string
-      type: object
-    ReducedCreditProvider:
-      description: To be used for a short summary of the CreditProvider
-      properties:
-        active:
-          readOnly: true
-          type: boolean
-        fsma_reference:
-          maxLength: 128
-          readOnly: true
-          type: string
-        full_name:
-          readOnly: true
-          type: string
-        id:
-          type: integer
-        is_liability_provider:
-          readOnly: true
-          type: boolean
-        loan_request_form_documents:
-          readOnly: true
-          type: string
-        logo_url:
-          format: uri
-          readOnly: true
-          type: string
-        name:
-          readOnly: true
-          type: string
-        order:
-          maximum: 2147483647
-          minimum: 0
-          readOnly: true
-          type:
-          - integer
-          - 'null'
-      required:
-      - active
-      - fsma_reference
-      - full_name
-      - id
-      - is_liability_provider
-      - loan_request_form_documents
-      - logo_url
-      - name
-      - order
       type: object
     DocumentationLibrary.LibraryDocument:
       properties:
@@ -370,6 +355,21 @@ components:
       type: object
     LibraryDocumentType:
       description: Can be managed at /resources/library-document-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    Language:
+      description: Can be managed at /resources/language
       properties:
         definition:
           type: string

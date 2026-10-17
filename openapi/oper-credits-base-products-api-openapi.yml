@@ -775,8 +775,264 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    Language:
-      description: Can be managed at /resources/language
+    PricingSheet:
+      properties:
+        base_rates:
+          items:
+            $ref: '#/components/schemas/NestedBaseRate'
+          type: array
+        created:
+          format: date-time
+          readOnly: true
+          title: Creation date and time
+          type:
+          - string
+          - 'null'
+        id:
+          readOnly: true
+          type: integer
+        is_active:
+          readOnly: true
+          type: string
+        last_modified:
+          format: date-time
+          readOnly: true
+          title: Modification date and time
+          type:
+          - string
+          - 'null'
+        pricing_configuration: {}
+        product:
+          $ref: '#/components/schemas/MinimalBaseProduct'
+        valid_from:
+          format: date
+          type: string
+        version:
+          maxLength: 32
+          type: string
+      required:
+      - base_rates
+      - created
+      - id
+      - is_active
+      - last_modified
+      - product
+      - valid_from
+      - version
+      type: object
+    BaseRate:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        percentage:
+          readOnly: true
+          type: string
+        pricing_sheet:
+          $ref: '#/components/schemas/ReducedPricingSheet'
+        rate:
+          format: double
+          type: number
+        variability:
+          $ref: '#/components/schemas/Variability'
+      required:
+      - id
+      - percentage
+      - pricing_sheet
+      - rate
+      - variability
+      type: object
+    AdminDiscount3rdLevel:
+      properties:
+        interest_rate:
+          format: double
+          type: number
+        is_default:
+          type: boolean
+        is_selected_by_default:
+          type: boolean
+        name:
+          type: string
+        parameters:
+          items:
+            $ref: '#/components/schemas/Parameter'
+          type: array
+      required:
+      - interest_rate
+      - name
+      type: object
+    LoanType:
+      description: Can be managed at /resources/loan-type
+      properties:
+        definition:
+          type: string
+        id:
+          type: integer
+        is_grace_period_supported:
+          type: boolean
+        order:
+          readOnly: true
+          type: integer
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    PatchedAllowedProductVariability:
+      properties:
+        active:
+          type: boolean
+        default_duration:
+          maximum: 999
+          minimum: 1
+          type: integer
+        id:
+          readOnly: true
+          type: integer
+        is_simulator_reference_variability:
+          type: boolean
+        max_duration:
+          maximum: 999
+          minimum: 1
+          type: integer
+        min_duration:
+          maximum: 999
+          minimum: 1
+          type: integer
+        variability:
+          $ref: '#/components/schemas/Variability'
+      type: object
+    ProductWhitelistedBrokerBulkImport:
+      properties:
+        items:
+          items:
+            $ref: '#/components/schemas/BulkProduct2BrokerWhitelist'
+          maxItems: 100000
+          minItems: 1
+          type: array
+      required:
+      - items
+      type: object
+    ReducedCreditProvider:
+      description: To be used for a short summary of the CreditProvider
+      properties:
+        active:
+          readOnly: true
+          type: boolean
+        fsma_reference:
+          maxLength: 128
+          readOnly: true
+          type: string
+        full_name:
+          readOnly: true
+          type: string
+        id:
+          type: integer
+        is_liability_provider:
+          readOnly: true
+          type: boolean
+        loan_request_form_documents:
+          readOnly: true
+          type: string
+        logo_url:
+          format: uri
+          readOnly: true
+          type: string
+        name:
+          readOnly: true
+          type: string
+        order:
+          maximum: 2147483647
+          minimum: 0
+          readOnly: true
+          type:
+          - integer
+          - 'null'
+      required:
+      - active
+      - fsma_reference
+      - full_name
+      - id
+      - is_liability_provider
+      - loan_request_form_documents
+      - logo_url
+      - name
+      - order
+      type: object
+    BulkProduct2BrokerWhitelist:
+      properties:
+        external_broker_id:
+          type: string
+        product_id:
+          type: integer
+      required:
+      - external_broker_id
+      - product_id
+      type: object
+    ReducedPricingSheet:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        id:
+          type: integer
+      required:
+      - id
+      type: object
+    PatchedBaseRate:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        percentage:
+          readOnly: true
+          type: string
+        pricing_sheet:
+          $ref: '#/components/schemas/ReducedPricingSheet'
+        rate:
+          format: double
+          type: number
+        variability:
+          $ref: '#/components/schemas/Variability'
+      type: object
+    PricingSheetDiscount:
+      properties:
+        discounts:
+          items:
+            $ref: '#/components/schemas/AdminDiscount'
+          type: array
+      required:
+      - discounts
+      type: object
+    NestedBaseRate:
+      properties:
+        id:
+          readOnly: true
+          type: integer
+        percentage:
+          readOnly: true
+          type: string
+        rate:
+          format: double
+          type: number
+        variability:
+          $ref: '#/components/schemas/Variability'
+      required:
+      - id
+      - percentage
+      - rate
+      - variability
+      type: object
+    Explanation:
+      properties:
+        explanation:
+          type: string
+        language:
+          $ref: '#/components/schemas/Language'
+      required:
+      - explanation
+      - language
+      type: object
+    ParameterType:
+      description: Can be managed at /resources/parameter-type
       properties:
         definition:
           type: string
@@ -789,25 +1045,6 @@ components:
       - definition
       - id
       - order
-      type: object
-    ReducedPricingSheet:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
-      properties:
-        id:
-          type: integer
-      required:
-      - id
-      type: object
-    ProductWhitelistedBrokerBulkImport:
-      properties:
-        items:
-          items:
-            $ref: '#/components/schemas/BulkProduct2BrokerWhitelist'
-          maxItems: 100000
-          minItems: 1
-          type: array
-      required:
-      - items
       type: object
     PatchedBaseProduct:
       properties:
@@ -876,6 +1113,14 @@ components:
           maxLength: 32
           type: string
       type: object
+    MinimalBaseProduct:
+      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
+      properties:
+        id:
+          type: integer
+      required:
+      - id
+      type: object
     AdminDiscount:
       properties:
         discounts:
@@ -891,27 +1136,52 @@ components:
       - max_discounts_allowed
       - name
       type: object
-    BaseRate:
+    Variability:
+      description: Can be managed at /resources/variability
       properties:
+        definition:
+          type: string
+        group_type:
+          type:
+          - integer
+          - 'null'
         id:
+          type: integer
+        order:
           readOnly: true
           type: integer
-        percentage:
-          readOnly: true
-          type: string
-        pricing_sheet:
-          $ref: '#/components/schemas/ReducedPricingSheet'
-        rate:
+      required:
+      - definition
+      - id
+      - order
+      type: object
+    AdminDiscount2ndLevel:
+      properties:
+        discounts:
+          items:
+            $ref: '#/components/schemas/AdminDiscount3rdLevel'
+          type: array
+        explanations:
+          items:
+            $ref: '#/components/schemas/Explanation'
+          type: array
+        interest_rate:
           format: double
           type: number
-        variability:
-          $ref: '#/components/schemas/Variability'
+        is_default:
+          type: boolean
+        is_selected_by_default:
+          type: boolean
+        max_discounts_allowed:
+          type: integer
+        name:
+          type: string
+        parameters:
+          items:
+            $ref: '#/components/schemas/Parameter'
+          type: array
       required:
-      - id
-      - percentage
-      - pricing_sheet
-      - rate
-      - variability
+      - name
       type: object
     AllowedProductVariability:
       properties:
@@ -940,115 +1210,6 @@ components:
       - id
       - variability
       type: object
-    LoanType:
-      description: Can be managed at /resources/loan-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        is_grace_period_supported:
-          type: boolean
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    ParameterType:
-      description: Can be managed at /resources/parameter-type
-      properties:
-        definition:
-          type: string
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
-      type: object
-    MinimalBaseProduct:
-      description: "Baseclass for Reduced serializers.\n\nWill validate whether the objects exists, and returns the instance in to_internal_value\nSubclasses must implement Meta with at least the model and field attributes\n\nRaises\n------\n    Validations errors if the object doesn't exist\n    OperBadConfigurationException if the model isn't set"
-      properties:
-        id:
-          type: integer
-      required:
-      - id
-      type: object
-    PricingSheet:
-      properties:
-        base_rates:
-          items:
-            $ref: '#/components/schemas/NestedBaseRate'
-          type: array
-        created:
-          format: date-time
-          readOnly: true
-          title: Creation date and time
-          type:
-          - string
-          - 'null'
-        id:
-          readOnly: true
-          type: integer
-        is_active:
-          readOnly: true
-          type: string
-        last_modified:
-          format: date-time
-          readOnly: true
-          title: Modification date and time
-          type:
-          - string
-          - 'null'
-        pricing_configuration: {}
-        product:
-          $ref: '#/components/schemas/MinimalBaseProduct'
-        valid_from:
-          format: date
-          type: string
-        version:
-          maxLength: 32
-          type: string
-      required:
-      - base_rates
-      - created
-      - id
-      - is_active
-      - last_modified
-      - product
-      - valid_from
-      - version
-      type: object
-    PatchedAllowedProductVariability:
-      properties:
-        active:
-          type: boolean
-        default_duration:
-          maximum: 999
-          minimum: 1
-          type: integer
-        id:
-          readOnly: true
-          type: integer
-        is_simulator_reference_variability:
-          type: boolean
-        max_duration:
-          maximum: 999
-          minimum: 1
-          type: integer
-        min_duration:
-          maximum: 999
-          minimum: 1
-          type: integer
-        variability:
-          $ref: '#/components/schemas/Variability'
-      type: object
     Funder:
       properties:
         id:
@@ -1059,44 +1220,6 @@ components:
           type: string
       required:
       - id
-      - name
-      type: object
-    BulkProduct2BrokerWhitelist:
-      properties:
-        external_broker_id:
-          type: string
-        product_id:
-          type: integer
-      required:
-      - external_broker_id
-      - product_id
-      type: object
-    AdminDiscount2ndLevel:
-      properties:
-        discounts:
-          items:
-            $ref: '#/components/schemas/AdminDiscount3rdLevel'
-          type: array
-        explanations:
-          items:
-            $ref: '#/components/schemas/Explanation'
-          type: array
-        interest_rate:
-          format: double
-          type: number
-        is_default:
-          type: boolean
-        is_selected_by_default:
-          type: boolean
-        max_discounts_allowed:
-          type: integer
-        name:
-          type: string
-        parameters:
-          items:
-            $ref: '#/components/schemas/Parameter'
-          type: array
-      required:
       - name
       type: object
     BaseProduct:
@@ -1137,123 +1260,19 @@ components:
       - logo_url
       - name
       type: object
-    PricingSheetDiscount:
+    Language:
+      description: Can be managed at /resources/language
       properties:
-        discounts:
-          items:
-            $ref: '#/components/schemas/AdminDiscount'
-          type: array
-      required:
-      - discounts
-      type: object
-    PatchedBaseRate:
-      properties:
-        id:
-          readOnly: true
-          type: integer
-        percentage:
-          readOnly: true
-          type: string
-        pricing_sheet:
-          $ref: '#/components/schemas/ReducedPricingSheet'
-        rate:
-          format: double
-          type: number
-        variability:
-          $ref: '#/components/schemas/Variability'
-      type: object
-    Explanation:
-      properties:
-        explanation:
-          type: string
-        language:
-          $ref: '#/components/schemas/Language'
-      required:
-      - explanation
-      - language
-      type: object
-    NestedBaseRate:
-      properties:
-        id:
-          readOnly: true
-          type: integer
-        percentage:
-          readOnly: true
-          type: string
-        rate:
-          format: double
-          type: number
-        variability:
-          $ref: '#/components/schemas/Variability'
-      required:
-      - id
-      - percentage
-      - rate
-      - variability
-      type: object
-    AdminDiscount3rdLevel:
-      properties:
-        interest_rate:
-          format: double
-          type: number
-        is_default:
-          type: boolean
-        is_selected_by_default:
-          type: boolean
-        name:
-          type: string
-        parameters:
-          items:
-            $ref: '#/components/schemas/Parameter'
-          type: array
-      required:
-      - interest_rate
-      - name
-      type: object
-    ReducedCreditProvider:
-      description: To be used for a short summary of the CreditProvider
-      properties:
-        active:
-          readOnly: true
-          type: boolean
-        fsma_reference:
-          maxLength: 128
-          readOnly: true
-          type: string
-        full_name:
-          readOnly: true
+        definition:
           type: string
         id:
           type: integer
-        is_liability_provider:
-          readOnly: true
-          type: boolean
-        loan_request_form_documents:
-          readOnly: true
-          type: string
-        logo_url:
-          format: uri
-          readOnly: true
-          type: string
-        name:
-          readOnly: true
-          type: string
         order:
-          maximum: 2147483647
-          minimum: 0
           readOnly: true
-          type:
-          - integer
-          - 'null'
+          type: integer
       required:
-      - active
-      - fsma_reference
-      - full_name
+      - definition
       - id
-      - is_liability_provider
-      - loan_request_form_documents
-      - logo_url
-      - name
       - order
       type: object
     Parameter:
@@ -1268,25 +1287,6 @@ components:
       - name
       - type
       - value
-      type: object
-    Variability:
-      description: Can be managed at /resources/variability
-      properties:
-        definition:
-          type: string
-        group_type:
-          type:
-          - integer
-          - 'null'
-        id:
-          type: integer
-        order:
-          readOnly: true
-          type: integer
-      required:
-      - definition
-      - id
-      - order
       type: object
   securitySchemes:
     jwtAuth:

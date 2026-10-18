@@ -608,6 +608,8 @@ apis:
   humanURL: https://developers.opercredits.com/
   baseURL: https://developers.opercredits.com/
   tags:
+  - Sign Up
+  tags_raw:
   - Signup
   properties:
   - type: OpenAPI
